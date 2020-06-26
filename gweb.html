@@ -12,10 +12,10 @@ function ShowTime(){
 	var m=NowDate.getMinutes();
 	var s=NowDate.getSeconds();
 	var y=NowDate.getFullYear();
-	var mo=NowDate.getMonth();
-	var d=NowDate.getDate();
+	var mo=NowDate.getMonth()+1;
+	var da=NowDate.getDate();
 
-　document.getElementById('showbox').innerHTML = "今天日期是 " + y+ " 年 " +mo+ " 日 " + h +':'+m+':'+s;
+　document.getElementById('showbox').innerHTML =  y+ "." +mo+ "." + da + "." + h +':'+m+':'+s;
 　setTimeout('ShowTime()',1000);
 }
 
