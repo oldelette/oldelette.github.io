@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<title>Homepage</title>
+	
+<script type="text/javascript">
+
+function ShowTime(){
+	var NowDate=new Date();
+	var h=NowDate.getHours();
+	var m=NowDate.getMinutes();
+	var s=NowDate.getSeconds();
+	var y=NowDate.getFullYear();
+	var mo=NowDate.getMonth();
+	var d=NowDate.getDate();
+
+　document.getElementById('showbox').innerHTML = "今天日期是 " + y+ " 年 " +mo+ " 日 " + h +':'+m+':'+s;
+　setTimeout('ShowTime()',1000);
+}
+
+function addRow()
+{
+	var Name=document.getElementById("Name").value;
+	var StuNum=document.getElementById("StuNum").value;
+	var Phone=document.getElementById("Phone").value;
+	
+	// 0=first table
+	var table=document.getElementsByTagName('table')[0];
+	
+	if(!checkEmptyInput()){
+	//var newRow=table.insertRow(1);
+	var newRow=table.insertRow(table.rows.length);
+	
+	// add cell to the table
+	var cel1=newRow.insertCell(0);
+	var cel2=newRow.insertCell(1);
+	var cel3=newRow.insertCell(2);
+	var cel4=newRow.insertCell(3);
+	
+	var num = document.getElementById("mytable").rows.length-1;
+	
+	// add value to the cell
+	cel1.innerHTML= num;
+	cel2.innerHTML= Name;
+	cel3.innerHTML= StuNum;
+	cel4.innerHTML= Phone;
+	}
+}
+
+function delete_row()
+{
+	var num = document.getElementById("mytable").rows.length;
+	if (num>1)
+	{
+		document.getElementById("mytable").deleteRow(-1);
+	}
+}
+
+function renew_table()
+{
+	var num = document.getElementById("mytable").rows.length;
+	while(num>1)
+	{
+		document.getElementById("mytable").deleteRow(-1);
+		num--;
+	}
+}
+
+function checkEmptyInput()
+{
+	var isEmpty=false,
+	Name = document.getElementById("Name").value;
+	StuNum = document.getElementById("StuNum").value;
+	Phone = document.getElementById("Phone").value;
+	
+	if(Name ==""){
+		alert("Name Can't Be Empty");
+		isEmpty=true;
+	}
+	
+	else if(StuNum ==""){
+		alert("StuNum Can't Be Empty");
+		isEmpty=true;
+	}
+	else if(Phone ==""){
+		alert("Phone Can't Be Empty");
+		isEmpty=true;
+	}
+	return isEmpty;
+}
+
+
+</script>
+
+<style>
+h1{color green;}
+h2{background-image:url('images.jpg');background-repeat:no-repeat;}
+.myfont1{font-family:arial;}
+body{background-color:#EFFFD7}
+tr{transition:all .25s ease-in-out}
+tr:hover{background-color:#ca8ec2; cursor:pointer}<!--cursor is mouse-->
+
+
+</style>
+
+
+</head>
+
+<body onload="ShowTime()">
+	<div id="showbox"></div>
+	<div id="header"> <h1 style='color:green'>Gavin Web</h1> </div>
+	<div id="menu" style="height:200px;width:15%;float:right;">
+	<a href="https://github.com/oldelette">MENG-JIN Github</a> <br>
+	<!--
+	選單二<br>
+	選單三<br>
+	-->
+	</div>
+	
+	<div id="content">
+	姓名:	<input type="text" name="Name" id="Name"/> <br/><br/>
+	學號:	<input type="text" name="StuNum" id="StuNum"/> <br/><br/>
+	電話:	<input type="text" name="Phone" id="Phone"/> <br/><br/>
+	</div>
+	<button onclick="addRow();"> Insert </button>
+	<button onclick="delete_row();"> Delete </button>
+	<button onclick="renew_table();"> Renew </button>
+	
+	<h2>My contacts</h2>
+	
+
+
+<table id="mytable" border="1" width="600" cellpadding="5">
+	<!--tr bgcolor='#ffffff' onMouseOver="this.style.backgroundColor='#ca8ec2';
+	"onMouseOut="this.style.backgroundColor='#ffffff';">-->
+	<tr> 
+		<td>編號</td>
+		<td>姓名</td>
+		<td>學號</td>
+		<td>電話</td>
+	</tr>
+</table>
+
+	<div id="footer" style="clear:both;text-align:center;">
+	版權所有 © Gavin Lee</div>
+
+</body>
+</html>
