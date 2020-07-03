@@ -90,6 +90,15 @@ function checkEmptyInput()
 	return isEmpty;
 }
 
+document.cookie = "username=gavin";
+document.cookie = "favorite_food=tripe";
+function alertCookie() {
+  alert(document.cookie);
+}
+
+
+
+
 
 </script>
 
@@ -103,11 +112,10 @@ tr:hover{background-color:#ca8ec2; cursor:pointer}<!--cursor is mouse-->
 
 
 </style>
-
-
 </head>
 
 <body onload="ShowTime()">
+	<button onclick="alertCookie()">Show cookies</button>
 	<div id="showbox"></div>
 	<div id="header"> <h1 style='color:green'>Gavin Web</h1> </div>
 	<div id="menu" style="height:200px;width:15%;float:right;">
