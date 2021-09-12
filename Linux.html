@@ -140,7 +140,16 @@
 <li><span>可執行文件位置：/usr/bin</span></li>
 <li><span>配置文件位置：/etc</span></li>
 <li><span>lib文件位置：/usr/lib</span></li>
-</ul><h2 id="Linux-檔案屬性" data-id="Linux-檔案屬性"><a class="anchor hidden-xs" href="#Linux-檔案屬性" title="Linux-檔案屬性"><span class="octicon octicon-link"></span></a><span>Linux 檔案屬性</span></h2><p><a href="http://www2.lssh.tp.edu.tw/~hlf/class-1/linux/file_permission.htm" target="_blank" rel="noopener"><span>Ref: Linux 檔案屬性與目錄配置</span></a></p><p><img src="https://i.imgur.com/uJ6PRdt.png" alt="" loading="lazy"></p><p><span>|第一欄  |   二 | 三  |  四 |  五  |    六 | 七 |</span><br>
+</ul><h2 id="Linux-環境變數" data-id="Linux-環境變數"><a class="anchor hidden-xs" href="#Linux-環境變數" title="Linux-環境變數"><span class="octicon octicon-link"></span></a><span>Linux 環境變數</span></h2><p><a href="https://iter01.com/567129.html" target="_blank" rel="noopener"><span>環境變數</span></a><span>一般是指在作業系統中用來指定作業系統執行環境的一些引數，比如臨時資料夾位置和系統資料夾位置等等。</span></p><p><span>按變數的生存週期來劃分，Linux變數可分為兩類：</span><br>
+<span>1、永久的：需要修改配置檔案，變數永久生效。</span><br>
+<span>2、臨時的：使用export命令宣告即可，變數在關閉shell時失效。</span></p><h3 id="設定變數的三種方法" data-id="設定變數的三種方法"><a class="anchor hidden-xs" href="#設定變數的三種方法" title="設定變數的三種方法"><span class="octicon octicon-link"></span></a><span>設定變數的三種方法</span></h3><ol>
+<li><span>在/etc/profile檔案中新增變數【對所有使用者生效（永久的）】</span><br>
+<span>編輯/etc/profile檔案，新增PATH變數。</span><br>
+<span>修改檔案後要想馬上生效還要執行 # source /etc/profile</span></li>
+</ol><div class="alert alert-warning">
+<p><span class="ui-comment-inline-span">#vim /etc/profile</span><br>
+<span>export PATH=/home/fs : $PATH</span></p>
+</div><h2 id="Linux-檔案屬性" data-id="Linux-檔案屬性"><a class="anchor hidden-xs" href="#Linux-檔案屬性" title="Linux-檔案屬性"><span class="octicon octicon-link"></span></a><span>Linux 檔案屬性</span></h2><p><a href="http://www2.lssh.tp.edu.tw/~hlf/class-1/linux/file_permission.htm" target="_blank" rel="noopener"><span>Ref: Linux 檔案屬性與目錄配置</span></a></p><p><img src="https://i.imgur.com/uJ6PRdt.png" alt="" loading="lazy"></p><p><span>|第一欄  |   二 | 三  |  四 |  五  |    六 | 七 |</span><br>
 <span>| --| – |–| – | – | ----- |----| ---- |</span><br>
 <span>|[檔案屬性]|[檔案數]|[擁有者]|[所有者群組]|[大小]|[建檔日期]|[檔名]|</span></p><p><span>『rwx』的三個參數的組合。其中，[ r ]代表可讀、[ w ]代表可寫、[ x ]代表可執行</span></p><ul>
 <li><span>第一組為『擁有人的權限』；</span></li>
@@ -516,9 +525,13 @@ exit
 <li><a href="#整理linux目錄的說明" title="整理linux目錄的說明">整理linux目錄的說明</a></li>
 </ul>
 </li>
-<li><a href="#Package-Control" title="Package Control">Package Control</a><ul class="nav">
+<li class=""><a href="#Package-Control" title="Package Control">Package Control</a><ul class="nav">
 <li><a href="#dpkg" title="dpkg">dpkg</a></li>
-<li><a href="#apt" title="apt">apt</a></li>
+<li class=""><a href="#apt" title="apt">apt</a></li>
+</ul>
+</li>
+<li><a href="#Linux-環境變數" title="Linux 環境變數">Linux 環境變數</a><ul class="nav">
+<li><a href="#設定變數的三種方法" title="設定變數的三種方法">設定變數的三種方法</a></li>
 </ul>
 </li>
 <li><a href="#Linux-檔案屬性" title="Linux 檔案屬性">Linux 檔案屬性</a><ul class="nav">
@@ -532,12 +545,12 @@ exit
 <li><a href="#Error-Message" title="Error Message">Error Message</a></li>
 </ul>
 </li>
-<li class=""><a href="#Linux-Process" title="Linux Process">Linux Process</a><ul class="nav">
+<li><a href="#Linux-Process" title="Linux Process">Linux Process</a><ul class="nav">
 <li><a href="#ps" title="ps">ps</a></li>
 <li><a href="#top-amp-htop" title="top &amp; htop">top &amp; htop</a></li>
 <li><a href="#zombie-process" title="zombie process">zombie process</a></li>
 <li><a href="#fork" title="fork">fork</a></li>
-<li class=""><a href="#Signal" title="Signal">Signal</a></li>
+<li><a href="#Signal" title="Signal">Signal</a></li>
 <li><a href="#daemon" title="daemon">daemon</a></li>
 <li><a href="#Service" title="Service">Service</a></li>
 </ul>
@@ -587,9 +600,13 @@ exit
 <li><a href="#整理linux目錄的說明" title="整理linux目錄的說明">整理linux目錄的說明</a></li>
 </ul>
 </li>
-<li><a href="#Package-Control" title="Package Control">Package Control</a><ul class="nav">
+<li class=""><a href="#Package-Control" title="Package Control">Package Control</a><ul class="nav">
 <li><a href="#dpkg" title="dpkg">dpkg</a></li>
-<li><a href="#apt" title="apt">apt</a></li>
+<li class=""><a href="#apt" title="apt">apt</a></li>
+</ul>
+</li>
+<li><a href="#Linux-環境變數" title="Linux 環境變數">Linux 環境變數</a><ul class="nav">
+<li><a href="#設定變數的三種方法" title="設定變數的三種方法">設定變數的三種方法</a></li>
 </ul>
 </li>
 <li><a href="#Linux-檔案屬性" title="Linux 檔案屬性">Linux 檔案屬性</a><ul class="nav">
@@ -603,12 +620,12 @@ exit
 <li><a href="#Error-Message" title="Error Message">Error Message</a></li>
 </ul>
 </li>
-<li class=""><a href="#Linux-Process" title="Linux Process">Linux Process</a><ul class="nav">
+<li><a href="#Linux-Process" title="Linux Process">Linux Process</a><ul class="nav">
 <li><a href="#ps" title="ps">ps</a></li>
 <li><a href="#top-amp-htop" title="top &amp; htop">top &amp; htop</a></li>
 <li><a href="#zombie-process" title="zombie process">zombie process</a></li>
 <li><a href="#fork" title="fork">fork</a></li>
-<li class=""><a href="#Signal" title="Signal">Signal</a></li>
+<li><a href="#Signal" title="Signal">Signal</a></li>
 <li><a href="#daemon" title="daemon">daemon</a></li>
 <li><a href="#Service" title="Service">Service</a></li>
 </ul>
