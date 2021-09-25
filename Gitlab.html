@@ -34,9 +34,40 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Lesson-study" data-id="tags-Lesson-study"><a class="anchor hidden-xs" href="#tags-Lesson-study" title="tags-Lesson-study"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Lesson-study</code></h6><h1 id="Gitlab" data-id="Gitlab"><a class="anchor hidden-xs" href="#Gitlab" title="Gitlab"><span class="octicon octicon-link"></span></a><span>Gitlab</span></h1><h2 id="Personal-Access-Tokens" data-id="Personal-Access-Tokens"><a class="anchor hidden-xs" href="#Personal-Access-Tokens" title="Personal-Access-Tokens"><span class="octicon octicon-link"></span></a><span>Personal Access Tokens</span></h2><p><span>先取得 token</span><br>
-<span>aRCxNwQWSETv7RN-ycUW</span></p><p><img src="https://i.imgur.com/2sQZF3f.png" alt="" loading="lazy"></p><p><a href="https://blog.csdn.net/StefanTimber/article/details/103928742" target="_blank" rel="noopener"><span>使用 token access 方法</span></a></p><pre><code>git clone https://oauth2:aRCxNwQWSETv7RN-ycUW@gitlab.com/ssp19960710/0902.git
-</code></pre><h2 id="CICD-Pipeline" data-id="CICD-Pipeline"><a class="anchor hidden-xs" href="#CICD-Pipeline" title="CICD-Pipeline"><span class="octicon octicon-link"></span></a><span>CI/CD Pipeline</span></h2><p><a href="https://minglunwu.github.io/notes/2020/gitlab-ci-cd.html" target="_blank" rel="noopener"><span>完整的 CI /CD 流程如下:</span></a></p><p><img src="https://i.imgur.com/G1DYNwi.png" alt="" loading="lazy"></p><p><span>在Gitlab 偵測到 Code 的更動後，會將更動後的Code傳到 “Runner” 上執行特定的任務 (也就是.gitlab-ci.yml所定義的任務)，</span><br>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Lesson-study" data-id="tags-Lesson-study"><a class="anchor hidden-xs" href="#tags-Lesson-study" title="tags-Lesson-study"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Lesson-study</code></h6><h1 id="Gitlab" data-id="Gitlab"><a class="anchor hidden-xs" href="#Gitlab" title="Gitlab"><span class="octicon octicon-link"></span></a><span>Gitlab</span></h1><h2 id="API" data-id="API"><a class="anchor hidden-xs" href="#API" title="API"><span class="octicon octicon-link"></span></a><span>API</span></h2><p><a href="https://docs.gitlab.com/ee/api/api_resources.html" target="_blank" rel="noopener"><span>REST API resources</span></a></p><p><span>API requests must include both api and the API version.</span><br>
+<span>The API version is defined in lib/api.rb. For example, the root of the v4 API is at /api/v4</span></p><h3 id="Use-API" data-id="Use-API"><a class="anchor hidden-xs" href="#Use-API" title="Use-API"><span class="octicon octicon-link"></span></a><span>Use API</span></h3><p><span>利用 Postman Tool 去測試 Gitlab API。</span><br>
+<span>這邊是用 Projects API。</span><br>
+<span>可以先去官網看這個 API 的使用說明，右邊是這個API 的功能列表。</span><br>
+<img src="https://i.imgur.com/asjPOZu.png" alt="" loading="lazy"></p><ul>
+<li><span>這邊example 用 Get single project</span></li>
+</ul><pre><code>https://gitlab.com/api/v4/projects/29301882  #project must be public
+</code></pre><p><img src="https://i.imgur.com/G7wNAmA.png" alt="" loading="lazy"></p><p><span>可以看到 Postman 回傳的內容資訊偏少</span><br>
+<span>我們選擇帶 access token 試試看 (Postman 選 Bearer Token)，結果就可以看到更多內容。</span></p><p><img src="https://i.imgur.com/xFdiGvc.png" alt="" loading="lazy"></p><div class="alert alert-success">
+<p><span>Linux command</span><br>
+<span>curl --header “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882</span></a><span>”</span></p>
+</div><p><img src="https://i.imgur.com/3DK2YX1.png" alt="" loading="lazy"></p><h3 id="RESTFUL-API" data-id="RESTFUL-API"><a class="anchor hidden-xs" href="#RESTFUL-API" title="RESTFUL-API"><span class="octicon octicon-link"></span></a><span>RESTFUL API</span></h3><p><span>REST (Representational State Transfer): 表現層狀態轉移</span></p><p><a href="https://medium.com/itsems-frontend/api-%E6%98%AF%E4%BB%80%E9%BA%BC-restful-api-%E5%8F%88%E6%98%AF%E4%BB%80%E9%BA%BC-a001a85ab638" target="_blank" rel="noopener"><span>RESTful API 主要由三種元件組成：</span></a></p><ol>
+<li><span>Nouns 名詞：定義資源位置的 URL，每個資源在網路上都會有唯一的位置，就如每戶人家都有唯一的地址一樣。</span></li>
+<li><span>Verbs 動詞：對資源要做的動作。</span></li>
+<li><span>Content Types 資源呈現方式：API 資源可以以多種方式表現，最常用的是 JSON，較輕，也較好處理。</span></li>
+</ol><p><img src="https://i.imgur.com/OltSpqX.png" alt="" loading="lazy"></p><p><span>一般的 API，可能會是這樣：</span></p><pre><code>獲得資料GET    /getData
+新增資料POST   /createData
+刪除資料DELETE /deleteData/1
+</code></pre><p><span>RESTful API 風格開發的話：</span></p><pre><code>獲得資料GET     /data
+新增資料POST    /data
+刪除資料DELETE  /data/1
+</code></pre><p><span>就是用一個唯一的 URL 定位資源，將動作藏在 HTTP 的 method 裡面。</span><br>
+<span>所以使用 RESTful 風格設計的 API，就有了以下幾種優點及限制：</span></p><ol>
+<li><span>有唯一的URL表示資源位置，統一的 API 接口。(Uniform Interface)</span></li>
+<li><span>無狀態。(Stateless)</span></li>
+<li><span>可更高效利用快取來提高回應速度 (Cachable)</span></li>
+<li><span>分層系統架構 (Layered System)</span></li>
+<li><span>客戶端服務器分離 (Client-Server)</span></li>
+<li><span>充份利用 HTTP protocal(GET/POST/PUT/DELETE) (Manipulation of resources through representations)</span></li>
+<li><span>可執行程式碼的設計，像是 JavaScript（非必要實作項目） Code-On-Demand (optional)</span></li>
+</ol><h2 id="Personal-Access-Tokens" data-id="Personal-Access-Tokens"><a class="anchor hidden-xs" href="#Personal-Access-Tokens" title="Personal-Access-Tokens"><span class="octicon octicon-link"></span></a><span>Personal Access Tokens</span></h2><p><span>先取得 token</span><br>
+<span>sQasQTVXrKscrFVLtZXR</span></p><p><img src="https://i.imgur.com/2sQZF3f.png" alt="" loading="lazy"></p><p><a href="https://blog.csdn.net/StefanTimber/article/details/103928742" target="_blank" rel="noopener"><span>使用 token access 方法</span></a></p><p><span>右上角Icon --&gt; Preferences --&gt; Access Tokens</span></p><p><img src="https://i.imgur.com/dw2YWoA.png" alt="" loading="lazy"></p><p><span>Your new personal access token: sQasQTVXrKscrFVLtZXR</span></p><div class="alert alert-success">
+<p><span>git clone </span><a href="https://oauth2:sQasQTVXrKscrFVLtZXR@gitlab.com/ssp19960710/0902.git" target="_blank" rel="noopener"><span>https://oauth2:sQasQTVXrKscrFVLtZXR@gitlab.com/ssp19960710/0902.git</span></a></p>
+</div><p><img src="https://i.imgur.com/RDYm0Cm.png" alt="" loading="lazy"></p><h2 id="CICD-Pipeline" data-id="CICD-Pipeline"><a class="anchor hidden-xs" href="#CICD-Pipeline" title="CICD-Pipeline"><span class="octicon octicon-link"></span></a><span>CI/CD Pipeline</span></h2><p><a href="https://minglunwu.github.io/notes/2020/gitlab-ci-cd.html" target="_blank" rel="noopener"><span>完整的 CI /CD 流程如下:</span></a></p><p><img src="https://i.imgur.com/G1DYNwi.png" alt="" loading="lazy"></p><p><span>在Gitlab 偵測到 Code 的更動後，會將更動後的Code傳到 “Runner” 上執行特定的任務 (也就是.gitlab-ci.yml所定義的任務)，</span><br>
 <span>所以接下來我們必須要設定一台可供執行任務的主機，你可以租用雲端主機，或是直接使用手邊的主機作為Runner。</span></p><h3 id="yaml-檔案撰寫" data-id="yaml-檔案撰寫"><a class="anchor hidden-xs" href="#yaml-檔案撰寫" title="yaml-檔案撰寫"><span class="octicon octicon-link"></span></a><span>yaml 檔案撰寫</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10219427" target="_blank" rel="noopener"><span>GitLab: 建立第一條 CI/CD Pipeline</span></a></p><p><span>GitLab CI 預設會檢查 Project 內是否含有名為 .gitlab-ci.yml 的檔案，並根據該檔案所定義的內容自動建立 CI/CD Pipeline。</span></p><ul>
 <li><span>成功之測試 YAML</span></li>
 </ul><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
@@ -127,7 +158,9 @@
 <td><span>定義一組檔案列表，可在後續執行中使用</span></td>
 </tr>
 </tbody>
-</table><h3 id="Docker" data-id="Docker"><a class="anchor hidden-xs" href="#Docker" title="Docker"><span class="octicon octicon-link"></span></a><span>Docker</span></h3><p><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_images.html" target="_blank" rel="noopener"><span>Run your CI/CD jobs in Docker containers</span></a></p><p><span>You can define an image that’s used for all jobs, and a list of services that you want to use during runtime:</span></p></div>
+</table><h3 id="Docker" data-id="Docker"><a class="anchor hidden-xs" href="#Docker" title="Docker"><span class="octicon octicon-link"></span></a><span>Docker</span></h3><p><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_images.html" target="_blank" rel="noopener"><span>Run your CI/CD jobs in Docker containers</span></a></p><p><span>You can define an image that’s used for all jobs, and a list of services that you want to use during runtime:</span></p><h2 id="Github" data-id="Github"><a class="anchor hidden-xs" href="#Github" title="Github"><span class="octicon octicon-link"></span></a><span>Github</span></h2><div class="alert alert-success">
+<p><span>git clone </span><a href="https://oauth2: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@github.com/oldelette/oldelette.github.io.git" target="_blank" rel="noopener"><span>https://oauth2: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@github.com/oldelette/oldelette.github.io.git</span></a></p>
+</div></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -135,7 +168,12 @@
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Gitlab" title="Gitlab">Gitlab</a><ul class="nav">
+<li class=""><a href="#Gitlab" title="Gitlab">Gitlab</a><ul class="nav">
+<li><a href="#API" title="API">API</a><ul class="nav">
+<li><a href="#Use-API" title="Use API">Use API</a></li>
+<li><a href="#RESTFUL-API" title="RESTFUL API">RESTFUL API</a></li>
+</ul>
+</li>
 <li><a href="#Personal-Access-Tokens" title="Personal Access Tokens">Personal Access Tokens</a></li>
 <li><a href="#CICD-Pipeline" title="CI/CD Pipeline">CI/CD Pipeline</a><ul class="nav">
 <li><a href="#yaml-檔案撰寫" title="yaml 檔案撰寫">yaml 檔案撰寫</a></li>
@@ -145,6 +183,7 @@
 <li><a href="#Docker" title="Docker">Docker</a></li>
 </ul>
 </li>
+<li class=""><a href="#Github" title="Github">Github</a></li>
 </ul>
 </li>
 </ul>
@@ -154,7 +193,12 @@
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Gitlab" title="Gitlab">Gitlab</a><ul class="nav">
+<li class=""><a href="#Gitlab" title="Gitlab">Gitlab</a><ul class="nav">
+<li><a href="#API" title="API">API</a><ul class="nav">
+<li><a href="#Use-API" title="Use API">Use API</a></li>
+<li><a href="#RESTFUL-API" title="RESTFUL API">RESTFUL API</a></li>
+</ul>
+</li>
 <li><a href="#Personal-Access-Tokens" title="Personal Access Tokens">Personal Access Tokens</a></li>
 <li><a href="#CICD-Pipeline" title="CI/CD Pipeline">CI/CD Pipeline</a><ul class="nav">
 <li><a href="#yaml-檔案撰寫" title="yaml 檔案撰寫">yaml 檔案撰寫</a></li>
@@ -164,6 +208,7 @@
 <li><a href="#Docker" title="Docker">Docker</a></li>
 </ul>
 </li>
+<li class=""><a href="#Github" title="Github">Github</a></li>
 </ul>
 </li>
 </ul>
