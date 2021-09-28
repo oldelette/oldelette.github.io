@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Gitlab / Git - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Lesson-study" data-id="tags-Lesson-study"><a class="anchor hidden-xs" href="#tags-Lesson-study" title="tags-Lesson-study"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Lesson-study</code></h6><h1 id="Gitlab--Git" data-id="Gitlab--Git"><a class="anchor hidden-xs" href="#Gitlab--Git" title="Gitlab--Git"><span class="octicon octicon-link"></span></a><span>Gitlab / Git</span></h1><div class="alert alert-info">
+<p><span>[代辦事項]</span></p>
+<ol>
+<li><span>vim setting</span></li>
+<li><span>建立 cmder/vm ssh</span></li>
+<li><span>gitlab api / postman</span></li>
+</ol>
+<ul>
+<li><span>Tag</span></li>
+<li><span>Repo</span></li>
+<li><span>Issues</span></li>
+<li><span>Milestone</span></li>
+<li><span>To-Do List</span></li>
+<li><span>Runner</span></li>
+<li><span>Pipeline</span></li>
+</ul>
+</div><ul>
+<li><span>分為 GitLab CE（社群版）和 GitLab EE（企業版），而兩者的核心程式碼是相同的，但企業版會在核心功能之上，再疊加更多好用的進階功能。</span></li>
+<li><span>使用者可以選擇自行架設 GitLab Server(ex: tsmc gitlab)，或註冊使用 </span><a href="http://gitlab.com" target="_blank" rel="noopener"><span>gitlab.com</span></a><span> 的服務 。</span></li>
+<li><span>GitLab 提供的服務主要包含了 git 版本控制系統（version control system）、CI/CD Pipeline，以及其他專案管理的功能，像是 Wiki、Issue Tracking、Kanban、Burndown Chart⋯⋯</span></li>
+<li><span>GitLab 的 CI/CD Pipeline 會依據使用者存放在各專案內的特定 </span><strong><span>yaml 檔自動建立</span></strong><span>。</span></li>
+<li><span>GitLab CI/CD Pipeline 的 Job 需透過 GitLab Runner 協助代為執行。</span></li>
+</ul><h2 id="API" data-id="API"><a class="anchor hidden-xs" href="#API" title="API"><span class="octicon octicon-link"></span></a><span>API</span></h2><p><a href="https://docs.gitlab.com/ee/api/api_resources.html" target="_blank" rel="noopener"><span>REST API resources</span></a></p><p><span>API requests must include both api and the API version.</span><br>
+<span>The API version is defined in lib/api.rb. For example, the root of the v4 API is at /api/v4</span></p><p><span>Gitlab 的所有 API都需要提供 </span><strong><span>private_token 參數進行用戶身分確認</span></strong><span>。</span><br>
+<span>如果没有提供或者提供的private_token 不合法，API 將會return 401</span></p><pre><code>{"message":"401 Unauthorized"}
+</code></pre><h3 id="Use-API" data-id="Use-API"><a class="anchor hidden-xs" href="#Use-API" title="Use-API"><span class="octicon octicon-link"></span></a><span>Use API</span></h3><p><span>利用 Postman Tool 去測試 Gitlab API。</span><br>
+<span>這邊是用 Projects API。</span><br>
+<span>可以先去官網看這個 API 的使用說明，右邊是這個API 的功能列表。</span><br>
+<img src="https://i.imgur.com/asjPOZu.png" alt="" loading="lazy"></p><ul>
+<li><span>這邊example 用 Get single project</span></li>
+</ul><pre><code>https://gitlab.com/api/v4/projects/29301882  #project must be public
+</code></pre><p><img src="https://i.imgur.com/G7wNAmA.png" alt="" loading="lazy"></p><p><span>可以看到 Postman 回傳的內容資訊偏少</span><br>
+<span>我們選擇帶 access token 試試看 (Postman 選 Bearer Token)，結果就可以看到更多內容。</span></p><p><img src="https://i.imgur.com/xFdiGvc.png" alt="" loading="lazy"></p><div class="alert alert-success">
+<p><span>Linux command</span><br>
+<span>curl --header “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882</span></a><span>”</span></p>
+</div><p><img src="https://i.imgur.com/3DK2YX1.png" alt="" loading="lazy"></p><h3 id="RESTFUL-API" data-id="RESTFUL-API"><a class="anchor hidden-xs" href="#RESTFUL-API" title="RESTFUL-API"><span class="octicon octicon-link"></span></a><span>RESTFUL API</span></h3><p><span>REST (Representational State Transfer): 表現層狀態轉移</span></p><p><a href="https://medium.com/itsems-frontend/api-%E6%98%AF%E4%BB%80%E9%BA%BC-restful-api-%E5%8F%88%E6%98%AF%E4%BB%80%E9%BA%BC-a001a85ab638" target="_blank" rel="noopener"><span>RESTful API 主要由三種元件組成：</span></a></p><ol>
+<li><span>Nouns 名詞：定義資源位置的 URL，每個資源在網路上都會有唯一的位置，就如每戶人家都有唯一的地址一樣。</span></li>
+<li><span>Verbs 動詞：對資源要做的動作。</span></li>
+<li><span>Content Types 資源呈現方式：API 資源可以以多種方式表現，最常用的是 JSON，較輕，也較好處理。</span></li>
+</ol><p><img src="https://i.imgur.com/OltSpqX.png" alt="" loading="lazy"></p><p><span>一般的 API，可能會是這樣：</span></p><pre><code>獲得資料GET    /getData
+新增資料POST   /createData
+刪除資料DELETE /deleteData/1
+</code></pre><p><span>RESTful API 風格開發的話：</span></p><pre><code>獲得資料GET     /data
+新增資料POST    /data
+刪除資料DELETE  /data/1
+</code></pre><p><span>就是用一個唯一的 URL 定位資源，將動作藏在 HTTP 的 method 裡面。</span><br>
+<span>所以使用 RESTful 風格設計的 API，就有了以下幾種優點及限制：</span></p><ol>
+<li><span>有唯一的URL表示資源位置，統一的 API 接口。(Uniform Interface)</span></li>
+<li><span>無狀態。(Stateless)</span></li>
+<li><span>可更高效利用快取來提高回應速度 (Cachable)</span></li>
+<li><span>分層系統架構 (Layered System)</span></li>
+<li><span>客戶端服務器分離 (Client-Server)</span></li>
+<li><span>充份利用 HTTP protocal(GET/POST/PUT/DELETE) (Manipulation of resources through representations)</span></li>
+<li><span>可執行程式碼的設計，像是 JavaScript（非必要實作項目） Code-On-Demand (optional)</span></li>
+</ol><h2 id="How-to-use-an-API" data-id="How-to-use-an-API"><a class="anchor hidden-xs" href="#How-to-use-an-API" title="How-to-use-an-API"><span class="octicon octicon-link"></span></a><span>How to use an API</span></h2><p><span>有關 Gitlab 的文檔和工具</span></p><ol>
+<li><ins><span>python-gitlab API client</span></ins><span>: 使用 Python 實現的 Gitlab API client</span></li>
+<li><ins><span>python-gitlab CLI</span></ins><span>: 基於 python-gitlab API client 封装成的</span><strong><span>命令行工具。</span></strong></li>
+<li><ins><span>go-gitlab API client</span></ins><span>: 使用 Golang 實現的 Gitlab API client</span></li>
+<li><ins><span>Gitlab API Docs</span></ins><span>: Gitlab API 的官方文件</span></li>
+</ol><p><a href="https://github.com/python-gitlab/python-gitlab" target="_blank" rel="noopener"><span>Install with pip</span></a></p><pre><code>pip install python-gitlab
+</code></pre><p><a href="https://blog.k8s.li/gitlab-cli.html" target="_blank" rel="noopener"><span>參考文章: python-gitlab CLI 使用记录</span></a></p><h3 id="python-gitlab-CLI-Configuration" data-id="python-gitlab-CLI-Configuration"><a class="anchor hidden-xs" href="#python-gitlab-CLI-Configuration" title="python-gitlab-CLI-Configuration"><span class="octicon octicon-link"></span></a><span>python-gitlab CLI Configuration</span></h3><p><span>Files</span><br>
+<span>gitlab looks up 3 configuration files by default:</span></p><ol>
+<li><ins><span>PYTHON_GITLAB_CFG environment variable</span></ins><br>
+<span>An environment variable that contains the path to a configuration file</span></li>
+<li><ins><span>/etc/python-gitlab.cfg</span></ins><br>
+<span>System-wide configuration file</span></li>
+<li><ins><span>~/.python-gitlab.cfg</span></ins><br>
+<span>User configuration file</span></li>
+</ol><pre><code>[global]
+default = gitlab.com
+ssl_verify = true
+timeout = 5
+per_page = 100
+api_version = 4
+
+[gitlab.com]
+url = https://gitlab.com
+private_token = sQasQTVXrKscrFVLtZXR
+</code></pre><p><span>配置完成之后，可以使用 gitlab current-user get 命令測試連接是否正常，如果有返回值且正確的用戶說明配置成功了。</span></p><p><img src="https://i.imgur.com/tiqBDrJ.png" alt="" loading="lazy"></p><h3 id="Use-python-gitlab-CLI" data-id="Use-python-gitlab-CLI"><a class="anchor hidden-xs" href="#Use-python-gitlab-CLI" title="Use-python-gitlab-CLI"><span class="octicon octicon-link"></span></a><span>Use python-gitlab CLI</span></h3><p><span>gitlab 命令行工具主要是對 Gitlab 服務器上的各種對象如：user, project, file, repo, mr, tag, commit 等進行增删改查 (get、list、create、delete、update)。</span><br>
+<span>使用的命令方式如下：</span></p><div class="alert alert-success">
+<p><span>gitlab &lt; option &gt; [object] [action] &lt; option &gt;</span></p>
+</div><p><span>第一個参数是跟著 gitlab 命令後面的參數，它是 gitlab 命令行的輸出參數和配置參數。</span></p><ol>
+<li><span>-o 參數指定輸出结果的格式</span></li>
+<li><span>-f 參數將輸出結果存放到文件中</span></li>
+<li><span>-g 參數執行連接哪個 Gitlab Server。</span></li>
+</ol><p><span>看 project 上的 tag，要指定 project ID</span></p><pre><code>gitlab project-tag list --project-id 29301882
+</code></pre><pre><code>gitlab -o json current-user get | jq '.'
+</code></pre><h3 id="Gitlab-API-Docs" data-id="Gitlab-API-Docs"><a class="anchor hidden-xs" href="#Gitlab-API-Docs" title="Gitlab-API-Docs"><span class="octicon octicon-link"></span></a><span>Gitlab API Docs</span></h3><h4 id="Tags" data-id="Tags"><a class="anchor hidden-xs" href="#Tags" title="Tags"><span class="octicon octicon-link"></span></a><span>Tags</span></h4><p><span>curl 補充:</span><br>
+<span>-X, --request </span>&lt;command&gt;<span>  : Specify request command to use</span><br>
+<span>-H, --header </span><a href="mailto:header/@file" target="_blank" rel="noopener"><span>header/@file</span></a><span> Pass custom header(s) to server</span></p><h5 id="List-project-repository-tags" data-id="List-project-repository-tags"><a class="anchor hidden-xs" href="#List-project-repository-tags" title="List-project-repository-tags"><span class="octicon octicon-link"></span></a><ins><span>List project repository tags</span></ins></h5><div class="alert alert-success">
+<p><span>curl --header “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/tags" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/tags</span></a><span>” | jq .</span></p>
+</div><p><img src="https://i.imgur.com/YI2knHv.png" alt="" loading="lazy"></p><h5 id="Create-a-new-tag" data-id="Create-a-new-tag"><a class="anchor hidden-xs" href="#Create-a-new-tag" title="Create-a-new-tag"><span class="octicon octicon-link"></span></a><ins><span>Create a new tag</span></ins></h5><div class="alert alert-success">
+<p><span>curl --request POST --header “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/tags?tag_name=v1.1&amp;ref=main" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/tags?tag_name=v1.1&amp;ref=main</span></a><span>”</span></p>
+</div><p><span>成功建立 tag</span><br>
+<img src="https://i.imgur.com/HUyDmzW.png" alt="" loading="lazy"></p><h5 id="Delete-a-tag" data-id="Delete-a-tag"><a class="anchor hidden-xs" href="#Delete-a-tag" title="Delete-a-tag"><span class="octicon octicon-link"></span></a><ins><span>Delete a tag</span></ins></h5><div class="alert alert-success">
+<p><span>curl --request DELETE --header “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/tags/v1.1" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/tags/v1.1</span></a><span>”</span></p>
+</div><h4 id="Repositories" data-id="Repositories"><a class="anchor hidden-xs" href="#Repositories" title="Repositories"><span class="octicon octicon-link"></span></a><span>Repositories</span></h4><p><span>Repository 就是指 .git 本身，我們平時開發工作空間就是指 Working Directory，但更精確的說，是一個 Working Tree。</span></p><h5 id="List-repository-tree" data-id="List-repository-tree"><a class="anchor hidden-xs" href="#List-repository-tree" title="List-repository-tree"><span class="octicon octicon-link"></span></a><ins><span>List repository tree</span></ins></h5><p><span>This command provides essentially the same functionality as the git ls-tree command.</span></p><p><span>列出 blob 物件的檔案， 未加入暫存區的檔案不會列出 (尚未 git add)</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/tree" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/tree</span></a><span>” | jq .</span></p>
+</div><p><span>blob 物件: 就是工作目錄中某個檔案的 “內容”，且只有內容而已，當你執行 git add 指令的同時，這些新增檔案的內容就會立刻被寫入成為 blob 物件。</span></p><p><img src="https://i.imgur.com/T3yDU3s.png" alt="" loading="lazy"></p><p><span>id 即為 blob 物件的 sha值</span></p><h5 id="Get-a-blob-from-repository" data-id="Get-a-blob-from-repository"><a class="anchor hidden-xs" href="#Get-a-blob-from-repository" title="Get-a-blob-from-repository"><span class="octicon octicon-link"></span></a><ins><span>Get a blob from repository</span></ins></h5><p><span>用blob sha 去找出 blob 物件</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/blobs/da638d447b03c3a7467d5fd451964d0332c920e6" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/blobs/da638d447b03c3a7467d5fd451964d0332c920e6</span></a><span>” | jq .</span></p>
+</div><p><img src="https://i.imgur.com/JtuJM3d.png" alt="" loading="lazy"></p><h5 id="Raw-blob-content" data-id="Raw-blob-content"><a class="anchor hidden-xs" href="#Raw-blob-content" title="Raw-blob-content"><span class="octicon octicon-link"></span></a><ins><span>Raw blob content</span></ins></h5><p><span>列出 blob 物件的檔案內容</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” "</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/blobs/da638d447b03c3a7467d5fd451964d0332c920e6/raw" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/blobs/da638d447b03c3a7467d5fd451964d0332c920e6/raw</span></a></p>
+</div><p><img src="https://i.imgur.com/9g8mc5j.png" alt="" loading="lazy"></p><h5 id="Contributors" data-id="Contributors"><a class="anchor hidden-xs" href="#Contributors" title="Contributors"><span class="octicon octicon-link"></span></a><ins><span>Contributors</span></ins></h5><p><span>列出此 Repo commit 列表</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/repository/contributors" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/repository/contributors</span></a><span>” | jq .</span></p>
+</div><p><img src="https://i.imgur.com/vJ9BLaV.png" alt="" loading="lazy"></p><h4 id="Issues" data-id="Issues"><a class="anchor hidden-xs" href="#Issues" title="Issues"><span class="octicon octicon-link"></span></a><span>Issues</span></h4><h5 id="List-issues" data-id="List-issues"><a class="anchor hidden-xs" href="#List-issues" title="List-issues"><span class="octicon octicon-link"></span></a><ins><span>List issues</span></ins></h5><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/issues" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/issues</span></a><span>” | jq .</span></p>
+</div><h5 id="New-issue" data-id="New-issue"><a class="anchor hidden-xs" href="#New-issue" title="New-issue"><span class="octicon octicon-link"></span></a><ins><span>New issue</span></ins></h5><p><span>建立新 Issue ， 參數除了 title 外都不是必須的。</span></p><div class="alert alert-success">
+<p><span>curl -X POST -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/issues?title=Issues%20with%20auth&amp;labels=bug" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/issues?title=Issues with auth&amp;labels=bug</span></a><span>”</span></p>
+</div><p><img src="https://i.imgur.com/dJ3gdav.png" alt="" loading="lazy"></p><h5 id="Edit-issue" data-id="Edit-issue"><a class="anchor hidden-xs" href="#Edit-issue" title="Edit-issue"><span class="octicon octicon-link"></span></a><ins><span>Edit issue</span></ins></h5><p><span>改變 Issue 的 open/close 狀態</span></p><ul>
+<li><span>state_event=close 關閉Issue</span></li>
+<li><span>state_event=reopen 開啟Issue</span></li>
+</ul><div class="alert alert-success">
+<p><span>curl -X PUT -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/issues/1?state_event=close" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/issues/1?state_event=close</span></a><span>”</span></p>
+</div><h5 id="Delete-an-issue" data-id="Delete-an-issue"><a class="anchor hidden-xs" href="#Delete-an-issue" title="Delete-an-issue"><span class="octicon octicon-link"></span></a><ins><span>Delete an issue</span></ins></h5><p><span>代的參數為 Issue 的 issue_iid</span></p><div class="alert alert-success">
+<p><span>curl -X DELETE -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/issues/1" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/issues/1</span></a><span>”</span></p>
+</div><h5 id="Move-an-issue" data-id="Move-an-issue"><a class="anchor hidden-xs" href="#Move-an-issue" title="Move-an-issue"><span class="octicon octicon-link"></span></a><ins><span>Move an issue</span></ins></h5><p><span>移動 Issue 到別的 Project</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” --form to_project_id=29664532 “</span><a href="https://gitlab.com/api/v4/projects/29301882/issues/2/move" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/issues/2/move</span></a><span>”</span></p>
+</div><p><span>可以看到原本project 中的 Issue 已顯示 Moved</span></p><p><img src="https://i.imgur.com/j26mxsl.png" alt="" loading="lazy"></p><h4 id="Milestone" data-id="Milestone"><a class="anchor hidden-xs" href="#Milestone" title="Milestone"><span class="octicon octicon-link"></span></a><span>Milestone</span></h4><p><span>階段性的開發目標，每個 milestone中可以選擇 issue中 優先級高的問題和新功能。</span></p><p><a href="https://www.jianshu.com/p/bb94ebfe883b" target="_blank" rel="noopener"><span>建立 Milestone:</span></a></p><ul>
+<li><span>創一個 name</span></li>
+<li><span>對其進行簡單的描述，比如創建它的原因、這個里程碑的最終目的等，編輯的時候可以直接貼圖，也可以添加附件 （支持markdown格式，可以預覽)</span></li>
+<li><span>指定時間。Start date 與 Due date</span></li>
+<li></li>
+</ul><p><span>Milestone 頁面會列出有哪些 Issues 被分配在此，並且顯示此 Milestone 的資訊，像是 Start date 與 Due date。</span></p><h5 id="List-project-milestones" data-id="List-project-milestones"><a class="anchor hidden-xs" href="#List-project-milestones" title="List-project-milestones"><span class="octicon octicon-link"></span></a><ins><span>List project milestones</span></ins></h5><p><span>列出所有 Milestone List</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/milestones" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/milestones</span></a><span>” | jq .</span></p>
+</div><p><img src="https://i.imgur.com/LYwhUHW.png" alt="" loading="lazy"></p><h5 id="Get-single-milestone" data-id="Get-single-milestone"><a class="anchor hidden-xs" href="#Get-single-milestone" title="Get-single-milestone"><span class="octicon octicon-link"></span></a><ins><span>Get single milestone</span></ins></h5><p><span>取得單一指定 Milestone</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/milestones/2252270" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/milestones/2252270</span></a><span>” | jq .</span></p>
+</div><h5 id="Create-new-milestone" data-id="Create-new-milestone"><a class="anchor hidden-xs" href="#Create-new-milestone" title="Create-new-milestone"><span class="octicon octicon-link"></span></a><ins><span>Create new milestone</span></ins></h5><p><span>建立新的 Milestone</span></p><ul>
+<li><span>title (required) - The title of a milestone</span></li>
+<li><span>description (optional) - The description of the milestone</span></li>
+<li><span>due_date (optional) - The due date of the milestone</span></li>
+<li><span>start_date (optional) - The start date of the milestone</span></li>
+</ul><div class="alert alert-success">
+<p><span>curl -X POST -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/milestones?title=haha&amp;due_date=2021-11-5&amp;start_date=2021-9-27" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/milestones?title=haha&amp;due_date=2021-11-5&amp;start_date=2021-9-27</span></a><span>”</span></p>
+</div><h5 id="Edit-milestone" data-id="Edit-milestone"><a class="anchor hidden-xs" href="#Edit-milestone" title="Edit-milestone"><span class="octicon octicon-link"></span></a><ins><span>Edit milestone</span></ins></h5><p><span>修改 Milestone 資訊</span></p><ul>
+<li><span>milestone_id (required) - The ID of a project milestone</span></li>
+<li><span>title (optional) - The title of a milestone</span></li>
+<li><span>description (optional) - The description of a milestone</span></li>
+<li><span>due_date (optional) - The due date of the milestone</span></li>
+<li><span>start_date (optional) - The start date of the milestone</span></li>
+<li><span>state_event (optional) - The state event of the milestone (close or activate</span></li>
+</ul><div class="alert alert-success">
+<p><span>curl -X PUT -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/milestones/2252311?title=revise" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/milestones/2252311?title=revise</span></a><span>”</span></p>
+</div><h5 id="Delete-project-milestone" data-id="Delete-project-milestone"><a class="anchor hidden-xs" href="#Delete-project-milestone" title="Delete-project-milestone"><span class="octicon octicon-link"></span></a><ins><span>Delete project milestone</span></ins></h5><p><span>刪除 Milestone 資訊</span></p><div class="alert alert-success">
+<p><span>curl -X DELETE -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/milestones/2252307" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/milestones/2252307</span></a><span>”</span></p>
+</div><h4 id="Pipeline" data-id="Pipeline"><a class="anchor hidden-xs" href="#Pipeline" title="Pipeline"><span class="octicon octicon-link"></span></a><span>Pipeline</span></h4><p><span>Pipelines are the top-level component of continuous integration, delivery, and deployment.</span></p><p><span>Pipelines comprise:</span></p><ol>
+<li><strong><span>Jobs</span></strong><span>, which define what to do. For example, jobs that compile or test code.</span></li>
+<li><strong><span>Stages</span></strong><span>, which define when to run the jobs. For example, stages that run tests after stages that compile the code.</span></li>
+</ol><p><span>CI/CD Pipeline 是由 stage 還有 job 組成的，stage 是有順序性的，前面的 stage 完成後才會開始下一個 stage</span></p><p><span>是分階段執行的構建任務。如：安裝依賴、運行測試、打包、部署開發服務器、部署生產服務器等流程。</span><br>
+<strong><span>每一次 push 或者 Merge Request 都會觸發生成一條新的 Pipeline</span></strong></p><h5 id="List-project-pipelines" data-id="List-project-pipelines"><a class="anchor hidden-xs" href="#List-project-pipelines" title="List-project-pipelines"><span class="octicon octicon-link"></span></a><ins><span>List project pipelines</span></ins></h5><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipelines" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipelines</span></a><span>” | jq .</span></p>
+</div><h5 id="Get-a-single-pipeline" data-id="Get-a-single-pipeline"><a class="anchor hidden-xs" href="#Get-a-single-pipeline" title="Get-a-single-pipeline"><span class="octicon octicon-link"></span></a><ins><span>Get a single pipeline</span></ins></h5><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipelines/378664413" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipelines/378664413</span></a><span>”</span></p>
+</div><h5 id="Create-a-new-pipeline" data-id="Create-a-new-pipeline"><a class="anchor hidden-xs" href="#Create-a-new-pipeline" title="Create-a-new-pipeline"><span class="octicon octicon-link"></span></a><ins><span>Create a new pipeline</span></ins></h5><p><span>建立新的一條 pipeline，並會馬上執行一次</span></p><div class="alert alert-success">
+<p><span>curl -X POST -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipeline?ref=main" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipeline?ref=main</span></a><span>”</span></p>
+</div><h5 id="Retry-jobs-in-a-pipeline" data-id="Retry-jobs-in-a-pipeline"><a class="anchor hidden-xs" href="#Retry-jobs-in-a-pipeline" title="Retry-jobs-in-a-pipeline"><span class="octicon octicon-link"></span></a><ins><span>Retry jobs in a pipeline</span></ins></h5><div class="alert alert-success">
+<p><span>curl -X POST -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipelines/378678684/retry" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipelines/378678684/retry</span></a><span>”</span></p>
+</div><h5 id="Cancel-a-pipeline’s-jobs" data-id="Cancel-a-pipeline’s-jobs"><a class="anchor hidden-xs" href="#Cancel-a-pipeline’s-jobs" title="Cancel-a-pipeline’s-jobs"><span class="octicon octicon-link"></span></a><ins><span>Cancel a pipeline’s jobs</span></ins></h5><p><span>終止正在跑或pending 的 pipeline。</span></p><div class="alert alert-success">
+<p><span>curl -X POST -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipelines/378681731/cancel" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipelines/378681731/cancel</span></a><span>”</span></p>
+</div><h5 id="Delete-a-pipeline" data-id="Delete-a-pipeline"><a class="anchor hidden-xs" href="#Delete-a-pipeline" title="Delete-a-pipeline"><span class="octicon octicon-link"></span></a><ins><span>Delete a pipeline</span></ins></h5><p><span>刪除某條 pipeline，帶 pipeline。 像是 “id”: 378678684</span></p><div class="alert alert-success">
+<p><span>curl -X DELETE -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/projects/29301882/pipelines/378681731" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/projects/29301882/pipelines/378681731</span></a><span>”</span></p>
+</div><h4 id="Namespace" data-id="Namespace"><a class="anchor hidden-xs" href="#Namespace" title="Namespace"><span class="octicon octicon-link"></span></a><span>Namespace</span></h4><p><strong><span>Usernames</span></strong><span> and </span><strong><span>group names</span></strong><span> fall under a special category called namespaces.</span></p><h5 id="List-namespaces" data-id="List-namespaces"><a class="anchor hidden-xs" href="#List-namespaces" title="List-namespaces"><span class="octicon octicon-link"></span></a><ins><span>List namespaces</span></ins></h5><p><span>列出 user 以及 group</span></p><div class="alert alert-success">
+<p><span>curl -H “PRIVATE-TOKEN: sQasQTVXrKscrFVLtZXR” “</span><a href="https://gitlab.com/api/v4/namespaces" target="_blank" rel="noopener"><span>https://gitlab.com/api/v4/namespaces</span></a><span>”</span></p>
+</div><p><img src="https://i.imgur.com/4KyW4gM.png" alt="" loading="lazy"></p><hr><h2 id="Personal-Access-Tokens" data-id="Personal-Access-Tokens"><a class="anchor hidden-xs" href="#Personal-Access-Tokens" title="Personal-Access-Tokens"><span class="octicon octicon-link"></span></a><span>Personal Access Tokens</span></h2><p><span>先取得 token</span></p><ol>
+<li><span>sQasQTVXrKscrFVLtZXR</span></li>
+<li><span>o7tVxgLqjnrhnAcuz99k</span></li>
+</ol><p><img src="https://i.imgur.com/2sQZF3f.png" alt="" loading="lazy"></p><p><a href="https://blog.csdn.net/StefanTimber/article/details/103928742" target="_blank" rel="noopener"><span>使用 token access 方法</span></a></p><p><span>右上角Icon --&gt; Preferences --&gt; Access Tokens</span></p><p><img src="https://i.imgur.com/dw2YWoA.png" alt="" loading="lazy"></p><p><span>Your new personal access token: sQasQTVXrKscrFVLtZXR</span></p><p><span>#2021.9.25</span></p><div class="alert alert-success">
+<p><span>git clone </span><a href="https://oauth2:sQasQTVXrKscrFVLtZXR@gitlab.com/ssp19960710/0902.git" target="_blank" rel="noopener"><span>https://oauth2:sQasQTVXrKscrFVLtZXR@gitlab.com/ssp19960710/0902.git</span></a></p>
+</div><p><img src="https://i.imgur.com/RDYm0Cm.png" alt="" loading="lazy"></p><h2 id="CICD-Pipeline" data-id="CICD-Pipeline"><a class="anchor hidden-xs" href="#CICD-Pipeline" title="CICD-Pipeline"><span class="octicon octicon-link"></span></a><span>CI/CD Pipeline</span></h2><p><a href="https://minglunwu.github.io/notes/2020/gitlab-ci-cd.html" target="_blank" rel="noopener"><span>完整的 CI /CD 流程如下:</span></a></p><p><img src="https://i.imgur.com/G1DYNwi.png" alt="" loading="lazy"></p><p><span>在Gitlab 偵測到 Code 的更動後，會將更動後的Code傳到 “Runner” 上執行特定的任務 (也就是.gitlab-ci.yml所定義的任務)，</span><br>
+<span>所以接下來我們必須要設定一台可供執行任務的主機，你可以租用雲端主機，或是直接使用手邊的主機作為Runner。</span></p><h3 id="yaml-檔案撰寫" data-id="yaml-檔案撰寫"><a class="anchor hidden-xs" href="#yaml-檔案撰寫" title="yaml-檔案撰寫"><span class="octicon octicon-link"></span></a><span>yaml 檔案撰寫</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10219427" target="_blank" rel="noopener"><span>GitLab: 建立第一條 CI/CD Pipeline</span></a></p><p><span>GitLab CI 預設會檢查 Project 內是否含有名為 .gitlab-ci.yml 的檔案，並根據該檔案所定義的內容自動建立 CI/CD Pipeline。</span></p><ul>
+<li><span>成功之測試 YAML</span></li>
+</ul><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">image</span><span class="token punctuation">:</span> <span class="token string">"python:3.5"</span>
+<span class="token key atrule">before_script</span><span class="token punctuation">:</span>          <span class="token comment"># 執行測試前所要執行的程式碼。 (例如安裝套件)</span>
+    <span class="token punctuation">-</span> export PATH=$PATH<span class="token punctuation">:</span>/home/allen_wu/miniconda3/envs/pytorch/bin/
+
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>                  <span class="token comment"># 定義不同的階段(stage)，每一個stage可以包含許多job.</span>
+    <span class="token punctuation">-</span> preprocessing
+    <span class="token punctuation">-</span> download
+
+<span class="token key atrule">Show_PIP_list</span><span class="token punctuation">:</span>          <span class="token comment"># 第一項Job (名稱可以自訂)</span>
+    <span class="token key atrule">stage</span><span class="token punctuation">:</span> preprocessing  <span class="token comment"># 隸屬的 Stage               </span>
+    <span class="token key atrule">script</span><span class="token punctuation">:</span> 
+        <span class="token punctuation">-</span> ls <span class="token punctuation">-</span>al              <span class="token comment"># 第一項Job 的第一項步驟 (Bash指令)</span>
+        <span class="token punctuation">-</span> pip <span class="token punctuation">-</span>V            <span class="token comment"># 第一項Job 的第二項步驟 (Bash指令)</span>
+
+<span class="token key atrule">Test</span><span class="token punctuation">:</span>                   <span class="token comment"># 第二項Job (名稱可以自訂)</span>
+    <span class="token key atrule">stage</span><span class="token punctuation">:</span> preprocessing 
+    <span class="token key atrule">script</span><span class="token punctuation">:</span>  
+        <span class="token punctuation">-</span> echo "Test"   <span class="token comment"># 第二項Job的第一項步驟 (Bash指令)</span>
+
+<span class="token key atrule">Download</span><span class="token punctuation">:</span>               <span class="token comment"># 第三項Job (名稱可以自訂)</span>
+    <span class="token key atrule">stage</span><span class="token punctuation">:</span> download
+    <span class="token key atrule">script</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> echo "Download"  <span class="token comment"># 第三項Job的第一項步驟 (Bash指令)</span>
+
+</div></div></code></pre><p><img src="https://i.imgur.com/3Ue3YtA.png" alt="" loading="lazy"></p><h2 id="gitlab-ciyml" data-id="gitlab-ciyml"><a class="anchor hidden-xs" href="#gitlab-ciyml" title="gitlab-ciyml"><span class="octicon octicon-link"></span></a><span>.gitlab-ci.yml</span></h2><p><span>當 project 的根目錄有 .gitlab-ci.yml 檔案時，GitLab CI 會優先根據檔案內容來產生 CI/CD Pipeline。</span></p><p><span>下面列出保留欄位，</span><a href="https://itw01.com/8Z4FEYT.html" target="_blank" rel="noopener"><span>這些保留欄位不能被定義為 job 名稱：</span></a></p><table>
+<thead>
+<tr>
+<th><span>關鍵字</span></th>
+<th><span>描述</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>image</span></td>
+<td><span>用於docker映象，檢視 docker 文件</span></td>
+</tr>
+<tr>
+<td><span>services</span></td>
+<td><span>用於docker服務，檢視 docker 文件</span></td>
+</tr>
+<tr>
+<td><span>stages</span></td>
+<td><span>定義構建階段</span></td>
+</tr>
+<tr>
+<td><span>types</span></td>
+<td><span>stages 的別名(已廢除)</span></td>
+</tr>
+<tr>
+<td><span>before_script</span></td>
+<td><span>定義在每個job之前執行的命令</span></td>
+</tr>
+<tr>
+<td><span>after_script</span></td>
+<td><span>定義在每個job之後執行的命令</span></td>
+</tr>
+<tr>
+<td><span>variable</span></td>
+<td><span>定義構建變數</span></td>
+</tr>
+<tr>
+<td><span>cache</span></td>
+<td><span>定義一組檔案列表，可在後續執行中使用</span></td>
+</tr>
+</tbody>
+</table><h3 id="Docker" data-id="Docker"><a class="anchor hidden-xs" href="#Docker" title="Docker"><span class="octicon octicon-link"></span></a><span>Docker</span></h3><p><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_images.html" target="_blank" rel="noopener"><span>Run your CI/CD jobs in Docker containers</span></a></p><p><span>You can define an image that’s used for all jobs, and a list of services that you want to use during runtime:</span></p><h2 id="Gitlab-Create-Group-amp-Project" data-id="Gitlab-Create-Group-amp-Project"><a class="anchor hidden-xs" href="#Gitlab-Create-Group-amp-Project" title="Gitlab-Create-Group-amp-Project"><span class="octicon octicon-link"></span></a><span>Gitlab Create Group &amp; Project</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10216864" target="_blank" rel="noopener"><span>GitLab: 從建立 Group 和 Project 開始</span></a></p><p><span>首先，團隊才剛組成，為了讓團隊能順利的開展工作，擁有 GitLab 較高 User 權限的 Dev Leader 需要負責為團隊建立所需之 GitLab Group 與 Project。</span></p><p><span>第一步我們先以 IT-gavin 為名，建立第一層的 Internal Group，確保本產品所有的 Project 都隸屬於此 Internal Group，限制只有公司之內的 User 才能看見此產品隸屬的 Group 與 Project。</span></p><p><img src="https://i.imgur.com/kYcyzCy.png" alt="" loading="lazy"></p><p><span>為團隊成員設定合乎職責的 Member Permissions</span><br>
+<a href="https://docs.gitlab.com/ee/user/permissions.html" target="_blank" rel="noopener"><span>Member Permissions rule</span></a></p><ul>
+<li><span>Boss 基本上只出一張嘴，為了避免他沒事亂按亂改，因此先分配為 Member Permissions 為 Guest。</span></li>
+<li><span>Dev Leader 因為是 Group 的建立者，因此 Member Permissions 為 Owner，擁有 Group 的最高權限，可以管理 Group 旗下的 Members、Projects 及各種 Settings</span></li>
+<li><span>Senior Developer 是資深的開發者，也會負責 Code Review 與 git 分支管控的工作，因此 Member Permissions 為 Maintainer。</span></li>
+<li><span>Developer 是一般的開發者，只要專心寫程式即可，因此 Member Permissions 為 Developer，負責 Commit Code 與送出 Merge Request 給 Senior Developer 進行 Code Review。</span></li>
+<li><span>Tester 是測試人員，負責程式的測試與驗收，無需提交 Commit 或發送 Merge Request，但需要能夠回報 Issue 的權限，因此 Member Permissions 設定為 Reporter。</span></li>
+</ul><h2 id="Github" data-id="Github"><a class="anchor hidden-xs" href="#Github" title="Github"><span class="octicon octicon-link"></span></a><span>Github</span></h2><p><span>自己 GitHub 連結帶 access token</span></p><p><span>#2021.9.25</span></p><div class="alert alert-success">
+<p><span>git clone </span><a href="https://oauth2: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@github.com/oldelette/oldelette.github.io.git" target="_blank" rel="noopener"><span>https://oauth2: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@github.com/oldelette/oldelette.github.io.git</span></a></p>
+</div><pre><code>ssh-keygen  # 產生 ssh-key
+</code></pre><p><img src="https://i.imgur.com/H0Ovq32.png" alt="" loading="lazy"></p><p><strong><span>Linux path: /home/gavin/.ssh</span></strong><br>
+<strong><span>Window path: C:\Users\User.ssh</span></strong><br>
+<span>.ssh/id_rsa 為私鑰文件，留在本地使用。</span><br>
+<span>.ssh/id_rsa.pub 為公鑰文件，一般需要上傳到 Linux server 使用。</span></p><p><img src="https://i.imgur.com/8dZ4Uii.png" alt="" loading="lazy"></p><ul>
+<li><span>類似下面這串</span></li>
+</ul><pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4tMvf2ewnqPkk2db4cMtkxYQdXGRktPxlKc/BbsmG+kP7YWy+AikjJ8BXKE7v2JaYCVdlyRTqqWFToWQC7WQcL9O81zE4Ju2HT7CLH7ZQE2DSxhxEF4p7Kg992IOiEx37xTj5DBhz5agukvRnuS41qDz1YCf2jFrTVTWXbs+2WYnDYxiBpjaTYky3+iwCYZUCdQUVFQQ4ByiQdouHnAJjf48TcyqPzivgCzqDrn4HSRkW3pk+OrW5qVvJIyXa0+d4Hk9ouUYZI/jX+5YdnJxICQiCV3Ycu30bkSGJzHRPF8NbsdY/RahOthlmv4CUSHlasaY5qSZ3flLsk+YIHBQ5S46hTsZU7gsHSROdXt0V1o27H65xL2ARzB6CCaiVqyq4H9WWDZyfjhD7+/0NoiUFMXjp3MzjnmlWZoOLz0iaCSzMHz3tNWFFIyfgI8HQP8aiAT63ay3ykhELB5FG760lB80URg49Y6O3g3vycvh9PPUgyqMu7nvlrVV+Z8fkAqk= user@mengchin
+</code></pre><p><span>輸入完畢後就完成金鑰設定了。</span></p><h1 id="Git" data-id="Git"><a class="anchor hidden-xs" href="#Git" title="Git"><span class="octicon octicon-link"></span></a><span>Git</span></h1><p><span>和一群人一起開發，使用 Git 我時時常遇到下列情況：「我們的樹亂長好醜歐！」、「這問題我修正過了呀？」、「專案又爆炸了啦！」。</span><br>
+<span>這時你需要工作流程（Work Flow），讓大家更規則有效率地開發，目前常見有三種：</span></p><ul>
+<li><span>Git Flow</span></li>
+<li><span>GitHub Flow</span></li>
+<li><span>GitLab Flow</span></li>
+</ul><h2 id="GitHub-Flow" data-id="GitHub-Flow"><a class="anchor hidden-xs" href="#GitHub-Flow" title="GitHub-Flow"><span class="octicon octicon-link"></span></a><span>GitHub Flow</span></h2><p><a href="https://medium.com/@trylovetom/%E8%AE%93%E6%88%91%E5%80%91%E4%BE%86%E4%BA%86%E8%A7%A3-github-flow-%E5%90%A7-4144caf1f1bf" target="_blank" rel="noopener"><span>GitHub Flow</span></a><span> 是一個基於分支（Branch）的輕量化工作流程，幫助團隊及專案定期的進行部署</span></p><p><span>原則</span></p><p><img src="https://i.imgur.com/CxJOy30.png" alt="" loading="lazy"></p><ul>
+<li><span>所有在 master 分支都是可部署（Deployable）的。</span></li>
+<li><span>要增加新功能時，從 master 開一個此新功能的分支，需詳細敘述，像是 refactor-authentication。</span></li>
+<li><span>經常性的在本地端提交到這個分支，並且推（Push）到遠端同名的分支上。</span></li>
+<li><span>如果需要回饋、幫助或是當你完成這個功能，要合併（Merge）回 master 分支時請使用 Pull Request。</span></li>
+<li><span>如果有人檢核過、測試過並且簽名之後，就可以合併回 master 分支。</span></li>
+<li><span>只要合併之後馬上部署程式碼。</span></li>
+</ul><h3 id="建立分支（Branch）" data-id="建立分支（Branch）"><a class="anchor hidden-xs" href="#建立分支（Branch）" title="建立分支（Branch）"><span class="octicon octicon-link"></span></a><span>建立分支（Branch）</span></h3><p><span>當你在專案建立一個分支，代表建立了一個環境來測試你的新想法。</span><br>
+<span>在分支所做的修改不會影響 master 分支，所以可以自由的嘗試並提交修改。</span><br>
+<span>你可以放心，分支不會被合併，直到準備將它交由某位協作者來檢閱。</span></p><p><img src="https://i.imgur.com/S8fNQo3.png" alt="" loading="lazy"></p><h3 id="新增提交（Commits）" data-id="新增提交（Commits）"><a class="anchor hidden-xs" href="#新增提交（Commits）" title="新增提交（Commits）"><span class="octicon octicon-link"></span></a><span>新增提交（Commits）</span></h3><p><span>一旦你的分支已經建立，是時候開始進行修改。無論你何時新增、修改或刪除檔案，你會提交更新並將它們加入分支。加入提交的過程讓你可以追蹤分支的工作進度。</span><br>
+<span>提交也產生了一個透明的工作記錄，讓其他人可以了解你做了些什麼，以及原因。</span><br>
+<span>每個提交都有相關的提交訊息，用以解釋為什麼做了修改。</span><br>
+<span>此外，每個提交被視為一個修改的獨立個體。</span><br>
+<span>這使你在找到錯誤或決定朝不同方向時可以復原修改。</span></p><p><img src="https://i.imgur.com/c1APx1N.png" alt="" loading="lazy"></p><h3 id="開啟-Pull-Request" data-id="開啟-Pull-Request"><a class="anchor hidden-xs" href="#開啟-Pull-Request" title="開啟-Pull-Request"><span class="octicon octicon-link"></span></a><span>開啟 Pull Request</span></h3><p><span>Pull Request 發起了關於提交（Commit）的討論。因為它們緊密的與底層 Git 儲存庫（Repository）結合，如果他們接受你的請求，任何人都能清楚檢視，什麼提交修改將會被合併（Merge）。</span></p><p><img src="https://i.imgur.com/UzCyhoS.png" alt="" loading="lazy"></p><h3 id="討論與檢閱你的程式碼" data-id="討論與檢閱你的程式碼"><a class="anchor hidden-xs" href="#討論與檢閱你的程式碼" title="討論與檢閱你的程式碼"><span class="octicon octicon-link"></span></a><span>討論與檢閱你的程式碼</span></h3><p><span>當 Pull Request 被開啟，檢閱修改的人或維護團隊可能會提出問題或意見。也許是程式碼風格不符合專案規範、缺少單元測試，或者也許一切看起來都不錯且狀況良好。</span><br>
+<span>Pull Request 旨在鼓勵這種類型的討論。</span></p><p><img src="https://i.imgur.com/YwNM5xH.png" alt="" loading="lazy"></p><h3 id="部署（Deploy）" data-id="部署（Deploy）"><a class="anchor hidden-xs" href="#部署（Deploy）" title="部署（Deploy）"><span class="octicon octicon-link"></span></a><span>部署（Deploy）</span></h3><p><span>你的拉取請求已經被檢閱且分支通過測試，你可以部署他在產品（目前我傾向使用 Staging 測試環境）中去驗證。假如你的分支產生問題，你可以重新部署 master 來回覆上一動。</span></p><p><img src="https://i.imgur.com/T7B9Jcn.png" alt="" loading="lazy"></p><h3 id="合併（Merge）" data-id="合併（Merge）"><a class="anchor hidden-xs" href="#合併（Merge）" title="合併（Merge）"><span class="octicon octicon-link"></span></a><span>合併（Merge）</span></h3><p><span>現在你的更動已經在產品中驗證，是時候合併你的程式碼回 master 分支。</span><br>
+<span>合併後，Pull Request 保存了一筆程式碼的修改歷史記錄。因為他們是可搜尋的，可讓任何人回頭來了解為什麼及如何作出決定。</span></p><p><img src="https://i.imgur.com/NKjPM7c.png" alt="" loading="lazy"></p><h2 id="Git-Flow" data-id="Git-Flow"><a class="anchor hidden-xs" href="#Git-Flow" title="Git-Flow"><span class="octicon octicon-link"></span></a><span>Git Flow</span></h2><p><a href="https://gitbook.tw/chapters/gitflow/why-need-git-flow.html" target="_blank" rel="noopener"><span>Git Flow 是什麼？為什麼需要這種東西？</span></a><br>
+<span>當在同一個專案一起開發的人數越來越多，如果沒有訂好規矩，每個人的 Commit 習慣可能都不同，放任大家隨便 Commit 的話遲早會造成災難。</span></p><p><span>在 2010 年的時候，就有人提出了一套流程，或說是訂了一套規矩讓大家可以遵守：</span></p><h3 id="分支應用情境" data-id="分支應用情境"><a class="anchor hidden-xs" href="#分支應用情境" title="分支應用情境"><span class="octicon octicon-link"></span></a><span>分支應用情境</span></h3><p><img src="https://i.imgur.com/cctR2WG.png" alt="" loading="lazy"></p><p><span>主要的分支有 master、develop、hotfix、release 以及 feature 這五種分支，各種分支負責不同的功能。其中 Master 以及 Develop 這兩個分支又被稱做長期分支，因為他們會一直存活在整個 Git Flow 裡，而其它的分支大多會因任務結束而被刪除</span></p><h1 id="Git-Command" data-id="Git-Command"><a class="anchor hidden-xs" href="#Git-Command" title="Git-Command"><span class="octicon octicon-link"></span></a><span>Git Command</span></h1><p><a href="https://www.youtube.com/watch?v=LgTf7m5B0xA&amp;ab_channel=%E9%AB%98%E8%A6%8B%E9%BE%8D" target="_blank" rel="noopener"><span>影片講解: 你知道 Git 是怎麼一回事嗎</span></a><br>
+<a href="https://blog.techbridge.cc/2018/01/17/learning-programming-and-coding-with-python-git-and-github-tutorial/" target="_blank" rel="noopener"><span>文章: Git 與 Github 版本控制基本指令與操作入門教學</span></a></p><p><span>Git 是一個</span><strong><span>分散式版本控制軟體</span></strong><br>
+<span>其最初目的是為更好地管理 Linux kernel 開發而設計，其具備優秀的 merge tracing 合併程式碼的能力</span></p><p><span>Github 則是一個支援 git 程式碼存取和遠端托管的平台服務，有許多的開放原始碼的專案都是使用 Github 進行程式碼的管理</span></p><p><img src="https://i.imgur.com/gt4qTHJ.png" alt="" loading="lazy"></p><p><a href="https://hackmd.io/Zt9hu1zGT4WrsfOCIDHEgQ?both" target="_blank" rel="noopener"><span>在 Git 裡</span></a><span>，主要可以分成三個區塊</span><br>
+<span>「工作目錄（Working Directory）」</span><br>
+<span>「暫存區（Staging Area）」</span><br>
+<span>「儲存庫（Repository）」</span><br>
+<span>透過不同的 Git 指令，可以把檔案移往不同的區域：</span></p><p><img src="https://i.imgur.com/5ZPID4p.png" alt="" loading="lazy"></p><ul>
+<li><span>git add 指令把檔案從工作目錄移至暫存區（或索引）。</span></li>
+</ul><pre><code>git add .
+</code></pre><ul>
+<li><span>git commit 指令把暫存區的內容移至儲存庫。</span></li>
+</ul><pre><code>git commit -m "add helloword.txt"
+</code></pre><ul>
+<li><span>git push 至 GitHub/GitLab</span></li>
+</ul><pre><code>git push
+</code></pre><p><span>如果 Git 目錄內沒有其他分支，可以直接用 git push</span></p><p><span>1.上傳所有分支至 Git 目錄</span></p><pre><code>git push --all origin
+</code></pre><p><span>2.上傳指定分支 (origin) 至 Git 目錄</span></p><pre><code>git push origin master
+</code></pre><p><span>origin 代表 Gitlab 的遠端目錄</span></p><h2 id="Branch" data-id="Branch"><a class="anchor hidden-xs" href="#Branch" title="Branch"><span class="octicon octicon-link"></span></a><span>Branch</span></h2><h3 id="建立分支" data-id="建立分支"><a class="anchor hidden-xs" href="#建立分支" title="建立分支"><span class="octicon octicon-link"></span></a><span>建立分支</span></h3><p><span>在本地建立一個分支 cat</span></p><pre><code>git branch cat
+</code></pre><p><img src="https://i.imgur.com/WjUKxP4.png" alt="" loading="lazy"></p><ul>
+<li><span>切換分支</span></li>
+</ul><pre><code>git checkout cat
+</code></pre><p><img src="https://i.imgur.com/uDenQqb.png" alt="" loading="lazy"></p><ul>
+<li><span>原本Gitlab 沒有cat 分支，用下列指令上傳</span></li>
+</ul><pre><code>git push origin cat
+</code></pre><h3 id="刪除分支" data-id="刪除分支"><a class="anchor hidden-xs" href="#刪除分支" title="刪除分支"><span class="octicon octicon-link"></span></a><span>刪除分支</span></h3><ul>
+<li><span>在本地刪除分支， 成功刪除分支 cat。</span></li>
+</ul><pre><code>git branch -d cat
+</code></pre><p><img src="https://i.imgur.com/s8IFuA2.png" alt="" loading="lazy"></p><ul>
+<li><span>在 GitLab 上刪除分支</span></li>
+</ul><pre><code>git push origin :cat
+</code></pre><p><span>在分支前面加上冒號，用 Push 指令來刪除遠端分支。</span></p><div class="alert alert-warning">
+<p><span>(a) git push origin master:cat</span><br>
+<span>(b) git push origin :cat</span></p>
+</div><p><span>a.意思就是要把本地的 master 分支推上去之後，在 Server 上建立 cat 分支。</span><br>
+<span>b.如果把這個指令前面的 master 拿掉，就像是推了空的內容去更新線上的 cat 分支的內容，也算是變相的把該分支刪除。</span></p><p><a href="https://gitbook.tw/chapters/github/delete-remote-branch.html" target="_blank" rel="noopener"><span>【狀況題】怎麼刪除遠端的分支？</span></a></p><h3 id="Description" data-id="Description"><a class="anchor hidden-xs" href="#Description" title="Description"><span class="octicon octicon-link"></span></a><span>Description</span></h3><p><span>分支就只是一個檔案，裡面有一串文字，代表現在所指的 commit SHA1 ID。</span></p><p><span>通過branch命令來建立分支</span></p><pre><code>git branch &lt;branchname&gt;
+</code></pre><p><img src="https://i.imgur.com/lH2sO4q.png" alt="" loading="lazy"></p><p><span>切換 branch</span></p><pre><code>git checkout &lt;branch&gt;
+</code></pre><p><span>Checkout時會做的事情</span></p><ol>
+<li><span>把respo裡的東西搬一份出來到工作目錄。</span></li>
+<li><span>變更 .git/HEAD 內容</span></li>
+</ol><p><img src="https://i.imgur.com/ZWWgDpR.png" alt="" loading="lazy"></p><p><span>查看分支 SHA1 值 (用於救回誤刪的 branch)</span></p><pre><code>git rev-parse dev
+</code></pre><p><img src="https://i.imgur.com/e4qfd5s.png" alt="" loading="lazy"></p><p><span>救回刪除的branch</span></p><pre><code>git branch xxx sha1值
+</code></pre><h2 id="Commit" data-id="Commit"><a class="anchor hidden-xs" href="#Commit" title="Commit"><span class="octicon octicon-link"></span></a><span>Commit</span></h2><p><a href="https://gitbook.tw/chapters/using-git/reset-commit.html" target="_blank" rel="noopener"><span>參考: https://gitbook.tw/chapters/using-git/reset-commit.html</span></a></p><ul>
+<li><span>先看一下目前的 Git 紀錄：</span></li>
+</ul><pre><code>git log --oneline
+</code></pre><p><img src="https://i.imgur.com/BgNghYW.png" alt="" loading="lazy"></p><pre><code>git reset main^
+</code></pre><p><span>在最後面的那個 ^ 符號，每一個 ^ 符號表示「前一次」的意思，所以 d23c5c^ 是指在 d23c5c 這個 Commit 的「前一次」。</span><br>
+<span>如果是 d23c5c^^ 則是往前兩次，以此類推。不過如果要倒退五次，通常不會寫 d23c5c^^^^^，而會寫成 d23c5c~5。</span></p><ul>
+<li><span>看到最上面的分支 d23c5c 被刪除</span></li>
+</ul><p><img src="https://i.imgur.com/1mIA5De.png" alt="" loading="lazy"></p><ul>
+<li><span>使用 git reset &lt; commit ID &gt; 就可以回到 reset 前的紀錄囉！</span></li>
+</ul><pre><code>git reset d23c5c
+</code></pre><p><img src="https://i.imgur.com/Ejgghi8.png" alt="" loading="lazy"></p><h3 id="Reset-的模式" data-id="Reset-的模式"><a class="anchor hidden-xs" href="#Reset-的模式" title="Reset-的模式"><span class="octicon octicon-link"></span></a><span>Reset 的模式</span></h3><p><a href="https://gitbook.tw/chapters/using-git/reset-commit.html" target="_blank" rel="noopener"><span>git reset 指令可以搭配參數使用</span></a><br>
+<span>常見到的三種參數，分別是 --mixed、–soft 以及 --hard，不同的參數執行之後會有稍微不太一樣的結果。</span></p><table>
+<thead>
+<tr>
+<th><span>模式</span></th>
+<th><span>mixed 模式</span></th>
+<th><span>soft 模式</span></th>
+<th><span>hard 模式</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>工作目錄</span></td>
+<td><span>不變</span></td>
+<td><span>不變</span></td>
+<td><span>丟掉</span></td>
+</tr>
+<tr>
+<td><span>暫存區</span></td>
+<td><span>丟掉</span></td>
+<td><span>不變</span></td>
+<td><span>丟掉</span></td>
+</tr>
+</tbody>
+</table><p><strong><span>mixed 模式</span></strong><br>
+<span>–mixed 是預設的參數，如果沒有特別加參數，git reset 指令將會使用 --mixed 模式。</span><br>
+<span>這個模式會把暫存區的檔案丟掉，但不會動到工作目錄的檔案，也就是說 Commit 拆出來的檔案會留在工作目錄，但不會留在暫存區。</span></p><p><strong><span>soft 模式</span></strong><br>
+<span>這個模式下的 reset，工作目錄跟暫存區的檔案都不會被丟掉，所以看起來就只有 HEAD 的移動而已。也因此，Commit 拆出來的檔案會直接放在暫存區。</span></p><p><strong><span>hard 模式</span></strong><br>
+<span>在這個模式下，不管是工作目錄以及暫存區的檔案都會丟掉。</span></p><h2 id="Git-tag" data-id="Git-tag"><a class="anchor hidden-xs" href="#Git-tag" title="Git-tag"><span class="octicon octicon-link"></span></a><span>Git tag</span></h2><p><span>你可以對過去的提交貼標籤。</span></p><div class="alert alert-info">
+<p><span>git tag v1.0 9fceb02      # or use HEAD</span><br>
+<span>git tag</span><br>
+<span>git push origin v1.0      # push to remote gitlab web</span></p>
+</div><p><img src="https://i.imgur.com/L0eN5mV.png" alt="" loading="lazy"></p><h2 id="ls-tree--ls-files" data-id="ls-tree--ls-files"><a class="anchor hidden-xs" href="#ls-tree--ls-files" title="ls-tree--ls-files"><span class="octicon octicon-link"></span></a><span>ls-tree / ls-files</span></h2><p><a href="https://hedzr.com/devops/git/git-tips-ls-tree-or-files/" target="_blank" rel="noopener"><span>Git Tips - ls-tree 和 ls-files</span></a></p><p><span>git ls-tree: 列出樹對象內容</span></p><pre><code>git ls-tree --full-tree -r --name-only HEAD  # 列出所有已 tracked 內容
+</code></pre><p><strong><span>ls-tree 與 ls-file 的區别在於處理的對象不同</span></strong><br>
+<span>ls-tree 處理 git objects（已纳入版本跟蹤的對象）。</span><br>
+<span>ls-files 處理工作樹（Working tree），所以像是 未跟蹤文件，stash 内容，已經緩存到暫存區但尚未提交的文件，通通都能夠列舉。</span></p><p><span>顯示有關 索引 和 工作樹 中文件的訊息</span></p><p><span>列出未跟踪的文件</span></p><pre><code>git ls-files --others
+</code></pre><hr><h2 id="建立-repository" data-id="建立-repository"><a class="anchor hidden-xs" href="#建立-repository" title="建立-repository"><span class="octicon octicon-link"></span></a><span>建立 repository</span></h2><p><span>repository（檔案庫）是一個什麼樣的概念呢？事實上 repository 就是一個專案，又簡稱 repo</span></p><pre><code> // 建立一個 hello-git 資料夾
+ $ mkdir hello-git
+ // 移動到 hello-git 資料夾
+ $ cd hello-git
+ // 將專案資料夾建立成 git repository
+ $ git init
+ // 下了init指令後，test資料夾會多了一個.git的版控資料夾
+ $ ls -la
+ // 列出專案資料夾下的檔案和資料夾（-l 參數為列出詳細資料，-a 為列出隱藏資料夾）
+</code></pre><h3 id="顯示目前工作環境狀態" data-id="顯示目前工作環境狀態"><a class="anchor hidden-xs" href="#顯示目前工作環境狀態" title="顯示目前工作環境狀態"><span class="octicon octicon-link"></span></a><span>顯示目前工作環境狀態</span></h3><p><span>新增一個檔案(</span><a href="http://hello.py" target="_blank" rel="noopener"><span>hello.py</span></a><span>) 後看目前狀態</span></p><pre><code>git status 
+</code></pre><p><img src="https://i.imgur.com/z1PrdK6.png" alt="" loading="lazy"></p><p><span>我們會發現因為我們有新增新的檔案，但是還沒進到 git 追蹤範圍中/暫存區，所以我們要使用 git add </span><a href="http://hello.py" target="_blank" rel="noopener"><span>hello.py</span></a><span> 加入追蹤，這樣之後檔案有修改就可以追蹤到。</span></p><p><img src="https://i.imgur.com/p2MHeoK.png" alt="" loading="lazy"></p><pre><code>git add hello.py
+hello.py 檔案是 Untracked，就要把這個檔案交給 Git 來管控。
+加入後檔案從 Untracked 變成 new file 狀態
+</code></pre><h3 id="commit-進去-repository" data-id="commit-進去-repository"><a class="anchor hidden-xs" href="#commit-進去-repository" title="commit-進去-repository"><span class="octicon octicon-link"></span></a><span>commit 進去 repository</span></h3><p><span>-m 為輸入 commit message，也就是說這個 commit 內做了哪些事情</span></p><pre><code>git commit -m "Init hello.py"
+</code></pre><p><img src="https://i.imgur.com/1Ca5JIY.png" alt="" loading="lazy"></p><h2 id="建立一個-repository-完整步驟" data-id="建立一個-repository-完整步驟"><a class="anchor hidden-xs" href="#建立一個-repository-完整步驟" title="建立一個-repository-完整步驟"><span class="octicon octicon-link"></span></a><span>建立一個 repository 完整步驟</span></h2><ol>
+<li><span>本地端建立一個資料夾 (run git init)</span></li>
+<li><span>在 github上建立一個 repository (xxx.git)</span></li>
+<li><span>git remote add origin “</span><a href="https://github.com/oldelette/xxx.git" target="_blank" rel="noopener"><span>https://github.com/oldelette/xxx.git</span></a><span>”</span></li>
+<li><span>git push -u origin master</span></li>
+</ol><p><img src="https://i.imgur.com/hFtSZXE.png" alt="" loading="lazy"></p><h2 id="Fork-和-clone-一個-open-source（開源）的計畫" data-id="Fork-和-clone-一個-open-source（開源）的計畫"><a class="anchor hidden-xs" href="#Fork-和-clone-一個-open-source（開源）的計畫" title="Fork-和-clone-一個-open-source（開源）的計畫"><span class="octicon octicon-link"></span></a><span>Fork 和 clone 一個 open source（開源）的計畫</span></h2><pre><code> // 複製到本地端
+ $ git clone https://github.com/oldelette/WebGoat.git
+ // 移動到 webgoat 資料夾
+ $ cd react
+ // 切出自己的新分支（使用 -b）
+ $ git checkout -b test0702@feature_branch
+ // 做一些 README.md 檔案修改，然後 commit 到自己 fork 過來的專案
+ $ git commit -a -m "Update README"
+ $ git push origin test0702@feature_branch
+</code></pre><p><span>你可以透過將自己的修改 commit 到自己 fork 過來的專案，然後到原始專案頁面點選 new pull request 按鈕發 pull request（會比對程式碼的差異）。</span><br>
+<span>若對方 review 完後接受就可以將自己的程式碼合併到原始專案中，為開放原始碼做出第一步貢獻！</span></p><p><img src="https://i.imgur.com/9oVcl1N.png" alt="" loading="lazy"></p><h1 id="Git-檔案狀態" data-id="Git-檔案狀態"><a class="anchor hidden-xs" href="#Git-檔案狀態" title="Git-檔案狀態"><span class="octicon octicon-link"></span></a><span>Git 檔案狀態</span></h1><p><span>四種不同的檔案狀態：</span></p><ul>
+<li><span>未追蹤(Untracked files)：在版本提交後才又加進來的檔案，這些檔案並沒有被GIT所追蹤控管</span></li>
+<li><span>已更改(Changes not staged for commit)：已提交版本後，卻又再次修改，這些檔案會被丟回工作目錄(WD)</span></li>
+<li><span>等待提交(Changes to be committed)：在工作目錄(WD)的檔案執行git add後，會放在暫存區(Stage)。這些放在暫存區的檔案狀態便是等待提交囉！</span></li>
+<li><span>已提交(Committed)：在暫存區(Stage)的檔案執行git commit後，檔案便置於儲存區(Repo)，這些放在儲存區的檔案即是已提交的狀態。</span></li>
+</ul><h2 id="Git-log" data-id="Git-log"><a class="anchor hidden-xs" href="#Git-log" title="Git-log"><span class="octicon octicon-link"></span></a><span>Git log</span></h2><p><a href="https://gitbook.tw/chapters/using-git/log.html" target="_blank" rel="noopener"><span>參考: git檢視紀錄</span></a></p><p><img src="https://i.imgur.com/o1c19tm.png" alt="" loading="lazy"></p><p><span>越新的資訊會在越上面，從這段訊息，大概可以看得出來：</span></p><ol>
+<li><span>Commit 作者是誰。（人是誰殺的）</span></li>
+<li><span>什麼時候 Commit 的。（什麼時候殺的）</span></li>
+<li><span>每次的 Commit 大概做了些什麼事。（怎麼殺的）</span></li>
+</ol><p><span>看起來像亂碼的 8f43abcd88560680b8262f4e1afbab35198ba335，其實是有著特殊用意的。</span><br>
+<span>在 Git 裡每串這種看起來像亂碼的文字，都是使用 SHA-1（Secure Hash Algorithm 1）演算法所計算的結果。</span></p><h2 id="GIT-4種物件" data-id="GIT-4種物件"><a class="anchor hidden-xs" href="#GIT-4種物件" title="GIT-4種物件"><span class="octicon octicon-link"></span></a><span>GIT 4種物件</span></h2><p><span>Git 是一個 content-addressable (按內容定址，按檔案內容定位) 的檔案系統，這代表 Git 的核心是一個 key-value data store (資料儲存)。</span><br>
+<span>我們只要提供檔案內容，Git 就會透過一些演算法計算成 key，未來就可透過該 key 來檢索出對應的內容。</span></p><p><span>Git 有四種 type (類型) 的物件：blob、tree、commit 和 tag。</span></p><ul>
+<li><span>blob 物件：</span><br>
+<span>就是工作目錄中某個檔案的 “內容”，且只有內容而已。當你執行 git add 指令的同時，這些新增檔案的內容就會立刻被寫入成為 blob 物件，檔名則是物件內容的雜湊運算結果，沒有任何其他其他資訊，像是檔案時間、原本的檔名或檔案的其他資訊，都會儲存在其他類型的物件裡 (也就是 tree 物件)。</span></li>
+<li><span>tree 物件：</span><br>
+<span>這類物件會儲存特定目錄下的所有資訊，包含該目錄下的檔名、對應的 blob 物件名稱、檔案連結(symbolic link) 或其他 tree 物件等等。</span><br>
+<span>由於 tree 物件可以包含其他 tree 物件，所以瀏覽 tree 物件的方式其實就跟檔案系統中的「資料夾」沒兩樣。簡單來說，tree 物件這就是在特定版本下某個資料夾的快照(Snapshot)。</span></li>
+<li><span>commit 物件：</span><br>
+<span>用來記錄有那些 tree 物件包含在版本中，一個 commit 物件代表著 Git 的一次提交，記錄著特定提交版本有哪些 tree 物件、以及版本提交的時間、紀錄訊息等等，通常還會記錄上一層的 commit 物件名稱 (只有第一次 commit 的版本沒有上層 commit 物件名稱</span></li>
+<li><span>tag 物件：</span><br>
+<span>是一個容器，通常用來關聯特定一個 commit 物件 (也可以關聯到特定 blob、tree 物件)，並額外儲存一些額外的參考資訊(metadata)，例如: tag 名稱。使用 tag 物件最常見的情況是替特定一個版本的 commit 物件標示一個易懂的名稱，可能是代表某個特定發行的版本，或是擁有某個特殊意義的版本。</span></li>
+</ul><p><img src="https://i.imgur.com/as9DMI2.png" alt="" loading="lazy"></p><h2 id="其他功能" data-id="其他功能"><a class="anchor hidden-xs" href="#其他功能" title="其他功能"><span class="octicon octicon-link"></span></a><span>其他功能</span></h2><h3 id="如何放一個靜態網頁" data-id="如何放一個靜態網頁"><a class="anchor hidden-xs" href="#如何放一個靜態網頁" title="如何放一個靜態網頁"><span class="octicon octicon-link"></span></a><span>如何放一個靜態網頁</span></h3><p><span>目的: 讓自己的網頁公開</span></p><p><span>1.去github上創建自己的Repository</span></p><p><a href="http://xn--github+github-vx0vj32abn4aj0jnq5i9izbiz5a2cz.io" target="_blank" rel="noopener"><span>要輸入自己的github名字+github.io</span></a><br>
+<img src="https://i.imgur.com/19lOK7f.png" alt="" loading="lazy"></p><p><span>2.勾選這個</span><br>
+<img src="https://i.imgur.com/ga430HW.png" alt="" loading="lazy"></p><p><span>3.到 Setting 中的 Github Pages 選擇 </span><strong><span>master branch</span></strong></p><p><img src="https://i.imgur.com/wro16lq.png" alt="" loading="lazy"></p><ul>
+<li><span>看結果</span></li>
+</ul><pre><code>https://weniiii.github.io/covid.html
+用戶名 + github.io/xxxx.html
+</code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Gitlab--Git" title="Gitlab / Git">Gitlab / Git</a><ul class="nav">
+<li><a href="#API" title="API">API</a><ul class="nav">
+<li><a href="#Use-API" title="Use API">Use API</a></li>
+<li><a href="#RESTFUL-API" title="RESTFUL API">RESTFUL API</a></li>
+</ul>
+</li>
+<li class=""><a href="#How-to-use-an-API" title="How to use an API">How to use an API</a><ul class="nav">
+<li><a href="#python-gitlab-CLI-Configuration" title="python-gitlab CLI Configuration">python-gitlab CLI Configuration</a></li>
+<li><a href="#Use-python-gitlab-CLI" title="Use python-gitlab CLI">Use python-gitlab CLI</a></li>
+<li class=""><a href="#Gitlab-API-Docs" title="Gitlab API Docs">Gitlab API Docs</a></li>
+</ul>
+</li>
+<li><a href="#Personal-Access-Tokens" title="Personal Access Tokens">Personal Access Tokens</a></li>
+<li><a href="#CICD-Pipeline" title="CI/CD Pipeline">CI/CD Pipeline</a><ul class="nav">
+<li><a href="#yaml-檔案撰寫" title="yaml 檔案撰寫">yaml 檔案撰寫</a></li>
+</ul>
+</li>
+<li><a href="#gitlab-ciyml" title=".gitlab-ci.yml">.gitlab-ci.yml</a><ul class="nav">
+<li><a href="#Docker" title="Docker">Docker</a></li>
+</ul>
+</li>
+<li><a href="#Gitlab-Create-Group-amp-Project" title="Gitlab Create Group &amp; Project">Gitlab Create Group &amp; Project</a></li>
+<li><a href="#Github" title="Github">Github</a></li>
+</ul>
+</li>
+<li><a href="#Git" title="Git">Git</a><ul class="nav">
+<li><a href="#GitHub-Flow" title="GitHub Flow">GitHub Flow</a><ul class="nav">
+<li><a href="#建立分支（Branch）" title="建立分支（Branch）">建立分支（Branch）</a></li>
+<li><a href="#新增提交（Commits）" title="新增提交（Commits）">新增提交（Commits）</a></li>
+<li><a href="#開啟-Pull-Request" title="開啟 Pull Request">開啟 Pull Request</a></li>
+<li><a href="#討論與檢閱你的程式碼" title="討論與檢閱你的程式碼">討論與檢閱你的程式碼</a></li>
+<li><a href="#部署（Deploy）" title="部署（Deploy）">部署（Deploy）</a></li>
+<li><a href="#合併（Merge）" title="合併（Merge）">合併（Merge）</a></li>
+</ul>
+</li>
+<li><a href="#Git-Flow" title="Git Flow">Git Flow</a><ul class="nav">
+<li><a href="#分支應用情境" title="分支應用情境">分支應用情境</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Git-Command" title="Git Command">Git Command</a><ul class="nav">
+<li><a href="#Branch" title="Branch">Branch</a><ul class="nav">
+<li><a href="#建立分支" title="建立分支">建立分支</a></li>
+<li><a href="#刪除分支" title="刪除分支">刪除分支</a></li>
+<li><a href="#Description" title="Description">Description</a></li>
+</ul>
+</li>
+<li><a href="#Commit" title="Commit">Commit</a><ul class="nav">
+<li><a href="#Reset-的模式" title="Reset 的模式">Reset 的模式</a></li>
+</ul>
+</li>
+<li><a href="#Git-tag" title="Git tag">Git tag</a></li>
+<li><a href="#ls-tree--ls-files" title="ls-tree / ls-files">ls-tree / ls-files</a></li>
+<li><a href="#建立-repository" title="建立 repository">建立 repository</a><ul class="nav">
+<li><a href="#顯示目前工作環境狀態" title="顯示目前工作環境狀態">顯示目前工作環境狀態</a></li>
+<li><a href="#commit-進去-repository" title="commit 進去 repository">commit 進去 repository</a></li>
+</ul>
+</li>
+<li><a href="#建立一個-repository-完整步驟" title="建立一個 repository 完整步驟">建立一個 repository 完整步驟</a></li>
+<li><a href="#Fork-和-clone-一個-open-source（開源）的計畫" title="Fork 和 clone 一個 open source（開源）的計畫">Fork 和 clone 一個 open source（開源）的計畫</a></li>
+</ul>
+</li>
+<li><a href="#Git-檔案狀態" title="Git 檔案狀態">Git 檔案狀態</a><ul class="nav">
+<li><a href="#Git-log" title="Git log">Git log</a></li>
+<li><a href="#GIT-4種物件" title="GIT 4種物件">GIT 4種物件</a></li>
+<li><a href="#其他功能" title="其他功能">其他功能</a><ul class="nav">
+<li><a href="#如何放一個靜態網頁" title="如何放一個靜態網頁">如何放一個靜態網頁</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Gitlab--Git" title="Gitlab / Git">Gitlab / Git</a><ul class="nav">
+<li><a href="#API" title="API">API</a><ul class="nav">
+<li><a href="#Use-API" title="Use API">Use API</a></li>
+<li><a href="#RESTFUL-API" title="RESTFUL API">RESTFUL API</a></li>
+</ul>
+</li>
+<li class=""><a href="#How-to-use-an-API" title="How to use an API">How to use an API</a><ul class="nav">
+<li><a href="#python-gitlab-CLI-Configuration" title="python-gitlab CLI Configuration">python-gitlab CLI Configuration</a></li>
+<li><a href="#Use-python-gitlab-CLI" title="Use python-gitlab CLI">Use python-gitlab CLI</a></li>
+<li class=""><a href="#Gitlab-API-Docs" title="Gitlab API Docs">Gitlab API Docs</a></li>
+</ul>
+</li>
+<li><a href="#Personal-Access-Tokens" title="Personal Access Tokens">Personal Access Tokens</a></li>
+<li><a href="#CICD-Pipeline" title="CI/CD Pipeline">CI/CD Pipeline</a><ul class="nav">
+<li><a href="#yaml-檔案撰寫" title="yaml 檔案撰寫">yaml 檔案撰寫</a></li>
+</ul>
+</li>
+<li><a href="#gitlab-ciyml" title=".gitlab-ci.yml">.gitlab-ci.yml</a><ul class="nav">
+<li><a href="#Docker" title="Docker">Docker</a></li>
+</ul>
+</li>
+<li><a href="#Gitlab-Create-Group-amp-Project" title="Gitlab Create Group &amp; Project">Gitlab Create Group &amp; Project</a></li>
+<li><a href="#Github" title="Github">Github</a></li>
+</ul>
+</li>
+<li><a href="#Git" title="Git">Git</a><ul class="nav">
+<li><a href="#GitHub-Flow" title="GitHub Flow">GitHub Flow</a><ul class="nav">
+<li><a href="#建立分支（Branch）" title="建立分支（Branch）">建立分支（Branch）</a></li>
+<li><a href="#新增提交（Commits）" title="新增提交（Commits）">新增提交（Commits）</a></li>
+<li><a href="#開啟-Pull-Request" title="開啟 Pull Request">開啟 Pull Request</a></li>
+<li><a href="#討論與檢閱你的程式碼" title="討論與檢閱你的程式碼">討論與檢閱你的程式碼</a></li>
+<li><a href="#部署（Deploy）" title="部署（Deploy）">部署（Deploy）</a></li>
+<li><a href="#合併（Merge）" title="合併（Merge）">合併（Merge）</a></li>
+</ul>
+</li>
+<li><a href="#Git-Flow" title="Git Flow">Git Flow</a><ul class="nav">
+<li><a href="#分支應用情境" title="分支應用情境">分支應用情境</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Git-Command" title="Git Command">Git Command</a><ul class="nav">
+<li><a href="#Branch" title="Branch">Branch</a><ul class="nav">
+<li><a href="#建立分支" title="建立分支">建立分支</a></li>
+<li><a href="#刪除分支" title="刪除分支">刪除分支</a></li>
+<li><a href="#Description" title="Description">Description</a></li>
+</ul>
+</li>
+<li><a href="#Commit" title="Commit">Commit</a><ul class="nav">
+<li><a href="#Reset-的模式" title="Reset 的模式">Reset 的模式</a></li>
+</ul>
+</li>
+<li><a href="#Git-tag" title="Git tag">Git tag</a></li>
+<li><a href="#ls-tree--ls-files" title="ls-tree / ls-files">ls-tree / ls-files</a></li>
+<li><a href="#建立-repository" title="建立 repository">建立 repository</a><ul class="nav">
+<li><a href="#顯示目前工作環境狀態" title="顯示目前工作環境狀態">顯示目前工作環境狀態</a></li>
+<li><a href="#commit-進去-repository" title="commit 進去 repository">commit 進去 repository</a></li>
+</ul>
+</li>
+<li><a href="#建立一個-repository-完整步驟" title="建立一個 repository 完整步驟">建立一個 repository 完整步驟</a></li>
+<li><a href="#Fork-和-clone-一個-open-source（開源）的計畫" title="Fork 和 clone 一個 open source（開源）的計畫">Fork 和 clone 一個 open source（開源）的計畫</a></li>
+</ul>
+</li>
+<li><a href="#Git-檔案狀態" title="Git 檔案狀態">Git 檔案狀態</a><ul class="nav">
+<li><a href="#Git-log" title="Git log">Git log</a></li>
+<li><a href="#GIT-4種物件" title="GIT 4種物件">GIT 4種物件</a></li>
+<li><a href="#其他功能" title="其他功能">其他功能</a><ul class="nav">
+<li><a href="#如何放一個靜態網頁" title="如何放一個靜態網頁">如何放一個靜態網頁</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
