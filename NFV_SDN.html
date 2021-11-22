@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        NFV &amp; SDN - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-4G5G" data-id="tags-4G5G"><a class="anchor hidden-xs" href="#tags-4G5G" title="tags-4G5G"><span class="octicon octicon-link"></span></a><span>tags: </span><code>4G/5G</code></h6><h1 id="NFV-amp-SDN" data-id="NFV-amp-SDN"><a class="anchor hidden-xs" href="#NFV-amp-SDN" title="NFV-amp-SDN"><span class="octicon octicon-link"></span></a><span>NFV &amp; SDN</span></h1><p><span>5G網路架構的兩大關鍵技術</span></p><ol>
+<li><span>軟體定義網路（Software Defined Networking，SDN）</span></li>
+<li><span>網路功能虛擬化（Network Virtualization Function，NFV）</span></li>
+</ol><p><img src="https://i.imgur.com/kpUtMdY.png" alt="" loading="lazy"></p><h2 id="SDN" data-id="SDN"><a class="anchor hidden-xs" href="#SDN" title="SDN"><span class="octicon octicon-link"></span></a><span>SDN</span></h2><p><a href="http://wccclab.cs.nchu.edu.tw/www/images/107-1_cloud_computing/sdn.pdf" target="_blank" rel="noopener"><span>軟體定義網路（software-defined networking）是一種新型網路架構。</span></a><br>
+<span>它利用 OpenFlow協定 將路由器的控制平面（control plane）從資料平面（data plane）中分離，</span><br>
+<span>改以</span><mark><span>軟體</span></mark><span>方式實作，從而使得將分散在各個網路裝置上的控制平面進行集中化管理成為可能 ，該架構可使網路管理員在不更動硬體裝置的前提下，以中央控制方式用程式重新規劃網路，為控制網路流量提供了新方案，也為核心網路和應用創新提供了良好平台。</span></p><pre><code>OpenFlow 是一種網路協定
+這個網路協定主要允許由遠端去控制交換機或路由器的轉發平面（Forwarding Plane），
+改變網路封包轉送表格，進而遠端改變網路封包的網路路徑。
+</code></pre><p><span>SDN 3個特色</span></p><ol>
+<li><span>硬體標準化 White-box</span><br>
+<span>不需要詳細分層，符合標準的南向介面協定 OpenFlow</span></li>
+<li><span>軟體平台化 Controller Platform</span></li>
+<li><span>資訊中心化 Global view</span></li>
+</ol><p><span>真正讓 SDN對企業具有重要意義的主要有三大因素：</span></p><ol>
+<li><span>自動化</span></li>
+<li><span>快速應用部署</span></li>
+<li><span>簡單的網絡管理。</span></li>
+</ol><hr><h3 id="SDN-架構" data-id="SDN-架構"><a class="anchor hidden-xs" href="#SDN-架構" title="SDN-架構"><span class="octicon octicon-link"></span></a><span>SDN 架構</span></h3><p><span>SDN 不是一項具體的技術，而是一種網路設計理念、一種網路架構</span></p><p><img src="https://i.imgur.com/svzvC6x.png" alt="" loading="lazy"></p><ul>
+<li><span>將全網的Control Plane與Data Plane完全獨立。</span></li>
+<li><span>透過Controller軟體來集中管理全網資料流量行為。</span></li>
+<li><span>Controller軟體提供了可程式化介面(API)可與其他上層設備( 如VM)，做更進一步整合。</span></li>
+<li><span>利用可程式化介面(API)可以用使用者發展出多樣的附加服務在Controller上，如Firewall、IDP，</span></li>
+<li><span>DPI(Deep Packet Inspection) ，LB(Load Balance)，Schedule …等，可做統一佈署，提供更多元化服務項目給企業使用</span></li>
+</ul><h3 id="SDN-vs-傳統網路" data-id="SDN-vs-傳統網路"><a class="anchor hidden-xs" href="#SDN-vs-傳統網路" title="SDN-vs-傳統網路"><span class="octicon octicon-link"></span></a><span>SDN vs 傳統網路</span></h3><p><img src="https://i.imgur.com/hakDgtK.png" alt="" loading="lazy"></p><h2 id="NFV" data-id="NFV"><a class="anchor hidden-xs" href="#NFV" title="NFV"><span class="octicon octicon-link"></span></a><span>NFV</span></h2><p><a href="http://wccclab.cs.nchu.edu.tw/www/images/107-1_cloud_computing/nfv.pdf" target="_blank" rel="noopener"><span>網路功能虛擬化 (NFV)</span></a><span> 是指以執行軟體與流程的虛擬機來取代網路應用裝置硬體，且透過虛擬化管理程序進行控制。</span></p><p><strong><span>NVF的精神-將軟體與硬體分離</span></strong></p><ul>
+<li><span>將以往必須建基於硬件形式的各種技術虛擬化</span>
+<ul>
+<li><span>負載平衡(Load Balance)、防火牆(Firewall)、IPS（Intrusion Prevention System）</span></li>
+</ul>
+</li>
+<li><span>減少硬件成本，包括部署、硬件使用的電力、數據中心空間</span></li>
+<li><span>一種可程式化控制的新型網路基礎配置，將原本的專屬硬體與功能，改為軟體功能，建置在通用高容量伺服器上</span>
+<ul>
+<li><span>企業標準</span></li>
+<li><span>多樣性網路服務</span></li>
+</ul>
+</li>
+</ul><table>
+<thead>
+<tr>
+<th></th>
+<th><span>傳統網路</span></th>
+<th><span>NFV</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>作法</span></td>
+<td><span>分散式的架構 </span><br><span> 專屬功能有專屬硬體機器</span></td>
+<td><span>集中式架構 </span><br><span> 利用虛擬化平台提供專屬機器的網路功能</span></td>
+</tr>
+<tr>
+<td><span>優點</span></td>
+<td><span>從硬體設計來達成網路傳遞訊息</span><br><span>的行為，並且提升交易的處理速度</span></td>
+<td><span>從虛擬化平台來構成網路建網路傳遞處理伺服器</span><br><span>，透過虛擬化平台彈性調整效能</span></td>
+</tr>
+<tr>
+<td><span>缺點</span></td>
+<td><span>當需要改變訊息傳遞行為時必須</span><br><span>逐一進行設定或者更換原來的設備，如此將耗費非常多的人力和成本</span></td>
+<td><span>初期軟硬體設備投資高，並受限於虛擬化平台的基礎硬體環境</span></td>
+</tr>
+</tbody>
+</table><p><a href="https://ithelp.ithome.com.tw/articles/10225238" target="_blank" rel="noopener"><span>目前NFV相關表準制定由歐洲電信標準協會(ETSI)所推動，並制定相關API內容規範及NFV的技術架構</span></a></p><p><span>如下圖</span><br>
+<img src="https://i.imgur.com/3CSxzHX.png" alt="" loading="lazy"></p><h2 id="傳統網路架構" data-id="傳統網路架構"><a class="anchor hidden-xs" href="#傳統網路架構" title="傳統網路架構"><span class="octicon octicon-link"></span></a><span>傳統網路架構</span></h2><h3 id="Client-Server-主從架構" data-id="Client-Server-主從架構"><a class="anchor hidden-xs" href="#Client-Server-主從架構" title="Client-Server-主從架構"><span class="octicon octicon-link"></span></a><span>Client-Server 主從架構</span></h3><p><span>所有的資源(CPU、檔案、儲存體)都集中在中央伺服器上，所有使用的資源需求都直接向中央伺服器存取。</span></p><p><img src="https://i.imgur.com/sWHEB4h.png" alt="" loading="lazy"></p><h3 id="Peer-to-Peer-P2P" data-id="Peer-to-Peer-P2P"><a class="anchor hidden-xs" href="#Peer-to-Peer-P2P" title="Peer-to-Peer-P2P"><span class="octicon octicon-link"></span></a><span>Peer-to-Peer (P2P)</span></h3><p><span>所有資源(CPU、檔案、儲存體)分散在各個端點的電腦中，中央伺服器只負責認證、統合管理與媒介所有的用戶端(Peer)資源。</span></p><p><span>最常用於檔案分享: BitTorrent、Vuze…</span></p><p><img src="https://i.imgur.com/UjtTuKi.png" alt="" loading="lazy"></p><h2 id="ForwardingData-Plane-amp-Control-plane" data-id="ForwardingData-Plane-amp-Control-plane"><a class="anchor hidden-xs" href="#ForwardingData-Plane-amp-Control-plane" title="ForwardingData-Plane-amp-Control-plane"><span class="octicon octicon-link"></span></a><span>Forwarding/Data Plane &amp; Control plane</span></h2><p><span>Forwarding Plane就是在路由器或是交換機架構中處理送進來的網路封包，並且藉由查找資料庫來決定接下來要把網路封包轉發到哪一個網路介面。</span><br>
+<span>Forwarding Plane有時候也被稱為 Data Plane 或是 User Plane。而這個轉發平面只會處理Inbound介面進來的網路封包。OpenFlow協定用於控制路由器或是交換機的轉發平面，達到以軟體來定義網路的目的。</span></p><h2 id="OpenFlow" data-id="OpenFlow"><a class="anchor hidden-xs" href="#OpenFlow" title="OpenFlow"><span class="octicon octicon-link"></span></a><span>OpenFlow</span></h2><p><a href="https://www.netadmin.com.tw/netadmin/zh-tw/technology/8244EA0CF13646ECB964DFC4B0700961" target="_blank" rel="noopener"><span>OpenFlow是一種網路協定，運作於網路七層的第二層，也就是資料連結層（Data Link Layer）</span></a><span>。</span><br>
+<span>這個網路協定主要允許遠端地去控制交換機（Switch）或路由器（Router）的轉發平面（Forwarding Plane），改變網路封包轉送表格，進而遠端地改變網路封包的網路路徑。</span></p><p><span>軟體定義網路(sdn)的起點 是要把控制層(軟體) 與 轉發層(硬體)分離。</span><br>
+<span>並且制定分離後這兩層溝通的通訊協定 就是openflow</span></p><ul>
+<li><span>控制器與交換器之間溝通的通訊協定</span></li>
+<li><span>使用 TCP(port 6653)</span></li>
+<li><span>定義轉發層的行為</span></li>
+</ul><p><img src="https://i.imgur.com/yOcLVN1.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/LtlJ4bE.png" alt="" loading="lazy"></p><h3 id="ONF" data-id="ONF"><a class="anchor hidden-xs" href="#ONF" title="ONF"><span class="octicon octicon-link"></span></a><span>ONF</span></h3><p><span>Open Networking Foundation 開放網路基金會</span></p><p><span>非營利性組織</span><br>
+<span>以商業化、標準化和促進營運網路中使用 OpenFlow 協定。</span><br>
+<span>ONF 是一種新型態的標準開發組織，它成立並推動 OpenFlow 協定發展和其他 SDN技術相關的市場。</span></p><h2 id="OVS" data-id="OVS"><a class="anchor hidden-xs" href="#OVS" title="OVS"><span class="octicon octicon-link"></span></a><span>OVS</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10197632" target="_blank" rel="noopener"><span>Openvswitch 介紹</span></a></p><p><span>一種虛擬交換器，可用來作為 L2switch，切割網域，QoS或是流量監控，同時支持openFlow協定。</span></p><p><span>主要3個元件</span></p><ul>
+<li><span>ovs-vswitched: 實做 switch 邏輯運作</span></li>
+<li><span>ovsdb: 負責管理輕量級的資料庫，主要存放資料轉發的規格表 (規則稱為 flow rule)</span></li>
+<li><span>openvswitch.ko(kernel module): 負責資料轉發層 data plane 工作</span><br>
+<span>將 data path 實作成 kernel module</span></li>
+</ul><p><img src="https://i.imgur.com/MoKWWGS.png" alt="" loading="lazy"></p><h3 id="OVS-相關工具" data-id="OVS-相關工具"><a class="anchor hidden-xs" href="#OVS-相關工具" title="OVS-相關工具"><span class="octicon octicon-link"></span></a><span>OVS 相關工具</span></h3><ul>
+<li><span>ovs-dpctl： 管理 kernel module openvswitch.ko</span><br>
+<span>管理ovs datapath，大部分資訊都是透過 netlink 反應出</span></li>
+<li><span>ovs-vsctl: 用來建立或移除虛擬交換器</span><br>
+<span>對 ovsdb 操作，bridge,interface 新增，刪除，查詢，操作指令比較具有語意，會幫你轉化成 ovsdb 看的懂的語法</span></li>
+<li><span>ovs-ofctl: 模擬一台外部控制器</span><br>
+<span>openflow switch 管理工具，可以操作與 openflow 相關的設定</span></li>
+<li><span>ovsdb-tool: 與ovsdb-server 溝通 (查詢、建立、刪除 flow rule)</span></li>
+</ul><p><span>ovs-appctl: ovs-vswithd 的管理工具，可以跟 ovs-vswitchd 程序溝通，ex:ofproto/trace 可用來追蹤封包flow</span><br>
+<span>ovs-docker : 提供與 docker container 的連接</span></p><h3 id="實作" data-id="實作"><a class="anchor hidden-xs" href="#實作" title="實作"><span class="octicon octicon-link"></span></a><span>實作</span></h3><pre><code>sudo apt-get install openvswitch-switch
+ovs-ofctl dump-flows br0
+</code></pre><p><span>查看OVS支持的OpenFlow協議的版本</span></p><pre><code>ovs-ofctl --version
+</code></pre><p><img src="https://i.imgur.com/achqC40.png" alt="" loading="lazy"></p><h2 id="mininet" data-id="mininet"><a class="anchor hidden-xs" href="#mininet" title="mininet"><span class="octicon octicon-link"></span></a><span>mininet</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10243028" target="_blank" rel="noopener"><span>Mininet是一個網路拓樸模擬器(network emulation orchestration system)</span></a><span>，它可以模擬出一整個有路由器、交換器、主機的叢集。</span></p><ul>
+<li><span>虛擬主機: 直接建立在 Linux Container 上的虛擬機</span></li>
+<li><span>交換器: 由 OVS 建立的 Openflow switch</span></li>
+<li><span>控制器: Linux Container 上的虛擬機 透過 Openflow 協定與OVS 建立的 Openflow switch 溝通</span></li>
+</ul><p><span>優點</span></p><ul>
+<li><span>它的速度很快。</span></li>
+<li><span>可以自定義拓撲。</span></li>
+<li><span>可以運行自己寫好的程式。</span></li>
+<li><span>可以自定義數據包轉發。</span></li>
+<li><span>可以共享和復制結果。</span></li>
+<li><span>它是一個開源項目。</span></li>
+</ul><p><span>缺點</span></p><ul>
+<li><span>其模擬的主機總共只使用一個Linux kernel。</span></li>
+<li><span>共享host file system和PID空間。</span></li>
+</ul><hr><p><img src="https://i.imgur.com/kzERyHt.png" alt="" loading="lazy"></p><pre><code>sudo mn
+</code></pre><p><img src="https://i.imgur.com/2A1M7U3.png" alt="" loading="lazy"></p><p><span>不指定參數下，mini 會生成兩台虛擬機 h1 和 h2 及一台虛擬交換器 s1</span></p><p><span>net: 列出所有節點資訊，包括節點之間的連線關係。</span><br>
+<span>nodes: 目前有哪些節點</span><br>
+<span>links: 目前有哪些連線 (ok表示連線正常)</span><br>
+<span>dump: 測試任兩台虛擬機之間是否可以互通</span><br>
+<span>pingall: 測試任兩台虛擬機之間是否可以互通</span><br>
+<span>h1 ping h2: 從虛擬機 h1 發送 ICMP request 封包給虛擬機 h2</span></p><p><img src="https://i.imgur.com/VOmkMpl.png" alt="" loading="lazy"></p><pre><code>sh ovs-ofctl dump-flows s1 -O openflow13 # 列出 flow table
+sh ovs-ofctl del-flows s1 -O openflow13 # 清空 flow table
+</code></pre><p><span>ovs-ofctl 指令測試交換器上的 OpenFlow 功能</span><br>
+<span>dump-flows s1: 列出交換器 s1 目前 Flow Table 的資訊</span></p><p><img src="https://i.imgur.com/yfhD2uU.png" alt="" loading="lazy"></p><p><span>開啟額外動態視窗</span></p><pre><code>sudo apt install xterm
+</code></pre><p><img src="https://i.imgur.com/5F5KrVF.png" alt="" loading="lazy"></p><p><span>利用 wireshark 監控 s1-eth1 網卡活動</span></p><p><img src="https://i.imgur.com/ia1o35j.png" alt="" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#NFV-amp-SDN" title="NFV &amp; SDN">NFV &amp; SDN</a><ul class="nav">
+<li><a href="#SDN" title="SDN">SDN</a><ul class="nav">
+<li><a href="#SDN-架構" title="SDN 架構">SDN 架構</a></li>
+<li><a href="#SDN-vs-傳統網路" title="SDN vs 傳統網路">SDN vs 傳統網路</a></li>
+</ul>
+</li>
+<li><a href="#NFV" title="NFV">NFV</a></li>
+<li><a href="#傳統網路架構" title="傳統網路架構">傳統網路架構</a><ul class="nav">
+<li><a href="#Client-Server-主從架構" title="Client-Server 主從架構">Client-Server 主從架構</a></li>
+<li><a href="#Peer-to-Peer-P2P" title="Peer-to-Peer (P2P)">Peer-to-Peer (P2P)</a></li>
+</ul>
+</li>
+<li><a href="#ForwardingData-Plane-amp-Control-plane" title="Forwarding/Data Plane &amp; Control plane">Forwarding/Data Plane &amp; Control plane</a></li>
+<li><a href="#OpenFlow" title="OpenFlow">OpenFlow</a><ul class="nav">
+<li><a href="#ONF" title="ONF">ONF</a></li>
+</ul>
+</li>
+<li><a href="#OVS" title="OVS">OVS</a><ul class="nav">
+<li><a href="#OVS-相關工具" title="OVS 相關工具">OVS 相關工具</a></li>
+<li><a href="#實作" title="實作">實作</a></li>
+</ul>
+</li>
+<li><a href="#mininet" title="mininet">mininet</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#NFV-amp-SDN" title="NFV &amp; SDN">NFV &amp; SDN</a><ul class="nav">
+<li><a href="#SDN" title="SDN">SDN</a><ul class="nav">
+<li><a href="#SDN-架構" title="SDN 架構">SDN 架構</a></li>
+<li><a href="#SDN-vs-傳統網路" title="SDN vs 傳統網路">SDN vs 傳統網路</a></li>
+</ul>
+</li>
+<li><a href="#NFV" title="NFV">NFV</a></li>
+<li><a href="#傳統網路架構" title="傳統網路架構">傳統網路架構</a><ul class="nav">
+<li><a href="#Client-Server-主從架構" title="Client-Server 主從架構">Client-Server 主從架構</a></li>
+<li><a href="#Peer-to-Peer-P2P" title="Peer-to-Peer (P2P)">Peer-to-Peer (P2P)</a></li>
+</ul>
+</li>
+<li><a href="#ForwardingData-Plane-amp-Control-plane" title="Forwarding/Data Plane &amp; Control plane">Forwarding/Data Plane &amp; Control plane</a></li>
+<li><a href="#OpenFlow" title="OpenFlow">OpenFlow</a><ul class="nav">
+<li><a href="#ONF" title="ONF">ONF</a></li>
+</ul>
+</li>
+<li><a href="#OVS" title="OVS">OVS</a><ul class="nav">
+<li><a href="#OVS-相關工具" title="OVS 相關工具">OVS 相關工具</a></li>
+<li><a href="#實作" title="實作">實作</a></li>
+</ul>
+</li>
+<li><a href="#mininet" title="mininet">mininet</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
