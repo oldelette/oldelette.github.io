@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Data_Collect  &amp;&amp; Wireshark - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Project" data-id="tags-Project"><a class="anchor hidden-xs" href="#tags-Project" title="tags-Project"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Project</code></h6><h1 id="Data_Collect-ampamp-Wireshark" data-id="Data_Collect-ampamp-Wireshark"><a class="anchor hidden-xs" href="#Data_Collect-ampamp-Wireshark" title="Data_Collect-ampamp-Wireshark"><span class="octicon octicon-link"></span></a><span>Data_Collect  &amp;&amp; Wireshark</span></h1><h2 id="Tcpdump" data-id="Tcpdump"><a class="anchor hidden-xs" href="#Tcpdump" title="Tcpdump"><span class="octicon octicon-link"></span></a><span>Tcpdump</span></h2><p><a href="https://rorschachchan.github.io/2018/06/22/%E7%BB%99%E9%9D%9Eroot%E5%BC%80%E6%94%BEtcpdump%E5%91%BD%E4%BB%A4%E6%9D%83%E9%99%90/" target="_blank" rel="noopener"><span>https://rorschachchan.github.io/2018/06/22/给非root开放tcpdump命令权限/</span></a></p><pre><code>cd /usr/sbin
+sudo chmod u+s tcpdump
+</code></pre><p><span>tcpdump 用法教學</span><br>
+<a href="https://www.itread01.com/content/1550330502.html" target="_blank" rel="noopener"><span>https://www.itread01.com/content/1550330502.html</span></a></p><h2 id="Wireshark" data-id="Wireshark"><a class="anchor hidden-xs" href="#Wireshark" title="Wireshark"><span class="octicon octicon-link"></span></a><span>Wireshark</span></h2><p><span>淺紫色表示TCP流量</span><br>
+<span>淺藍色表示UDP流量</span><br>
+<span>黑色表示有錯誤的數據包-例如，它們可能是亂序發送的</span></p><hr><h3 id="Install-1804-up" data-id="Install-1804-up"><a class="anchor hidden-xs" href="#Install-1804-up" title="Install-1804-up"><span class="octicon octicon-link"></span></a><span>Install (18.04 up)</span></h3><p><span>sudo apt-add-repository ppa:wireshark-dev/stable</span><br>
+<span>sudo apt-get update</span><br>
+<span>sudo apt-get install wireshark</span><br>
+<a href="https://blog.csdn.net/jipengwang/article/details/78799310" target="_blank" rel="noopener"><span>https://blog.csdn.net/jipengwang/article/details/78799310</span></a></p><hr><p><a href="https://blog.csdn.net/qq_33475105/article/details/82084589" target="_blank" rel="noopener"><span>https://blog.csdn.net/qq_33475105/article/details/82084589</span></a></p><pre><code>更新軟件源出錯404 Not Found --Ubuntu刪除PPA
+進入/etc/apt/sources.list.d/，發現更新時發生錯誤的源，刪去即可。
+</code></pre><hr><h3 id="非root-使用-wireshark" data-id="非root-使用-wireshark"><a class="anchor hidden-xs" href="#非root-使用-wireshark" title="非root-使用-wireshark"><span class="octicon octicon-link"></span></a><span>非root 使用 wireshark</span></h3><p><a href="https://www.cnblogs.com/craftor/p/3811733.html" target="_blank" rel="noopener"><span>解決wireshark權限問題</span></a></p><ol>
+<li><span>添加wireshark用戶組</span><br>
+<span>sudo groupadd wireshark</span></li>
+<li><span>將dumpcap更改為wireshark用戶組</span><br>
+<span>sudo chgrp wireshark /usr/bin/dumpcap</span></li>
+<li><span>讓wireshark用戶組有root權限使用dumpcap</span><br>
+<span>sudo chmod 4755 /usr/bin/dumpcap</span></li>
+<li><span>將需要使用的用戶名加入wireshark用戶組，我的用戶名是gavin</span><br>
+<span>sudo gpasswd -a gavin wireshark</span></li>
+</ol><h3 id="WireShark-介面-介紹" data-id="WireShark-介面-介紹"><a class="anchor hidden-xs" href="#WireShark-介面-介紹" title="WireShark-介面-介紹"><span class="octicon octicon-link"></span></a><span>WireShark 介面 介紹</span></h3><p><a href="https://kknews.cc/zh-tw/news/826jqlg.html" target="_blank" rel="noopener"><span>https://kknews.cc/zh-tw/news/826jqlg.html</span></a></p><p><img src="https://i.imgur.com/j3Spvsd.png" alt="" loading="lazy"></p><ol>
+<li><span>Display Filter(顯示過濾器)，用於過濾</span></li>
+<li><span>Packet List Pane(封包列表)，顯示捕獲到的封包，有源地址和目標地址,埠號；</span></li>
+<li><span>Packet Details Pane(封包詳細信息), 顯示封包中的欄位；</span></li>
+<li><span>Dissector Pane(16進位數據)；</span></li>
+<li><span>Miscellanous(地址欄，雜項)。</span></li>
+</ol><ul>
+<li><span>Packet List Pane</span></li>
+</ul><pre><code>封包列表的面板中顯示，編號，時間戳，源地址，目標地址，協議，長度，以及封包信息。 
+你可以看到不同的協議用了不同的顏色顯示。 
+你也可以修改這些顯示顏色的規則， View -&gt;Coloring Rules.
+</code></pre><h3 id="Wireshark-原理" data-id="Wireshark-原理"><a class="anchor hidden-xs" href="#Wireshark-原理" title="Wireshark-原理"><span class="octicon octicon-link"></span></a><span>Wireshark 原理</span></h3><p><a href="https://zhuanlan.zhihu.com/p/69995067" target="_blank" rel="noopener"><span>https://zhuanlan.zhihu.com/p/69995067</span></a></p><p><img src="https://i.imgur.com/cR0smgm.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/zkva5yc.png" alt="" loading="lazy"></p><hr><h3 id="PIP-Problem" data-id="PIP-Problem"><a class="anchor hidden-xs" href="#PIP-Problem" title="PIP-Problem"><span class="octicon octicon-link"></span></a><span>PIP Problem</span></h3><p><a href="https://askubuntu.com/questions/1050677/after-running-pip-install-upgrade-pip-pip-tells-me-the-same-thing" target="_blank" rel="noopener"><span>https://askubuntu.com/questions/1050677/after-running-pip-install-upgrade-pip-pip-tells-me-the-same-thing</span></a></p><p><img src="https://i.imgur.com/gQ6FURB.png" alt="" loading="lazy"></p><ul>
+<li><span>改 /usr/bin pip 檔案</span><br>
+<a href="https://blog.csdn.net/accumulate_zhang/article/details/80269313" target="_blank" rel="noopener"><span>https://blog.csdn.net/accumulate_zhang/article/details/80269313</span></a></li>
+</ul><pre><code>from pip import __main__
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+</code></pre><hr><ul>
+<li><span>過濾指令教學</span><br>
+<a href="https://ithelp.ithome.com.tw/articles/10194343" target="_blank" rel="noopener"><span>https://ithelp.ithome.com.tw/articles/10194343</span></a></li>
+</ul><h3 id="Following-Protocol-Streams" data-id="Following-Protocol-Streams"><a class="anchor hidden-xs" href="#Following-Protocol-Streams" title="Following-Protocol-Streams"><span class="octicon octicon-link"></span></a><span>Following Protocol Streams</span></h3><p><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html" target="_blank" rel="noopener"><span>It can be very helpful to see a protocol in the way that the application layer sees it.</span></a><br>
+<span>Perhaps you are looking for passwords in a Telnet stream, or you are trying to make sense of a data stream.</span><br>
+<span>Maybe you just need a display filter to show only the packets in a TLS or SSL stream.</span><br>
+<span>If so, Wireshark’s ability to follow protocol streams will be useful to you.</span></p><h3 id="Fllow-tcp-stream" data-id="Fllow-tcp-stream"><a class="anchor hidden-xs" href="#Fllow-tcp-stream" title="Fllow-tcp-stream"><span class="octicon octicon-link"></span></a><span>Fllow tcp stream</span></h3><p><a href="https://ssorc.tw/1074" target="_blank" rel="noopener"><span>跟蹤TCP傳輸控制協議的通信資料段，將分散傳輸的資料組裝還原</span></a></p><p><span>Wireshark針對通訊協定提供了完整的Follow TCP/UDP Stream功能，能夠依序追蹤網路封包所傳送的內容，此種方式可以將有關聯性的網路封包一起呈現，如此在進行網路行為或通訊協定的行為分析時，將更為清楚易讀。</span></p><p><img src="https://i.imgur.com/4BrnJsg.png" alt="" loading="lazy"></p><p><span>Traffic from the </span><strong><span>client to the server</span></strong><span> is colored </span><strong><span>red</span></strong><br>
+<span>Traffic from the </span><strong><span>server to the client</span></strong><span> is colored </span><strong><span>blue</span></strong><br>
+<img src="https://i.imgur.com/BAuW5TN.png" alt="" loading="lazy"></p><h3 id="介紹-pcap" data-id="介紹-pcap"><a class="anchor hidden-xs" href="#介紹-pcap" title="介紹-pcap"><span class="octicon octicon-link"></span></a><span>介紹 pcap</span></h3><p><a href="https://read01.com/4m7Q26.html" target="_blank" rel="noopener"><span>pcap是一種數據流格式</span></a><span>，wireshark軟體可以直接把網絡數據流變成這種格式</span></p><p><span>這邊指的網路流量是 從兩個 IP 主機之間，針對某個時間範圍（也稱為間隔）內觀察到的一連串封包擷取（透過路由器這類的網路裝置）</span></p><h3 id="把檔案從pcap中取出" data-id="把檔案從pcap中取出"><a class="anchor hidden-xs" href="#把檔案從pcap中取出" title="把檔案從pcap中取出"><span class="octicon octicon-link"></span></a><span>把檔案從pcap中取出</span></h3><p><span>Linux: Hexedtor</span></p><p><span>example: </span><em><strong><span>HTTP</span></strong></em><br>
+<img src="https://i.imgur.com/EfQkrTo.png" alt="" loading="lazy"></p><pre><code>紅色部份: 是我向對方Server提出下載檔案的請求（HTTP Request)
+藍色部份: 是對方Server的回覆（HTTP Response)
+下面藍色部份: 開始是下載檔案內容
+
+從ASCII看的話，docx檔案的開頭就會是PK
+</code></pre><h2 id="分析-Https" data-id="分析-Https"><a class="anchor hidden-xs" href="#分析-Https" title="分析-Https"><span class="octicon octicon-link"></span></a><span>分析 Https</span></h2><p><span>HTTPS身為加密連線，會以安全套接層（Secure Sockets Layer， SSL）及傳輸層安全性協定（Transport Layer Security， TLS）等加密方式來進行加密</span><br>
+<span>TLS其實就是SSL的升級版(TLS是SSL下一代的版本)，SSL目前也已經不再更新</span></p><hr><h3 id="SSH" data-id="SSH"><a class="anchor hidden-xs" href="#SSH" title="SSH"><span class="octicon octicon-link"></span></a><span>SSH</span></h3><h4 id="Linux-安裝" data-id="Linux-安裝"><a class="anchor hidden-xs" href="#Linux-安裝" title="Linux-安裝"><span class="octicon octicon-link"></span></a><span>Linux 安裝</span></h4><p><a href="https://andy6804tw.github.io/2019/01/23/ubuntu-ssh-remote/" target="_blank" rel="noopener"><span>https://andy6804tw.github.io/2019/01/23/ubuntu-ssh-remote/</span></a></p><pre><code>sudo apt-get install openssh-client (ubuntu 通常會默認安裝)
+sudo apt-get install openssh-server
+dpkg -l | grep ssh
+</code></pre><ul>
+<li>
+<p><span>安裝好後你會發現多了 openssh-server</span><br>
+<img src="https://i.imgur.com/UONXSat.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>確認ssh-server是否啟動了：</span></p>
+</li>
+</ul><pre><code>ps -e | grep ssh
+</code></pre><ul>
+<li><span>看到 sshd那說明ssh-server已經啟動了。 如果沒有則可以輸入以下指令啟動：</span></li>
+</ul><pre><code>sudo service ssh start 
+</code></pre><hr><h4 id="SSL" data-id="SSL"><a class="anchor hidden-xs" href="#SSL" title="SSL"><span class="octicon octicon-link"></span></a><span>SSL</span></h4><p><a href="https://ithelp.ithome.com.tw/articles/10194126" target="_blank" rel="noopener"><span>https://ithelp.ithome.com.tw/articles/10194126</span></a></p><p><img src="https://i.imgur.com/w9rrvcI.png" alt="" loading="lazy"></p><pre><code>Application Data 表示加密的資料
+</code></pre><p><span>ssl這種過濾法會把所有版本的SSL及TLS連線都列出來</span><br>
+<span>列出特定SSL版本的話可以使用「ssl.record.version == 版本十六進位」這個指令</span><br>
+<span>ex:</span></p><ol>
+<li><span>TLS 1.0（SSL 3.1） 是 ssl.record.version == 0x0301</span></li>
+<li><span>TLS 1.2（SSL 3.3） 是 ssl.record.version == 0x0303</span></li>
+</ol><h4 id="TLS-加密" data-id="TLS-加密"><a class="anchor hidden-xs" href="#TLS-加密" title="TLS-加密"><span class="octicon octicon-link"></span></a><span>TLS 加密</span></h4><pre><code>TLS: tcp , port 443
+</code></pre><p><span>TLS加密的流程</span><br>
+<img src="https://i.imgur.com/ezBwPCm.png" alt="" loading="lazy"></p><ol>
+<li>
+<p><span>Client Hello</span><br>
+<span>(client 告訴server要連接)</span><br>
+<span>提供我的電腦可以接受的加密通訊協定版本、一個用戶端生成的亂數、支援的加密演算法及支援的壓縮演算法</span></p>
+</li>
+<li>
+<p><span>ServerHello Finished</span><br>
+<span>(server回覆 client)</span><br>
+<span>代表收到了client電腦傳過去的招呼, server回傳確認使用的加密通訊協定版本（若是伺服器能提供的最高版本比客戶端來得低的話，就無法建立連線）、一個伺服器生成的亂數、確認使用的加密方法及伺服器憑證</span></p>
+<p><span>伺服器告知用戶端，接下來將會依照雙方協議的加密方法等連線參數來進行加密，並傳送    Finished訊息。</span></p>
+</li>
+<li>
+<p><span>ClientKeyExange Finished</span><br>
+<span>用戶端告知伺服器，接下來將會依照雙方協議的加密方法等連線參數來進行加密，並傳送Finished訊息</span></p>
+</li>
+</ol><p><span>example:</span><br>
+<span>1.第一個封包的提供TLS版本是TLS 1.0（SSL 3.1）</span></p><pre><code>因為如果server提供的版本低過client,則無法建立連線,所以用戶端常常會提供最低可接受的加密通訊協定版本 
+</code></pre><p><img src="https://i.imgur.com/aXY3g5c.png" alt="" loading="lazy"></p><h2 id="資料蒐集" data-id="資料蒐集"><a class="anchor hidden-xs" href="#資料蒐集" title="資料蒐集"><span class="octicon octicon-link"></span></a><span>資料蒐集</span></h2><p><strong><a href="https://www.twblogs.net/a/5b8ee6cd2b71771883489ac3" target="_blank" rel="noopener"><span>https://www.twblogs.net/a/5b8ee6cd2b71771883489ac3</span></a></strong></p><h3 id="Libpcap-檔案格式" data-id="Libpcap-檔案格式"><a class="anchor hidden-xs" href="#Libpcap-檔案格式" title="Libpcap-檔案格式"><span class="octicon octicon-link"></span></a><span>Libpcap 檔案格式</span></h3><p><span>Libcap 作爲捕獲網絡通信數據的事實上的標準工具</span><br>
+<span>pcap是數據包捕獲的縮寫，一般是tcpdump或wirehark抓包後存取的文件。</span><br>
+<img src="https://i.imgur.com/Xmuekow.png" alt="" loading="lazy"></p><p><strong><span>pcap</span></strong></p><ol>
+<li><span>24Byte 的Global Header (文件頭)</span></li>
+<li><span>16Byte 的數據標頭 + 標頭對應數據包 (Packet Header+Packet Data)</span></li>
+<li><span>下一個 16Byte 的數據標頭 + 標頭對應數據包</span></li>
+<li><span>下一個 16Byte 的數據標頭 + 標頭對應數據包</span></li>
+<li><span>一直重複到文件尾巴…</span></li>
+</ol><p><img src="https://i.imgur.com/b6smvpY.png" alt="" loading="lazy"></p><blockquote>
+<p><span>前面24byte說明 (Global Header)</span></p>
+</blockquote><ul>
+<li><span>Magic：4Byte：0x1A 2B 3C 4D:用来標示文件的開始</span></li>
+<li><span>Major：2Byte，0x02 00:當前文件的版本號碼 (默認值為0x2)</span></li>
+<li><span>Minor：2Byte，0x04 00:當前文件的次要版本號 (默認值為0x4)</span></li>
+<li><span>ThisZone：4Byte 當地的標準時間；全零</span></li>
+<li><span>SigFigs：4Byte 時間戳精度；全零</span></li>
+<li><span>SnapLen：4Byte 最大的存儲長度</span></li>
+<li><span>LinkType：4Byte link 類別</span></li>
+</ul><blockquote>
+<p><span>解析 pcap 實做</span><br>
+<img src="https://i.imgur.com/hHPpCfg.png" alt="" loading="lazy"></p>
+</blockquote><p><img src="https://i.imgur.com/o89PVGP.png" alt="" loading="lazy"></p><h2 id="封包切割工具介紹" data-id="封包切割工具介紹"><a class="anchor hidden-xs" href="#封包切割工具介紹" title="封包切割工具介紹"><span class="octicon octicon-link"></span></a><span>封包切割工具介紹</span></h2><h3 id="Cisco-joy" data-id="Cisco-joy"><a class="anchor hidden-xs" href="#Cisco-joy" title="Cisco-joy"><span class="octicon octicon-link"></span></a><span>Cisco joy</span></h3><p><a href="https://kknews.cc/news/4mno5l3.html" target="_blank" rel="noopener"><span>https://kknews.cc/news/4mno5l3.html</span></a></p><p><span>Joy是一個捕獲數據包、分析網絡流量數據、網絡研究取證及安全監控的工具。</span></p><p><span>使用:</span><br>
+<a href="https://github.com/wangru8080/cisco_joy" target="_blank" rel="noopener"><span>https://github.com/wangru8080/cisco_joy</span></a></p><h3 id="PcapPlusPlus" data-id="PcapPlusPlus"><a class="anchor hidden-xs" href="#PcapPlusPlus" title="PcapPlusPlus"><span class="octicon octicon-link"></span></a><span>PcapPlusPlus</span></h3><h4 id="libpcap" data-id="libpcap"><a class="anchor hidden-xs" href="#libpcap" title="libpcap"><span class="octicon octicon-link"></span></a><span>libpcap</span></h4><p><span>libpcap （Packet Capture Library）是一個網路資料包捕獲函式庫，是Unix/Linux平臺下的網路資料包捕獲函式庫。</span></p><p><span>libpcap 功能</span></p><ul>
+<li><span>資料包捕獲</span></li>
+<li><span>自定義資料包傳送</span></li>
+<li><span>流量採集與統計</span></li>
+<li><span>規則過濾</span></li>
+</ul><h4 id="PcapSpilter" data-id="PcapSpilter"><a class="anchor hidden-xs" href="#PcapSpilter" title="PcapSpilter"><span class="octicon octicon-link"></span></a><span>PcapSpilter</span></h4><p><img src="https://i.imgur.com/FozuO7Q.png" alt="" loading="lazy"></p><hr><ul>
+<li><span>5-Tuple:</span><br>
+<span>5個不同值的集合</span><br>
+<span>a. source IP address/port number</span><br>
+<span>b. destination IP address/port number</span><br>
+<span>c. protocol in use</span></li>
+</ul><hr><h2 id="VPN-Virtual-Private-Network" data-id="VPN-Virtual-Private-Network"><a class="anchor hidden-xs" href="#VPN-Virtual-Private-Network" title="VPN-Virtual-Private-Network"><span class="octicon octicon-link"></span></a><span>VPN  (Virtual Private Network)</span></h2><p><a href="https://nordvpn.com/zh-tw/what-is-a-vpn/" target="_blank" rel="noopener"><span>https://nordvpn.com/zh-tw/what-is-a-vpn/</span></a></p><p><span>當嘗試進入網際網路上的網站時，可以透過連線到網際網路服務供應商 (ISP) 來開始。他們會將您重新導向到任何您想要瀏覽的網站 (或其他線上資源)。您所有的網際網路流量都會經過您的 ISP 伺服器，表示他們可以看到您在線上所做的並記錄一切。他們甚至會將您的上網資料交給廣告商、政府機構和其他第三方。</span></p><p><span>這就是 VPN 發揮作用的地方。您的網際網路流量將會特別設定的遠端伺服器重新導向。這樣 VPN 可以隱藏您的 IP 位址，以及加密您傳送或接收的所有資料。對於攔截這些加密資料的人而言，加密資料基本上都是亂碼 — 因此無法讀取。</span></p><ul>
+<li><span>vpn 是加密流量</span></li>
+</ul><h3 id="原理" data-id="原理"><a class="anchor hidden-xs" href="#原理" title="原理"><span class="octicon octicon-link"></span></a><span>原理</span></h3><p><a href="https://sites.google.com/site/vpnjianjieyuqiyingyong/xian-kuang-miao-shu/vpn-yuan-li" target="_blank" rel="noopener"><span>https://sites.google.com/site/vpnjianjieyuqiyingyong/xian-kuang-miao-shu/vpn-yuan-li</span></a></p><ol>
+<li>
+<p><span>Tunneling</span><br>
+<span>穿隧技術其實很簡單，其原理就是將你原本的封包(Packet)視為資料(Data)再重新封裝(Encapsulation)，變成新的封包傳輸在公用網路中。</span><br>
+<img src="https://i.imgur.com/hX1sCml.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>Encryption &amp; Decryption</span><br>
+<span>VPN各個節點間是利用3DES或DES這種對稱式金鑰加密，以達到高傳輸效率。而VPN對於身分認證跟金鑰傳輸是利用非對稱加密的方式。</span></p>
+</li>
+<li>
+<p><span>Key management</span></p>
+</li>
+</ol><p><span>現行常用密鑰管理的技術又可分為SKIP(Simple Key management for IP)與ISAKMP/Oakley (又稱為IKE)兩種。</span></p><pre><code>SKIP: 利用Diffee-Hellman演算法則， 應用在網路上傳輸密鑰的技術
+IKE: Oakley定義如何分辨及確認密鑰，ISA KMP定義分配密鑰的方法。
+</code></pre><ol start="4">
+<li><span>Authentication</span></li>
+</ol><p><span>這個部分是為了確認跟你連接或你所連接VPN對方的身分是不是本人所建立起的機制，主要分為兩種：</span><br>
+<span>a. 使用者身分鑑別部分：使用者名稱跟密碼、IC卡鑑別‧‧‧等。</span><br>
+<span>b. 設備身分鑑別部分：CA的X.509憑證、分享金鑰。</span></p><h2 id="Proxy" data-id="Proxy"><a class="anchor hidden-xs" href="#Proxy" title="Proxy"><span class="octicon octicon-link"></span></a><span>Proxy</span></h2><p><span>Proxy是「代理」的意思。最早應是出現在網路的Firewall (防火牆)功能中。</span><br>
+<span>防火牆簡單的說是用來保護網路的安全，在你的內部網路與外部網路之間建立一道像牆般</span><br>
+<span>的保護，使內外有所區隔分別，而所有的進出、連線動作都必需要經過這道牆。因此對外</span><br>
+<span>面網路世界中的機器來說，它們只看的到這道牆，而看不到這牆內的機器，而牆內的機器</span><br>
+<span>也必需透過這道牆才能出去，因此這道做為牆的機器我們就可以稱它為Proxy Server</span></p><h3 id="用處" data-id="用處"><a class="anchor hidden-xs" href="#用處" title="用處"><span class="octicon octicon-link"></span></a><span>用處</span></h3><p><img src="https://i.imgur.com/PXUDq2F.png" alt="" loading="lazy"></p><h1 id="Wireshark1" data-id="Wireshark"><a class="anchor hidden-xs" href="#Wireshark1" title="Wireshark1"><span class="octicon octicon-link"></span></a><span>Wireshark</span></h1><p><span>Wireshark 是一種協定分析軟體，即“資料封包監聽”應用程式，適用於網路故障排除、分析、軟體和協定開發</span><br>
+<span>以及教學。當資料流透過網路來回傳輸時，監聽軟體可以“擷取”每個協定資料單元 (PDU)，並根據適當的 RFC 或其它規範對其內容進行解碼和分析。</span></p><h2 id="Wireshark-介面介紹" data-id="Wireshark-介面介紹"><a class="anchor hidden-xs" href="#Wireshark-介面介紹" title="Wireshark-介面介紹"><span class="octicon octicon-link"></span></a><span>Wireshark 介面介紹</span></h2><p><a href="https://kknews.cc/tech/nl2jpm5.html" target="_blank" rel="noopener"><span>wireshark抓包分析——TCP/IP協議</span></a><br>
+<strong><span>packet (封包)</span></strong></p><p><img src="https://i.imgur.com/DoKHWuo.png" alt="" loading="lazy"></p><ol>
+<li>
+<p><span>封包列表的面板中顯示編號、時間戳、源地址、目標地址、協議、長度，以及封包信息。</span></p>
+</li>
+<li>
+<p><span>封包詳細信息是用來查看協議中的每一個欄位。各行信息分別對應TCP/IP協議的不同層級</span><br>
+<span>如下圖</span><br>
+<img src="https://i.imgur.com/jEfodzv.png" alt="" loading="lazy"></p>
+</li>
+</ol><p><span>封包內容的byte數</span></p><p><span>每一層都有一個欄位指向上一層，表明上一層是什麼協議。這大概是因為發包的時候會在數據上依次加上應用層、傳輸層、網絡層、鏈路層的頭部，但是對方收到數據包後是從最底層（鏈路層）開始層層剝去頭部解包的，所以在每層上有一個欄位指向上層，表明上層的協議，對方就知道下一步該怎麼解包</span></p><h2 id="Ping-test" data-id="Ping-test"><a class="anchor hidden-xs" href="#Ping-test" title="Ping-test"><span class="octicon octicon-link"></span></a><span>Ping test</span></h2><p><span>ICMP Tool: ping和 trace</span><br>
+<span>該協定(ICMP)的</span><strong><span>最主要目的，是用來解析網路封包或是分析路由的情況</span></strong><span>，大多是透過所傳回來的錯誤訊息進行分析</span></p><ul>
+<li><span>ping </span><a href="http://google.com" target="_blank" rel="noopener"><span>google.com</span></a><br>
+<img src="https://i.imgur.com/pres2BH.png" alt="" loading="lazy"></li>
+</ul><p><span>google ip: </span><a href="http://172.217.24.14/" target="_blank" rel="noopener"><span>http://172.217.24.14/</span></a><br>
+<span>myself ip: 140.118.155.39</span></p><ul>
+<li><span>catch pcap on wireshark (filter: ICMP)</span><br>
+<img src="https://i.imgur.com/64mdeSr.png" alt="" loading="lazy"></li>
+</ul></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Data_Collect-ampamp-Wireshark" title="Data_Collect  &amp;&amp; Wireshark">Data_Collect  &amp;&amp; Wireshark</a><ul class="nav">
+<li class=""><a href="#Tcpdump" title="Tcpdump">Tcpdump</a></li>
+<li><a href="#Wireshark" title="Wireshark">Wireshark</a><ul class="nav">
+<li><a href="#Install-1804-up" title="Install (18.04 up)">Install (18.04 up)</a></li>
+<li><a href="#非root-使用-wireshark" title="非root 使用 wireshark">非root 使用 wireshark</a></li>
+<li><a href="#WireShark-介面-介紹" title="WireShark 介面 介紹">WireShark 介面 介紹</a></li>
+<li><a href="#Wireshark-原理" title="Wireshark 原理">Wireshark 原理</a></li>
+<li><a href="#PIP-Problem" title="PIP Problem">PIP Problem</a></li>
+<li><a href="#Following-Protocol-Streams" title="Following Protocol Streams">Following Protocol Streams</a></li>
+<li><a href="#Fllow-tcp-stream" title="Fllow tcp stream">Fllow tcp stream</a></li>
+<li><a href="#介紹-pcap" title="介紹 pcap">介紹 pcap</a></li>
+<li><a href="#把檔案從pcap中取出" title="把檔案從pcap中取出">把檔案從pcap中取出</a></li>
+</ul>
+</li>
+<li><a href="#分析-Https" title="分析 Https">分析 Https</a><ul class="nav">
+<li><a href="#SSH" title="SSH">SSH</a></li>
+</ul>
+</li>
+<li><a href="#資料蒐集" title="資料蒐集">資料蒐集</a><ul class="nav">
+<li><a href="#Libpcap-檔案格式" title="Libpcap 檔案格式">Libpcap 檔案格式</a></li>
+</ul>
+</li>
+<li><a href="#封包切割工具介紹" title="封包切割工具介紹">封包切割工具介紹</a><ul class="nav">
+<li><a href="#Cisco-joy" title="Cisco joy">Cisco joy</a></li>
+<li><a href="#PcapPlusPlus" title="PcapPlusPlus">PcapPlusPlus</a></li>
+</ul>
+</li>
+<li><a href="#VPN-Virtual-Private-Network" title="VPN  (Virtual Private Network)">VPN  (Virtual Private Network)</a><ul class="nav">
+<li><a href="#原理" title="原理">原理</a></li>
+</ul>
+</li>
+<li><a href="#Proxy" title="Proxy">Proxy</a><ul class="nav">
+<li><a href="#用處" title="用處">用處</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Wireshark1" title="Wireshark">Wireshark</a><ul class="nav">
+<li><a href="#Wireshark-介面介紹" title="Wireshark 介面介紹">Wireshark 介面介紹</a></li>
+<li><a href="#Ping-test" title="Ping test">Ping test</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Data_Collect-ampamp-Wireshark" title="Data_Collect  &amp;&amp; Wireshark">Data_Collect  &amp;&amp; Wireshark</a><ul class="nav">
+<li class=""><a href="#Tcpdump" title="Tcpdump">Tcpdump</a></li>
+<li class=""><a href="#Wireshark" title="Wireshark">Wireshark</a><ul class="nav">
+<li class=""><a href="#Install-1804-up" title="Install (18.04 up)">Install (18.04 up)</a></li>
+<li><a href="#非root-使用-wireshark" title="非root 使用 wireshark">非root 使用 wireshark</a></li>
+<li><a href="#WireShark-介面-介紹" title="WireShark 介面 介紹">WireShark 介面 介紹</a></li>
+<li><a href="#Wireshark-原理" title="Wireshark 原理">Wireshark 原理</a></li>
+<li><a href="#PIP-Problem" title="PIP Problem">PIP Problem</a></li>
+<li><a href="#Following-Protocol-Streams" title="Following Protocol Streams">Following Protocol Streams</a></li>
+<li><a href="#Fllow-tcp-stream" title="Fllow tcp stream">Fllow tcp stream</a></li>
+<li><a href="#介紹-pcap" title="介紹 pcap">介紹 pcap</a></li>
+<li><a href="#把檔案從pcap中取出" title="把檔案從pcap中取出">把檔案從pcap中取出</a></li>
+</ul>
+</li>
+<li><a href="#分析-Https" title="分析 Https">分析 Https</a><ul class="nav">
+<li><a href="#SSH" title="SSH">SSH</a></li>
+</ul>
+</li>
+<li><a href="#資料蒐集" title="資料蒐集">資料蒐集</a><ul class="nav">
+<li><a href="#Libpcap-檔案格式" title="Libpcap 檔案格式">Libpcap 檔案格式</a></li>
+</ul>
+</li>
+<li><a href="#封包切割工具介紹" title="封包切割工具介紹">封包切割工具介紹</a><ul class="nav">
+<li><a href="#Cisco-joy" title="Cisco joy">Cisco joy</a></li>
+<li><a href="#PcapPlusPlus" title="PcapPlusPlus">PcapPlusPlus</a></li>
+</ul>
+</li>
+<li><a href="#VPN-Virtual-Private-Network" title="VPN  (Virtual Private Network)">VPN  (Virtual Private Network)</a><ul class="nav">
+<li><a href="#原理" title="原理">原理</a></li>
+</ul>
+</li>
+<li><a href="#Proxy" title="Proxy">Proxy</a><ul class="nav">
+<li><a href="#用處" title="用處">用處</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Wireshark1" title="Wireshark">Wireshark</a><ul class="nav">
+<li><a href="#Wireshark-介面介紹" title="Wireshark 介面介紹">Wireshark 介面介紹</a></li>
+<li><a href="#Ping-test" title="Ping test">Ping test</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
