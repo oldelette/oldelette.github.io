@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Dataclass - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Python-language-Language" data-id="tags-Python-language-Language"><a class="anchor hidden-xs" href="#tags-Python-language-Language" title="tags-Python-language-Language"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Python-language</code><span>, </span><code>Language</code></h6><h1 id="Dataclass" data-id="Dataclass"><a class="anchor hidden-xs" href="#Dataclass" title="Dataclass"><span class="octicon octicon-link"></span></a><span>Dataclass</span></h1><p><a href="https://medium.com/mindorks/understanding-python-dataclasses-part-1-c3ccd4355c34" target="_blank" rel="noopener"><span>Understanding Python Dataclasses — Part 1</span></a></p><p><a href="https://medium.com/mindorks/understanding-python-dataclasses-part-2-660ecc11c9b8" target="_blank" rel="noopener"><span>Understanding Python Dataclasses — Part 2</span></a></p><p><a href="https://zhuanlan.zhihu.com/p/344014501" target="_blank" rel="noopener"><span>Python3.7的新特性：Dataclasses</span></a></p><h2 id="How-to-use" data-id="How-to-use"><a class="anchor hidden-xs" href="#How-to-use" title="How-to-use"><span class="octicon octicon-link"></span></a><span>How to use</span></h2><p><span>普通方法：</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Number</span>:
+    __init__(self, val):
+    self.val = val
+</div></div></code></pre><p><span>使用dataclass：</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Number</span>:
+    val:<span class="hljs-built_in">int</span> = <span class="hljs-number">1</span>
+</div></div></code></pre><p><span>在上面的對比中，我们可以發現在使用了dataclass裝飾器之後：</span></p><ol>
+<li><span>不需要先定义__init__再赋值给 self；</span></li>
+<li><span>可讀性更好，每一個 val後面都有數據類型的提示</span></li>
+<li><span>等號後面可以設定一個默認值</span></li>
+</ol><h3 id="object-representation" data-id="object-representation"><a class="anchor hidden-xs" href="#object-representation" title="object-representation"><span class="octicon octicon-link"></span></a><span>object representation</span></h3><h3 id="Frozon-Instances" data-id="Frozon-Instances"><a class="anchor hidden-xs" href="#Frozon-Instances" title="Frozon-Instances"><span class="octicon octicon-link"></span></a><span>Frozon Instances</span></h3><h2 id="Complex-Initialization" data-id="Complex-Initialization"><a class="anchor hidden-xs" href="#Complex-Initialization" title="Complex-Initialization"><span class="octicon octicon-link"></span></a><span>Complex Initialization</span></h2><p><span>Consider a scenario, where you want an attribute to be a list upon initialization. How do we make it happen?</span></p><p><span>One simple way would be do that in </span><strong><span>post_init</span></strong><span> method.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_random_marks</span>():
+    <span class="hljs-keyword">return</span> [random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)]
+
+<span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__post_init__</span>(<span class="hljs-params">self</span>):
+        self.marks = get_random_marks()
+
+a = Student()
+<span class="hljs-built_in">print</span>(a.marks)  <span class="hljs-comment">#[1, 6, 1, 1, 3]</span>
+</div></div></code></pre><h2 id="Dataclassesfield" data-id="Dataclassesfield"><a class="anchor hidden-xs" href="#Dataclassesfield" title="Dataclassesfield"><span class="octicon octicon-link"></span></a><span>Dataclasses.field</span></h2><div class="alert alert-success">
+<p><span>python dataclasses.field (*, default=MISSING, default_factory=MISSING, repr=True, hash=None, init=True, compare=True, metadata=None)</span></p>
+</div><p><span>如果不想使用 __post_init__ 做變數的初始化，可以使用 dataclasses.field</span></p><p><span>Python coredevs have a solution for us.</span><br>
+<span>It is possible to customize behaviour of dataclass fields and their impact on the dataclass using dataclasses.field</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span>:
+    marks: <span class="hljs-type">List</span> = field(default_factory=get_random_marks)
+</div></div></code></pre><p><strong><span>dataclasses.field</span></strong><span> accepts a </span><strong><span>default_factory</span></strong><span> argument which can be used to initialize the field if a value is not passed at the time of creation of the object.</span></p><p><span>default_factory should be a callable( generally a function ) which accepts no arguments.</span></p><h3 id="一-展示-__repr__" data-id="一-展示-__repr__"><a class="anchor hidden-xs" href="#一-展示-__repr__" title="一-展示-__repr__"><span class="octicon octicon-link"></span></a><span>(一) 展示 __repr__</span></h3><p><span>對象展示（object representation)</span></p><p><span>如果為 True（默認值），則該字串包含在生成的 __repr__() 方法返回的字符串中。</span></p><p><span>The auto-generated __repr__ method uses all fields for representation.</span><br>
+<span>Well, this is not an ideal situation in a lot of cases. Specially, when your dataclass has a lot of fields.</span><br>
+<span>A single object representation would get pretty huge, and a debugging nightmare.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-meta">@dataclass(<span class="hljs-params">order=<span class="hljs-literal">True</span></span>)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span>:
+	name: <span class="hljs-built_in">str</span> = field(compare=<span class="hljs-literal">False</span>)
+	age: <span class="hljs-built_in">int</span> = field(<span class="hljs-built_in">repr</span>=<span class="hljs-literal">False</span>) 
+    <span class="hljs-comment"># This tells the dataclass to not show age in the representation</span>
+	height:<span class="hljs-built_in">float</span> = field(<span class="hljs-built_in">repr</span>=<span class="hljs-literal">False</span>)
+	weight:<span class="hljs-built_in">float</span> = field(<span class="hljs-built_in">repr</span>=<span class="hljs-literal">False</span>)
+	city:<span class="hljs-built_in">str</span> = field(<span class="hljs-built_in">repr</span>=<span class="hljs-literal">False</span>, compare=<span class="hljs-literal">False</span>)
+    <span class="hljs-comment">#Do not use city for representation and comparison</span>
+	country:<span class="hljs-built_in">str</span> = field(<span class="hljs-built_in">repr</span>=<span class="hljs-literal">False</span>, compare=<span class="hljs-literal">False</span>)
+
+a = User(<span class="hljs-string">"John Doe"</span>, <span class="hljs-number">24</span>, <span class="hljs-number">1.7</span>, <span class="hljs-number">70</span>, <span class="hljs-string">"Massachusetts"</span>, <span class="hljs-string">"United States of America"</span>)
+b = User(<span class="hljs-string">"Adam"</span>, <span class="hljs-number">24</span>, <span class="hljs-number">1.6</span>, <span class="hljs-number">65</span>, <span class="hljs-string">"San Jose"</span>, <span class="hljs-string">"United States of America"</span>)
+</div></div></code></pre><p><span>output is:</span></p><pre><code>User(name='John Doe')
+User(name='Adam')
+</code></pre><h3 id="二-數據比較" data-id="二-數據比較"><a class="anchor hidden-xs" href="#二-數據比較" title="二-數據比較"><span class="octicon octicon-link"></span></a><span>(二) 數據比較</span></h3><p><span>通常，數據對象是有相互之間比較大小的需求的。</span><br>
+<span>例如，對於 a 和 b 兩個數據對象，可能存在＞、&gt;=、==、&lt;=、&lt; 等等的比較關係。</span></p><p><span>當我們要比较 == 和 &lt; 的關係時：</span></p><div class="alert alert-warning">
+<p><span>在使用dataclass 時，我们只需要加上 </span><strong><span>argument “order=True”</span></strong><span>，他會自動幫我們添加__eq__ and __lt__ 方法。</span></p>
+</div><p><span>普通方法：</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Number</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params"> self, val = <span class="hljs-number">0</span></span>):
+       self.val = val
+ 
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__eq__</span>(<span class="hljs-params">self, other</span>):
+        <span class="hljs-keyword">return</span> self.val == other.val
+ 
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__lt__</span>(<span class="hljs-params">self, other</span>):
+        <span class="hljs-keyword">return</span> self.val &lt; other.val
+</div></div></code></pre><p><span>使用dataclass：</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-meta">@dataclass(<span class="hljs-params">order = <span class="hljs-literal">True</span></span>)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Number</span>:
+    val: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>
+</div></div></code></pre><h3 id="三-初始化-__init__" data-id="三-初始化-__init__"><a class="anchor hidden-xs" href="#三-初始化-__init__" title="三-初始化-__init__"><span class="octicon octicon-link"></span></a><span>(三) 初始化 __init__</span></h3><p><span>init 參數如果設置為 False，表示不幫這個參數 field 做初始化操作</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span>:
+  email: <span class="hljs-built_in">str</span> = field(<span class="hljs-built_in">repr</span> = <span class="hljs-literal">True</span>)
+  verified: <span class="hljs-built_in">bool</span> = field(<span class="hljs-built_in">repr</span> = <span class="hljs-literal">False</span>, init = <span class="hljs-literal">False</span>, default = <span class="hljs-literal">False</span>)
+</div></div></code></pre><h3 id="四-初始化後的處理-__post_init__" data-id="四-初始化後的處理-__post_init__"><a class="anchor hidden-xs" href="#四-初始化後的處理-__post_init__" title="四-初始化後的處理-__post_init__"><span class="octicon octicon-link"></span></a><span>(四) 初始化後的處理 __post_init__</span></h3><p><span>我们可以定義一個 __post_init__ 方法，這個方法會在 return前自動被 __init__方法使用。</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass
+
+<span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FloatNumber</span>:
+    val: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.0</span> 
+ 
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__post_init__</span>(<span class="hljs-params">self</span>):
+        self.decimal, self.integer = math.modf(self.val)
+
+a = FloatNumber(<span class="hljs-number">2.2</span>)
+<span class="hljs-built_in">print</span>(a, a.val, a.decimal)
+<span class="hljs-meta">&gt;&gt;&gt; </span>FloatNumber(val=<span class="hljs-number">2.2</span>) <span class="hljs-number">2.2</span> <span class="hljs-number">0.20000000000000018</span>
+</div></div></code></pre><h3 id="五-Frozon-Instances" data-id="五-Frozon-Instances"><a class="anchor hidden-xs" href="#五-Frozon-Instances" title="五-Frozon-Instances"><span class="octicon octicon-link"></span></a><span>(五) Frozon Instances</span></h3><p><span>Frozen Instances是一種特殊的objects，這種對象在被初始化之後就不能再修改了。</span><br>
+<span>如果嘗試去做修改，會噴出以下 error。</span></p><div class="alert alert-info">
+<p><span>dataclasses.FrozenInstanceError: cannot assign to field ‘val’</span></p>
+</div><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass
+
+<span class="hljs-meta">@dataclass(<span class="hljs-params">frozen = <span class="hljs-literal">True</span></span>)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FloatNumber</span>:
+    val: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.0</span>
+                                  
+a = FloatNumber(<span class="hljs-number">2.2</span>)
+a.val = <span class="hljs-number">5</span> &gt;&gt;&gt; error
+<span class="hljs-built_in">print</span>(a.val)
+</div></div></code></pre><p><span>所以，用frozen instance很適合用來儲存常数或者settings。</span></p><h2 id="nested_dataclass" data-id="nested_dataclass"><a class="anchor hidden-xs" href="#nested_dataclass" title="nested_dataclass"><span class="octicon octicon-link"></span></a><span>nested_dataclass</span></h2><p><a href="https://stackoverflow.com/questions/51564841/creating-nested-dataclass-objects-in-python" target="_blank" rel="noopener"><span>https://stackoverflow.com/questions/51564841/creating-nested-dataclass-objects-in-python</span></a></p><p><a href="https://stackify.dev/639980-creating-nested-dataclass-objects-in-python" target="_blank" rel="noopener"><span>Creating nested dataclass objects in Python</span></a></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass, is_data<span class="hljs-keyword">class</span>
+
+<span class="hljs-title class_">def</span> nested_dataclass(*args, **kwargs):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapper</span>(<span class="hljs-params">cls</span>):
+        cls = dataclass(cls, **kwargs)
+        original_init = cls.__init__
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, *args, **kwargs</span>):
+            <span class="hljs-keyword">for</span> name, value <span class="hljs-keyword">in</span> kwargs.items():
+                field_type = cls.__annotations__.get(name, <span class="hljs-literal">None</span>)
+                <span class="hljs-keyword">if</span> is_dataclass(field_type) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(value, <span class="hljs-built_in">dict</span>):
+                     new_obj = field_type(**value)
+                     kwargs[name] = new_obj
+            original_init(self, *args, **kwargs)
+        cls.__init__ = __init__
+        <span class="hljs-keyword">return</span> cls
+    <span class="hljs-keyword">return</span> wrapper(args[<span class="hljs-number">0</span>]) <span class="hljs-keyword">if</span> args <span class="hljs-keyword">else</span> wrapper
+</div></div></code></pre><h2 id="class-variable-in-Data-Class" data-id="class-variable-in-Data-Class"><a class="anchor hidden-xs" href="#class-variable-in-Data-Class" title="class-variable-in-Data-Class"><span class="octicon octicon-link"></span></a><span>class variable in Data Class</span></h2><p><a href="https://devbugfix.com/p/738041" target="_blank" rel="noopener"><span>Ref:</span></a><span> To create a class variable, annotate the field as a typing.ClassVar or not at all.</span></p><p><span>要建立 class 變數，那就不要定義類別或定義 ClassVar 類別</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> data<span class="hljs-keyword">class</span>
+<span class="hljs-title class_">from</span> typing <span class="hljs-keyword">import</span> ClassVar
+
+<span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>:
+    ivar: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.5</span>
+    cvar: ClassVar[<span class="hljs-built_in">float</span>] = <span class="hljs-number">0.5</span>
+    nvar = <span class="hljs-number">0.5</span>
+
+foo = Foo()
+Foo.ivar, Foo.cvar, Foo.nvar = <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
+<span class="hljs-built_in">print</span>(Foo().ivar, Foo().cvar, Foo().nvar)   <span class="hljs-comment"># 0.5 1 1</span>
+<span class="hljs-built_in">print</span>(foo.ivar, foo.cvar, foo.nvar)         <span class="hljs-comment"># 0.5 1 1</span>
+</div></div></code></pre><h1 id="Class" data-id="Class"><a class="anchor hidden-xs" href="#Class" title="Class"><span class="octicon octicon-link"></span></a><span>Class</span></h1><p><span>Class 裡面定義之變數、函式，都稱做這個類別的屬性(attribute)，封裝在這個 Class 裡面。</span></p><pre><code>Class Test: #定義 Test類別
+    x=3  #定義變數
+    def say():  #定義函式
+        print("Hello")
+</code></pre><div class="alert alert-warning">
+<p><span>By the way, I use the word attribute for any name following a dot — for example, in the expression z.real, real is an attribute of the object z</span></p>
+</div><h2 id="Attribute" data-id="Attribute"><a class="anchor hidden-xs" href="#Attribute" title="Attribute"><span class="octicon octicon-link"></span></a><span>Attribute</span></h2><p><a href="https://wreadit.com/@wwwlearncodewithmikecom/post/51976" target="_blank" rel="noopener"><span>[Python物件導向] 3個必須瞭解的Python屬性觀念</span></a></p><ul>
+<li><span>實體屬性 (Instance Attribute)</span></li>
+<li><span>類別屬性 (Class Attribute)</span></li>
+<li><span>屬性 (Property)</span></li>
+</ul><hr><p><a href="https://itcosmos.co/python-oop-class/" target="_blank" rel="noopener"><span>Instance variables 物件變數 V.S. Class variables 類別變數</span></a></p><p><strong><span>Instance variables 物件變數</span></strong><br>
+<span>簡單地說，instance variables 物件變數就是在物件層級的變數，也就是初始實體化物件的時候所賦予它的變數，當物件還存在時，你可以再賦予它另外的變數，也可以刪除它的變數，這就是所謂的 instance variables 物件變數。</span></p><p><span>物件變數還有另一個特點，那就是每個物件的 instance variables 是不相關聯的，也就是互相獨立。</span></p><p><strong><span>Class variables 類別變數</span></strong><br>
+<span>顧名思義，class variables 類別變數是指變數是在 class 類別層級，它是在 class 類別的結構中，要存取 class variables 的話，則要從 class name 類別名稱來著手。</span></p><p><span>Class variables 類別變數的主要用途是當作 meta information (原生訊息) 或是做為物件間的共同資訊。</span></p><hr><h3 id="Instance-Attribute" data-id="Instance-Attribute"><a class="anchor hidden-xs" href="#Instance-Attribute" title="Instance-Attribute"><span class="octicon octicon-link"></span></a><span>Instance Attribute</span></h3><p><span>需伴隨物件(Object)的生成來建立，也就是透過點(.)的語法或在建構式(Constructor)中所生成的屬性(Attribute)。</span><br>
+<span>各物件(Object)的實體屬性(Instance Attribute)各自獨立，修改某一個物件(Object)的實體屬性(Instance Attribute)值時，不會影響到其他物件。</span></p><p><span>透過點(.)的方式來建立物件(Object)的屬性(Attribute)，mazda和toyota物件的color與seat為 </span><strong><span>實體屬性(Instance Attribute)，互相獨立且有各自的屬性值。</span></strong></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Cars</span>:
+    <span class="hljs-keyword">pass</span>
+
+
+mazda = Cars()
+mazda.color = <span class="hljs-string">"blue"</span>
+mazda.seat = <span class="hljs-number">4</span>
+
+toyota = Cars()
+toyota.color = <span class="hljs-string">"red"</span>
+toyota.seat = <span class="hljs-number">6</span>
+</div></div></code></pre><p><span>透過建構式(Constructor)所建立的屬性(Attribute)</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Cars</span>:
+    door = <span class="hljs-number">4</span>
+    <span class="hljs-comment"># 建構式</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, color, seat</span>):
+        self.color = color
+        self.seat = seat
+        self.weight = <span class="hljs-number">140</span>
+
+
+mazda = Cars(<span class="hljs-string">"blue"</span>, <span class="hljs-number">4</span>)
+mazda.color = <span class="hljs-string">"yellow"</span>
+mazda.seat = <span class="hljs-number">8</span>
+mazda.weight = <span class="hljs-number">200</span>
+</div></div></code></pre><p><span>color、seat和weight為實體屬性(Instance Attribute)。</span></p><h3 id="Class-Attribute" data-id="Class-Attribute"><a class="anchor hidden-xs" href="#Class-Attribute" title="Class-Attribute"><span class="octicon octicon-link"></span></a><span>Class Attribute</span></h3><p><span>定義在類別層級的屬性(Attribute)，也就是在建構式(Constructor)之外的屬性(Attribute)。</span><br>
+<span>可以不需要建立物件(Object)，直接透過類別名稱存取。</span></p><p><span>各物件共享類別屬性(Class Attribute)值，也就是說當我們修改類別屬性(Class Attribute)值時，每一個透過此類別(Class)所建立的物件(Object)，都會受到影響。</span></p><p><span>看到下圖 door屬性(Attribute)定義在建構式(Constructor)之外，所以為類別屬性(Class Attribute)</span></p><p><img src="https://i.imgur.com/MymahD0.png" alt="" loading="lazy"></p><h3 id="Property" data-id="Property"><a class="anchor hidden-xs" href="#Property" title="Property"><span class="octicon octicon-link"></span></a><span>Property</span></h3><p><span>允許我們設定及取得屬性(Attribute)值的物件(Object)，當我們想要對類別(Class)中的屬性(Attribute)有更多的控制時，就會使用Python的屬性(Property)來達成</span></p><p><a href="https://www.youtube.com/watch?v=jCzT9XFZ5bw&amp;ab_channel=CoreySchafer" target="_blank" rel="noopener"><span>影片</span></a><span>: Python OOP Tutorial 6: Property Decorators - Getters, Setters, and Deleters</span></p><p><a href="https://www.maxlist.xyz/2019/12/25/python-property/" target="_blank" rel="noopener"><span>應用場景範例</span></a><span>: 設置密碼可用</span></p><h4 id="property-的兩種特性" data-id="property-的兩種特性"><a class="anchor hidden-xs" href="#property-的兩種特性" title="property-的兩種特性"><span class="octicon octicon-link"></span></a><span>property 的兩種特性</span></h4><p><span>Property 特性一 </span><a href="https://www.maxlist.xyz/2019/12/25/python-property/" target="_blank" rel="noopener"><span>Ref</span></a><span>：</span></p><div class="alert alert-success">
+<p><span>特性一：將 class (類) 的方法轉換為 只能讀取的屬性</span></p>
+</div><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Bank_acount</span>:
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">password</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'密碼:123'</span>
+    
+gavin = Bank_acount()
+<span class="hljs-built_in">print</span>(gavin.password)
+<span class="hljs-meta">&gt;&gt;&gt; </span>密碼:<span class="hljs-number">123</span>
+gavin.password = <span class="hljs-string">'密碼:456'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>AttributeError: can<span class="hljs-string">'t set attribute
+</span></div></div></code></pre><p><span>首先我們先將 class 實例化 gavin = Bank_acount()，當我們 print(gavin.password) 時，可以獲得 密碼:123，當我想對 gavin.password 修改時會發現程式出現了 AttributeError: can’t set attribute 的錯誤，這就是 property 只能讀取的屬性特性</span></p><p><span>Property 特性二：</span></p><div class="alert alert-success">
+<p><span>特性二：重新實現一個屬性的 setter、getter 和 deleter 方法</span></p>
+</div><p><span>以下是 @property 的 setter、getter 和 deleter 的使用範例：</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Bank_acount</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
+        self._password = <span class="hljs-string">'預設密碼 0000'</span>
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">password</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self._password
+
+<span class="hljs-meta">    @password.setter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">password</span>(<span class="hljs-params">self, value</span>):
+        self._password = value
+
+<span class="hljs-meta">    @password.deleter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">password</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">del</span> self._password
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">'del complite'</span>)
+</div></div></code></pre><hr><h4 id="Other-Example" data-id="Other-Example"><a class="anchor hidden-xs" href="#Other-Example" title="Other-Example"><span class="octicon octicon-link"></span></a><span>Other Example</span></h4><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span>:
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,first,last</span>):
+        self.first = first
+        self.last = last
+        self.email = first + <span class="hljs-string">'.'</span> + last + <span class="hljs-string">'@email.com'</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fullname</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'{} {}'</span>.<span class="hljs-built_in">format</span>(self.first,self.last)
+
+emp_1 = Employee(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'Lee'</span>)                                                                      
+emp_1.first = <span class="hljs-string">"test"</span>
+
+<span class="hljs-built_in">print</span>(emp_1.first)  <span class="hljs-comment"># test</span>
+<span class="hljs-built_in">print</span>(emp_1.email)  <span class="hljs-comment"># Gavin.Lee@email.com</span>
+<span class="hljs-built_in">print</span>(emp_1.fullname()) <span class="hljs-comment"># test Lee</span>
+</div></div></code></pre><p><span>Q1:  改變 emp1.first = ‘test’ 但是 self.email 沒有變更到新名字。</span></p><p><span>A1: 特別寫出來，跟 fullname function 類似概念。</span></p><div class="alert alert-info">
+<pre><code>def email(self):
+    return '{}.{}email.com'.format(self.first,self.last)
+</code></pre>
+</div><p><span>但是 呼叫的時候必須用method 方法 -&gt; print(emp_1.email())</span><br>
+<span>如果想要繼續像之前 Attribute 一樣呼叫的話，就要用 </span><strong><span>Property Decorators</span></strong></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span>:
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,first,last</span>):
+        self.first = first
+        self.last = last
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">email</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'{}.{}@email.com'</span>.<span class="hljs-built_in">format</span>(self.first,self.last)
+<span class="hljs-meta">    @property                                                                                        </span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fullname</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'{} {}'</span>.<span class="hljs-built_in">format</span>(self.first,self.last)
+
+emp_1 = Employee(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'Lee'</span>)
+emp_1.first = <span class="hljs-string">"test"</span>
+
+<span class="hljs-built_in">print</span>(emp_1.first)
+<span class="hljs-built_in">print</span>(emp_1.email)
+<span class="hljs-built_in">print</span>(emp_1.fullname)
+</div></div></code></pre><hr><p><span>Q2: 想要直接指定一個 fullname string， 但是會顯示 </span><strong><span>AttributeError: can’t set attribute</span></strong></p><p><span>A2: Setter</span><br>
+<span>當我們指定 fullname 時， python 會先進入 fullname.setter</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span>:
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,first,last</span>):
+        self.first = first
+        self.last = last
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">email</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'{}.{}@email.com'</span>.<span class="hljs-built_in">format</span>(self.first,self.last)
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fullname</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'{} {}'</span>.<span class="hljs-built_in">format</span>(self.first,self.last)
+
+<span class="hljs-meta">    @fullname.setter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fullname</span>(<span class="hljs-params">self,name</span>):
+        first, last = name.split(<span class="hljs-string">' '</span>)
+        self.first = first
+        self.last = last
+
+<span class="hljs-meta">    @fullname.deleter</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fullname</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">'Delete Name!'</span>)
+        self.first = <span class="hljs-literal">None</span>
+        self.last = <span class="hljs-literal">None</span>
+
+emp_1 = Employee(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'Lee'</span>)
+emp_1.first = <span class="hljs-string">"test"</span>
+emp_1.fullname = <span class="hljs-string">"smith lee"</span>
+
+<span class="hljs-built_in">print</span>(emp_1.first)
+<span class="hljs-built_in">print</span>(emp_1.email)
+<span class="hljs-built_in">print</span>(emp_1.fullname)
+
+<span class="hljs-keyword">del</span> emp_1.fullname
+</div></div></code></pre><ul>
+<li><ins><span>del 用法</span></ins><br>
+<a href="https://www.delftstack.com/zh-tw/howto/python/use-of-del-keyword-in-python/" target="_blank" rel="noopener"><span>在 Python 中使用 del 關鍵字</span></a><br>
+<span>del 語句是用來刪除物件的。 由於 Python 物件導向的特性，所有能容納資料的東西都是一個物件。所以，del 語句可以用來刪除 Variable、List、Dictionary 等等…</span></li>
+</ul><hr><h2 id="Method" data-id="Method"><a class="anchor hidden-xs" href="#Method" title="Method"><span class="octicon octicon-link"></span></a><span>Method</span></h2><p><a href="https://www.learncodewithmike.com/2020/01/python-method.html" target="_blank" rel="noopener"><span>解析 Python 物件導向設計的3種類型方法 (Instance,Class,Static Method)</span></a><br>
+<a href="https://www.youtube.com/watch?v=rq8cL2XMM5M&amp;ab_channel=CoreySchafer" target="_blank" rel="noopener"><span>影片: Python OOP Tutorial 3: classmethods and staticmethods</span></a></p><ul>
+<li><span>Instance Method (實體方法)</span></li>
+<li><span>Class Method (類別方法)</span></li>
+<li><span>Static Method (靜態方法)</span></li>
+</ul><h3 id="Instance-Method" data-id="Instance-Method"><a class="anchor hidden-xs" href="#Instance-Method" title="Instance-Method"><span class="octicon octicon-link"></span></a><span>Instance Method</span></h3><p><span>Python 類別(Class)中沒有加任何裝飾詞(Decorator)的方法(Method)，至少要有一個self參數，於方法 (Method)被呼叫時指向物件 (Object)</span></p><ul>
+<li><span>透過 class 呼叫 Instance method 時，會使得 python 編譯器無法將 self 參數指向物件 (Object)，而發生 TypeError。</span></li>
+<li><span>Instance Method 要利用 </span><strong><span>self.__class__屬性(Attribute)</span></strong><span> 來改變door類別屬性(Class Attribute)。</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Cars</span>:
+    <span class="hljs-comment"># 建構式</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
+        self.color = <span class="hljs-string">"blue"</span>
+    <span class="hljs-comment"># 實體方法(Instance Method)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">drive</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"<span class="hljs-subst">{self}</span> is <span class="hljs-subst">{self.color}</span>."</span>)
+Cars.drive()
+</div></div></code></pre><pre><code>TypeError: drive() missing 1 required positional argument: 'self'
+</code></pre><h3 id="Class-Method" data-id="Class-Method"><a class="anchor hidden-xs" href="#Class-Method" title="Class-Method"><span class="octicon octicon-link"></span></a><span>Class Method</span></h3><p><span>Python類別(Class)中有 </span><strong><span>@classmethod裝飾詞(Decorator)的方法(Method)</span></strong><span>，被呼叫時，相較於實體方法(Instance Method)的self參數指向物件(Object)，類別方法(Class Method)為cls參數，指向類別(Class)</span></p><div class="alert alert-info">
+<p><span>類別方法 Class Method 又稱為工廠方法 Factory Method</span></p>
+</div><ul>
+<li><span>當 Mehod 被呼叫時， Python 編譯器會傳入 Class，使得 cls 參數指向該類別，接著透過 cls 參數來存取類別屬性 Attribute。</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># 汽車類別</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Cars</span>:
+    door = <span class="hljs-number">4</span>  <span class="hljs-comment"># 類別屬性</span>
+    <span class="hljs-comment"># 類別方法(Class Method)</span>
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_door</span>(<span class="hljs-params">cls</span>):
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"<span class="hljs-subst">{cls}</span> has <span class="hljs-subst">{cls.door}</span> doors."</span>)
+mazda = Cars()
+mazda.open_door()  <span class="hljs-comment">#透過物件呼叫</span>
+Cars.open_door()  <span class="hljs-comment">#透過類別呼叫</span>
+</div></div></code></pre><h3 id="Static-Method" data-id="Static-Method"><a class="anchor hidden-xs" href="#Static-Method" title="Static-Method"><span class="octicon octicon-link"></span></a><span>Static Method</span></h3><div class="alert alert-success">
+<p><span>Static method 無法存取 clss or object 的狀態(除非使用全域變數)</span><br>
+<span>有效使用 class mehod / static method，可以讓我們清楚表達類別架構內可修改以及不可修改的邊界。</span></p>
+</div><p><span>Python類別中有 </span><strong><span>@staticmethod裝飾詞(Decorator)的方法(Method)</span></strong><span>，可以接受任意的參數，也因為它沒有self及cls參數，所以靜態方法(Static Method)無法改變類別(Class)及物件(Object)的狀態。</span></p><ul>
+<li><span>來源端不論透過 類別(Class)或 物件(Object)皆可呼叫，Python編譯器於執行期間(Runtime)不會傳入 self 及 cls 參數至靜態方法(Static Method)。</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># 汽車類別</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Cars</span>:
+    <span class="hljs-comment"># 速率靜態方法</span>
+<span class="hljs-meta">    @staticmethod</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">speed_rate</span>(<span class="hljs-params">distance, minute</span>):
+        <span class="hljs-keyword">return</span> distance / minute
+<span class="hljs-comment"># 透過物件呼叫</span>
+van = Cars()
+van_rate = van.speed_rate(<span class="hljs-number">10000</span>, <span class="hljs-number">20</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"van rate: "</span>, van_rate)
+<span class="hljs-comment"># 透過類別呼叫</span>
+sports_car_rate = Cars.speed_rate(<span class="hljs-number">20000</span>, <span class="hljs-number">20</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"sports car rate: "</span>, sports_car_rate)
+</div></div></code></pre><h2 id="Class-Memory-Address" data-id="Class-Memory-Address"><a class="anchor hidden-xs" href="#Class-Memory-Address" title="Class-Memory-Address"><span class="octicon octicon-link"></span></a><span>Class Memory Address</span></h2><p><a href="https://www.itread01.com/content/1546705645.html" target="_blank" rel="noopener"><span>Python變數的理解與記憶體管理</span></a></p><ul>
+<li><span>Function Object</span></li>
+<li><span>Variable</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>():
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'bar'</span>
+<span class="hljs-built_in">print</span>(foo)  <span class="hljs-comment"># &lt;function foo at 0x7fc9c90bd1f0&gt;</span>
+</div></div></code></pre><p><span>&lt;function foo at 0x7fc9c90bd1f0&gt;</span><br>
+<span>表示 foo 是一個變數名，並且指向一個函式物件 (object)</span></p><hr><h2 id="Class-特殊-function" data-id="Class-特殊-function"><a class="anchor hidden-xs" href="#Class-特殊-function" title="Class-特殊-function"><span class="octicon octicon-link"></span></a><span>Class 特殊 function</span></h2><p><span>可用dir(ClassName)或dir(Instance)查看class的value以及所支援的所有method</span></p><div class="alert alert-info">
+<p><span>print(dir(class_name))</span><br>
+<span>[‘__class__’, ‘__delattr__’, ‘__dict__’, ‘__dir__’, ‘__doc__’,</span><br>
+<span>‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__gt__’,</span><br>
+<span>‘__hash__’, ‘__init__’, ‘__le__’, ‘__lt__’, ‘__module__’, ‘__ne__’,</span><br>
+<span>‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__setattr__’,</span><br>
+<span>‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘__weakref__’,   ‘deposit’, ‘withdraw’]</span></p>
+</div><h3 id="__str__" data-id="__str__"><a class="anchor hidden-xs" href="#__str__" title="__str__"><span class="octicon octicon-link"></span></a><span>__str__</span></h3><p><span>透過 __str__( )函式可以印出clas 的屬性訊息，方便我们測試程式。</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">aa</span>(<span class="hljs-title class_ inherited__">object</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,name,age</span>):
+        self.name = name
+        self.age = age 
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self.name + <span class="hljs-built_in">str</span>(self.age)
+    
+tom = aa(<span class="hljs-string">'John'</span>,<span class="hljs-number">18</span>)                       
+<span class="hljs-built_in">print</span>(tom) <span class="hljs-comment">#John18</span>
+<span class="hljs-built_in">print</span>(tom.name) <span class="hljs-comment">#John</span>
+</div></div></code></pre><h3 id="__call__" data-id="__call__"><a class="anchor hidden-xs" href="#__call__" title="__call__"><span class="octicon octicon-link"></span></a><span>__call__</span></h3><p><span>__call__()的作用是使 Class Instance 能透像函式一樣被使用</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>(<span class="hljs-title class_ inherited__">object</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, gender</span>):
+        self.name = name
+        self.gender = gender
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self, friend</span>):
+        <span class="hljs-built_in">print</span> (<span class="hljs-string">'My name is %s...'</span> % self.name)
+        <span class="hljs-built_in">print</span> (<span class="hljs-string">'My friend is %s...'</span> % friend)
+
+p = Person(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'male'</span>)
+p(<span class="hljs-string">'Tim'</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>My name <span class="hljs-keyword">is</span> Gavin...
+<span class="hljs-meta">&gt;&gt;&gt; </span>My friend <span class="hljs-keyword">is</span> Tim...
+</div></div></code></pre><h3 id="__eq__" data-id="__eq__"><a class="anchor hidden-xs" href="#__eq__" title="__eq__"><span class="octicon octicon-link"></span></a><span>__eq__</span></h3><p><a href="https://www.cnblogs.com/geeksongs/p/13053987.html" target="_blank" rel="noopener"><span>Ref</span></a></p><p><span>在我們定義一個類別的時候，常常想對一個class 所實力化出来的两個對象進行判斷這兩個對象是否是完全相同。</span><br>
+<span>一般情况下，我们任为如果同一個類實例化出來的兩個對象的属性全都是一樣的話，那麼這兩個對象就是相同的。</span><br>
+<span>但是如果我們直接用 "==” 來判斷這兩個對象是否相等，那麼结果一定是不相等的，因為這兩個對象的地址一定不同，他們在memort 中的不同區域。</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>(<span class="hljs-title class_ inherited__">object</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, gender</span>):
+        self.name = name
+        self.gender = gender
+         
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__eq__</span>(<span class="hljs-params">self, other</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(other)==<span class="hljs-built_in">type</span>(self) <span class="hljs-keyword">and</span> other.name==self.name <span class="hljs-keyword">and</span> other.gender==self.gender:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self.name + <span class="hljs-string">' '</span> + self.gender
+
+p = Person(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'male'</span>)
+p2 = Person(<span class="hljs-string">'Gavin'</span>,<span class="hljs-string">'male'</span>)
+<span class="hljs-built_in">print</span>(p.__eq__(p2))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-literal">True</span>
+</div></div></code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Dataclass" title="Dataclass">Dataclass</a><ul class="nav">
+<li><a href="#How-to-use" title="How to use">How to use</a><ul class="nav">
+<li><a href="#object-representation" title="object representation">object representation</a></li>
+<li><a href="#Frozon-Instances" title="Frozon Instances">Frozon Instances</a></li>
+</ul>
+</li>
+<li><a href="#Complex-Initialization" title="Complex Initialization">Complex Initialization</a></li>
+<li class=""><a href="#Dataclassesfield" title="Dataclasses.field">Dataclasses.field</a><ul class="nav">
+<li><a href="#一-展示-__repr__" title="(一) 展示 __repr__">(一) 展示 __repr__</a></li>
+<li><a href="#二-數據比較" title="(二) 數據比較">(二) 數據比較</a></li>
+<li><a href="#三-初始化-__init__" title="(三) 初始化 __init__">(三) 初始化 __init__</a></li>
+<li class=""><a href="#四-初始化後的處理-__post_init__" title="(四) 初始化後的處理 __post_init__">(四) 初始化後的處理 __post_init__</a></li>
+<li><a href="#五-Frozon-Instances" title="(五) Frozon Instances">(五) Frozon Instances</a></li>
+</ul>
+</li>
+<li><a href="#nested_dataclass" title="nested_dataclass">nested_dataclass</a></li>
+<li><a href="#class-variable-in-Data-Class" title="class variable in Data Class">class variable in Data Class</a></li>
+</ul>
+</li>
+<li><a href="#Class" title="Class">Class</a><ul class="nav">
+<li><a href="#Attribute" title="Attribute">Attribute</a><ul class="nav">
+<li><a href="#Instance-Attribute" title="Instance Attribute">Instance Attribute</a></li>
+<li><a href="#Class-Attribute" title="Class Attribute">Class Attribute</a></li>
+<li><a href="#Property" title="Property">Property</a></li>
+</ul>
+</li>
+<li><a href="#Method" title="Method">Method</a><ul class="nav">
+<li><a href="#Instance-Method" title="Instance Method">Instance Method</a></li>
+<li><a href="#Class-Method" title="Class Method">Class Method</a></li>
+<li><a href="#Static-Method" title="Static Method">Static Method</a></li>
+</ul>
+</li>
+<li><a href="#Class-Memory-Address" title="Class Memory Address">Class Memory Address</a></li>
+<li><a href="#Class-特殊-function" title="Class 特殊 function">Class 特殊 function</a><ul class="nav">
+<li><a href="#__str__" title="__str__">__str__</a></li>
+<li><a href="#__call__" title="__call__">__call__</a></li>
+<li><a href="#__eq__" title="__eq__">__eq__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Dataclass" title="Dataclass">Dataclass</a><ul class="nav">
+<li><a href="#How-to-use" title="How to use">How to use</a><ul class="nav">
+<li><a href="#object-representation" title="object representation">object representation</a></li>
+<li><a href="#Frozon-Instances" title="Frozon Instances">Frozon Instances</a></li>
+</ul>
+</li>
+<li><a href="#Complex-Initialization" title="Complex Initialization">Complex Initialization</a></li>
+<li class=""><a href="#Dataclassesfield" title="Dataclasses.field">Dataclasses.field</a><ul class="nav">
+<li><a href="#一-展示-__repr__" title="(一) 展示 __repr__">(一) 展示 __repr__</a></li>
+<li><a href="#二-數據比較" title="(二) 數據比較">(二) 數據比較</a></li>
+<li><a href="#三-初始化-__init__" title="(三) 初始化 __init__">(三) 初始化 __init__</a></li>
+<li class=""><a href="#四-初始化後的處理-__post_init__" title="(四) 初始化後的處理 __post_init__">(四) 初始化後的處理 __post_init__</a></li>
+<li><a href="#五-Frozon-Instances" title="(五) Frozon Instances">(五) Frozon Instances</a></li>
+</ul>
+</li>
+<li><a href="#nested_dataclass" title="nested_dataclass">nested_dataclass</a></li>
+<li><a href="#class-variable-in-Data-Class" title="class variable in Data Class">class variable in Data Class</a></li>
+</ul>
+</li>
+<li><a href="#Class" title="Class">Class</a><ul class="nav">
+<li><a href="#Attribute" title="Attribute">Attribute</a><ul class="nav">
+<li><a href="#Instance-Attribute" title="Instance Attribute">Instance Attribute</a></li>
+<li><a href="#Class-Attribute" title="Class Attribute">Class Attribute</a></li>
+<li><a href="#Property" title="Property">Property</a></li>
+</ul>
+</li>
+<li><a href="#Method" title="Method">Method</a><ul class="nav">
+<li><a href="#Instance-Method" title="Instance Method">Instance Method</a></li>
+<li><a href="#Class-Method" title="Class Method">Class Method</a></li>
+<li><a href="#Static-Method" title="Static Method">Static Method</a></li>
+</ul>
+</li>
+<li><a href="#Class-Memory-Address" title="Class Memory Address">Class Memory Address</a></li>
+<li><a href="#Class-特殊-function" title="Class 特殊 function">Class 特殊 function</a><ul class="nav">
+<li><a href="#__str__" title="__str__">__str__</a></li>
+<li><a href="#__call__" title="__call__">__call__</a></li>
+<li><a href="#__eq__" title="__eq__">__eq__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
