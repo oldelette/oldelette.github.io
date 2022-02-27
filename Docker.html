@@ -348,9 +348,9 @@ PASSWORD = <span class="hljs-string">"123"</span>
 labels=[<span class="hljs-string">"Name"</span>,<span class="hljs-string">"Content"</span>]
 <span class="hljs-comment">#labels=["Name"]</span>
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_sudo_command</span>(<span class="hljs-params">
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">run_sudo_command</span>(<span class="hljs-params">
     ssh_username: <span class="hljs-built_in">str</span>, ssh_password: <span class="hljs-built_in">str</span>, ssh_machine: <span class="hljs-built_in">str</span>, ssh_port: <span class="hljs-built_in">int</span>, command: <span class="hljs-built_in">str</span>
-</span>) -&gt; bool:</span>
+</span>) -&gt; <span class="hljs-built_in">bool</span>:
     <span class="hljs-comment"># conn = get_ssh_connection(ssh_machine=ssh_machine, ssh_username=ssh_username, ssh_password=ssh_password)</span>
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -384,12 +384,67 @@ labels=[<span class="hljs-string">"Name"</span>,<span class="hljs-string">"Conte
     filename=<span class="hljs-string">'savconfig.txt'</span>
     data = pd.read_csv(filename,names=labels,sep=<span class="hljs-string">':'</span>)
     <span class="hljs-comment">#data = pd.read_table(filename,names=labels,sep=':')</span>
-    print(data)
-    print(<span class="hljs-string">"--"</span> * <span class="hljs-number">20</span>)
+    <span class="hljs-built_in">print</span>(data)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"--"</span> * <span class="hljs-number">20</span>)
     client.close()
     <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(stderrout) == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span>
 </div></div></code></pre><h3 id="useradd" data-id="useradd"><a class="anchor hidden-xs" href="#useradd" title="useradd"><span class="octicon octicon-link"></span></a><span>useradd</span></h3><p><a href="https://serverfault.com/questions/367559/how-to-add-a-user-without-knowing-the-encrypted-form-of-the-password" target="_blank" rel="noopener"><span>How to add a user without knowing the encrypted form of the password?</span></a></p><pre><code>sudo useradd -p $(echo "asdf" | openssl passwd -1 -stdin) mcleezs
-</code></pre><p><img src="https://i.imgur.com/pXULMPe.png" alt="" loading="lazy"></p><h2 id="Docker-Cloud" data-id="Docker-Cloud"><a class="anchor hidden-xs" href="#Docker-Cloud" title="Docker-Cloud"><span class="octicon octicon-link"></span></a><span>Docker Cloud</span></h2><p><a href="https://hub.docker.com/" target="_blank" rel="noopener"><span>Docker Cloud 網站</span></a><span>有提供一個註冊處（registry）功能，可以讓使用者上傳自己製作的 Docker 影像（image），分享給其他人下載（或是自己使用），看起來有點類似 GitHub，只是它裡面放的東西都是已經建立好的 Docker 影像（images）。</span></p><p><span>在註冊處（registry）中會包含許多個套件庫（repositories），而每個套件庫又包含了許多的 Docker 影像（images），我們可以在帳號的註冊處（registry）中建立好多個套件庫（repositories），方便管理不同類型的 Docker 影像（images）。</span></p><h3 id="安裝-Windows-Docker-Desktop" data-id="安裝-Windows-Docker-Desktop"><a class="anchor hidden-xs" href="#安裝-Windows-Docker-Desktop" title="安裝-Windows-Docker-Desktop"><span class="octicon octicon-link"></span></a><span>安裝 Windows Docker Desktop</span></h3><p><span>如果有此error，</span><a href="https://stackoverflow.com/questions/63845591/docker-wsl-2-installation-is-incomplete" target="_blank" rel="noopener"><span>參考這個</span></a></p><p><img src="https://i.imgur.com/iyExLhN.png" alt="" loading="lazy"></p><h1 id="Kubernetes" data-id="Kubernetes"><a class="anchor hidden-xs" href="#Kubernetes" title="Kubernetes"><span class="octicon octicon-link"></span></a><span>Kubernetes</span></h1><p><a href="https://www.youtube.com/watch?v=X48VuDVv0do&amp;ab_channel=TechWorldwithNana" target="_blank" rel="noopener"><span>影片參考: Kubernetes Tutorial for Beginners</span></a><br>
+</code></pre><p><img src="https://i.imgur.com/pXULMPe.png" alt="" loading="lazy"></p><h2 id="Docker-Cloud" data-id="Docker-Cloud"><a class="anchor hidden-xs" href="#Docker-Cloud" title="Docker-Cloud"><span class="octicon octicon-link"></span></a><span>Docker Cloud</span></h2><p><a href="https://hub.docker.com/" target="_blank" rel="noopener"><span>Docker Cloud 網站</span></a><span>有提供一個註冊處（registry）功能，可以讓使用者上傳自己製作的 Docker 影像（image），分享給其他人下載（或是自己使用），看起來有點類似 GitHub，只是它裡面放的東西都是已經建立好的 Docker 影像（images）。</span></p><p><span>在註冊處（registry）中會包含許多個套件庫（repositories），而每個套件庫又包含了許多的 Docker 影像（images），我們可以在帳號的註冊處（registry）中建立好多個套件庫（repositories），方便管理不同類型的 Docker 影像（images）。</span></p><h3 id="安裝-Windows-Docker-Desktop" data-id="安裝-Windows-Docker-Desktop"><a class="anchor hidden-xs" href="#安裝-Windows-Docker-Desktop" title="安裝-Windows-Docker-Desktop"><span class="octicon octicon-link"></span></a><span>安裝 Windows Docker Desktop</span></h3><p><span>如果有此error，</span><a href="https://stackoverflow.com/questions/63845591/docker-wsl-2-installation-is-incomplete" target="_blank" rel="noopener"><span>參考這個</span></a></p><p><img src="https://i.imgur.com/iyExLhN.png" alt="" loading="lazy"></p><h2 id="Docker-Compose" data-id="Docker-Compose"><a class="anchor hidden-xs" href="#Docker-Compose" title="Docker-Compose"><span class="octicon octicon-link"></span></a><span>Docker Compose</span></h2><p><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener"><span>Overview of Docker Compose</span></a></p><p><span>Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. To learn more about all the features of Compose, see the list of features.</span></p><p><ins><span>Using Compose is basically a three-step process:</span></ins></p><ol>
+<li><span>Define your app’s environment with a Dockerfile so it can be reproduced anywhere.</span></li>
+<li><span>Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.</span></li>
+<li><span>Run docker compose up and the Docker compose command starts and runs your entire app. You can alternatively run docker-compose up using the docker-compose binary.</span></li>
+</ol><p><span>A docker-compose.yml looks like this:</span></p><pre><code># 使用 3.8 版的設定檔，通常新版本會有新的功能，並支援新的設定參數
+version: '3.8'
+# 定義 service 的區塊，一個 service 設定可以用來啟動多個 container
+services:
+  # 定義一個叫 npm 的 service
+  npm:
+    image: node:14-alpine
+    stdin_open: true
+    tty: true
+    working_dir: /source
+    volumes:
+      - .:/source
+</code></pre><ul>
+<li><span>image 是指 IMAGE 參數</span></li>
+<li><span>stdin_open 是 --interactive 選項；tty 是 --tty 選項</span></li>
+<li><span>working_dir 是 Container 應用 有提到的 --workdir 選項</span></li>
+<li><span>volumes 是使用 volume 同步程式有提過的 --volume 選項</span></li>
+</ul><h3 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h3><pre><code>version: '3.7'
+services:
+  swaps-fastapi:
+    container_name: swaps-fastapi
+    image: xxx
+    env_file:
+      - ../.env
+    volumes:
+      - ./configs/dhcpd:/app/dhcpd
+      - /var/log/atftp:/app/log
+    logging:
+      driver: "syslog"
+      options:
+        syslog-facility: local4
+        tag: "fastapi"
+    network_mode: "host"
+    
+  swaps-dhcp:
+    container_name: swaps-dhcp
+    image: xxx
+    volumes:
+      - ./configs/dhcpd:/app/dhcpd
+    logging:
+      driver: "syslog"
+      options:
+        syslog-facility: local5
+    network_mode: "host"
+</code></pre><h3 id="How-to-run" data-id="How-to-run"><a class="anchor hidden-xs" href="#How-to-run" title="How-to-run"><span class="octicon octicon-link"></span></a><span>How to run</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10243618" target="_blank" rel="noopener"><span>Ref</span></a></p><div class="alert alert-info">
+<p><span>直接前景執行，當中斷的時候，會停止所有 container。GIF 範例使用下面的指令</span><br>
+<span>docker-compose up</span></p>
+<p><span>背景執行</span><br>
+<span>docker-compose up -d</span></p>
+<p><span>查看 log</span><br>
+<span>docker-compose logs -f</span></p>
+</div><h1 id="Kubernetes" data-id="Kubernetes"><a class="anchor hidden-xs" href="#Kubernetes" title="Kubernetes"><span class="octicon octicon-link"></span></a><span>Kubernetes</span></h1><p><a href="https://www.youtube.com/watch?v=X48VuDVv0do&amp;ab_channel=TechWorldwithNana" target="_blank" rel="noopener"><span>影片參考: Kubernetes Tutorial for Beginners</span></a><br>
 <a href="https://cwhu.medium.com/kubernetes-basic-concept-tutorial-e033e3504ec0" target="_blank" rel="noopener"><span>文章參考: 基礎教學</span></a></p><p><span>Kubernetes 是一個協助我們自動化部署、擴張以及管理容器應用程式(containerized applications)的系統。相較於需要手動部署每個容器化應用程式(containers)到每台機器上，Kubernetes 可以幫我們做到以下幾件事情：</span></p><ul>
 <li><span>同時部署多個 containers 到一台機器上，甚至多台機器。</span></li>
 <li><span>管理各個 container 的狀態。如果提供某個服務的 container 不小心 crash 了，Kubernetes 會偵測到並重啟這個 container，確保持續提供服務</span></li>
@@ -664,7 +719,7 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Docker" title="Docker">Docker</a><ul class="nav">
+<li class=""><a href="#Docker" title="Docker">Docker</a><ul class="nav">
 <li><a href="#Image-和-Container-的關係" title="Image 和 Container 的關係">Image 和 Container 的關係</a></li>
 <li><a href="#Docker-實做" title="Docker 實做">Docker 實做</a><ul class="nav">
 <li><a href="#Container" title="Container">Container</a></li>
@@ -688,9 +743,14 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
 <li><a href="#安裝-Windows-Docker-Desktop" title="安裝 Windows Docker Desktop">安裝 Windows Docker Desktop</a></li>
 </ul>
 </li>
+<li class=""><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a><ul class="nav">
+<li class=""><a href="#Example" title="Example">Example</a></li>
+<li><a href="#How-to-run" title="How to run">How to run</a></li>
 </ul>
 </li>
-<li class=""><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
+</ul>
+</li>
+<li><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
 <li><a href="#k8s-架構" title="k8s 架構">k8s 架構</a><ul class="nav">
 <li><a href="#Master-Node" title="Master Node">Master Node</a></li>
 <li><a href="#Worker-Node" title="Worker Node">Worker Node</a></li>
@@ -698,9 +758,9 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
 <li><a href="#Cluster" title="Cluster">Cluster</a></li>
 </ul>
 </li>
-<li class=""><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
+<li><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
 <li><a href="#Setup-the-Master-k3s-Node" title="Setup the Master k3s Node">Setup the Master k3s Node</a></li>
-<li class=""><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
+<li><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
 <li><a href="#k8s-yaml" title="k8s yaml">k8s yaml</a></li>
 </ul>
 </li>
@@ -719,7 +779,7 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Docker" title="Docker">Docker</a><ul class="nav">
+<li class=""><a href="#Docker" title="Docker">Docker</a><ul class="nav">
 <li><a href="#Image-和-Container-的關係" title="Image 和 Container 的關係">Image 和 Container 的關係</a></li>
 <li><a href="#Docker-實做" title="Docker 實做">Docker 實做</a><ul class="nav">
 <li><a href="#Container" title="Container">Container</a></li>
@@ -743,9 +803,14 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
 <li><a href="#安裝-Windows-Docker-Desktop" title="安裝 Windows Docker Desktop">安裝 Windows Docker Desktop</a></li>
 </ul>
 </li>
+<li class=""><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a><ul class="nav">
+<li class=""><a href="#Example" title="Example">Example</a></li>
+<li><a href="#How-to-run" title="How to run">How to run</a></li>
 </ul>
 </li>
-<li class=""><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
+</ul>
+</li>
+<li><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
 <li><a href="#k8s-架構" title="k8s 架構">k8s 架構</a><ul class="nav">
 <li><a href="#Master-Node" title="Master Node">Master Node</a></li>
 <li><a href="#Worker-Node" title="Worker Node">Worker Node</a></li>
@@ -753,9 +818,9 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的Minion
 <li><a href="#Cluster" title="Cluster">Cluster</a></li>
 </ul>
 </li>
-<li class=""><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
+<li><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
 <li><a href="#Setup-the-Master-k3s-Node" title="Setup the Master k3s Node">Setup the Master k3s Node</a></li>
-<li class=""><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
+<li><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
 <li><a href="#k8s-yaml" title="k8s yaml">k8s yaml</a></li>
 </ul>
 </li>
