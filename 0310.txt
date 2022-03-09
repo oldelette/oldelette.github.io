@@ -1,0 +1,17 @@
+首先這張圖有三大區塊，分別為 Collector、Analysis、Automation.
+Collector 是用來監測atftp log 這個file 並傳遞給 Analysis 去做分析.
+Analysis 分析過濾完後，把我們要的資訊(也就是準備要provision 的 switch info)再丟給 automation 去做分配，準備進行 provision.
+
+每台要 provision 的 switch，都會經過以下7個 stag.。
+這個稱為一條 pipeline， 只要有任何 stage 失敗，就會終止，並存進db.
+
+Discover: 透過 ssh 連線進去 switch 拿到那台機器的 serial number.
+Generate cfg: 拿 serial number 去我們另一個 repo 中給 user 填寫的那個專案裡面搜尋這個 switch 的相對應 variable 與 template，並產生出準備 provision switch的 config.
+這裡會生成出兩份，一份是有 dhcp ip，一份是沒有 dhcp ip 的，有ip是為了要連進去做驗證用，沒有ip的是驗證完成後準備最後provision 用的。
+Transfer: 這邊就是傳送 config 進去目標 switch.
+cfg deploy: 這個 stage 包含兩個東西，第一個是 ssh 進去 startup saved-configuration，然後第二個是 reboot讓這個送進去的 config 生效。
+Validate: 驗證這邊，我們會執行 show current-configuration，然後比較 gitlab 上面給 user 填的那個 vars，與這邊產生出來的結果進行比對，詳細比對與正確性這邊應該有跟你們確認過了。
+IP Removal: 如果驗證成功，再來就是送第二份 config進去 (就是沒有 dhcp ip 的那份)，然後一樣執行 startup saved-configuration 讓他生效。
+Reboot: 最後一個 stage，就是reboot，並測試是否已經連不到這個 switch (透過 dhcp ip) 
+
+https://gitlab.com/ssp19960710/demo/-/wikis/home
