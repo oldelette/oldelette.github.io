@@ -15,3 +15,4 @@ IP Removal: 如果驗證成功，再來就是送第二份 config進去 (就是�
 Reboot: 最後一個 stage，就是reboot，並測試是否已經連不到這個 switch (透過 dhcp ip) 
 
 https://gitlab.com/ssp19960710/demo/-/wikis/home
+https://gitlab.com/ssp19960710/0916/-/wikis/home
