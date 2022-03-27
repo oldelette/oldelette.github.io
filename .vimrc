@@ -16,6 +16,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -24,7 +25,7 @@ filetype plugin indent on    " required
 nnoremap <c-a> : NERDTreeToggle<CR>
 nnoremap <F8> : TagbarToggle<CR>
 let g:tagbar_width = 30
-autocmd BufReadPost *.py call tagbar#autoopen() 
+" autocmd BufReadPost *.py call tagbar#autoopen() 
 
 syntax enable
 
@@ -141,3 +142,8 @@ if executable('ag')
 endif
 nnoremap FF :Ack!<Space>
 
+" Vim-gitgutter
+set updatetime=100
+highlight GitGutterAdd    ctermfg=blue
+highlight GitGutterChange ctermfg=green
+highlight GitGutterDelete ctermfg=red
