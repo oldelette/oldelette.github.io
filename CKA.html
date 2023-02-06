@@ -110,7 +110,46 @@ scaling, and management of containerized applications
 </ul><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Using-GCE-to-Set-Up-the-Lab-Environment" data-id="Using-GCE-to-Set-Up-the-Lab-Environment"><a class="anchor hidden-xs" href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using-GCE-to-Set-Up-the-Lab-Environment"><span class="octicon octicon-link"></span></a><span>Using GCE to Set Up the Lab Environment</span></h3><p><a href="https://medium.com/learn-or-die/gcp-%E5%A4%9A%E5%80%8B%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF-5c574170611b" target="_blank" rel="noopener"><span>GCP VPC</span></a></p><pre><code>Virtual Private Cloud  虛擬私有雲
 </code></pre><p><span>default 已經幫你把每個地區對應到的網段都切好了</span><br>
 <img src="https://i.imgur.com/PMxGj2w.png" alt="" loading="lazy"></p><h1 id="Program-Exam" data-id="Program-Exam"><a class="anchor hidden-xs" href="#Program-Exam" title="Program-Exam"><span class="octicon octicon-link"></span></a><span>Program Exam</span></h1><p><a href="https://blog.csdn.net/shuoshuo132/article/details/115432804" target="_blank" rel="noopener"><span>No.1-2021年CKA考试真题</span></a></p><h2 id="11" data-id="11"><a class="anchor hidden-xs" href="#11" title="11"><span class="octicon octicon-link"></span></a><span>1.1</span></h2><p><img src="https://i.imgur.com/qoae68P.png" alt="" loading="lazy"></p><p><span>題目意思是建立一個 service account, 該 service account 具有在命名空間 dev 下創建 Deployment, StatefulSet, DaemonSet 的權限</span></p><pre><code>kubectl create
-</code></pre><p><a href="https://ithelp.ithome.com.tw/articles/10195944" target="_blank" rel="noopener"><span>RBAC</span></a><span> (Role-Base Access Control，基於角色的訪問控制)</span></p></div>
+</code></pre><p><a href="https://ithelp.ithome.com.tw/articles/10195944" target="_blank" rel="noopener"><span>RBAC</span></a><span> (Role-Base Access Control，基於角色的訪問控制)</span></p><h2 id="12" data-id="12"><a class="anchor hidden-xs" href="#12" title="12"><span class="octicon octicon-link"></span></a><span>1.2</span></h2><p><img src="https://i.imgur.com/AW1uo99.png" alt="" loading="lazy"></p><p><span>創建兩個 container pod, 其中一個用來寫 log 到 /log/data/output.log , 另一個要把寫入的 log 輸出.</span><br>
+<span>題目有說到 log 文件允許在當前 pod 中使用，因此我們用 emptyDir 去解決這個問題.</span><br>
+<span>題目沒有說到 namespece, 所以默認選擇 default.</span></p><ul>
+<li><span>先透過 kubectl run 創建 yaml 檔後再去做修改</span></li>
+</ul><pre><code>sudo kubectl run log --image=busybox --dry-run=client -o yaml &gt; 0205_logpod.yaml
+</code></pre><ul>
+<li><span>yaml</span></li>
+</ul><pre><code>apiVersion: v1                                                                                                                                                                                             
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: log 
+  name: log 
+spec:
+  containers:
+  - image: busybox
+    name: log-pod
+    command: ["sh","-c","echo important information &gt;&gt; /log/data/output.log; sleep 1d"]
+    volumeMounts:
+    - name: date-log
+      mountPath: /log/data
+    resources: {}
+  - image: busybox
+    name: log-cus
+    command: ["sh","-c","cat /log/data/output.log; sleep 1d"]
+    volumeMounts:
+    - name: date-log
+      mountPath: /log/data
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: date-log
+    emptyDir: {}
+status: {}
+</code></pre><div class="alert alert-info">
+<p><span>查看 log 方式：kubectl log my-pod</span><br>
+<span>如果一個 pod 中有多個 container，可以使用 -c 另行指定 container。</span></p>
+</div><p><span>通過 kubectl log 去查看 log message</span></p><pre><code>sudo kubectl logs log -c log-cus
+</code></pre><p><img src="https://i.imgur.com/OyEDcJj.png" alt="" loading="lazy"></p></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -118,7 +157,7 @@ scaling, and management of containerized applications
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li class=""><a href="#CKA" title="CKA">CKA</a><ul class="nav">
+<li><a href="#CKA" title="CKA">CKA</a><ul class="nav">
 <li><a href="#考試準備" title="考試準備">考試準備</a><ul class="nav">
 <li><a href="#Udemy-課程" title="Udemy 課程">Udemy 課程</a></li>
 <li><a href="#免費入門課程" title="免費入門課程">免費入門課程</a></li>
@@ -137,14 +176,15 @@ scaling, and management of containerized applications
 <li><a href="#Chapter-2-Basics-of-Kubernetes" title="Chapter 2. Basics of Kubernetes">Chapter 2. Basics of Kubernetes</a></li>
 </ul>
 </li>
-<li class=""><a href="#Others" title="Others">Others</a><ul class="nav">
-<li class=""><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#Program-Exam" title="Program Exam">Program Exam</a><ul class="nav">
 <li><a href="#11" title="1.1">1.1</a></li>
+<li><a href="#12" title="1.2">1.2</a></li>
 </ul>
 </li>
 </ul>
@@ -154,7 +194,7 @@ scaling, and management of containerized applications
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li class=""><a href="#CKA" title="CKA">CKA</a><ul class="nav">
+<li><a href="#CKA" title="CKA">CKA</a><ul class="nav">
 <li><a href="#考試準備" title="考試準備">考試準備</a><ul class="nav">
 <li><a href="#Udemy-課程" title="Udemy 課程">Udemy 課程</a></li>
 <li><a href="#免費入門課程" title="免費入門課程">免費入門課程</a></li>
@@ -173,14 +213,15 @@ scaling, and management of containerized applications
 <li><a href="#Chapter-2-Basics-of-Kubernetes" title="Chapter 2. Basics of Kubernetes">Chapter 2. Basics of Kubernetes</a></li>
 </ul>
 </li>
-<li class=""><a href="#Others" title="Others">Others</a><ul class="nav">
-<li class=""><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#Program-Exam" title="Program Exam">Program Exam</a><ul class="nav">
 <li><a href="#11" title="1.1">1.1</a></li>
+<li><a href="#12" title="1.2">1.2</a></li>
 </ul>
 </li>
 </ul>

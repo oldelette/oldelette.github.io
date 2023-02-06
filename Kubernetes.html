@@ -303,7 +303,7 @@ Node以前則叫做 Slave/Worker Node 或 更早版本的 Minion
 </table><h4 id="metadata" data-id="metadata"><a class="anchor hidden-xs" href="#metadata" title="metadata"><span class="octicon octicon-link"></span></a><ins><span>metadata</span></ins></h4><p><span>metadata是用來描述這個物件的資訊，像是它的名稱，lable等。</span></p><h4 id="spec" data-id="spec"><a class="anchor hidden-xs" href="#spec" title="spec"><span class="octicon octicon-link"></span></a><ins><span>spec</span></ins></h4><p><span>spec是這四個欄位中最重要的欄位</span><br>
 <span>用來定義這個物件內有甚麼，也就是說，用來定義這個物件是要用來幹嘛的。</span><br>
 <span>例如一個 Pod內有 Container，那 kind就是Pod，而Container的資訊則寫在spec欄位，代表這個 Pod的功能是host 一個Container</span></p><h2 id="CNCF" data-id="CNCF"><a class="anchor hidden-xs" href="#CNCF" title="CNCF"><span class="octicon octicon-link"></span></a><span>CNCF</span></h2><p><span>Cloud Native Computing Foundation</span><br>
-<span>Linux基金會底下的非營利組織</span></p><h2 data-id="Other" id="Other"><a class="anchor hidden-xs" href="#Other" title="Other"><span class="octicon octicon-link"></span></a><span>Other</span></h2><p><span>K8s 本身只需要專注於 kubelet 以及 CRI (Container Runtime Interface) 標準的互動，第三方開發者則可以根據需求開發出各式各樣不同的產品，只要能夠滿足 CRI 標準，都可以作為K8s的Container Runtime Engine</span></p><h3 id="Container-Runtime-Interface-CRI" data-id="Container-Runtime-Interface-CRI"><a class="anchor hidden-xs" href="#Container-Runtime-Interface-CRI" title="Container-Runtime-Interface-CRI"><span class="octicon octicon-link"></span></a><span>Container Runtime Interface (CRI)</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10218127" target="_blank" rel="noopener"><span>Kubernetes 為了能夠有效地銜接各式各樣不同的 Container Runtime 解決方案</span></a><span>，勢必也需要推出相關的標準，就如同 Container OCI 一樣，符合標準的解決方案就能夠輕鬆的整合到 kubernetes 之中。</span><br>
+<span>Linux基金會底下的非營利組織</span></p><h2 id="Other" data-id="Other"><a class="anchor hidden-xs" href="#Other" title="Other"><span class="octicon octicon-link"></span></a><span>Other</span></h2><p><span>K8s 本身只需要專注於 kubelet 以及 CRI (Container Runtime Interface) 標準的互動，第三方開發者則可以根據需求開發出各式各樣不同的產品，只要能夠滿足 CRI 標準，都可以作為K8s的Container Runtime Engine</span></p><h3 id="Container-Runtime-Interface-CRI" data-id="Container-Runtime-Interface-CRI"><a class="anchor hidden-xs" href="#Container-Runtime-Interface-CRI" title="Container-Runtime-Interface-CRI"><span class="octicon octicon-link"></span></a><span>Container Runtime Interface (CRI)</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10218127" target="_blank" rel="noopener"><span>Kubernetes 為了能夠有效地銜接各式各樣不同的 Container Runtime 解決方案</span></a><span>，勢必也需要推出相關的標準，就如同 Container OCI 一樣，符合標準的解決方案就能夠輕鬆的整合到 kubernetes 之中。</span><br>
 <span>於是 Container Runtime Interface(CRI) 標準就被設計且開發來</span></p><ul>
 <li><span>表格列出了 kubernetes 與 CRI Runtime 各自的責任</span></li>
 </ul><table>
@@ -437,13 +437,12 @@ CMD python3 app/main.py -vv
 </code></pre><p><span>個人 Tree 架構</span></p><p><img src="https://i.imgur.com/6FZeci2.png" alt="" loading="lazy"></p><p><span>製作 docker image，並給他一個名稱flask_app</span></p><pre><code>docker build . -t flask_app
 </code></pre><p><span>可以成功 build，沒有問題</span><br>
 <span>用 docker image ls 查看剛剛製作的 image</span><br>
-<img src="https://i.imgur.com/QYn4mhx.png" alt="" loading="lazy"></p><h2 data-id="Kubectl" id="Kubectl"><a class="anchor hidden-xs" href="#Kubectl" title="Kubectl"><span class="octicon octicon-link"></span></a><span>Kubectl</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10234562" target="_blank" rel="noopener"><span>從題目中學習k8s</span></a></p><h3 id="小技巧" data-id="小技巧"><a class="anchor hidden-xs" href="#小技巧" title="小技巧"><span class="octicon octicon-link"></span></a><span>小技巧</span></h3><div class="alert alert-info">
-<p><span>## 查看 K8s 所有物件和它們的縮寫</span><br>
-<span>kubectl api-resources</span><br>
-<span>## 創建出一個基本YAML，再去修改</span><br>
-<span>kubectl run nginx-kusc00101 --image=nginx --restart=Never --dry-run=client -o yaml&gt; xxx.pod</span><br>
-<span>## 將Pod expose出去 (創建一個Service)</span><br>
-<span>kubectl expose po &lt;pod-name&gt; --type=NodePort --name=&lt;svc-name&gt; --port=80</span></p>
+<img src="https://i.imgur.com/QYn4mhx.png" alt="" loading="lazy"></p><h2 id="Kubectl" data-id="Kubectl"><a class="anchor hidden-xs" href="#Kubectl" title="Kubectl"><span class="octicon octicon-link"></span></a><span>Kubectl</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10234562" target="_blank" rel="noopener"><span>從題目中學習k8s</span></a></p><h3 id="小技巧" data-id="小技巧"><a class="anchor hidden-xs" href="#小技巧" title="小技巧"><span class="octicon octicon-link"></span></a><span>小技巧</span></h3><h4 id="查看-K8s-所有物件和它們的縮寫" data-id="查看-K8s-所有物件和它們的縮寫"><a class="anchor hidden-xs" href="#查看-K8s-所有物件和它們的縮寫" title="查看-K8s-所有物件和它們的縮寫"><span class="octicon octicon-link"></span></a><span>查看 K8s 所有物件和它們的縮寫</span></h4><div class="alert alert-info">
+<p><span>kubectl api-resources</span></p>
+</div><h4 id="創建出一個基本YAML，再去修改" data-id="創建出一個基本YAML，再去修改"><a class="anchor hidden-xs" href="#創建出一個基本YAML，再去修改" title="創建出一個基本YAML，再去修改"><span class="octicon octicon-link"></span></a><span>創建出一個基本YAML，再去修改</span></h4><div class="alert alert-info">
+<p><span>kubectl run nginx-kusc00101 --image=nginx --restart=Never --dry-run=client -o yaml&gt; xxx.pod</span></p>
+</div><p><span>–dry-run=client 參數用來預覽 而不會真正提交到 cluster 集群中</span></p><h4 id="將Pod-expose出去-創建一個Service" data-id="將Pod-expose出去-創建一個Service"><a class="anchor hidden-xs" href="#將Pod-expose出去-創建一個Service" title="將Pod-expose出去-創建一個Service"><span class="octicon octicon-link"></span></a><span>將Pod expose出去 (創建一個Service)</span></h4><div class="alert alert-info">
+<p><span>kubectl expose po &lt;pod-name&gt; --type=NodePort --name=&lt;svc-name&gt; --port=80</span></p>
 </div><h3 id="1-Pod-Scheduling" data-id="1-Pod-Scheduling"><a class="anchor hidden-xs" href="#1-Pod-Scheduling" title="1-Pod-Scheduling"><span class="octicon octicon-link"></span></a><span>1. Pod Scheduling</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10236866" target="_blank" rel="noopener"><span>Ref</span></a><br>
 <img src="https://i.imgur.com/9pnxx4N.png" alt="" loading="lazy"></p><hr><h4 id="Answer" data-id="Answer"><a class="anchor hidden-xs" href="#Answer" title="Answer"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre><code>## 先透過kubectl run命令建立Pod基本YAML
 kubectl run nginx-kusc00101 --image=nginx --restart=Never --dry-run=client -o yaml&gt; q1.pod
@@ -480,7 +479,7 @@ sudo kubectl rollout history deployment nginx-app
 </div><h4 id="Deployment部署" data-id="Deployment部署"><a class="anchor hidden-xs" href="#Deployment部署" title="Deployment部署"><span class="octicon octicon-link"></span></a><span>Deployment部署</span></h4><p><span>Deployment Controller 提供 Pods 和 ReplicaSets可定義的更新，k8s下的Deployment有許多feature可以使用</span><br>
 <span>如：create、update、roll back、pause、resume等，針對 Deployment 的替代方案可以使用kubectl rolling update這個指令。</span></p><h4 id="ReplicaSet-複製集" data-id="ReplicaSet-複製集"><a class="anchor hidden-xs" href="#ReplicaSet-複製集" title="ReplicaSet-複製集"><span class="octicon octicon-link"></span></a><span>ReplicaSet 複製集</span></h4><p><span>ReplicaSet 是用來確保在 k8s 中，在資源允許的前提下，指定的 pod 的數量會跟使用者所期望的一致，也就是所謂的 desired status</span></p><p><a href="https://godleon.github.io/blog/Kubernetes/k8s-ReplicaSet-Overview/" target="_blank" rel="noopener"><span>Ref- ReplicaSet 介紹</span></a><br>
 <img src="https://i.imgur.com/DIm2ybF.png" alt="" loading="lazy"></p><h3 id="3-Service" data-id="3-Service"><a class="anchor hidden-xs" href="#3-Service" title="3-Service"><span class="octicon octicon-link"></span></a><span>3. Service</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10238233" target="_blank" rel="noopener"><span>Ref 從題目中學習k8s</span></a><br>
-<img src="https://i.imgur.com/rxhUfNu.png" alt="" loading="lazy"></p><hr><h4 id="Answer2" data-id="Answer"><a class="anchor hidden-xs" href="#Answer2" title="Answer2"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre data-original-title="" title=""><code>## 透過kubectl expose命令創建Service
+<img src="https://i.imgur.com/rxhUfNu.png" alt="" loading="lazy"></p><hr><h4 id="Answer2" data-id="Answer"><a class="anchor hidden-xs" href="#Answer2" title="Answer2"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre><code>## 透過kubectl expose命令創建Service
 sudo kubectl expose pod kubernetes-demo-pod --type=NodePort --port=80
 </code></pre><p><a href="https://hackmd.io/@tienyulin/kubernetes-service-deployment-ingress" target="_blank" rel="noopener"><span>Ref - Pod 進階應用 : Service、Deployment、Ingress</span></a></p><div class="alert alert-success">
 <p><span>Service 是一個抽象化的物件，它定義了一群的 Pod 和存取這些 Pod 的規則</span><br>
@@ -528,7 +527,104 @@ kubectl apply -f q4.yaml -n website-frontend
 <li><span>刪除 example</span><br>
 <img src="https://i.imgur.com/wFGPdv2.png" alt="" loading="lazy"><br>
 <img src="https://i.imgur.com/4pB0jdD.png" alt="" loading="lazy"></li>
-</ul></div>
+</ul><h3 id="5Secret" data-id="5Secret"><a class="anchor hidden-xs" href="#5Secret" title="5Secret"><span class="octicon octicon-link"></span></a><span>5.Secret</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10239675" target="_blank" rel="noopener"><span>Ref</span></a></p><p><img src="https://i.imgur.com/fkVjs2S.png" alt="" loading="lazy"></p><hr><h4 id="Answer4" data-id="Answer"><a class="anchor hidden-xs" href="#Answer4" title="Answer4"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><ol>
+<li><span>創建一個Secret</span></li>
+<li><span>創建兩個Pod (kubectl run 先建立兩個基礎 pod yaml)</span></li>
+<li><span>其中一個Podmount此Secret，另一個Pod將Secret作為環境變數使用</span></li>
+</ol><pre><code>1. sudo kubectl create secret generic super-secret \ 
+--from-literal=credential=alice --from-literal=username=bob
+2-1. kubectl run pod-secrets-via-file --image=redis --dry-run=client -o yaml &gt; q5-1-pod.yaml
+2-2. kubectl run pod-secrets-via-env --image=redis --dry-run=client -o yaml &gt; q5-2-pod.yaml
+3.kubectl apply -f q5-1-pod.yaml q5-2-pod.yaml
+</code></pre><p><a href="https://github.com/oldelette/oldelette.github.io/blob/master/secret/q5.yaml" target="_blank" rel="noopener"><span>q5-1-pod.yaml</span></a><br>
+<a href="https://github.com/oldelette/oldelette.github.io/blob/master/secret/q5-2.yaml" target="_blank" rel="noopener"><span>q5-2-pod.yaml</span></a></p><p><img src="https://i.imgur.com/kDNbK8K.png" alt="" loading="lazy"></p><div class="alert alert-success">
+<p><span>Secrets 是 Kubernetes 提供開發者存放敏感資訊的方式</span><br>
+<span>像是密碼、OAuth tokens 及 ssh keys 等等… 將這些資訊存在放 Secret 中比直接放在 Pod YAML 或 Image中更加安全和靈活</span></p>
+</div><h5 id="方法一" data-id="方法一"><a class="anchor hidden-xs" href="#方法一" title="方法一"><span class="octicon octicon-link"></span></a><span>方法一</span></h5><ul>
+<li><span>將Secret作為容器的環境變數</span><br>
+<span>直接在 Pod 中以 spec.env.valueFrom.secretKeyRef 欄位參考到 Secret 即可</span></li>
+</ul><pre><code>sudo kubectl apply -f secret_test.yaml
+</code></pre><pre><code>apiVersion: v1
+kind: Pod 
+metadata:
+  name: secret-env-pod                                                     
+spec:
+  containers:
+  - name: mycontainer
+    image: redis
+    env:
+      - name: SECRET_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: test-secret
+            key: username
+      - name: SECRET_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: test-secret
+            key: password
+  restartPolicy: Never
+</code></pre><ul>
+<li><span>創建完成後，進入pod 並echo 即可看到 Secret 的設置結果</span><br>
+<img src="https://i.imgur.com/8dDcH3e.png" alt="" loading="lazy"></li>
+</ul><h5 id="方法二" data-id="方法二"><a class="anchor hidden-xs" href="#方法二" title="方法二"><span class="octicon octicon-link"></span></a><span>方法二</span></h5><p><span>將 Secret 製作為一個檔案，Pod 以 Volume的形式將此檔案掛載(mount)到容器上</span></p><ul>
+<li><span>先用 kubectl 創建一個基礎的 yaml</span></li>
+</ul><pre><code>sudo kubectl run nginx --image=nginx --restart=Never \ 
+--dry-run=client -o yaml &gt; secret_volume.yaml
+</code></pre><h3 id="6etcd-backup" data-id="6etcd-backup"><a class="anchor hidden-xs" href="#6etcd-backup" title="6etcd-backup"><span class="octicon octicon-link"></span></a><span>6.etcd backup</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10240323" target="_blank" rel="noopener"><span>Ref</span></a><br>
+<img src="https://i.imgur.com/oBjPA6H.png" alt="" loading="lazy"></p><hr><h4 id="Answer5" data-id="Answer"><a class="anchor hidden-xs" href="#Answer5" title="Answer5"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre><code>
+</code></pre><div class="alert alert-success"></div><h3 id="7Volume" data-id="7Volume"><a class="anchor hidden-xs" href="#7Volume" title="7Volume"><span class="octicon octicon-link"></span></a><span>7.Volume</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10241004" target="_blank" rel="noopener"><span>Ref</span></a><br>
+<img src="https://i.imgur.com/1co2rP7.png" alt="" loading="lazy"></p><hr><h4 id="Answer6" data-id="Answer"><a class="anchor hidden-xs" href="#Answer6" title="Answer6"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><p><span>1.創建一個 Pod</span><br>
+<span>2.mount 到類型為emptyDir的Volume中</span></p><pre><code>1.sudo kubectl run redis-storage --image=redis --dry-run=client -o yaml &gt; q7-pod.yaml
+</code></pre><p><a href="https://github.com/oldelette/oldelette.github.io/blob/master/secret/q7.yaml" target="_blank" rel="noopener"><span>q7.yaml</span></a></p><div class="alert alert-success">
+<p><span>Volume可以是一個Node或是一個雲端儲存平台，是K8s實現儲存資料的方式。透過將Volume mount 到Pod上，就可以實現儲存Pod的資料</span></p>
+</div><h4 id="vloume-的類型" data-id="vloume-的類型"><a class="anchor hidden-xs" href="#vloume-的類型" title="vloume-的類型"><span class="octicon octicon-link"></span></a><span>vloume 的類型</span></h4><p><span>k8s提供的Vloume類型非常多，了解其中幾個就行了</span></p><h4 id="emptyDir" data-id="emptyDir"><a class="anchor hidden-xs" href="#emptyDir" title="emptyDir"><span class="octicon octicon-link"></span></a><ins><span>emptyDir</span></ins></h4><p data-original-title="" title=""><span>當 Pod 調度某給Node時，首先創建 emptyDir Volume，並且該Pod在該Node上運行時就存在。</span><br>
+<span>顧名思義，它最初是空的。Pod中的容器都可以在emptyDir Volume中讀取和寫入相同的文件，儘管該Volume可以安裝在每個Container中的相同或不同路徑上。</span><br>
+<span>當Pod從Node中被刪除時，emptyDir中的數據也將被刪除。</span><br>
+<span>emptyDir的用途包含：</span></p><ol>
+<li><span>臨時空間，例如用於某些應用程式執行階段所需的臨時目錄，且無須永久保存</span></li>
+<li><span>長時間工作的中間過程 CheckPoint 的臨時儲存目錄</span></li>
+<li><span>多容器共用目錄</span></li>
+</ol><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /cache
+      name: cache-volume
+  volumes:
+  - name: cache-volume
+    emptyDir: {}
+</code></pre><h4 id="hostPath" data-id="hostPath"><a class="anchor hidden-xs" href="#hostPath" title="hostPath"><span class="octicon octicon-link"></span></a><ins><span>hostPath</span></ins></h4><p><span>hostPath Volume 將 Node檔案系統中的檔案或目錄 mount到 Pod 中。</span><br>
+<span>hostPath 的生命週期與 Node 相同，並不會隨著 Pod消失而消失。</span><br>
+<span>hostPath的用途包含：</span></p><ol>
+<li><span>容器應用程式產生的紀錄檔需要永久儲存時，可以使用Node的檔案系統進行儲存</span></li>
+<li><span>需要存取Node上Docker內部資料結構的容器應用時，可以透過定義 hostPath 為 Node 的 /var/lib/docker 目錄，使容器可以直接存取 Docker的檔案系統</span></li>
+</ol><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /tmp
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data
+      # this field is optional
+      type: Directory
+</code></pre><h3 id="8" data-id="8"><a class="anchor hidden-xs" href="#8" title="8"><span class="octicon octicon-link"></span></a><span>8.</span></h3><p><a href="" target="_blank" rel="noopener"><span>Ref</span></a></p><hr><h4 id="Answer7" data-id="Answer"><a class="anchor hidden-xs" href="#Answer7" title="Answer7"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre><code>
+</code></pre><div class="alert alert-success"></div><h3 id="9" data-id="9"><a class="anchor hidden-xs" href="#9" title="9"><span class="octicon octicon-link"></span></a><span>9.</span></h3><p><a href="" target="_blank" rel="noopener"><span>Ref</span></a></p><hr><h4 id="Answer8" data-id="Answer"><a class="anchor hidden-xs" href="#Answer8" title="Answer8"><span class="octicon octicon-link"></span></a><span>Answer</span></h4><pre><code>
+</code></pre><div class="alert alert-success"></div></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -559,7 +655,7 @@ kubectl apply -f q4.yaml -n website-frontend
 </li>
 </ul>
 </li>
-<li class=""><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
+<li><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
 <li><a href="#kinds" title="kinds">kinds</a><ul class="nav">
 <li><a href="#建立環境" title="建立環境">建立環境</a></li>
 <li><a href="#建立-pods" title="建立 pods">建立 pods</a></li>
@@ -573,12 +669,17 @@ kubectl apply -f q4.yaml -n website-frontend
 <li><a href="#容器化-Flask-Web-應用程式" title="容器化 Flask Web 應用程式">容器化 Flask Web 應用程式</a></li>
 </ul>
 </li>
-<li class=""><a href="#Kubectl" title="Kubectl">Kubectl</a><ul class="nav">
+<li><a href="#Kubectl" title="Kubectl">Kubectl</a><ul class="nav">
 <li><a href="#小技巧" title="小技巧">小技巧</a></li>
 <li><a href="#1-Pod-Scheduling" title="1. Pod Scheduling">1. Pod Scheduling</a></li>
-<li class=""><a href="#2-Deployment-Rolling-Update" title="2. Deployment Rolling Update">2. Deployment Rolling Update</a></li>
+<li><a href="#2-Deployment-Rolling-Update" title="2. Deployment Rolling Update">2. Deployment Rolling Update</a></li>
 <li><a href="#3-Service" title="3. Service">3. Service</a></li>
 <li><a href="#4-Namespace" title="4. Namespace">4. Namespace</a></li>
+<li><a href="#5Secret" title="5.Secret">5.Secret</a></li>
+<li><a href="#6etcd-backup" title="6.etcd backup">6.etcd backup</a></li>
+<li><a href="#7Volume" title="7.Volume">7.Volume</a></li>
+<li><a href="#8" title="8.">8.</a></li>
+<li><a href="#9" title="9.">9.</a></li>
 </ul>
 </li>
 </ul>
@@ -613,7 +714,7 @@ kubectl apply -f q4.yaml -n website-frontend
 </li>
 </ul>
 </li>
-<li class=""><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
+<li><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
 <li><a href="#kinds" title="kinds">kinds</a><ul class="nav">
 <li><a href="#建立環境" title="建立環境">建立環境</a></li>
 <li><a href="#建立-pods" title="建立 pods">建立 pods</a></li>
@@ -627,12 +728,17 @@ kubectl apply -f q4.yaml -n website-frontend
 <li><a href="#容器化-Flask-Web-應用程式" title="容器化 Flask Web 應用程式">容器化 Flask Web 應用程式</a></li>
 </ul>
 </li>
-<li class=""><a href="#Kubectl" title="Kubectl">Kubectl</a><ul class="nav">
+<li><a href="#Kubectl" title="Kubectl">Kubectl</a><ul class="nav">
 <li><a href="#小技巧" title="小技巧">小技巧</a></li>
-<li class=""><a href="#1-Pod-Scheduling" title="1. Pod Scheduling">1. Pod Scheduling</a></li>
-<li class=""><a href="#2-Deployment-Rolling-Update" title="2. Deployment Rolling Update">2. Deployment Rolling Update</a></li>
-<li class=""><a href="#3-Service" title="3. Service">3. Service</a></li>
-<li class=""><a href="#4-Namespace" title="4. Namespace">4. Namespace</a></li>
+<li><a href="#1-Pod-Scheduling" title="1. Pod Scheduling">1. Pod Scheduling</a></li>
+<li><a href="#2-Deployment-Rolling-Update" title="2. Deployment Rolling Update">2. Deployment Rolling Update</a></li>
+<li><a href="#3-Service" title="3. Service">3. Service</a></li>
+<li><a href="#4-Namespace" title="4. Namespace">4. Namespace</a></li>
+<li><a href="#5Secret" title="5.Secret">5.Secret</a></li>
+<li><a href="#6etcd-backup" title="6.etcd backup">6.etcd backup</a></li>
+<li><a href="#7Volume" title="7.Volume">7.Volume</a></li>
+<li><a href="#8" title="8.">8.</a></li>
+<li><a href="#9" title="9.">9.</a></li>
 </ul>
 </li>
 </ul>
