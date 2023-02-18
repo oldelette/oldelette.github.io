@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        CKA - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><a class="anchor hidden-xs" href="#tags-Work" title="tags-Work"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Work</code></h6><h1 id="CKA" data-id="CKA"><a class="anchor hidden-xs" href="#CKA" title="CKA"><span class="octicon octicon-link"></span></a><span>CKA</span></h1><p><span>Certified Kubernetes Administrator (CKA)</span></p><p><a href="https://www.cncf.io/certification/cka/" target="_blank" rel="noopener"><span>官網報名連結</span></a></p><p><span>CNCF總共開放了三種K8S的認證</span></p><ul>
+<li><span>CKA (Certified Kubernetes Admin)</span></li>
+<li><span>CKAD (Certified Kubernetes Application Developer)</span></li>
+<li><span>CKS (Certified KUbernetes Security Specialist)</span></li>
+</ul><h2 id="考試準備" data-id="考試準備"><a class="anchor hidden-xs" href="#考試準備" title="考試準備"><span class="octicon octicon-link"></span></a><span>考試準備</span></h2><p><span>在Udemy平台上有一系列的K8S認證的課程，下面的連結是準備CKAD 的兩堂課程。</span></p><p><a href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/" target="_blank" rel="noopener"><span>CKA:</span></a><span> Certified Kubernetes Administrator (CKA) with Practice Tests</span><br>
+<a href="https://www.udemy.com/course/certified-kubernetes-application-developer/" target="_blank" rel="noopener"><span>CKAD</span></a></p><h3 id="Udemy-課程" data-id="Udemy-課程"><a class="anchor hidden-xs" href="#Udemy-課程" title="Udemy-課程"><span class="octicon octicon-link"></span></a><span>Udemy 課程</span></h3><ul>
+<li><span>Kubernetes for the Absolute Beginners - Hands-on </span><a href="https://www.udemy.com/course/learn-kubernetes/" target="_blank" rel="noopener"><span>買</span></a></li>
+<li><span>Certified Kubernetes Administrator (CKA) with Practice Tests </span><a href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/" target="_blank" rel="noopener"><span>買</span></a></li>
+<li><span>Kubernetes Certified Application Developer (CKAD) with Tests </span><a href="https://www.udemy.com/course/certified-kubernetes-application-developer/" target="_blank" rel="noopener"><span>link</span></a></li>
+</ul><h3 id="免費入門課程" data-id="免費入門課程"><a class="anchor hidden-xs" href="#免費入門課程" title="免費入門課程"><span class="octicon octicon-link"></span></a><span>免費入門課程</span></h3><ul>
+<li><span>[LFS151x] 雲基礎設施技術入門課程</span><br>
+<a href="https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/#" target="_blank" rel="noopener"><span>Introduction to Cloud Infrastructure Technologies</span></a></li>
+<li><span>[LFS158x] Kubernetes 入門課程</span><br>
+<a href="https://www.edx.org/course/introduction-to-kubernetes?utm_medium=partner-marketing&amp;utm_source=affiliate&amp;utm_campaign=linuxfoundation&amp;utm_content=landingpage-lfs158" target="_blank" rel="noopener"><span>Introduction to Kubernetes</span></a></li>
+</ul><h3 id="Course-Resources" data-id="Course-Resources"><a class="anchor hidden-xs" href="#Course-Resources" title="Course-Resources"><span class="octicon octicon-link"></span></a><span>Course Resources</span></h3><pre><code>ID: LFtraining
+PWD: Penguin2014
+</code></pre><p><img src="https://i.imgur.com/A27MWNS.png" alt="" loading="lazy"></p><h3 id="Class-Forum" data-id="Class-Forum"><a class="anchor hidden-xs" href="#Class-Forum" title="Class-Forum"><span class="octicon octicon-link"></span></a><span>Class Forum</span></h3><p><a href="https://forum.linuxfoundation.org/categories/lfs258-class-forum" target="_blank" rel="noopener"><span>LFS258 Class Forum</span></a></p><h2 id="Udemy-Beginners" data-id="Udemy-Beginners"><a class="anchor hidden-xs" href="#Udemy-Beginners" title="Udemy-Beginners"><span class="octicon octicon-link"></span></a><span>Udemy-Beginners</span></h2><p><span>Kubernetes for the Absolute Beginners - </span><a href="https://www.udemy.com/course/learn-kubernetes/" target="_blank" rel="noopener"><span>Hands-on</span></a></p><p><img src="https://i.imgur.com/fAkZcDo.png" alt="" loading="lazy"></p><h3 id="Objectives" data-id="Objectives"><a class="anchor hidden-xs" href="#Objectives" title="Objectives"><span class="octicon octicon-link"></span></a><span>Objectives</span></h3><p><span>課程大綱</span></p><p><img src="https://i.imgur.com/KMqp3TD.png" alt="" loading="lazy"></p><h3 id="Accessing-the-Labs" data-id="Accessing-the-Labs"><a class="anchor hidden-xs" href="#Accessing-the-Labs" title="Accessing-the-Labs"><span class="octicon octicon-link"></span></a><span>Accessing the Labs</span></h3><p><span>提供一個線上練習的平台 </span><a href="https://kodekloud.com/courses/labs-kubernetes-for-the-absolute-beginners-hands-on/" target="_blank" rel="noopener"><span>link</span></a></p><p><span>因為跟原本 udemy 是不同平台，所以要另外註冊一次。</span><br>
+<span>注意是以 Labs 開頭</span><br>
+<a href="https://kodekloud.com/lessons/kubernetes-for-beginners-labs/" target="_blank" rel="noopener"><span>Labs</span></a><span> – Online Kubernetes Lab for Beginners – Hands On</span></p><p><img src="https://i.imgur.com/ByxcOks.png" alt="" loading="lazy"></p><p><span>Apply the coupon code kk-labs-k8b-lakjg328321095305</span></p><p><span>輸入Udemy-Beginners課程提供給我們免費的代碼:</span></p><p><img src="https://i.imgur.com/MC4ic1l.png" alt="" loading="lazy"></p><p><span>接下來可以成功登陸並開始練習</span><br>
+<img src="https://i.imgur.com/N0SfBHE.png" alt="" loading="lazy"></p><h3 id="Section-2" data-id="Section-2"><a class="anchor hidden-xs" href="#Section-2" title="Section-2"><span class="octicon octicon-link"></span></a><span>Section-2</span></h3><p><span>Quiz:1 Architecture</span></p><p><img src="https://i.imgur.com/twPkrqg.png" alt="" loading="lazy"></p><h2 id="Udemy-CKA" data-id="Udemy-CKA"><a class="anchor hidden-xs" href="#Udemy-CKA" title="Udemy-CKA"><span class="octicon octicon-link"></span></a><span>Udemy-CKA</span></h2><p><span>Certified Kubernetes Administrator </span><a href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/" target="_blank" rel="noopener"><span>(CKA)</span></a><span> with Practice Tests</span></p><p><img src="https://i.imgur.com/iWDn8Vt.png" alt="" loading="lazy"></p><h2 id="LFS258" data-id="LFS258"><a class="anchor hidden-xs" href="#LFS258" title="LFS258"><span class="octicon octicon-link"></span></a><span>LFS258</span></h2><p><span>This course will give you a strong operating knowledge of Kubernetes, including how to deploy a containerized application and manipulating resources via the API.</span></p><p><strong><span>Course Outline</span></strong></p><ul>
+<li><span>Chapter 1. Course Introduction</span></li>
+<li><span>Chapter 2. Basics of Kubernetes</span></li>
+<li><span>Chapter 3. Installation and Configuration</span></li>
+<li><span>Chapter 4. Kubernetes Architecture</span></li>
+<li><span>Chapter 5. APIs and Access</span></li>
+<li><span>Chapter 6. API Objects</span></li>
+<li><span>Chapter 7. Managing State with Deployments</span></li>
+<li><span>Chapter 8. Volumes and Data</span></li>
+<li><span>Chapter 9. Services</span></li>
+<li><span>Chapter 10. Helm</span></li>
+<li><span>Chapter 11. Ingress</span></li>
+<li><span>Chapter 12. Scheduling</span></li>
+<li><span>Chapter 13. Logging and Troubleshooting</span></li>
+<li><span>Chapter 14. Custom Resource Definitions</span></li>
+<li><span>Chapter 15. Security</span></li>
+<li><span>Chapter 16. High Availability</span></li>
+<li><span>Chapter 17. Exam Domain Review</span></li>
+</ul><h3 id="Chapter-2-Basics-of-Kubernetes" data-id="Chapter-2-Basics-of-Kubernetes"><a class="anchor hidden-xs" href="#Chapter-2-Basics-of-Kubernetes" title="Chapter-2-Basics-of-Kubernetes"><span class="octicon octicon-link"></span></a><span>Chapter 2. Basics of Kubernetes</span></h3><p><a href="https://www.gaia.net/tc/news_detail/2/132/CKA-Kubernetes" target="_blank" rel="noopener"><span>CKA - Chapter 2 淺談 Kubernetes</span></a><br>
+<a href="https://github.com/johandry/CKA/blob/master/Ch02.md" target="_blank" rel="noopener"><span>Chapter 2. Basics of Kubernetes</span></a></p><p><span>本章總共有7個小節, 首先我們要知道Kubernetes的定義, 接著透過叢集架構了解K8s的設計, 使用容器化技術是否存在著某些妥協, 需要考量的點有哪些？</span></p><div class="alert alert-success">
+<p><span>Kubernetes is all about decoupled and transient services.</span><br>
+<span>Decoupling (模組解耦) means that everything has been designed to not require anything else in particular.</span><br>
+<span>Transient(瞬態) means that the whole system expects various components to be terminated and replaced.</span><br>
+<span>A flexible and scalable environment means to have a framework that does not tie itself from one aspect to the next, and expect objects to die and to reconnect to their replacements.</span></p>
+</div><h4 id="21-What-Is-Kubernetes" data-id="21-What-Is-Kubernetes"><a class="anchor hidden-xs" href="#21-What-Is-Kubernetes" title="21-What-Is-Kubernetes"><span class="octicon octicon-link"></span></a><span>2.1 What Is Kubernetes?</span></h4><pre><code>an open-source system for automating deployment, 
+scaling, and management of containerized applications
+</code></pre><p><span>一個自動化部署、可拓展和管理容器應用的開源系統</span></p><p><span>多年來，Google 一直使用 Borg 來管理叢集中的容器，積累了大量的叢集管理經驗和運維軟體開發能力，Google 參考 Borg ，開發出了 Kubernetes，即 Borg 是 Kubernetes 的前身。（但是 Google 目前還是主要使用 Borg）</span></p><p><span>除了kubernetes之外, 還有其他的選項嗎？ 其實是有的, 下面介紹幾個.</span><br>
+<span>Built on open source and easily extensible, Kubernetes is definitely a solution to manage containerized applications.  There are other solutions as well.</span></p><p><img src="https://i.imgur.com/Wc8c70F.png" alt="" loading="lazy"></p><ul>
+<li><span>Docker Swarm 是 Docker Inc. 的解決方案。它最近經過重新架構，基於 SwarmKit, 嵌入 Docker 引擎。 </span><a href="https://github.com/docker/swarmkit" target="_blank" rel="noopener"><span>https://github.com/docker/swarmkit</span></a></li>
+<li><span>Apache Mesos 是一個數據中心調度器，它可以通過使用框架來運行容器。Marathon是可讓您編排容器的框架。 </span><a href="https://mesosphere.github.io/marathon/" target="_blank" rel="noopener"><span>https://mesosphere.github.io/marathon/</span></a></li>
+<li><span>Rancher 是一個與容器編排器無關的系統，它為管理應用程序提供了一個單一的玻璃界面。它支持 Mesos、Swarm、Kubernetes，以及它的原生系統 Cattle。從 2.0 開始，牛已被 Kubernetes 取代。 </span><a href="http://rancher.com" target="_blank" rel="noopener"><span>http://rancher.com</span></a></li>
+</ul><h4 id="22-Components-of-Kubernetes" data-id="22-Components-of-Kubernetes"><a class="anchor hidden-xs" href="#22-Components-of-Kubernetes" title="22-Components-of-Kubernetes"><span class="octicon octicon-link"></span></a><span>2.2 Components of Kubernetes</span></h4><p><span>Kubernetes 的元件分為兩種，分別是 Control Plane Components(控制平面元件)、Node Components(節點元件)。</span></p><p><img src="https://i.imgur.com/rlh0PZF.png" alt="" loading="lazy"></p><p><span>當我們創建一個 Kubernetes (K8S) 意味著我們創建了一個叢集(cluster), 而叢集(cluster) 的意思是有一組控制平台(control plane) 及 至少一個的工作機節點(worker node), 在這些工作節點上可以運行容器化的應用(application) 並且由 控制平台(control plane)進行管理.</span><br>
+<span>當我們自行建置 Kubernetes 叢集, 每個叢集至少要有一個工作機節點.</span></p><p><span>工作機節點(Worker)上運行容器化應用的組件稱之為 Pod, 一個Pod上可以跑一個或多個容器(container)</span><br>
+<span>透過控制台(control plane)的管理, 我們可以把同一個容器化的服務透過部署(deployment)機制跑在不同的Pod及工作節點之上, 提供高可用性(High Availability) 及故障移轉 (fault-tolerance)</span></p><h4 id="23-Kubernetes-Architecture" data-id="23-Kubernetes-Architecture"><a class="anchor hidden-xs" href="#23-Kubernetes-Architecture" title="23-Kubernetes-Architecture"><span class="octicon octicon-link"></span></a><span>2.3 Kubernetes Architecture</span></h4><div class="alert alert-warning">
+<p><span>Kubernetes is not just API-driven, but is API-centric.</span></p>
+</div><p><img src="https://i.imgur.com/YRotEBO.png" alt="" loading="lazy"></p><ul>
+<li><span>kube-api-server - 控制平台(control plane)的中心就是 api-server，它實現了系統所有 API 的通用功能。用戶客戶端和實現 Kubernetes 業務邏輯的組件（稱為控制器）與相同的 API 交互。這些 API 類似於 REST，主要支持（主要是）持久資源上的 CRUD 操作。所有持久的集群狀態都存儲在 etcd 鍵值存儲的一個或多個實例中。</span></li>
+<li><span>kubelet - 每個運行容器的節點都會有kubelet, 它通常是systemd的process, 而不是一個容器. kubelet 接收運行容器的請求，管理任何必要的資源，並與容器引擎一起在本地節點上管理它們。本地容器引擎可以是 Docker、cri-o、containerd 或其他的CRI (container Runtime Interface)</span></li>
+<li><span>kube-proxy - 創建和管理網絡規則，以將網絡上的容器暴露給其他容器或外部世界. 它其實就是一個跑在各個工作節點(node) 的網路代理(network proxy), 整體的運行在Pod之上, 並且用來實現一部分的Kubernetes Service 的概念. kube-proxy 維護各個節點上的網路規則, 這些規則允許叢集內部或外部的網路與Pod間進行網路通信.</span></li>
+<li><span>kube-scheduler - 將運行容器的pod規範轉發給API，並找到合適的節點來運行這些容器。 又或者說, scheduler 負責監控新創建的Pods 但仍未指定運行的工作節點(Node), 安排工作節點讓Pod可以運行在其之上. 調度決策的考慮因素包含單個Pod 或 多個Pods (Pod 的集合)所需要的資源, 如: 硬體, 軟體, 部署策略/限制/規範, 工作負載間的干擾 (inter-workload interference)及最終期限 (deadlines).</span></li>
+<li><span>etcd - 是具有高可用性及一致性的鍵值(key-value) 資料庫, 用來保存K8S叢集數據的後台資料庫. 管理etcd 可能會因為環境建置情況, 我們會需要操作 etcd的備份及還原資料</span></li>
+<li><span>control manager - 是Kubernetes 的大腦由 kube-controller-manager 和 cloud-controller-manager 组成. 它的運作機制是通過API-server監控整個叢集的狀態, 並且確保集群上的運作符合預期</span>
+<ul>
+<li><span>kube-controller-manager - 每個控制器(controller)其實都是一個單獨的程序(process), 但是為了降低複雜性, 它們都被編譯到同一個可執行的文件, 並在一個程序中運行. 這些控制器(controller)包含下面幾種：</span>
+<ul>
+<li><span>節點控制器 node controller - node 發生故障時, 需要發出通報</span></li>
+<li><span>任務控制器 job controller - 監測一次性任務的Job 對象, 然後創建Pods來運行任務直到完成任務.</span></li>
+<li><span>端點控制器 end-point controller - 加入端點的對象也就是串接 Service 與 Pods</span></li>
+<li><span>服務帳戶與令牌控制器 service account &amp; token controller - 為新建立的命名空間(namespace)創建對應的默認帳戶及訪問令牌</span></li>
+</ul>
+</li>
+<li><span>cloud-controller-manager - 僅運行在特定的雲平台, 若是本地運行Kubernetes, 所部署的環境不需要考慮之.</span></li>
+</ul>
+</li>
+</ul><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Using-GCE-to-Set-Up-the-Lab-Environment" data-id="Using-GCE-to-Set-Up-the-Lab-Environment"><a class="anchor hidden-xs" href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using-GCE-to-Set-Up-the-Lab-Environment"><span class="octicon octicon-link"></span></a><span>Using GCE to Set Up the Lab Environment</span></h3><p><a href="https://medium.com/learn-or-die/gcp-%E5%A4%9A%E5%80%8B%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF-5c574170611b" target="_blank" rel="noopener"><span>GCP VPC</span></a></p><pre><code>Virtual Private Cloud  虛擬私有雲
+</code></pre><p><span>default 已經幫你把每個地區對應到的網段都切好了</span><br>
+<img src="https://i.imgur.com/PMxGj2w.png" alt="" loading="lazy"></p><h1 id="KodeKloud" data-id="KodeKloud"><a class="anchor hidden-xs" href="#KodeKloud" title="KodeKloud"><span class="octicon octicon-link"></span></a><span>KodeKloud</span></h1><p><span>利用課程 25.Accessing the Labs 去登入, 並輸入優惠碼變成免費 (密碼會用信件寄給你)</span><br>
+<a href="https://uklabs.kodekloud.com/courses/labs-certified-kubernetes-administrator-with-practice-tests/" target="_blank" rel="noopener"><span>https://uklabs.kodekloud.com/courses/labs-certified-kubernetes-administrator-with-practice-tests/</span></a></p><p><img src="https://i.imgur.com/qlkxtYY.png" alt="" loading="lazy"></p><p><span>然後回到首頁，看到 Udemy Labs – Certified Kubernetes Administrator with Practice Tests 已經可以 Start Course 了</span></p><p><img src="https://i.imgur.com/gXCXRnP.png" alt="" loading="lazy"></p><h1 data-id="Killer" id="Killer"><a class="anchor hidden-xs" href="#Killer" title="Killer"><span class="octicon octicon-link"></span></a><span>Killer</span></h1><p><a href="https://killer.sh/" target="_blank" rel="noopener"><span>Killer-sh</span></a><span> 線上模擬題</span></p><p><a href="https://github.com/oldelette/oldelette.github.io/blob/master/Udemy/CKA1.pdf" target="_blank" rel="noopener"><span>CKA</span></a></p><hr><h1 id="Others1" data-id="Others"><a class="anchor hidden-xs" href="#Others1" title="Others1"><span class="octicon octicon-link"></span></a><span>Others</span></h1><p><span>Program Exam</span></p><p><a href="https://blog.csdn.net/shuoshuo132/article/details/115432804" target="_blank" rel="noopener"><span>No.1-2021年CKA考试真题</span></a></p><h2 id="11" data-id="11"><a class="anchor hidden-xs" href="#11" title="11"><span class="octicon octicon-link"></span></a><span>1.1</span></h2><p><img src="https://i.imgur.com/qoae68P.png" alt="" loading="lazy"></p><p><span>題目意思是建立一個 service account, 該 service account 具有在命名空間 dev 下創建 Deployment, StatefulSet, DaemonSet 的權限</span></p><pre><code>kubectl create
+</code></pre><p><a href="https://ithelp.ithome.com.tw/articles/10195944" target="_blank" rel="noopener"><span>RBAC</span></a><span> (Role-Base Access Control，基於角色的訪問控制)</span></p><h2 id="12" data-id="12"><a class="anchor hidden-xs" href="#12" title="12"><span class="octicon octicon-link"></span></a><span>1.2</span></h2><p><img src="https://i.imgur.com/AW1uo99.png" alt="" loading="lazy"></p><p><span>創建兩個 container pod, 其中一個用來寫 log 到 /log/data/output.log , 另一個要把寫入的 log 輸出.</span><br>
+<span>題目有說到 log 文件允許在當前 pod 中使用，因此我們用 emptyDir 去解決這個問題.</span><br>
+<span>題目沒有說到 namespece, 所以默認選擇 default.</span></p><ul>
+<li><span>先透過 kubectl run 創建 yaml 檔後再去做修改</span></li>
+</ul><pre><code>sudo kubectl run log --image=busybox --dry-run=client -o yaml &gt; 0205_logpod.yaml
+</code></pre><ul>
+<li><span>yaml</span></li>
+</ul><pre><code>apiVersion: v1                                                                                                                                                                                             
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: log 
+  name: log 
+spec:
+  containers:
+  - image: busybox
+    name: log-pod
+    command: ["sh","-c","echo important information &gt;&gt; /log/data/output.log; sleep 1d"]
+    volumeMounts:
+    - name: date-log
+      mountPath: /log/data
+    resources: {}
+  - image: busybox
+    name: log-cus
+    command: ["sh","-c","cat /log/data/output.log; sleep 1d"]
+    volumeMounts:
+    - name: date-log
+      mountPath: /log/data
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: date-log
+    emptyDir: {}
+status: {}
+</code></pre><div class="alert alert-info">
+<p><span>查看 log 方式：kubectl log my-pod</span><br>
+<span>如果一個 pod 中有多個 container，可以使用 -c 另行指定 container。</span></p>
+</div><p><span>通過 kubectl log 去查看 log message</span></p><pre><code>sudo kubectl logs log -c log-cus
+</code></pre><p><img src="https://i.imgur.com/OyEDcJj.png" alt="" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#CKA" title="CKA">CKA</a><ul class="nav">
+<li><a href="#考試準備" title="考試準備">考試準備</a><ul class="nav">
+<li><a href="#Udemy-課程" title="Udemy 課程">Udemy 課程</a></li>
+<li><a href="#免費入門課程" title="免費入門課程">免費入門課程</a></li>
+<li><a href="#Course-Resources" title="Course Resources">Course Resources</a></li>
+<li><a href="#Class-Forum" title="Class Forum">Class Forum</a></li>
+</ul>
+</li>
+<li><a href="#Udemy-Beginners" title="Udemy-Beginners">Udemy-Beginners</a><ul class="nav">
+<li><a href="#Objectives" title="Objectives">Objectives</a></li>
+<li><a href="#Accessing-the-Labs" title="Accessing the Labs">Accessing the Labs</a></li>
+<li><a href="#Section-2" title="Section-2">Section-2</a></li>
+</ul>
+</li>
+<li><a href="#Udemy-CKA" title="Udemy-CKA">Udemy-CKA</a></li>
+<li><a href="#LFS258" title="LFS258">LFS258</a><ul class="nav">
+<li><a href="#Chapter-2-Basics-of-Kubernetes" title="Chapter 2. Basics of Kubernetes">Chapter 2. Basics of Kubernetes</a></li>
+</ul>
+</li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=""><a href="#KodeKloud" title="KodeKloud">KodeKloud</a></li>
+<li><a href="#Killer" title="Killer">Killer</a></li>
+<li><a href="#Others1" title="Others">Others</a><ul class="nav">
+<li><a href="#11" title="1.1">1.1</a></li>
+<li><a href="#12" title="1.2">1.2</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#CKA" title="CKA">CKA</a><ul class="nav">
+<li><a href="#考試準備" title="考試準備">考試準備</a><ul class="nav">
+<li><a href="#Udemy-課程" title="Udemy 課程">Udemy 課程</a></li>
+<li><a href="#免費入門課程" title="免費入門課程">免費入門課程</a></li>
+<li><a href="#Course-Resources" title="Course Resources">Course Resources</a></li>
+<li><a href="#Class-Forum" title="Class Forum">Class Forum</a></li>
+</ul>
+</li>
+<li><a href="#Udemy-Beginners" title="Udemy-Beginners">Udemy-Beginners</a><ul class="nav">
+<li><a href="#Objectives" title="Objectives">Objectives</a></li>
+<li><a href="#Accessing-the-Labs" title="Accessing the Labs">Accessing the Labs</a></li>
+<li><a href="#Section-2" title="Section-2">Section-2</a></li>
+</ul>
+</li>
+<li><a href="#Udemy-CKA" title="Udemy-CKA">Udemy-CKA</a></li>
+<li><a href="#LFS258" title="LFS258">LFS258</a><ul class="nav">
+<li><a href="#Chapter-2-Basics-of-Kubernetes" title="Chapter 2. Basics of Kubernetes">Chapter 2. Basics of Kubernetes</a></li>
+</ul>
+</li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Using-GCE-to-Set-Up-the-Lab-Environment" title="Using GCE to Set Up the Lab Environment">Using GCE to Set Up the Lab Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=""><a href="#KodeKloud" title="KodeKloud">KodeKloud</a></li>
+<li><a href="#Killer" title="Killer">Killer</a></li>
+<li><a href="#Others1" title="Others">Others</a><ul class="nav">
+<li><a href="#11" title="1.1">1.1</a></li>
+<li><a href="#12" title="1.2">1.2</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
