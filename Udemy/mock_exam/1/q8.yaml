@@ -1,0 +1,17 @@
+# k run temp-bus --image=redis:alpine -n finance -o yaml --dry-run=client
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: temp-bus
+  name: temp-bus
+  namespace: finance
+spec:
+  containers:
+  - image: redis:alpine
+    name: temp-bus
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
