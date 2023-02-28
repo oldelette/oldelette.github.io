@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Kubernetes - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><a class="anchor hidden-xs" href="#tags-Work" title="tags-Work"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Work</code></h6><h1 id="Kubernetes" data-id="Kubernetes"><a class="anchor hidden-xs" href="#Kubernetes" title="Kubernetes"><span class="octicon octicon-link"></span></a><span>Kubernetes</span></h1><p><a href="https://www.youtube.com/watch?v=X48VuDVv0do&amp;ab_channel=TechWorldwithNana" target="_blank" rel="noopener"><span>影片參考: Kubernetes Tutorial for Beginners</span></a><br>
+<a href="https://cwhu.medium.com/kubernetes-basic-concept-tutorial-e033e3504ec0" target="_blank" rel="noopener"><span>文章參考: 基礎教學</span></a></p><p><strong><span>K8s = Container + Orchestration</span></strong></p><p><span>Container Orchestration</span><br>
+<span>支持應用程序的容器的部署和組織稱為Container Orchestration容器編排，這是通過容器編排工具完成的。包括Kubernetes、Docker Swarm 和 MESOS</span></p><p><img src="https://i.imgur.com/J32S5nF.png" alt="" loading="lazy"></p><hr><p><span>Kubernetes 是一個協助我們自動化部署、擴張以及管理容器應用程式(containerized applications)的系統。相較於需要手動部署每個容器化應用程式(containers)到每台機器上，Kubernetes 可以幫我們做到以下幾件事情：</span></p><ul>
+<li><span>同時部署多個 containers 到一台機器上，甚至多台機器。</span></li>
+<li><span>管理各個 container 的狀態。如果提供某個服務的 container 不小心 crash 了，Kubernetes 會偵測到並重啟這個 container，確保持續提供服務</span></li>
+<li><span>將一台機器上所有的 containers 轉移到另外一台機器上。</span></li>
+<li><span>提供機器高度擴張性。Kubernetes cluster 可以從一台機器，延展到多台機器共同運行。</span></li>
+</ul><h2 id="k8s-元件說明" data-id="k8s-元件說明"><a class="anchor hidden-xs" href="#k8s-元件說明" title="k8s-元件說明"><span class="octicon octicon-link"></span></a><span>k8s 元件說明</span></h2><p><img src="https://i.imgur.com/2A7uDSv.png" alt="" loading="lazy"></p><ul>
+<li>
+<p><ins><span>Container</span></ins><br>
+<span>Container中文稱作容器，指的是將應用程式沙箱化，且包含應用程式所需的關聯系統程式、必要的執行檔等內容，讓其無須再透過另外部署安裝，即可在各種容器平台中執行。</span></p>
+</li>
+<li>
+<p><ins><span>Pod</span></ins><br>
+<span>Pod則為K8s運作的最小單位，中文可稱作容器集，意即一個Pod內部可含一個或是多個Container（視運行需求會有一或多個容器同時運行）。而一個Pod會對應到一個應用程式，同一個Pod中的Containers則會共享相同的網路資源（如：IP地址、主機名稱等）。</span></p>
+</li>
+</ul><p><img src="https://i.imgur.com/ufjsOAu.png" alt="" loading="lazy"></p><ul>
+<li><ins><span>Node</span></ins><br>
+<span>Node則還分為2種：</span>
+<ul>
+<li><ins><span>1.Worker Node</span></ins><br>
+<span>Worker Node為主要執行的運行節點，且一個Worker Node會對應一台機器。內部還可細分為kubelet、kube-proxy及Container Runtime 3個元件。</span></li>
+<li><ins><span>2.Control Plane</span></ins><br>
+<span>舊簡稱Master Node，負責各個Worker Node的管理，可稱作是K8S的發號施令的中樞。其內部由kube-apiserver、etcd、kube-scheduler以及kube-controller-manager 4個元件組成。</span></li>
+</ul>
+</li>
+</ul><h2 id="k8s-架構" data-id="k8s-架構"><a class="anchor hidden-xs" href="#k8s-架構" title="k8s-架構"><span class="octicon octicon-link"></span></a><span>k8s 架構</span></h2><p><span>K8S 屬分布式系統，主要元件有：</span></p><ol>
+<li><span>Master – 大總管，可做為主節點</span></li>
+<li><span>Node – 主要工作的節點，上面運行了許多容器。可想作一台虛擬機。K8S 可操控高達 1,000 個 nodes 以上</span></li>
+<li><span>masters 和 nodes組成叢集 (Clusters)</span></li>
+</ol><p><img src="https://i.imgur.com/MEmkEhf.png" alt="" loading="lazy"></p><pre><code>Controller Plane 在舊版的 K8s稱為 Master Node
+Node以前則叫做 Slave/Worker Node 或 更早版本的 Minion
+</code></pre><h3 id="Master-Node" data-id="Master-Node"><a class="anchor hidden-xs" href="#Master-Node" title="Master-Node"><span class="octicon octicon-link"></span></a><span>Master Node</span></h3><p><span>Kubernetes 運作的指揮中心，可以簡化看成一個特化的 Node 負責管理所有其他 Node。</span><br>
+<span>一個 Master Node（簡稱 Master）中有四個組件</span></p><p><span>(a) Etcd,</span><br>
+<span>(b) API Server,</span><br>
+<span>(c) Controller Manager Server</span><br>
+<span>(d) Scheduler</span></p><h4 id="API-Server" data-id="API-Server"><a class="anchor hidden-xs" href="#API-Server" title="API-Server"><span class="octicon octicon-link"></span></a><ins><span>API Server</span></ins></h4><ol>
+<li><span>管理整個 Kubernetes 所需 API 的接口（Endpoint），例如從 Command Line 下 kubectl 指令就會把指令送到這裏</span></li>
+<li><span>負責 Node 之間的溝通橋樑，每個 Node 彼此不能直接溝通，必須要透過 apiserver 轉介</span></li>
+<li><span>負責 Kubernetes 中的請求的身份認證與授權</span></li>
+</ol><p><span>紅框就是request 流程  (ex: kubectl 指令)</span></p><p><img src="https://i.imgur.com/mhc9IVa.png" alt="" loading="lazy"></p><h4 id="kube-scheduler" data-id="kube-scheduler"><a class="anchor hidden-xs" href="#kube-scheduler" title="kube-scheduler"><span class="octicon octicon-link"></span></a><ins><span>kube-scheduler</span></ins></h4><div class="alert alert-success">
+<p><span>Scheduler just decides on which Node new Pod should be sheduled</span></p>
+</div><p><span>整個 Kubernetes 的 Pods 調度員</span><br>
+<span>Scheduler 會監視新建立但還沒有被指定要跑在哪個 Node 上的 Pod，並根據每個 Node 上面資源規定、硬體限制等條件去協調出一個最適合放置的 Node 讓該 Pod 跑</span></p><h4 id="Etcd" data-id="Etcd"><a class="anchor hidden-xs" href="#Etcd" title="Etcd"><span class="octicon octicon-link"></span></a><ins><span>Etcd</span></ins></h4><p><span>ETCD 以分散式鍵值(key-value)的形式存放着整個分散系統的最重要資料。</span></p><p><span>用來存放 Kubernetes Cluster 的資料作為備份，當 Master 因為某些原因而故障時，我們可以透過 etcd 幫我們還原 Kubernetes 的狀態</span></p><h4 id="kube-controller-manager" data-id="kube-controller-manager"><a class="anchor hidden-xs" href="#kube-controller-manager" title="kube-controller-manager"><span class="octicon octicon-link"></span></a><a href="https://ithelp.ithome.com.tw/articles/10197442" rel="noopener" target="_blank"><span>kube-controller-manager</span></a></h4><p><span>負責管理並運行 K8s controller 的組件，負責監視 Cluster 狀態的組件，是 K8s中所有resource-objects 的自動化控制中心</span></p><p><span>kube-controller-manager又可以細分為：</span></p><ul>
+<li><ins><span>Namespace Controller</span></ins></li>
+<li><ins><span>Node-Controller</span></ins></li>
+<li><ins><span>Replication-Controller</span></ins></li>
+<li><ins><span>Deployment Controller</span></ins></li>
+</ul><h3 id="Worker-Node" data-id="Worker-Node"><a class="anchor hidden-xs" href="#Worker-Node" title="Worker-Node"><span class="octicon octicon-link"></span></a><span>Worker Node</span></h3><div class="alert alert-warning">
+<p><span>Host Application as Containers</span></p>
+</div><p><span>Kubernetes 運作的最小硬體單位</span><br>
+<span>一個 Worker Node（簡稱 Node）對應到一台機器，可以是實體機如你的筆電、或是虛擬機如 AWS 上的一台 EC2 或 GCP 上的一台 Computer Engine。</span></p><p><span>Node的工作 是負責</span><strong><span>將Application以容器的形式運行在K8s cluster 集群中</span></strong><span>。</span></p><p><span>每個 Node 中都有三個組件：kubelet、kube-proxy、Container Runtime。</span></p><ul>
+<li><ins><span>Node 包含了四個基本組件</span></ins><br>
+<span>Kubelet, Proxy, Pod, Container</span></li>
+</ul><p><img src="https://i.imgur.com/2n1otbM.png" alt="" loading="lazy"></p><h4 id="kubelet" data-id="kubelet"><a class="anchor hidden-xs" href="#kubelet" title="kubelet"><span class="octicon octicon-link"></span></a><ins><span>kubelet</span></ins></h4><p><span>對應api-server的接口，可以看成每個Node上的"實際執行者"或"操作者"，負責接收來自api-server的訊息，並做出相對應的動作。</span><br>
+<span>例如，負責Pod對應的容器的建立、啟動或停止等</span></p><h4 id="kube-proxy" data-id="kube-proxy"><a class="anchor hidden-xs" href="#kube-proxy" title="kube-proxy"><span class="octicon octicon-link"></span></a><ins><span>kube-proxy</span></ins></h4><p><span>kube-proxy 是一個 network proxy，負責維護Node上的網路規則(iptables)，這些規則允許從群集內部或外部的與Pod進行通訊。</span></p><h4 id="Container-Runtime" data-id="Container-Runtime"><a class="anchor hidden-xs" href="#Container-Runtime" title="Container-Runtime"><span class="octicon octicon-link"></span></a><ins><span>Container Runtime</span></ins></h4><p><span>Node上運行容器的執行程式，K8s預設是Docker，但也支援其他Runtime Engine。</span><br>
+<span>例如 rkt、CRI-O、containerd, kata container等等…</span></p><hr><h3 id="Pod" data-id="Pod"><a class="anchor hidden-xs" href="#Pod" title="Pod"><span class="octicon octicon-link"></span></a><a href="https://kubernetes.io/docs/concepts/workloads/pods/" target="_blank" rel="noopener"><span>Pod</span></a></h3><pre><code>Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
+</code></pre><p><span>Kubernetes 運作的最小單位，一個 Pod 對應到一個應用服務（Application） ，舉例來說一個 Pod 可能會對應到一個 API Server。</span></p><ul>
+<li><span>每個 Pod 都有一個身分證，也就是屬於這個 Pod 的 </span><ins><span>yaml 檔</span></ins></li>
+<li><span>一個 Pod 裡面可以有一個或是多個 Container，但一般情況一個 Pod 最好只有一個 Container</span></li>
+<li><span>同一個 Pod 中的 Containers 共享相同資源及網路，彼此透過 local port number 溝通</span></li>
+</ul><h4 id="Using-pod" data-id="Using-pod"><a class="anchor hidden-xs" href="#Using-pod" title="Using-pod"><span class="octicon octicon-link"></span></a><span>Using pod</span></h4><p><span>The following is an example of a Pod which consists of a container running the image nginx:1.14.2.</span></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1    &lt;=== 指定使用 v1 版本的 api
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod         &lt;=== 指定類型為 Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>         &lt;=== 將 Pod 命名為 ngnix
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>                     &lt;=== 規格描述
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>             &lt;=== 描述容器
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx           &lt;=== 將容器命名為 frontend
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.14.2   &lt;=== 使用 nginx<span class="token punctuation">:</span>1.14.2 映像檔
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> 80    &lt;=== 指定使用 80 port
+</div></div></code></pre><p><ins><span>Pod的狀態</span></ins></p><table>
+<thead>
+<tr>
+<th><span>Value</span></th>
+<th><span>Description</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>Pending</span></td>
+<td><span>Pod已被k8s接受，但尚未創建完成，這可能需要一段時間。</span></td>
+</tr>
+<tr>
+<td><span>Running</span></td>
+<td><span>Pod已創建所有Container。至少有一個Container仍在運行，或者正在啟動或重新啟動。</span></td>
+</tr>
+<tr>
+<td><span>Succeeded</span></td>
+<td><span>Pod中的所有Container都已成功終止，並且不會重新啟動。</span></td>
+</tr>
+<tr>
+<td><span>Failed</span></td>
+<td><span>Pod中的所有Container都已終止，Container不是退出非零狀態，就是被系統終止。</span></td>
+</tr>
+<tr>
+<td><span>Unknown</span></td>
+<td><span>由於某種原因，無法獲得Pod的狀態，這通常是由於與Pod的主機通信時出錯。</span></td>
+</tr>
+</tbody>
+</table><h5 id="創建-Pod" data-id="創建-Pod"><a class="anchor hidden-xs" href="#創建-Pod" title="創建-Pod"><span class="octicon octicon-link"></span></a><span>創建 Pod</span></h5><p><span>To create the Pod shown above, run the following command:</span></p><pre><code>kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml
+</code></pre><h5 id="刪除-Pod" data-id="刪除-Pod"><a class="anchor hidden-xs" href="#刪除-Pod" title="刪除-Pod"><span class="octicon octicon-link"></span></a><span>刪除 Pod</span></h5><pre><code>kubectl delete pods &lt;pod&gt;
+</code></pre><h3 id="Kubernetes-Cluster" data-id="Kubernetes-Cluster"><a class="anchor hidden-xs" href="#Kubernetes-Cluster" title="Kubernetes-Cluster"><span class="octicon octicon-link"></span></a><span>Kubernetes Cluster</span></h3><p><a href="https://medium.com/starbugs/kubernetes-%E6%95%99%E5%AD%B8-%E4%B8%80-%E6%A6%82%E5%BF%B5%E8%88%87%E6%9E%B6%E6%A7%8B-954caa9b1558" target="_blank" rel="noopener"><span>Ref: </span></a><br>
+<span>Kubernetes 中多個 Node 與 Master 的集合。基本上可以想成在同一個環境裡所有 Node 集合在一起的單位。</span></p><ul>
+<li><span>Kubernetes 集群由控制面板 Control Panel 與節點 Node 所組成。</span></li>
+<li><span>Control Plane(控制面板)又稱為是 Kubernetes Master。</span><br>
+<img src="https://i.imgur.com/WzgQYkJ.png" alt="" loading="lazy"></li>
+</ul><p><span>Control Plane 控制面板由幾個元件 (Component) 所組成：</span></p><ol>
+<li><span>Kube API Server</span><br>
+<span>控制面板中用來暴露 Kubernetes API 的元件，讓其他服務可以讀寫 K8S 的資源物件 (Resouce Object)。</span></li>
+<li><span>Kube Schedular</span><br>
+<span>調度器，需要調度軟體、硬體資源的時候就要靠調度器囉。例如：如果新建立的 pod 沒有 node 可以放的時候，調度器就會開啟一個新的 node，來放置剛剛需要建立的 pod。</span></li>
+<li><span>Kube Controller Manager</span><br>
+<span>是一個在背景持續執行的程序 (daemon)，用來調節系統狀態，透過 api-server 可以監視 Cluster 共享的狀態。</span><br>
+<span>需要變更目前狀態的時候 Kube Controller 就會將目前的狀態變更到想要變更的狀態，例如：本來 2 個副本 (Replica) 擴展到 4 個副本。</span><br>
+<span>包含了副本控制器 (Replication Controller)，端點控制器 (Endpoint Controller)、命名空間控制器(Namepsace Controller)與服務帳號控制器</span></li>
+<li><span>Cloud Controller Manager</span><br>
+<span>基於 Kube Controller Manager，各個雲平台提供者（Provider）的實作。而每個 Node 則包含：</span><br>
+<span>kubelet — 用來跟 Master 溝通的元件。</span><br>
+<span>kube-proxy — 網路代理，用來反應 K8S 各個 Node 上的網路服務</span></li>
+</ol><h2 id="k8s-command" data-id="k8s-command"><a class="anchor hidden-xs" href="#k8s-command" title="k8s-command"><span class="octicon octicon-link"></span></a><span>k8s command</span></h2><p><span>kubectl — 跟 K8S Cluster 溝通的工具</span></p><p><a href="https://fufu.gitbook.io/kk8s/kubectl-cmd-note" target="_blank" rel="noopener"><span>常見的 kubectl 指令</span></a><br>
+<a href="https://youtu.be/X48VuDVv0do?t=2090" target="_blank" rel="noopener"><span>vedio 34:50</span></a><span> Minikube and Kubectl</span></p><p><img src="https://i.imgur.com/QzdAZgm.png" alt="" loading="lazy"></p><table>
+<thead>
+<tr>
+<th></th>
+<th><span>minikube</span></th>
+<th><span>kind</span></th>
+<th><span>k3s</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>runtime</span></td>
+<td><span>VM</span></td>
+<td><span>Tcontainer</span></td>
+<td><span>native</span></td>
+</tr>
+<tr>
+<td><span>supported architectures</span></td>
+<td><span>AMD64</span></td>
+<td><span>AMD64</span></td>
+<td><span>AMD64, ARMv7, ARM64</span></td>
+</tr>
+<tr>
+<td><span>memory requirements</span></td>
+<td><span>2GB</span></td>
+<td><span>8GB (Windows, MacOS)</span></td>
+<td><span>512 MB</span></td>
+</tr>
+<tr>
+<td><span>requires root?</span></td>
+<td><span>no</span></td>
+<td><span>no</span></td>
+<td><span>yes</span></td>
+</tr>
+<tr>
+<td><span>multi-cluster support</span></td>
+<td><span>yes</span></td>
+<td><span>yes</span></td>
+<td><span>no (can be achieved using containers</span></td>
+</tr>
+<tr>
+<td><span>multi-node support</span></td>
+<td><span>no</span></td>
+<td><span>yes</span></td>
+<td><span>yes</span></td>
+</tr>
+</tbody>
+</table><hr><p><span>Install Kubernetes Cluster on Ubuntu 20.04 using K3s </span><a href="https://computingforgeeks.com/install-kubernetes-on-ubuntu-using-k3s/" target="_blank" rel="noopener"><span>- LINK</span></a></p><h3 id="Setup-the-Master-k3s-Node" data-id="Setup-the-Master-k3s-Node"><a class="anchor hidden-xs" href="#Setup-the-Master-k3s-Node" title="Setup-the-Master-k3s-Node"><span class="octicon octicon-link"></span></a><span>Setup the Master k3s Node</span></h3><p><span>In this step, we shall install and prepare the master node.</span><br>
+<span>This involves installing the k3s service and starting it.</span></p><pre><code>curl -sfL https://get.k3s.io | sh -s - --docker
+</code></pre><p><span>確認是否可以成功執行 Kubectl， 如果遇到下面權限問題， 改權限即可。</span></p><pre><code>sudo chmod 755 /etc/rancher/k3s/k3s.yaml
+</code></pre><p><img src="https://i.imgur.com/pyKkp8k.png" alt="" loading="lazy"></p><h3 id="Basic-Kubectl-cmds" data-id="Basic-Kubectl-cmds"><a class="anchor hidden-xs" href="#Basic-Kubectl-cmds" title="Basic-Kubectl-cmds"><span class="octicon octicon-link"></span></a><span>Basic Kubectl cmds</span></h3><p><span>Create and debug Pods in k3s</span></p><div class="alert alert-info">
+<p><span>CRUD commands</span></p>
+</div><p><span>Create deployment - kubectl create deployment [name]</span><br>
+<span>Edit deployment - kubectl edit deployment [name]</span><br>
+<span>Delete deployment - kubectl delete deployment [name]</span></p><div class="alert alert-info">
+<p><span>Status of different K8s components</span></p>
+</div><p><span>kubectl get nodes | pod | services | replicaset | deployment</span></p><div class="alert alert-info">
+<p><span>Debugging pods</span></p>
+</div><p><span>Log to console - kubectl logs [pod name]</span><br>
+<span>Get Interactive Terminal - kubectl exec -it [pod name] --bon/bash</span></p><ul>
+<li><span>example</span></li>
+</ul><pre><code>kubectl exec -it nginx-deployment-5d59d67564-llnpq -- bin/bash
+</code></pre><p><img src="https://i.imgur.com/FNtYh3i.png" alt="" loading="lazy"></p><h4 id="Deployment" data-id="Deployment"><a class="anchor hidden-xs" href="#Deployment" title="Deployment"><span class="octicon octicon-link"></span></a><span>Deployment</span></h4><p><span>Deployment Controller 提供 Pods 和 ReplicaSets可定義的更新，k8s 下的Deployment有許多feature可以使用</span><br>
+<span>如：create、update、roll back、pause、resume等，針對 Deployment 的替代方案可以使用kubectl rolling update這個指令</span></p><p><span>建立一個 Deployment</span></p><pre><code>kubectl apply -f example/deploy_test.yaml
+</code></pre><p><a href="https://medium.com/learn-or-die/kubernetes-deployment-a54327e79a7e" target="_blank" rel="noopener"><span>Deployment.py</span></a></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>deployment
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.7.9
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</div></div></code></pre><p><img src="https://i.imgur.com/i0Z9jVP.png" alt="" loading="lazy"></p><p><ins><span>檢視 Deployments, 會顯示以下欄位</span></ins></p><ul>
+<li><span>NAME 列出在這個叢集中 Deployments 的名稱</span></li>
+<li><span>UP-TO-DATE 顯示已被更新來達成期望狀態的 replicas 數量</span></li>
+<li><span>AVAILABLE 顯示可用的 replicas 數量</span></li>
+<li><span>AGE 顯示 replica 已運行的時間</span></li>
+</ul><hr><h3 id="k8s-yaml" data-id="k8s-yaml"><a class="anchor hidden-xs" href="#k8s-yaml" title="k8s-yaml"><span class="octicon octicon-link"></span></a><span>k8s yaml</span></h3><p><a href="https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started" target="_blank" rel="noopener"><span>YAML Ain’t Markup Language</span></a><span> (YAML) is a serialization language that has steadily increased in popularity over the last few years</span></p><p><span>在K8s中所有物件(resorce-object)都是用YAML File來描述。</span><br>
+<span>我們需要寫非常大量的YAML來創造物件，因此 K8s Engineering 也被稱為 “YAML Engineering”</span></p><p><span>在 K8s中的YAML檔，有四個欄位是必須的：apiVersion、kind、metadata、spec</span></p><p><img src="https://i.imgur.com/5nP1HyM.png" alt="" loading="lazy"></p><h4 id="apiVersion" data-id="apiVersion"><a class="anchor hidden-xs" href="#apiVersion" title="apiVersion"><span class="octicon octicon-link"></span></a><ins><span>apiVersion</span></ins></h4><p><span>apiVersion 其實就是API的版本，因為k8s提供給每個物件的API版本都不同，需要跟著物件來更改需要的 apiVersion。</span></p><h4 id="kind" data-id="kind"><a class="anchor hidden-xs" href="#kind" title="kind"><span class="octicon octicon-link"></span></a><ins><span>kind</span></ins></h4><p><span>kind 就是我們這個 YAML是要用來創造哪個物件。  像是Pod、Service、Deployment等等。</span><br>
+<span>它們都有各自對應的 apiVersion，像是：</span></p><table>
+<thead>
+<tr>
+<th><span>kind</span></th>
+<th><span>apiVersion</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>Pod</span></td>
+<td><span>v1</span></td>
+</tr>
+<tr>
+<td><span>Service</span></td>
+<td><span>v1</span></td>
+</tr>
+<tr>
+<td><span>Deployment</span></td>
+<td><span>apps/v1</span></td>
+</tr>
+<tr>
+<td><span>ReplicaSet</span></td>
+<td><span>apps/v1</span></td>
+</tr>
+</tbody>
+</table><h4 id="metadata" data-id="metadata"><a class="anchor hidden-xs" href="#metadata" title="metadata"><span class="octicon octicon-link"></span></a><ins><span>metadata</span></ins></h4><p><span>metadata是用來描述這個物件的資訊，像是它的名稱，lable等。</span></p><h4 id="spec" data-id="spec"><a class="anchor hidden-xs" href="#spec" title="spec"><span class="octicon octicon-link"></span></a><ins><span>spec</span></ins></h4><p><span>spec是這四個欄位中最重要的欄位</span><br>
+<span>用來定義這個物件內有甚麼，也就是說，用來定義這個物件是要用來幹嘛的。</span><br>
+<span>例如一個 Pod內有 Container，那 kind就是Pod，而Container的資訊則寫在spec欄位，代表這個 Pod的功能是host 一個Container</span></p><h2 id="CNCF" data-id="CNCF"><a class="anchor hidden-xs" href="#CNCF" title="CNCF"><span class="octicon octicon-link"></span></a><span>CNCF</span></h2><p><span>Cloud Native Computing Foundation</span><br>
+<span>Linux基金會底下的非營利組織</span></p><h2 id="Other" data-id="Other"><a class="anchor hidden-xs" href="#Other" title="Other"><span class="octicon octicon-link"></span></a><span>Other</span></h2><p><span>K8s 本身只需要專注於 kubelet 以及 CRI (Container Runtime Interface) 標準的互動，第三方開發者則可以根據需求開發出各式各樣不同的產品，只要能夠滿足 CRI 標準，都可以作為K8s的Container Runtime Engine</span></p><h3 id="Container-Runtime-Interface-CRI" data-id="Container-Runtime-Interface-CRI"><a class="anchor hidden-xs" href="#Container-Runtime-Interface-CRI" title="Container-Runtime-Interface-CRI"><span class="octicon octicon-link"></span></a><span>Container Runtime Interface (CRI)</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10218127" target="_blank" rel="noopener"><span>Kubernetes 為了能夠有效地銜接各式各樣不同的 Container Runtime 解決方案</span></a><span>，勢必也需要推出相關的標準，就如同 Container OCI 一樣，符合標準的解決方案就能夠輕鬆的整合到 kubernetes 之中。</span><br>
+<span>於是 Container Runtime Interface(CRI) 標準就被設計且開發來</span></p><ul>
+<li><span>表格列出了 kubernetes 與 CRI Runtime 各自的責任</span></li>
+</ul><table>
+<thead>
+<tr>
+<th><span>Kubernetes</span></th>
+<th><span>CRI Runtime</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>Kubernetes Resources/API</span></td>
+<td><span>Pod Life Cycle (Add/Delete)</span></td>
+</tr>
+<tr>
+<td><span>Storage (CSI)</span></td>
+<td><span>Image management</span></td>
+</tr>
+<tr>
+<td><span>Networking (CNI)</span></td>
+<td><span>Status</span></td>
+</tr>
+<tr>
+<td><span>Dispatcher</span></td>
+<td><span>Container Operations (attatch/exec)</span></td>
+</tr>
+</tbody>
+</table><h4 id="CRI-架構" data-id="CRI-架構"><a class="anchor hidden-xs" href="#CRI-架構" title="CRI-架構"><span class="octicon octicon-link"></span></a><span>CRI 架構</span></h4><p><span>CRI 本身是個</span><mark><span>溝通介面</span></mark><span>，這代表溝通的兩方(Docker &amp; Kubernetes)都需要根據這個界面去實現與滿足。</span></p><p><span>最直觀的想法就是如果沒有辦法使得 docker 本身支援 CRI 的標準，那就</span><strong><span>額外撰寫一個轉接器(dockershim)</span></strong><span>，其運作在 kubelet 與 Docker，該應用程式上承 CRI 與 kubernetes 溝通，下承 Docker API 與 Docker Engine 溝通。</span></p><p><span>問題: 做法可行，但是其實效能大大則扣</span><br>
+<span>圖中的上半部份，而圖中的下半部分則是後來的改變之處</span></p><p><img src="https://i.imgur.com/WKum4Tp.png" alt="" loading="lazy"></p><p><span>反正最後都是透過 containerd 進行操作，而本身也不太需要 docker 自己的功能，那是否就直接將 dockershim 溝通的角色從 docker engine 轉移到 containerd 即可。 因此後來又有所謂的 CRI-Containerd 的出現。</span></p><p><span>伴隨者 Containerd 本身的功能開發，提供了 Plugin 這種外掛功能的特色後，將 CRI-Containerd 的功能直接整合到該 Plugin 內就可以直接再次減少一個元件，直接讓 kubelet 與 containerd 直接溝通來創建相關的 container。</span><br>
+<img src="https://i.imgur.com/ou2vzXG.png" alt="" loading="lazy"></p><h3 id="Window-install-Kubernetes" data-id="Window-install-Kubernetes"><a class="anchor hidden-xs" href="#Window-install-Kubernetes" title="Window-install-Kubernetes"><span class="octicon octicon-link"></span></a><span>Window install Kubernetes</span></h3><p><span>Docker 內建有包含 Kubernetes 單機叢集環境, 預設並沒有啟用</span></p><p><img src="https://i.imgur.com/SLb278f.png" alt="" loading="lazy"></p><ul>
+<li><span>確認安裝成功</span></li>
+</ul><pre><code>kubectl version --short 
+</code></pre><p><img src="https://i.imgur.com/hgcl2TC.png" alt="" loading="lazy"></p><h1 id="Open-source" data-id="Open-source"><a class="anchor hidden-xs" href="#Open-source" title="Open-source"><span class="octicon octicon-link"></span></a><span>Open source</span></h1><p><a href="https://ithelp.ithome.com.tw/articles/10262063" target="_blank" rel="noopener"><span>本機版k8s</span></a><br>
+<span>Kubeadm, Minikube, KIND</span></p><h2 id="kinds" data-id="kinds"><a class="anchor hidden-xs" href="#kinds" title="kinds"><span class="octicon octicon-link"></span></a><span>kinds</span></h2><p><span>全名是: Kubernetes in Docker</span><br>
+<span>使用docker在本機運行kubernetes，kind 會將 docker的容器當成節點(node)來運行</span><br>
+<span>相較於MiniKube 使用 VM 來建立節點，kind 使用docker，因此kind的啟動速度會比 MiniKube快上不少</span></p><p><img src="https://i.imgur.com/tp95ogX.png" alt="" loading="lazy"></p><p><a href="https://ithelp.ithome.com.tw/articles/10266092" target="_blank" rel="noopener"><span>Ref: Kind部署環境與測試</span></a></p><pre><code>curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
+chmod +x ./kind
+mv ./kind /usr/local/bin/kind
+</code></pre><p><span>當安裝完後,可以透過下面指令測試是否有安裝成功</span></p><div class="alert alert-success">
+<p><span>kind create cluster --&gt; 這會產生一個名稱為 kind 的 cluster</span><br>
+<span>kind create cluster --name kind-2  --&gt; 這樣就可以指定 cluster 名稱為 kind-2 的 cluster。</span></p>
+</div><p><img src="https://i.imgur.com/WlbO8C3.png" alt="" loading="lazy"></p><p><span>沒有加上 --name的話，就會刪除預設context 名稱，也就是叫做 kind的cluster</span><br>
+<span>可以像下面這樣加上 --name</span></p><div class="alert alert-info">
+<p><span>kind get clusters --&gt; 查看 cluster</span><br>
+<span>kind delete cluster --&gt; 刪除 cluster</span><br>
+<span>kind delete cluster --name kind-2</span></p>
+</div><h3 id="建立環境" data-id="建立環境"><a class="anchor hidden-xs" href="#建立環境" title="建立環境"><span class="octicon octicon-link"></span></a><span>建立環境</span></h3><p><span>去官網找到 </span><a href="https://raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/user/kind-example-config.yaml" target="_blank" rel="noopener"><span>kind-example-config</span></a></p><p><span>透過這種方式，即可用剛剛建立的設定yaml檔去建立cluster。</span><br>
+<span>建立完成後，可以使用下面指令檢查是否有正確建立nodes。</span></p><pre><code>kind create cluster --config kind-example-config.yaml
+kind get nodes
+</code></pre><p><span>成功的話會看到有一個 control-plane 的 nodes 以及三個 worker 的 node</span><br>
+<img src="https://i.imgur.com/xBUhR4J.png" alt="" loading="lazy"></p><p><span>kind是用 docker的 pod當作節點，因此當你現在使用查詢docker 運作中的pod的節點，就可以看到剛剛產生出來的nodes</span></p><p><img src="https://i.imgur.com/ZcRdKzF.png" alt="" loading="lazy"></p><h3 id="建立-pods" data-id="建立-pods"><a class="anchor hidden-xs" href="#建立-pods" title="建立-pods"><span class="octicon octicon-link"></span></a><span>建立 pods</span></h3><ul>
+<li><span>透過這個指令，我們可以告訴k8s建立出單個pod，名稱為nginx</span><br>
+<span>使用Docker Hub上的nginx映像檔,且 flag 為 --restart=Never</span></li>
+<li><span>如果要看這個pod的詳細內容，則可以使用describe來查看詳細內容</span></li>
+<li><span>如果要刪除pod的話，則可以透過delete pod來刪除pod</span></li>
+</ul><pre><code>kubectl run nginx --image=nginx --restart=Never
+kubectl describe pod nginx
+kubectl delete pod nginx
+</code></pre><p><img src="https://i.imgur.com/IuVKpoK.png" alt="" loading="lazy"></p><h4 id="透過-yaml-建立範例-pod" data-id="透過-yaml-建立範例-pod"><a class="anchor hidden-xs" href="#透過-yaml-建立範例-pod" title="透過-yaml-建立範例-pod"><span class="octicon octicon-link"></span></a><span>透過 yaml 建立範例 pod</span></h4><p><span>上面我們使用 image 直接建立了一個 pod，不過用這種方式沒辦法詳細設定pod的內容</span><br>
+<span>因此這邊會講解如何用寫好的 yaml 來建立 pod (之後的 service Deployment等等也會用這種方式建立)</span></p><h2 id="Kubeadm" data-id="Kubeadm"><a class="anchor hidden-xs" href="#Kubeadm" title="Kubeadm"><span class="octicon octicon-link"></span></a><span>Kubeadm</span></h2><p><span>跟MiniKube一樣是官方維護的專案，和MiniKube很類似，Kubeadm會使用VM來建立節點。</span><br>
+<span>跟MiniKube不一樣在於，MiniKube會建立單節點cluster，Kubeadm會建立master-node和slave-node。</span></p><p><img src="https://i.imgur.com/996vHnh.png" alt="" loading="lazy"></p><h3 id="Install-on-Linux" data-id="Install-on-Linux"><a class="anchor hidden-xs" href="#Install-on-Linux" title="Install-on-Linux"><span class="octicon octicon-link"></span></a><span>Install on Linux</span></h3><pre><code>sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+</code></pre><h2 id="minikube" data-id="minikube"><a class="anchor hidden-xs" href="#minikube" title="minikube"><span class="octicon octicon-link"></span></a><span>minikube</span></h2><p><span>MiniKube 為官方維護的工具之一，其特色為透過虛擬機器(VM virtual machine)來建立一個單節點的k8s叢集，由於其簡單安裝的特性，以及本身就有提供儀表板(dashboard)，所以使用上非常方便</span></p><p><img src="https://i.imgur.com/RZ76k2G.png" alt="" loading="lazy"></p><p><span>Mac 可以透過 homebrew 來完成安裝</span></p><pre><code>brew install minikube
+</code></pre><p><span>Linux</span></p><pre><code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+</code></pre><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><p><a href="https://medium.com/starbugs/kubernetes-%E6%95%99%E5%AD%B8-02-%E5%9C%A8-minikube-%E4%B8%8A%E9%83%A8%E5%B1%AC%E4%B8%80%E5%80%8B-python-flask-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F-e7a3b9448f2c" target="_blank" rel="noopener"><span>Ref</span></a></p><p><span>開始使用 Minikube 與 kubectl</span><br>
+<span>安裝完 minikube 之後，第一步先啟動 Minikube，如果你是第一次啟動，Minikube 會幫你建立新的虛擬機器 (VM)。</span></p><pre><code>minikube start
+</code></pre><p><img src="https://i.imgur.com/wvfJ40D.png" alt="" loading="lazy"></p><p><span>啟動好 minikube 的同時，kubectl 也準備就緒了。</span><br>
+<span>來看看 minikube 的狀態。</span></p><pre><code>minikube status
+</code></pre><p><img src="https://i.imgur.com/LwzBv4Z.png" alt="" loading="lazy"></p><p><span>kubelet 與 api-server 已經成功跑起來。</span></p><ul>
+<li><span>api-server: 是 Master 的元件</span></li>
+<li><span>kubelet: 是 Node 上負責跟 Master 溝通的元件</span></li>
+</ul><p><span>因為 Minikube 只有單一個 Node，所以同時具備 Master 與 Node 的元件 (意思是下面兩個框框都被包含在一個 minikube)</span></p><p><img src="https://i.imgur.com/JdLjd7m.png" alt="" loading="lazy"></p><p><span>使用 kubectl 查看目前 Cluster 中的狀態</span></p><pre><code>kubectl get all
+</code></pre><p><img src="https://i.imgur.com/CcNjuH0.png" alt="" loading="lazy"></p><p><span>裡面只有一個 kubernetes 的 service，因為我們的 Kubenetes Cluster 中還沒有安裝任何的東西。</span></p><hr><h4 id="Linux-install-issue" data-id="Linux-install-issue"><a class="anchor hidden-xs" href="#Linux-install-issue" title="Linux-install-issue"><span class="octicon octicon-link"></span></a><span>Linux install issue</span></h4><p><span>如下圖, 假設遇到 Exiting due to DRV_AS_ROOT: The “docker” driver should not be used with root privileges</span><br>
+<img src="https://i.imgur.com/OAqSJRi.png" alt="" loading="lazy"></p><pre><code>sudo minikube start --force --driver=docker
+</code></pre><p><img src="https://i.imgur.com/DYZSsOc.png" alt="" loading="lazy"></p><h3 id="官網簡單部署" data-id="官網簡單部署"><a class="anchor hidden-xs" href="#官網簡單部署" title="官網簡單部署"><span class="octicon octicon-link"></span></a><span>官網簡單部署</span></h3><p><a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank" rel="noopener"><span>Deploy applications</span></a><br>
+<span>Create a sample deployment and expose it on port 8080:</span></p><div class="alert alert-info">
+<p><span>kubectl create deployment hello-minikube --image=</span><a href="http://k8s.gcr.io/echoserver:1.4" target="_blank" rel="noopener"><span>k8s.gcr.io/echoserver:1.4</span></a></p>
+</div><p><img src="https://i.imgur.com/7eN78F5.png" alt="" loading="lazy"></p><p><span>公開image</span><br>
+<span>對了!這時候還沒結束唷要訪問我們建立的image還需要將其公開才行</span><br>
+<span>使用expose將image公開</span></p><div class="alert alert-info">
+<p><span>kubectl expose deployment hello-minikube --type=NodePort --port=8080</span></p>
+</div><p><img src="https://i.imgur.com/tFFJYMf.png" alt="" loading="lazy"></p><p><span>取得公開網址 (一定要先expose 才能公開)</span><br>
+<span>但是我們要如何訪問我們建立且公開的image呢?</span><br>
+<span>那就要來取得網址拉，透過–urlflag取得網址</span></p><div class="alert alert-info">
+<p><span>minikube service hello-minikube --url</span></p>
+</div><p><img src="https://i.imgur.com/8CpisjV.png" alt="" loading="lazy"></p><p><span>訪問輸出上的網址就可以看到我們部屬的實例了，內容大致如下</span></p><p><img src="https://i.imgur.com/LvobGCb.png" alt="" loading="lazy"></p><p><span>Delete the hello-minikube service</span></p><pre><code>kubectl delete services hello-minikube
+--&gt; service "hello-minikube" delete
+</code></pre><p><span>我們也可以透過 kubectl describe 去查看該Pod 的詳細資訊</span></p><div class="alert alert-info">
+<p><span>kubectl describe pod hello-minikube-66d5c9996d-wpcn2</span></p>
+</div><h3 id="容器化-Flask-Web-應用程式" data-id="容器化-Flask-Web-應用程式"><a class="anchor hidden-xs" href="#容器化-Flask-Web-應用程式" title="容器化-Flask-Web-應用程式"><span class="octicon octicon-link"></span></a><span>容器化 Flask Web 應用程式</span></h3><p><span>先建立一個 Python 的 Flask Web 應用程式，用來準備容器化．</span></p><p><a href="https://seanyeh.medium.com/python-web-%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E7%9A%84flask%E5%A5%97%E4%BB%B6-59318830bd63" target="_blank" rel="noopener"><span>Code Ref: Python Web</span></a></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
+
+app = Flask(__name__)
+<span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">"/index"</span></span>)</span>
+<span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">"/"</span></span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">home</span>():
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"This is Home Page"</span>
+<span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">"/hello"</span></span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">hello</span>():
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"This is Hello Page"</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    app.run() 
+</div></div></code></pre><h4 id="Dockerfile" data-id="Dockerfile"><a class="anchor hidden-xs" href="#Dockerfile" title="Dockerfile"><span class="octicon octicon-link"></span></a><span>Dockerfile</span></h4><p><span>建立一個 Dockerfiile，意思是用 Python 3.7 作為基本的容器，並把專案中的程式碼放進去。</span><br>
+<span>並在最後執行 python </span><a href="http://main.py" target="_blank" rel="noopener"><span>main.py</span></a></p><pre><code>From python:3.8.10-slim                  
+
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
+EXPOSE 8888
+
+WORKDIR /app
+
+COPY requirements.txt ./
+
+RUN pip install -r requirements.txt
+
+COPY . . 
+
+CMD python3 app/main.py -vv 
+</code></pre><p><span>個人 Tree 架構</span></p><p><img src="https://i.imgur.com/6FZeci2.png" alt="" loading="lazy"></p><p><span>製作 docker image，並給他一個名稱flask_app</span></p><pre><code>docker build . -t flask_app
+</code></pre><p><span>可以成功 build，沒有問題</span><br>
+<span>用 docker image ls 查看剛剛製作的 image</span><br>
+<img src="https://i.imgur.com/QYn4mhx.png" alt="" loading="lazy"></p><h2 id="K3s" data-id="K3s"><a class="anchor hidden-xs" href="#K3s" title="K3s"><span class="octicon octicon-link"></span></a><span>K3s</span></h2><pre><code>curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=644 sh -
+</code></pre><p><a href="https://ithelp.ithome.com.tw/articles/10235147" target="_blank" rel="noopener"><span>可能 Error</span></a><br>
+<span>如果後面沒有設定 K3S_KUBECONFIG_MODE 在操作 k3s 會有錯誤訊息 WARN[2020-09-09T13:49:32.937048689+08:00] Unable to read /etc/rancher/k3s/k3s.yaml, please start server with --write-kubeconfig-mode to modify kube config permissions error: error loading config file “/etc/rancher/k3s/k3s.yaml”: open /etc/rancher/k3s/k3s.yaml: permission denied</span></p><pre><code>k3s kubectl get nodes
+</code></pre><p><span>測試結果 (Server 端自己會是一個 Woker Node 的狀態)</span></p><p><img src="https://i.imgur.com/HarLNKa.png" alt="" loading="lazy"></p><hr><p><strong><span>Certification</span></strong></p><p><a href="https://training.linuxfoundation.org/full-catalog/" target="_blank" rel="noopener"><span>Linux Foundation</span></a></p><p><span>Linux 基金會是 Linux 創造者 Linus Torvalds 和主要維護者 Greg Kroah-Hartman 的家，并提供了一個中立的家，可以在未來幾年保護和加速 Linux 核心開發</span></p><h2 id="Google-Kubernetes-Engine-（GKE）" data-id="Google-Kubernetes-Engine-（GKE）"><a class="anchor hidden-xs" href="#Google-Kubernetes-Engine-（GKE）" title="Google-Kubernetes-Engine-（GKE）"><span class="octicon octicon-link"></span></a><span>Google Kubernetes Engine （GKE）</span></h2><p><span>GKE，全名是 Google Kubernetes Engine ，照字面上的意義就是在 Google 上的 K8s (Kubernetes)</span><br>
+<span>Google Kubernetes Engine 於2015 年推出，最大的特色即是能快速擴張、自動擴充(Autoscale)，這項技術，除了能最快速支援新版 Kubernetes，Google 基於用容器運行 Gmail 和 YouTube 等服務的經驗，已有超過12年的歷史，並成功協助各產業的客戶決解擴展性問題，且加速部署速度和提高生產力。</span></p><p><img src="https://i.imgur.com/wLyHxla.png" alt="" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
+<li><a href="#k8s-元件說明" title="k8s 元件說明">k8s 元件說明</a></li>
+<li class=""><a href="#k8s-架構" title="k8s 架構">k8s 架構</a><ul class="nav">
+<li class=""><a href="#Master-Node" title="Master Node">Master Node</a></li>
+<li><a href="#Worker-Node" title="Worker Node">Worker Node</a></li>
+<li><a href="#Pod" title="Pod">Pod</a></li>
+<li><a href="#Kubernetes-Cluster" title="Kubernetes Cluster">Kubernetes Cluster</a></li>
+</ul>
+</li>
+<li><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
+<li><a href="#Setup-the-Master-k3s-Node" title="Setup the Master k3s Node">Setup the Master k3s Node</a></li>
+<li><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
+<li><a href="#k8s-yaml" title="k8s yaml">k8s yaml</a></li>
+</ul>
+</li>
+<li><a href="#CNCF" title="CNCF">CNCF</a></li>
+<li><a href="#Other" title="Other">Other</a><ul class="nav">
+<li><a href="#Container-Runtime-Interface-CRI" title="Container Runtime Interface (CRI)">Container Runtime Interface (CRI)</a></li>
+<li><a href="#Window-install-Kubernetes" title="Window install Kubernetes">Window install Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
+<li><a href="#kinds" title="kinds">kinds</a><ul class="nav">
+<li><a href="#建立環境" title="建立環境">建立環境</a></li>
+<li><a href="#建立-pods" title="建立 pods">建立 pods</a></li>
+</ul>
+</li>
+<li><a href="#Kubeadm" title="Kubeadm">Kubeadm</a><ul class="nav">
+<li><a href="#Install-on-Linux" title="Install on Linux">Install on Linux</a></li>
+</ul>
+</li>
+<li><a href="#minikube" title="minikube">minikube</a><ul class="nav">
+<li><a href="#Start" title="Start">Start</a></li>
+<li><a href="#官網簡單部署" title="官網簡單部署">官網簡單部署</a></li>
+<li><a href="#容器化-Flask-Web-應用程式" title="容器化 Flask Web 應用程式">容器化 Flask Web 應用程式</a></li>
+</ul>
+</li>
+<li><a href="#K3s" title="K3s">K3s</a></li>
+<li><a href="#Google-Kubernetes-Engine-（GKE）" title="Google Kubernetes Engine （GKE）">Google Kubernetes Engine （GKE）</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Kubernetes" title="Kubernetes">Kubernetes</a><ul class="nav">
+<li><a href="#k8s-元件說明" title="k8s 元件說明">k8s 元件說明</a></li>
+<li class=""><a href="#k8s-架構" title="k8s 架構">k8s 架構</a><ul class="nav">
+<li class=""><a href="#Master-Node" title="Master Node">Master Node</a></li>
+<li class=""><a href="#Worker-Node" title="Worker Node">Worker Node</a></li>
+<li class=""><a href="#Pod" title="Pod">Pod</a></li>
+<li><a href="#Kubernetes-Cluster" title="Kubernetes Cluster">Kubernetes Cluster</a></li>
+</ul>
+</li>
+<li><a href="#k8s-command" title="k8s command">k8s command</a><ul class="nav">
+<li><a href="#Setup-the-Master-k3s-Node" title="Setup the Master k3s Node">Setup the Master k3s Node</a></li>
+<li><a href="#Basic-Kubectl-cmds" title="Basic Kubectl cmds">Basic Kubectl cmds</a></li>
+<li><a href="#k8s-yaml" title="k8s yaml">k8s yaml</a></li>
+</ul>
+</li>
+<li><a href="#CNCF" title="CNCF">CNCF</a></li>
+<li><a href="#Other" title="Other">Other</a><ul class="nav">
+<li><a href="#Container-Runtime-Interface-CRI" title="Container Runtime Interface (CRI)">Container Runtime Interface (CRI)</a></li>
+<li><a href="#Window-install-Kubernetes" title="Window install Kubernetes">Window install Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Open-source" title="Open source">Open source</a><ul class="nav">
+<li><a href="#kinds" title="kinds">kinds</a><ul class="nav">
+<li><a href="#建立環境" title="建立環境">建立環境</a></li>
+<li><a href="#建立-pods" title="建立 pods">建立 pods</a></li>
+</ul>
+</li>
+<li><a href="#Kubeadm" title="Kubeadm">Kubeadm</a><ul class="nav">
+<li><a href="#Install-on-Linux" title="Install on Linux">Install on Linux</a></li>
+</ul>
+</li>
+<li><a href="#minikube" title="minikube">minikube</a><ul class="nav">
+<li><a href="#Start" title="Start">Start</a></li>
+<li><a href="#官網簡單部署" title="官網簡單部署">官網簡單部署</a></li>
+<li><a href="#容器化-Flask-Web-應用程式" title="容器化 Flask Web 應用程式">容器化 Flask Web 應用程式</a></li>
+</ul>
+</li>
+<li><a href="#K3s" title="K3s">K3s</a></li>
+<li><a href="#Google-Kubernetes-Engine-（GKE）" title="Google Kubernetes Engine （GKE）">Google Kubernetes Engine （GKE）</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
