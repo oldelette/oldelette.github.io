@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: secret-1401
+  name: secret-1401
+  namespace: admin1401
+spec:
+  containers:
+  - image: busybox
+    name: secret-admin
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 4800"]
+    resources: {}
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/etc/secret-volume"
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: dotfile-secret
+      optional: true
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

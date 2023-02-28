@@ -1,0 +1,23 @@
+# /root/CKA/use-pv.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: use-pv
+  name: use-pv
+spec:
+  containers:
+  - image: nginx
+    name: use-pv
+    resources: {}
+    volumeMounts:
+    - mountPath: "/data"
+      name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: my-pvc
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -1,0 +1,20 @@
+piVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: super-user-pod
+  name: super-user-pod
+spec:
+  containers:
+  - image: busybox:1.28
+    name: super-user-pod
+    resources: {}
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 4800"]
+    securityContext:
+      capabilities:
+        add: ["SYS_TIME"]
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
