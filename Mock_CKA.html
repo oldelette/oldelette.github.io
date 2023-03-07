@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><a class="anchor hidden-xs" href="#tags-Work" title="tags-Work"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Work</code></h6><h1 id="Mock_CKA" data-id="Mock_CKA"><a class="anchor hidden-xs" href="#Mock_CKA" title="Mock_CKA"><span class="octicon octicon-link"></span></a><span>Mock_CKA</span></h1><h3 id="1-RBAC" data-id="1-RBAC"><a class="anchor hidden-xs" href="#1-RBAC" title="1-RBAC"><span class="octicon octicon-link"></span></a><span>1. RBAC</span></h3><p><img src="https://i.imgur.com/ZqO8UkH.png" alt="" loading="lazy"></p><div class="alert alert-danger">
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><a class="anchor hidden-xs" href="#tags-Work" title="tags-Work"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Work</code></h6><h1 id="Mock_CKA" data-id="Mock_CKA" style=""><a class="anchor hidden-xs" href="#Mock_CKA" title="Mock_CKA"><span class="octicon octicon-link"></span></a><span>Mock_CKA</span></h1><h3 id="1-RBAC" data-id="1-RBAC" style=""><a class="anchor hidden-xs" href="#1-RBAC" title="1-RBAC"><span class="octicon octicon-link"></span></a><span>1. RBAC</span></h3><p><img src="https://i.imgur.com/ZqO8UkH.png" alt="" loading="lazy"></p><div class="alert alert-danger">
 <p><span>role / rolebinding  有 ns</span><br>
 <span>clusterrole / clusterrolebinding  無 ns</span><br>
 <span>serviceaccount  有 ns</span></p>
@@ -47,8 +47,8 @@ kubectl create serviceaccount cicd-token -n app-team1
 
 kubectl create rolebinding cicd-token-rolebinding --serviceaccount=app-team1:cicd-token \
 --clusterrole=deployment-clusterrole -n app-team1
-</code></pre><p><img src="https://i.imgur.com/l1rp3x6.png" alt="" loading="lazy"></p><h3 id="2-CPU" data-id="2-CPU"><a class="anchor hidden-xs" href="#2-CPU" title="2-CPU"><span class="octicon octicon-link"></span></a><span>2. CPU</span></h3><p><img src="https://i.imgur.com/CVJw3y4.png" alt="" loading="lazy"></p><pre><code>k top pod -l name=cpu-utilizer -A --sort-by cpu &gt; /opt/KUTR00401/KUTR00401.txt
-</code></pre><h3 id="3-Networkpolicy" data-id="3-Networkpolicy"><a class="anchor hidden-xs" href="#3-Networkpolicy" title="3-Networkpolicy"><span class="octicon octicon-link"></span></a><span>3. Networkpolicy</span></h3><p><img src="https://i.imgur.com/hYYkdDT.png" alt="" loading="lazy"></p><pre><code>apiVersion: networking.k8s.io/v1
+</code></pre><p><img src="https://i.imgur.com/l1rp3x6.png" alt="" loading="lazy"></p><h3 id="2-CPU" data-id="2-CPU" style=""><a class="anchor hidden-xs" href="#2-CPU" title="2-CPU"><span class="octicon octicon-link"></span></a><span>2. CPU</span></h3><p><img src="https://i.imgur.com/CVJw3y4.png" alt="" loading="lazy"></p><pre><code>k top pod -l name=cpu-utilizer -A --sort-by cpu &gt; /opt/KUTR00401/KUTR00401.txt
+</code></pre><h3 id="3-Networkpolicy" data-id="3-Networkpolicy" style=""><a class="anchor hidden-xs" href="#3-Networkpolicy" title="3-Networkpolicy"><span class="octicon octicon-link"></span></a><span>3. Networkpolicy</span></h3><p><img src="https://i.imgur.com/hYYkdDT.png" alt="" loading="lazy"></p><pre><code>apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-port-from-namespace
@@ -65,7 +65,7 @@ spec:
       ports:
         - protocol: TCP
           port: 8080
-</code></pre><h4 id="檢查" data-id="檢查"><a class="anchor hidden-xs" href="#檢查" title="檢查"><span class="octicon octicon-link"></span></a><span>檢查:</span></h4><p><span>allow-port-from-namespace</span></p><p><img src="https://i.imgur.com/bHH7uSo.png" alt="" loading="lazy"></p><h3 id="4-Service" data-id="4-Service"><a class="anchor hidden-xs" href="#4-Service" title="4-Service"><span class="octicon octicon-link"></span></a><span>4. Service</span></h3><p><img src="https://i.imgur.com/yg3M6Kk.png" alt="" loading="lazy"></p><p><span>deployment 修改 pod container port</span></p><pre><code>k edit deployment front-end
+</code></pre><h4 id="檢查" data-id="檢查" style=""><a class="anchor hidden-xs" href="#檢查" title="檢查"><span class="octicon octicon-link"></span></a><span>檢查:</span></h4><p><span>allow-port-from-namespace</span></p><p><img src="https://i.imgur.com/bHH7uSo.png" alt="" loading="lazy"></p><h3 id="4-Service" data-id="4-Service" style=""><a class="anchor hidden-xs" href="#4-Service" title="4-Service"><span class="octicon octicon-link"></span></a><span>4. Service</span></h3><p><img src="https://i.imgur.com/yg3M6Kk.png" alt="" loading="lazy"></p><p><span>deployment 修改 pod container port</span></p><pre><code>k edit deployment front-end
 
 ...
 spec:
@@ -87,11 +87,11 @@ spec:
           
 kubectl expose deployment front-end --port=80 --target-port=80 ＼
 --type=NodePort --name=front-end-svc
-</code></pre><h4 id="檢查1" data-id="檢查"><a class="anchor hidden-xs" href="#檢查1" title="檢查1"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>1. curl &lt;node&gt;:&lt;Nodeport&gt;
+</code></pre><h4 id="檢查1" data-id="檢查" style=""><a class="anchor hidden-xs" href="#檢查1" title="檢查1"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>1. curl &lt;node&gt;:&lt;Nodeport&gt;
 --&gt; curl cluster-node2:32566
 2. curl &lt;svc&gt;:80
 --&gt; curl 10.108.194.230:80
-</code></pre><p><img src="https://i.imgur.com/5iku3CA.png" alt="" loading="lazy"></p><h3 id="5-Ingress" data-id="5-Ingress"><a class="anchor hidden-xs" href="#5-Ingress" title="5-Ingress"><span class="octicon octicon-link"></span></a><span>5. Ingress</span></h3><p><img src="https://i.imgur.com/TmKsgR8.png" alt="" loading="lazy"></p><ul>
+</code></pre><p><img src="https://i.imgur.com/5iku3CA.png" alt="" loading="lazy"></p><h3 id="5-Ingress" data-id="5-Ingress" style=""><a class="anchor hidden-xs" href="#5-Ingress" title="5-Ingress"><span class="octicon octicon-link"></span></a><span>5. Ingress</span></h3><p><img src="https://i.imgur.com/TmKsgR8.png" alt="" loading="lazy"></p><ul>
 <li><span>-k：跳過 SSL 證書檢測</span></li>
 <li><span>-L：跟随跳轉，比如網站做了重定向，不加這個選項的话只會看到一個 302 的訪問 code 就结束了，加上的話會看到完整的跳轉情况</span></li>
 </ul><pre><code>apiVersion: networking.k8s.io/v1
@@ -113,10 +113,10 @@ spec:
             name: hello
             port:
               number: 5678
-</code></pre><h4 id="檢查2" data-id="檢查"><a class="anchor hidden-xs" href="#檢查2" title="檢查2"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>kubectl get ingress -ning-internal
+</code></pre><h4 id="檢查2" data-id="檢查" style=""><a class="anchor hidden-xs" href="#檢查2" title="檢查2"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>kubectl get ingress -ning-internal
 curl -kL internal_IP/hello
-</code></pre><h3 id="6-Deployment-scale" data-id="6-Deployment-scale"><a class="anchor hidden-xs" href="#6-Deployment-scale" title="6-Deployment-scale"><span class="octicon octicon-link"></span></a><span>6. Deployment scale</span></h3><p><img src="https://i.imgur.com/WoI8ARW.png" alt="" loading="lazy"></p><pre><code>k scale deployment loadbalancer --replicas 2
-</code></pre><h3 id="7-nodeSelector" data-id="7-nodeSelector"><a class="anchor hidden-xs" href="#7-nodeSelector" title="7-nodeSelector"><span class="octicon octicon-link"></span></a><span>7. nodeSelector</span></h3><p><img src="https://i.imgur.com/GGYzQGp.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/workloads/pods/#using-pods" target="_blank" rel="noopener"><span>k8s-io Using Pods</span></a><span> 再手動新增 </span><strong><span>nodeSelector 欄位</span></strong></p><pre><code>apiVersion: v1
+</code></pre><h3 id="6-Deployment-scale" data-id="6-Deployment-scale" style=""><a class="anchor hidden-xs" href="#6-Deployment-scale" title="6-Deployment-scale"><span class="octicon octicon-link"></span></a><span>6. Deployment scale</span></h3><p><img src="https://i.imgur.com/WoI8ARW.png" alt="" loading="lazy"></p><pre><code>k scale deployment loadbalancer --replicas 2
+</code></pre><h3 id="7-nodeSelector" data-id="7-nodeSelector" style=""><a class="anchor hidden-xs" href="#7-nodeSelector" title="7-nodeSelector"><span class="octicon octicon-link"></span></a><span>7. nodeSelector</span></h3><p><img src="https://i.imgur.com/GGYzQGp.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/workloads/pods/#using-pods" target="_blank" rel="noopener"><span>k8s-io Using Pods</span></a><span> 再手動新增 </span><strong><span>nodeSelector 欄位</span></strong></p><pre><code>apiVersion: v1
 kind: Pod
 metadata:
   name: nginx-kusc00401
@@ -126,13 +126,13 @@ spec:
     image: nginx
   nodeSelector: #這個是和 containers 同一级别的。
     disk: ssd
-</code></pre><h3 id="8-Node-Scheduled" data-id="8-Node-Scheduled"><a class="anchor hidden-xs" href="#8-Node-Scheduled" title="8-Node-Scheduled"><span class="octicon octicon-link"></span></a><span>8. Node Scheduled</span></h3><p><img src="https://i.imgur.com/5IpxBFc.png" alt="" loading="lazy"></p><pre><code>k describe node | grep Taint | grep -vc NoSchedule &gt; /opt/KUSC00402/kusc00402.txt
+</code></pre><h3 id="8-Node-Scheduled" data-id="8-Node-Scheduled" style=""><a class="anchor hidden-xs" href="#8-Node-Scheduled" title="8-Node-Scheduled"><span class="octicon octicon-link"></span></a><span>8. Node Scheduled</span></h3><p><img src="https://i.imgur.com/5IpxBFc.png" alt="" loading="lazy"></p><pre><code>k describe node | grep Taint | grep -vc NoSchedule &gt; /opt/KUSC00402/kusc00402.txt
 </code></pre><ul>
 <li><span>-c 代表統計個數</span></li>
 <li><span>-v 代表排除</span></li>
-</ul><h4 id="檢查3" data-id="檢查"><a class="anchor hidden-xs" href="#檢查3" title="檢查3"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>cat /opt/KUSC00402/kusc00402.txt
+</ul><h4 id="檢查3" data-id="檢查" style=""><a class="anchor hidden-xs" href="#檢查3" title="檢查3"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>cat /opt/KUSC00402/kusc00402.txt
 --&gt; 2
-</code></pre><h3 id="9-Multi-container" data-id="9-Multi-container"><a class="anchor hidden-xs" href="#9-Multi-container" title="9-Multi-container"><span class="octicon octicon-link"></span></a><span>9. Multi-container</span></h3><p><img src="https://i.imgur.com/VutY8Tk.png" alt="" loading="lazy"><br>
+</code></pre><h3 id="9-Multi-container" data-id="9-Multi-container" style=""><a class="anchor hidden-xs" href="#9-Multi-container" title="9-Multi-container"><span class="octicon octicon-link"></span></a><span>9. Multi-container</span></h3><p><img src="https://i.imgur.com/VutY8Tk.png" alt="" loading="lazy"><br>
 <a href="https://kubernetes.io/docs/concepts/workloads/pods/#using-pods" target="_blank" rel="noopener"><span>k8s-io Using Pods</span></a><span> 在手動增加多個 container</span></p><pre><code>apiVersion: v1
 kind: Pod
 metadata:
@@ -145,8 +145,8 @@ spec:
     image: redis
   - name: memcached
     image: memcached
-</code></pre><h4 id="檢查4" data-id="檢查"><a class="anchor hidden-xs" href="#檢查4" title="檢查4"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>k get pods 確認有 3/3
-</code></pre><p><img src="https://i.imgur.com/sK54hYd.png" alt="" loading="lazy"></p><h3 id="10-PV" data-id="10-PV"><a class="anchor hidden-xs" href="#10-PV" title="10-PV"><span class="octicon octicon-link"></span></a><span>10. PV</span></h3><p><img src="https://i.imgur.com/zIL4D3U.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistent-volumes" target="_blank" rel="noopener"><span>k8s-io Persistent Volumes</span></a><span> 再去修正成題目要的</span></p><pre><code>apiVersion: v1
+</code></pre><h4 id="檢查4" data-id="檢查" style=""><a class="anchor hidden-xs" href="#檢查4" title="檢查4"><span class="octicon octicon-link"></span></a><span>檢查</span></h4><pre><code>k get pods 確認有 3/3
+</code></pre><p><img src="https://i.imgur.com/sK54hYd.png" alt="" loading="lazy"></p><h3 id="10-PV" data-id="10-PV" style=""><a class="anchor hidden-xs" href="#10-PV" title="10-PV"><span class="octicon octicon-link"></span></a><span>10. PV</span></h3><p><img src="https://i.imgur.com/zIL4D3U.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistent-volumes" target="_blank" rel="noopener"><span>k8s-io Persistent Volumes</span></a><span> 再去修正成題目要的</span></p><pre><code>apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: app-data
@@ -158,7 +158,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /srv/app-data
-</code></pre><h3 id="11-PVC" data-id="11-PVC"><a class="anchor hidden-xs" href="#11-PVC" title="11-PVC"><span class="octicon octicon-link"></span></a><span>11. PVC</span></h3><p><img src="https://i.imgur.com/CJx0FbT.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims" target="_blank" rel="noopener"><span>k8s-io PersistentVolumeClaims</span></a><span> 再去修正成題目要的</span></p><pre><code># PVC
+</code></pre><h3 id="11-PVC" data-id="11-PVC" style=""><a class="anchor hidden-xs" href="#11-PVC" title="11-PVC"><span class="octicon octicon-link"></span></a><span>11. PVC</span></h3><p><img src="https://i.imgur.com/CJx0FbT.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims" target="_blank" rel="noopener"><span>k8s-io PersistentVolumeClaims</span></a><span> 再去修正成題目要的</span></p><pre><code># PVC
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -180,8 +180,8 @@ spec:
       persistentVolumeClaim:
         claimName: pv-volume
 </code></pre><p><span>更改 pvc 容量</span></p><pre><code>kubectl edit pvc pv-volume
-</code></pre><p><img src="https://i.imgur.com/Ey8ttem.png" alt="" loading="lazy"></p><h3 id="12-Pod-log" data-id="12-Pod-log"><a class="anchor hidden-xs" href="#12-Pod-log" title="12-Pod-log"><span class="octicon octicon-link"></span></a><span>12. Pod log</span></h3><p><img src="https://i.imgur.com/sPb2EZe.png" alt="" loading="lazy"></p><pre><code>k logs bar | grep "file-not-found" &gt; /opt/KUTR00101/bar
-</code></pre><h3 id="13-Sidecar" data-id="13-Sidecar"><a class="anchor hidden-xs" href="#13-Sidecar" title="13-Sidecar"><span class="octicon octicon-link"></span></a><span>13. Sidecar</span></h3><p><img src="https://i.imgur.com/EeVt4ek.png" alt="" loading="lazy"></p><p><span>sidecar 邊車容器不是作為主容器，而是輔助主容器做一些功能</span></p><pre><code># 先把運行中的 legacy-app pod 倒出來成 yaml file, 然後備份
+</code></pre><p><img src="https://i.imgur.com/Ey8ttem.png" alt="" loading="lazy"></p><h3 id="12-Pod-log" data-id="12-Pod-log" style=""><a class="anchor hidden-xs" href="#12-Pod-log" title="12-Pod-log"><span class="octicon octicon-link"></span></a><span>12. Pod log</span></h3><p><img src="https://i.imgur.com/sPb2EZe.png" alt="" loading="lazy"></p><pre><code>k logs bar | grep "file-not-found" &gt; /opt/KUTR00101/bar
+</code></pre><h3 id="13-Sidecar" data-id="13-Sidecar" style=""><a class="anchor hidden-xs" href="#13-Sidecar" title="13-Sidecar"><span class="octicon octicon-link"></span></a><span>13. Sidecar</span></h3><p><img src="https://i.imgur.com/EeVt4ek.png" alt="" loading="lazy"></p><p><span>sidecar 邊車容器不是作為主容器，而是輔助主容器做一些功能</span></p><pre><code># 先把運行中的 legacy-app pod 倒出來成 yaml file, 然後備份
 kubectl get pods leagcy-app -o yaml &gt; sidecar.yaml
 cp sidecar.yaml sidecar.yaml.bkg
 
@@ -203,7 +203,7 @@ kubectl create -f sidecar.yaml
   volumes:
   - name: varlog
     emptyDir: {}
-</code></pre><h3 id="14-Upgrade" data-id="14-Upgrade"><a class="anchor hidden-xs" href="#14-Upgrade" title="14-Upgrade"><span class="octicon octicon-link"></span></a><span>14. Upgrade</span></h3><p><a href="https://www.youtube.com/watch?v=LTvaD8aWTiM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题14</span></a></p><p><img src="https://i.imgur.com/kqNGyHf.png" alt="" loading="lazy"></p><p><strong><span>题目要求不升级 etcd，這裡手動補上</span></strong></p><pre><code>1、切換環境
+</code></pre><h3 id="14-Upgrade" data-id="14-Upgrade" style=""><a class="anchor hidden-xs" href="#14-Upgrade" title="14-Upgrade"><span class="octicon octicon-link"></span></a><span>14. Upgrade</span></h3><p><a href="https://www.youtube.com/watch?v=LTvaD8aWTiM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题14</span></a></p><p><img src="https://i.imgur.com/kqNGyHf.png" alt="" loading="lazy"></p><p><strong><span>题目要求不升级 etcd，這裡手動補上</span></strong></p><pre><code>1、切換環境
 kubectl config use-context mk8s
 
 2、配置
@@ -236,7 +236,7 @@ kubectl uncordon mk8s-master-0
 kubectl get node -o wide
 kubectl --version
 kubelet --version
-</code></pre><h3 id="15-ETCD-backup-amp-Restore" data-id="15-ETCD-backup-amp-Restore"><a class="anchor hidden-xs" href="#15-ETCD-backup-amp-Restore" title="15-ETCD-backup-amp-Restore"><span class="octicon octicon-link"></span></a><span>15. ETCD backup &amp; Restore</span></h3><p><a href="https://www.youtube.com/watch?v=ZNOMtTUU7XM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题15</span></a></p><p><img src="https://i.imgur.com/yGnWxub.png" alt="" loading="lazy"></p><pre><code>1、確定當前環境
+</code></pre><h3 id="15-ETCD-backup-amp-Restore" data-id="15-ETCD-backup-amp-Restore" style=""><a class="anchor hidden-xs" href="#15-ETCD-backup-amp-Restore" title="15-ETCD-backup-amp-Restore"><span class="octicon octicon-link"></span></a><span>15. ETCD backup &amp; Restore</span></h3><p><a href="https://www.youtube.com/watch?v=ZNOMtTUU7XM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题15</span></a></p><p><img src="https://i.imgur.com/yGnWxub.png" alt="" loading="lazy"></p><pre><code>1、確定當前環境
 kubectl get node
 2. 配置
 export ETCDCTL_API=3
@@ -259,7 +259,7 @@ ETCDCTL_API=3 etcdctl snapshot restore /tmp/etcd-backup.db
 cp -r /etc/kubernetes/manifests_bkg /etc/kubernetes/manifests
 # 裡面的 hostPath 路徑修正
 vim /etc/kubernetes/manifests/etcd.yaml 
-</code></pre><h3 id="16-Troubleshoot" data-id="16-Troubleshoot"><a class="anchor hidden-xs" href="#16-Troubleshoot" title="16-Troubleshoot"><span class="octicon octicon-link"></span></a><span>16. Troubleshoot</span></h3><p><a href="https://www.youtube.com/watch?v=H5Qtns6Y3UU&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题16</span></a></p><p><img src="https://i.imgur.com/G0Mwkqo.png" alt="" loading="lazy"></p><p><span>通過 get nodes 查看異常節點，登入節點查看 kubelet 等组件的 status 並判斷原因.</span><br>
+</code></pre><p><img src="https://i.imgur.com/NX46tpe.png" alt="" loading="lazy"></p><h3 id="16-Troubleshoot" data-id="16-Troubleshoot" style=""><a class="anchor hidden-xs" href="#16-Troubleshoot" title="16-Troubleshoot"><span class="octicon octicon-link"></span></a><span>16. Troubleshoot</span></h3><p><a href="https://www.youtube.com/watch?v=H5Qtns6Y3UU&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题16</span></a></p><p><img src="https://i.imgur.com/G0Mwkqo.png" alt="" loading="lazy"></p><p><span>通過 get nodes 查看異常節點，登入節點查看 kubelet 等组件的 status 並判斷原因.</span><br>
 <span>真實考试时，這個異常節點的 kubelet 服務没有啟動導致的.</span><br>
 <span>journalctl -u kubelet</span></p><pre><code>k config use-context wk8s
 k get node
@@ -268,7 +268,7 @@ sudo -i
 systemctl status kubelet
 systemctl start kubelet
 systemctl enable kubelet
-</code></pre><h3 id="17-Drain-amp-Cordon" data-id="17-Drain-amp-Cordon"><a class="anchor hidden-xs" href="#17-Drain-amp-Cordon" title="17-Drain-amp-Cordon"><span class="octicon octicon-link"></span></a><span>17. Drain &amp; Cordon</span></h3><p><a href="https://www.youtube.com/watch?v=jx1R0EzMWEA&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题17</span></a></p><p><img src="https://i.imgur.com/hHSa1AZ.png" alt="" loading="lazy"></p><pre><code>k config use-context wk8s
+</code></pre><h3 id="17-Drain-amp-Cordon" data-id="17-Drain-amp-Cordon" style=""><a class="anchor hidden-xs" href="#17-Drain-amp-Cordon" title="17-Drain-amp-Cordon"><span class="octicon octicon-link"></span></a><span>17. Drain &amp; Cordon</span></h3><p><a href="https://www.youtube.com/watch?v=jx1R0EzMWEA&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题17</span></a></p><p><img src="https://i.imgur.com/hHSa1AZ.png" alt="" loading="lazy"></p><pre><code>k config use-context wk8s
 kubectl cordon ek8s-node-1
 kubectl drain ek8s-node-1 --ignore-daemonsets
 
@@ -286,7 +286,7 @@ kubectl get node
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Mock_CKA" title="Mock_CKA">Mock_CKA</a><ul class="nav">
+<li class=""><a href="#Mock_CKA" title="Mock_CKA">Mock_CKA</a><ul class="nav">
 <li><a href="#1-RBAC" title="1. RBAC">1. RBAC</a></li>
 <li><a href="#2-CPU" title="2. CPU">2. CPU</a></li>
 <li><a href="#3-Networkpolicy" title="3. Networkpolicy">3. Networkpolicy</a><ul class="nav">
@@ -316,7 +316,7 @@ kubectl get node
 <li><a href="#12-Pod-log" title="12. Pod log">12. Pod log</a></li>
 <li><a href="#13-Sidecar" title="13. Sidecar">13. Sidecar</a></li>
 <li><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
-<li><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
+<li class=""><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
 <li><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
 <li><a href="#17-Drain-amp-Cordon" title="17. Drain &amp; Cordon">17. Drain &amp; Cordon</a></li>
 </ul>
@@ -328,7 +328,7 @@ kubectl get node
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Mock_CKA" title="Mock_CKA">Mock_CKA</a><ul class="nav">
+<li class=""><a href="#Mock_CKA" title="Mock_CKA">Mock_CKA</a><ul class="nav">
 <li><a href="#1-RBAC" title="1. RBAC">1. RBAC</a></li>
 <li><a href="#2-CPU" title="2. CPU">2. CPU</a></li>
 <li><a href="#3-Networkpolicy" title="3. Networkpolicy">3. Networkpolicy</a><ul class="nav">
@@ -358,7 +358,7 @@ kubectl get node
 <li><a href="#12-Pod-log" title="12. Pod log">12. Pod log</a></li>
 <li><a href="#13-Sidecar" title="13. Sidecar">13. Sidecar</a></li>
 <li><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
-<li><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
+<li class=""><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
 <li><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
 <li><a href="#17-Drain-amp-Cordon" title="17. Drain &amp; Cordon">17. Drain &amp; Cordon</a></li>
 </ul>

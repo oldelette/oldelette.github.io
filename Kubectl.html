@@ -1679,7 +1679,7 @@ sudo kubectl rollout undo deployment nginx-app --&gt; 退版
 <li><span>Answer</span></li>
 </ul><p><span>1.創建一個 Pod</span><br>
 <span>2.mount 到類型為emptyDir的Volume中</span></p><pre><code>1.sudo kubectl run redis-storage --image=redis --dry-run=client -o yaml &gt; q7-pod.yaml
-</code></pre><p><a href="https://github.com/oldelette/oldelette.github.io/blob/master/secret/q7.yaml" target="_blank" rel="noopener"><span>q7.yaml</span></a></p><h2 id="Mock-Exam" data-id="Mock-Exam"><a class="anchor hidden-xs" href="#Mock-Exam" title="Mock-Exam"><span class="octicon octicon-link"></span></a><span>Mock Exam</span></h2><p><a href="https://www.youtube.com/@xiaomoinfo/videos?view=2&amp;sort=dd&amp;live_view=503&amp;shelf_id=0" target="_blank" rel="noopener"><span>小莫 CKA 講解</span></a></p><h2 id="Mock-Exam---1" data-id="Mock-Exam---1"><a class="anchor hidden-xs" href="#Mock-Exam---1" title="Mock-Exam---1"><span class="octicon octicon-link"></span></a><span>Mock Exam - 1</span></h2><p><span>2023.2.25</span><br>
+</code></pre><p><a href="https://github.com/oldelette/oldelette.github.io/blob/master/secret/q7.yaml" target="_blank" rel="noopener"><span>q7.yaml</span></a></p><h2 data-id="Mock-Exam" id="Mock-Exam"><a class="anchor hidden-xs" href="#Mock-Exam" title="Mock-Exam"><span class="octicon octicon-link"></span></a><span>Mock Exam</span></h2><p><a href="https://www.youtube.com/@xiaomoinfo/videos?view=2&amp;sort=dd&amp;live_view=503&amp;shelf_id=0" target="_blank" rel="noopener"><span>小莫 CKA 講解</span></a></p><h2 id="Mock-Exam---1" data-id="Mock-Exam---1"><a class="anchor hidden-xs" href="#Mock-Exam---1" title="Mock-Exam---1"><span class="octicon octicon-link"></span></a><span>Mock Exam - 1</span></h2><p><span>2023.2.25</span><br>
 <img src="https://i.imgur.com/qaji2FR.png" alt="" loading="lazy"></p><p><a href="https://github.com/oldelette/oldelette.github.io/tree/master/Udemy/mock_exam/1" target="_blank" rel="noopener"><span>Answer mock_exam_1</span></a></p><h3 id="Q5" data-id="Q5"><a class="anchor hidden-xs" href="#Q5" title="Q5"><span class="octicon octicon-link"></span></a><span>Q5</span></h3><p><img src="https://i.imgur.com/05HUJEG.png" alt="" loading="lazy"></p><h3 id="Q7" data-id="Q7"><a class="anchor hidden-xs" href="#Q7" title="Q7"><span class="octicon octicon-link"></span></a><span>Q7</span></h3><p><img src="https://i.imgur.com/fR3kboK.png" alt="" loading="lazy"></p><h3 id="Q8" data-id="Q8"><a class="anchor hidden-xs" href="#Q8" title="Q8"><span class="octicon octicon-link"></span></a><span>Q8</span></h3><p><img src="https://i.imgur.com/KjQ2ec2.png" alt="" loading="lazy"></p><h3 id="Q10" data-id="Q10"><a class="anchor hidden-xs" href="#Q10" title="Q10"><span class="octicon octicon-link"></span></a><span>Q10</span></h3><p><img src="https://i.imgur.com/VnVrvrl.png" alt="" loading="lazy"></p><h3 id="Q11" data-id="Q11"><a class="anchor hidden-xs" href="#Q11" title="Q11"><span class="octicon octicon-link"></span></a><span>Q11</span></h3><p><img src="https://i.imgur.com/PkWKMGP.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/reference/kubectl/jsonpath/" target="_blank" rel="noopener"><span>k8s.io - JSONPath Support</span></a></p><pre><code>k get nodes -o=jsonpath='{.items[*].status.nodeInfo.osImage}'
 </code></pre><h3 id="Q12" data-id="Q12"><a class="anchor hidden-xs" href="#Q12" title="Q12"><span class="octicon octicon-link"></span></a><span>Q12</span></h3><p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistent-volumes" target="_blank" rel="noopener"><span>k8s.io - Persistent Volumes</span></a></p><p><img src="https://i.imgur.com/6wnmdxr.png" alt="" loading="lazy"></p><h2 id="Mock-Exam---2" data-id="Mock-Exam---2"><a class="anchor hidden-xs" href="#Mock-Exam---2" title="Mock-Exam---2"><span class="octicon octicon-link"></span></a><span>Mock Exam - 2</span></h2><p><a href="https://github.com/oldelette/oldelette.github.io/tree/master/Udemy/mock_exam/2" target="_blank" rel="noopener"><span>Answer mock_exam_2</span></a></p><h3 id="Q3-Security" data-id="Q3-Security"><a class="anchor hidden-xs" href="#Q3-Security" title="Q3-Security"><span class="octicon octicon-link"></span></a><span>Q3 Security</span></h3><p><img src="https://i.imgur.com/cWqQX30.png" alt="" loading="lazy"></p><p><a href="https://ithelp.ithome.com.tw/articles/10241665" target="_blank" rel="noopener"><span>這題</span></a><span>的重點是在 </span><strong><span>Allow the pod to be able to set system_time</span></strong></p><h3 id="Q4-PV-amp-PVC" data-id="Q4-PV-amp-PVC"><a class="anchor hidden-xs" href="#Q4-PV-amp-PVC" title="Q4-PV-amp-PVC"><span class="octicon octicon-link"></span></a><span>Q4 PV &amp; PVC</span></h3><p><img src="https://i.imgur.com/1vi89ne.png" alt="" loading="lazy"></p><h3 id="Q6-CSR---Certificate-Signing-Request" data-id="Q6-CSR---Certificate-Signing-Request"><a class="anchor hidden-xs" href="#Q6-CSR---Certificate-Signing-Request" title="Q6-CSR---Certificate-Signing-Request"><span class="octicon octicon-link"></span></a><span>Q6 CSR - Certificate Signing Request</span></h3><p><img src="https://i.imgur.com/FEcGZeB.png" alt="" loading="lazy"></p><pre><code># Create CertificateSigningRequest
 cat CKA/john.csr | base64 | tr -d "\n"
@@ -1782,7 +1782,35 @@ ETCDCTL_API=3 etcdctl --endpoints=https://192.31.5.9:2379\
 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --\
 key=/etc/kubernetes/pki/etcd/server.key snapshot save /opt/etcd-backup.db
 --&gt;Snapshot saved at /opt/etcd-backup.db
-</code></pre><h3 id="Q7---Secret" data-id="Q7---Secret"><a class="anchor hidden-xs" href="#Q7---Secret" title="Q7---Secret"><span class="octicon octicon-link"></span></a><span>Q7 - Secret</span></h3><p><img src="https://i.imgur.com/PyUUVjM.png" alt="" loading="lazy"></p><p><span>將 Secret 製作為一個檔案，Pod 以 Volume 的形式將此檔案掛載 (mount) 到容器上.</span></p><h2 id="真題" data-id="真題"><a class="anchor hidden-xs" href="#真題" title="真題"><span class="octicon octicon-link"></span></a><span>真題</span></h2><h3 id="1-RBAC" data-id="1-RBAC"><a class="anchor hidden-xs" href="#1-RBAC" title="1-RBAC"><span class="octicon octicon-link"></span></a><span>1. RBAC</span></h3><p><img src="https://i.imgur.com/ZqO8UkH.png" alt="" loading="lazy"></p><div class="alert alert-danger">
+</code></pre><h3 id="Q7---Secret" data-id="Q7---Secret"><a class="anchor hidden-xs" href="#Q7---Secret" title="Q7---Secret"><span class="octicon octicon-link"></span></a><span>Q7 - Secret</span></h3><p><img src="https://i.imgur.com/PyUUVjM.png" alt="" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/configuration/secret/#restriction-secret-must-exist" target="_blank" rel="noopener"><span>k8s-io - Optional Secrets</span></a><br>
+<span>將 Secret 製作為一個檔案，Pod 以 Volume 的形式將此檔案掛載 (mount) 到容器上.</span></p><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: secret-1401
+  name: secret-1401
+  namespace: admin1401
+spec:
+  containers:
+  - image: busybox
+    name: secret-admin
+    resources: {}
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 4800"]
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/etc/secret-volume"
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: dotfile-secret
+      optional: true
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+</code></pre><h2 data-id="真題" id="真題"><a class="anchor hidden-xs" href="#真題" title="真題"><span class="octicon octicon-link"></span></a><span>真題</span></h2><h3 data-id="1-RBAC" id="1-RBAC"><a class="anchor hidden-xs" href="#1-RBAC" title="1-RBAC"><span class="octicon octicon-link"></span></a><span>1. RBAC</span></h3><p><img src="https://i.imgur.com/ZqO8UkH.png" alt="" loading="lazy"></p><div class="alert alert-danger">
 <p><span>role / rolebinding  有 ns</span><br>
 <span>clusterrole / clusterrolebinding  無 ns</span><br>
 <span>serviceaccount  有 ns</span></p>
@@ -1984,7 +2012,7 @@ kubectl uncordon mk8s-master-0
 kubectl get node -o wide
 kubectl --version
 kubelet --version
-</code></pre><h3 id="15-ETCD-backup-amp-Restore" data-id="15-ETCD-backup-amp-Restore"><a class="anchor hidden-xs" href="#15-ETCD-backup-amp-Restore" title="15-ETCD-backup-amp-Restore"><span class="octicon octicon-link"></span></a><span>15. ETCD backup &amp; Restore</span></h3><p><a href="https://www.youtube.com/watch?v=ZNOMtTUU7XM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题15</span></a></p><p><img src="https://i.imgur.com/yGnWxub.png" alt="" loading="lazy"></p><pre><code>1、確定當前環境
+</code></pre><h3 data-id="15-ETCD-backup-amp-Restore" id="15-ETCD-backup-amp-Restore"><a class="anchor hidden-xs" href="#15-ETCD-backup-amp-Restore" title="15-ETCD-backup-amp-Restore"><span class="octicon octicon-link"></span></a><span>15. ETCD backup &amp; Restore</span></h3><p><a href="https://www.youtube.com/watch?v=ZNOMtTUU7XM&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题15</span></a></p><p><img src="https://i.imgur.com/yGnWxub.png" alt="" loading="lazy"></p><pre><code>1、確定當前環境
 kubectl get node
 2. 配置
 export ETCDCTL_API=3
@@ -2007,7 +2035,8 @@ ETCDCTL_API=3 etcdctl snapshot restore /tmp/etcd-backup.db
 cp -r /etc/kubernetes/manifests_bkg /etc/kubernetes/manifests
 # 裡面的 hostPath 路徑修正
 vim /etc/kubernetes/manifests/etcd.yaml 
-</code></pre><h3 id="16-Troubleshoot" data-id="16-Troubleshoot"><a class="anchor hidden-xs" href="#16-Troubleshoot" title="16-Troubleshoot"><span class="octicon octicon-link"></span></a><span>16. Troubleshoot</span></h3><p><a href="https://www.youtube.com/watch?v=H5Qtns6Y3UU&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题16</span></a></p><p><img src="https://i.imgur.com/G0Mwkqo.png" alt="" loading="lazy"></p><p><span>通過 get nodes 查看異常節點，登入節點查看 kubelet 等组件的 status 並判斷原因.</span><br>
+#　
+</code></pre><p><img src="https://i.imgur.com/T76Ky8q.png" alt="" loading="lazy"></p><h3 id="16-Troubleshoot" data-id="16-Troubleshoot"><a class="anchor hidden-xs" href="#16-Troubleshoot" title="16-Troubleshoot"><span class="octicon octicon-link"></span></a><span>16. Troubleshoot</span></h3><p><a href="https://www.youtube.com/watch?v=H5Qtns6Y3UU&amp;ab_channel=%E5%B0%8F%E8%8E%AB" target="_blank" rel="noopener"><span>CKA真题16</span></a></p><p><img src="https://i.imgur.com/G0Mwkqo.png" alt="" loading="lazy"></p><p><span>通過 get nodes 查看異常節點，登入節點查看 kubelet 等组件的 status 並判斷原因.</span><br>
 <span>真實考试时，這個異常節點的 kubelet 服務没有啟動導致的.</span><br>
 <span>journalctl -u kubelet</span></p><pre><code>k config use-context wk8s
 k get node
@@ -2178,9 +2207,9 @@ kubectl get node
 <li><a href="#11-PVC" title="11. PVC">11. PVC</a></li>
 <li><a href="#12-Pod-log" title="12. Pod log">12. Pod log</a></li>
 <li><a href="#13-Sidecar" title="13. Sidecar">13. Sidecar</a></li>
-<li class=""><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
+<li><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
 <li><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
-<li><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
+<li class=""><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
 <li><a href="#17-Drain-amp-Cordon" title="17. Drain &amp; Cordon">17. Drain &amp; Cordon</a></li>
 </ul>
 </li>
@@ -2337,9 +2366,9 @@ kubectl get node
 <li><a href="#11-PVC" title="11. PVC">11. PVC</a></li>
 <li><a href="#12-Pod-log" title="12. Pod log">12. Pod log</a></li>
 <li><a href="#13-Sidecar" title="13. Sidecar">13. Sidecar</a></li>
-<li class=""><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
+<li><a href="#14-Upgrade" title="14. Upgrade">14. Upgrade</a></li>
 <li><a href="#15-ETCD-backup-amp-Restore" title="15. ETCD backup &amp; Restore">15. ETCD backup &amp; Restore</a></li>
-<li><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
+<li class=""><a href="#16-Troubleshoot" title="16. Troubleshoot">16. Troubleshoot</a></li>
 <li><a href="#17-Drain-amp-Cordon" title="17. Drain &amp; Cordon">17. Drain &amp; Cordon</a></li>
 </ul>
 </li>
