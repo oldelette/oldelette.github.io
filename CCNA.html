@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        CCNA - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><div class="title-tags-preview"><h1 data-toggle="tooltip" data-placement="bottom" data-container=".navbar-default" data-offset="0,5" data-original-title="Title last changed by 孟瑾李 at 7/1/2023, 9:41:19 AM" class="font-bold text-19 leading-120 !mt-0 text-zinc-800" id="CCNA" data-id="CCNA"><a class="anchor hidden-xs" href="#CCNA" title="CCNA"><span class="octicon octicon-link"></span></a>CCNA</h1><div class="flex flex-wrap gap-1 mb-4"></div></div><p><span>CISCO 教材連結:  </span><a href="https://learningspace.cisco.com/" target="_blank" rel="noopener"><span>https://learningspace.cisco.com/</span></a><br>
+<span>CISCO 帳密: </span><a href="mailto:oldelette@gmail.com" target="_blank" rel="noopener"><span>oldelette@gmail.com</span></a><span>/Asdf850710@@@</span></p><p><span>Access token: 6b9yT1Mw19qXSKiXywc8</span><br>
+<span>CISCO LAB: </span><a href="https://cll-ng.cisco.com/users/pblogin" target="_blank" rel="noopener"><span>https://cll-ng.cisco.com/users/pblogin</span></a><br>
+<span>2023052184331 bVfdGk5h</span><br>
+<span>Instructor token: indma</span></p><p><span>[Vedio]</span><br>
+<a href="https://www.youtube.com/watch?v=2zcS2a5dIWI&amp;ab_channel=gavin" target="_blank" rel="noopener"><span>FASTLAB</span></a><br>
+<a href="https://www.youtube.com/watch?v=Pq1joFXkFiQ&amp;ab_channel=gavin" target="_blank" rel="noopener"><span>Explaining the TCP IP Transport Layer and Application Layer</span></a></p><pre><code>考試沒辦法回上一頁
+</code></pre><h2 id="網路元件" data-id="網路元件"><a class="anchor hidden-xs" href="#網路元件" title="網路元件"><span class="octicon octicon-link"></span></a><span>網路元件</span></h2><h3 id="Topologies" data-id="Topologies"><a class="anchor hidden-xs" href="#Topologies" title="Topologies"><span class="octicon octicon-link"></span></a><span>Topologies</span></h3><p><a href="https://ithelp.ithome.com.tw/articles/10232280?sc=rss.qu" target="_blank" rel="noopener"><span>【CCNA 學習筆記】第一章：探索網路功能（Exploring the function of network）</span></a></p><p><span>拓樸（Topology），類似網路元件的布置圖，方便我們辨識網路環境資料流走向與網路配置</span></p><div class="alert alert-success">
+<p><span>Logical Topologies: 邏輯拓樸</span><br>
+<span>是指資料流的方向。雖然網路線可能互相串連在一起，但是資料流不一定會照著實體網路設備連線方式傳輸，而是會按照預先設定好的方式，再加上最短路徑等演算法，計算最有效率的路徑。</span><br>
+<span>由此計算出來的資料流方向，就是邏輯拓樸。</span></p>
+</div><h4 id="Physical-topology" data-id="Physical-topology"><a class="anchor hidden-xs" href="#Physical-topology" title="Physical-topology"><span class="octicon octicon-link"></span></a><span>Physical topology</span></h4><ul>
+<li><span>Physical topology is the physical layout of the devices and cabling</span></li>
+<li><span>The primary physical topology categories are bus, ring, star and mesh.</span></li>
+</ul><p><span>mesh: 每個點會至少會拉兩連線以上 (部線成本上升)</span><br>
+<span>Bus 跟 Ring 已幾乎不在使用，最主流的是星狀拓樸，中間可能是一台交換器或路由器。交換器互相連來連去，當然就會變成網狀拓樸</span></p><p><img src="https://hackmd.io/_uploads/BySSLfpun.png" alt="" loading="lazy"></p><h3 id="Network-Diagram" data-id="Network-Diagram"><a class="anchor hidden-xs" href="#Network-Diagram" title="Network-Diagram"><span class="octicon octicon-link"></span></a><span>Network Diagram</span></h3><p><span>網路架構圖</span></p><p><span>這張圖的網路設備上有Te1/0/11,E1/1等符號與數字，代表網路介面，英文字母代表是哪一種型號的介面，如果開頭S指串列網路介面（Serial），Fa是指具有100Mbps傳輸速度的高速以太網路介面（Fast Ethernet）、Gi則是千兆乙太網路介面（Gigabit Ethernet）</span><br>
+<span>後面的數字是指介面的位置，假設 Fa1/0/5，是指高速以太網路介面的第1埠（port），其介面卡的第0號插槽（slot）的5號模組（module）位置。</span></p><p><img src="https://hackmd.io/_uploads/rkt3PzTO2.png" alt="" loading="lazy"></p><h3 id="Network-Applications" data-id="Network-Applications"><a class="anchor hidden-xs" href="#Network-Applications" title="Network-Applications"><span class="octicon octicon-link"></span></a><span>Network Applications</span></h3><ul>
+<li><ins><span>Batch applications</span></ins><br>
+<span>批次程式</span><br>
+<span>例如使用FTP傳輸資料時，一旦開始傳輸，就可以放著不管了。即使傳輸到一半網路斷掉，只要網路恢復，就會繼續傳輸。頻寬大小也不是那麼重要。</span><br>
+<span>不需要人為介入</span><br>
+<span>頻寬很重要但是也非絕對</span><br>
+<span>範例：FTP、TFTP，或者是Windows的更新都屬於這類</span></li>
+<li><ins><span>Interactive applications</span></ins><br>
+<span>互動型應用程式</span><br>
+<span>相較於批次程式，互動型程式比較需要注重回應時間。雖然程式能夠快速回應很重要，例如點開連結能夠快速載入網頁元件，但是就算慢一點，也是能夠完成所有任務。</span><br>
+<span>支援人機互動</span><br>
+<span>可接受的回應時間，依據我們對於個別程式的重要性而有所不同</span><br>
+<span>範例：網頁瀏覽器</span></li>
+<li><ins><span>Real-time Applications</span></ins><br>
+<span>實時應用程式</span><br>
+<span>頻寬對於網路電話來說非常重要，如果有大量延遲，則會影響語音傳輸。可能會需要使用QoS（Quality of Service）服務，也就是提高特定資料封包的重要性，讓這些封包能夠優先傳輸。</span><br>
+<span>支援人與人之間的互動</span><br>
+<span>重視網路延遲時間（latency）</span><br>
+<span>範例：Skype</span></li>
+</ul><h2 id="Host-to-host-communication-model" data-id="Host-to-host-communication-model"><a class="anchor hidden-xs" href="#Host-to-host-communication-model" title="Host-to-host-communication-model"><span class="octicon octicon-link"></span></a><span>Host-to-host communication model</span></h2><p><a href="https://ithelp.ithome.com.tw/articles/10310315" target="_blank" rel="noopener"><span>【CCNA 學習筆記】第二章：主機對主機通訊模型介紹（Introduction the Host-to-host communication model）</span></a></p><p><span>Introduction the Host-to-host communication model 主機對主機通訊模型介紹</span><br>
+<img src="https://hackmd.io/_uploads/rkEMeQTOn.png" alt="" loading="lazy"></p><p><span>The following are elements of host-to-host communication:</span></p><ul>
+<li><span>Source</span></li>
+<li><span>Transmission media</span></li>
+<li><span>Destination</span></li>
+</ul><h3 id="Open-System-Interconnection-Model" data-id="Open-System-Interconnection-Model"><a class="anchor hidden-xs" href="#Open-System-Interconnection-Model" title="Open-System-Interconnection-Model"><span class="octicon octicon-link"></span></a><span>Open System Interconnection Model</span></h3><p><img src="https://hackmd.io/_uploads/Bk_xwQ6_n.png" alt="" loading="lazy"></p><h2 id="Operating-Cisco-IOS-software" data-id="Operating-Cisco-IOS-software"><a class="anchor hidden-xs" href="#Operating-Cisco-IOS-software" title="Operating-Cisco-IOS-software"><span class="octicon octicon-link"></span></a><span>Operating Cisco IOS software</span></h2><p><span>操作 Cisco網際網路作業系統</span><br>
+<span>操作網路設備的方式之一, 可以在自己的電腦上,直接使用主控台連接線（console connection), 實體連線到設備的主控台連接埠（console port），再使用圖形化或命令列的方式，去操作網際網路作業系統，也就是殼層（shell）。</span><br>
+<span>比較常見的方式會是使用命令列，雖然比較不直覺，但是習慣後速度也較快。</span><br>
+<span>另一個方式就是透過網路，以SSH（Secure Shell）或Telent的協定去連線。</span></p><p><img src="https://hackmd.io/_uploads/By6TiNaOh.png" alt="" loading="lazy"></p><pre><code>SSID Service Set Identifier
+是服務集標識的縮寫，可簡單理解為互聯網使用者的無線網絡名稱
+</code></pre><h3 id="Management" data-id="Management"><a class="anchor hidden-xs" href="#Management" title="Management"><span class="octicon octicon-link"></span></a><span>Management</span></h3><p><span>有兩種管理模式</span></p><ul>
+<li><span>Standalone Remote Management</span></li>
+<li><span>Centrailized Remote Management</span></li>
+</ul><p><img src="https://hackmd.io/_uploads/rkmaT4TOh.png" alt="" loading="lazy"></p><p><img src="https://hackmd.io/_uploads/Hy77xSTO3.jpg" alt="" loading="lazy"></p><h4 id="CISCO-IOS-Mode" data-id="CISCO-IOS-Mode"><a class="anchor hidden-xs" href="#CISCO-IOS-Mode" title="CISCO-IOS-Mode"><span class="octicon octicon-link"></span></a><span>CISCO IOS Mode</span></h4><ul>
+<li><ins><span>User EXEC Mode</span></ins></li>
+</ul><p><span>Cisco的系統分為三層，第一層是一般使用者模式（User Exec Mode），權限最小，只能使用一些查詢的語法，提示符（prompt）為&gt;</span><br>
+<span>第二層是特權模式（Priviledged Exec Mode），進去時可能會需要密碼，提示符為#</span><br>
+<span>第三層是全域設定模式（Global Configuration Mode），在這一層設定的指令會影響整台機器。第三層再往下，就是針對個別的介面、連線等設定。</span></p><p><img src="https://hackmd.io/_uploads/S1R7HB6O2.png" alt="" loading="lazy"></p><h4 id="Managing-Cisco-IOS-Configuration" data-id="Managing-Cisco-IOS-Configuration"><a class="anchor hidden-xs" href="#Managing-Cisco-IOS-Configuration" title="Managing-Cisco-IOS-Configuration"><span class="octicon octicon-link"></span></a><span>Managing Cisco IOS Configuration</span></h4><p><span>In addition to NVRAM and RAM, Cisco devices have a Read Only Memory (ROM) and flash memory. ROM is a form of permanent storage.</span><br>
+<span>This type of memory contains microcode for basic functions to start and maintain the router. ROM is nonvolatile, so it maintains the memory contents even when the power is turned off.</span></p><p><img src="https://hackmd.io/_uploads/Bkq-HI6d2.png" alt="" loading="lazy"></p><h2 id="LAN" data-id="LAN"><a class="anchor hidden-xs" href="#LAN" title="LAN"><span class="octicon octicon-link"></span></a><span>LAN</span></h2><p><span>區域網路簡介</span></p><p><img src="https://hackmd.io/_uploads/B13-lPTuh.png" alt="" loading="lazy"></p><p><span>區域網路有下列幾個元件</span></p><ul>
+<li><span>主機（hosts）：只要能夠接收或傳送資料的都可稱為主機，也可稱為終端。</span></li>
+<li><span>互連技術（interconnections）</span>
+<ul>
+<li><span>Network Interface Cards</span></li>
+<li><span>network media</span></li>
+</ul>
+</li>
+<li><span>網路設備</span></li>
+<li><span>區域網路常用協定</span></li>
+</ul><h3 id="Switches" data-id="Switches"><a class="anchor hidden-xs" href="#Switches" title="Switches"><span class="octicon octicon-link"></span></a><span>Switches</span></h3><p><span>交換器在現代網路架構中具有非常重要的角色，在資訊量越來越大的世代，它可以減輕網路的負擔避免壅塞</span></p><p><img src="https://hackmd.io/_uploads/rySuQv6d2.jpg" alt="" loading="lazy"></p><h3 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h3><p><span>CSMA 和 CSMA/CD 是兩種常見的網絡傳輸協議，它們都是用於在共享媒介上進行數據傳輸的方法，但在碰撞檢測和處理上有所不同。</span></p><pre><code>Layer1 才會有碰撞
+Layer2 才有全雙工
+</code></pre><h4 id="CSMACD" data-id="CSMACD"><a class="anchor hidden-xs" href="#CSMACD" title="CSMACD"><span class="octicon octicon-link"></span></a><span>CSMA/CD</span></h4><p><span>Carrier Sense Multiple Access with Collision Detection</span><br>
+<span>載波偵測多重存取/碰撞偵測</span></p><p><span>CSMA/CD 運作過程如下</span></p><ul>
+<li><span>訊號採用廣播的方式傳送（所以才會發生碰撞）</span></li>
+<li><span>當節點要發送訊號時，會先偵測通道是否有其他節點正在使用（carrier sense）</span></li>
+<li><span>當通道沒有被其他節點使用時，就傳送封包</span></li>
+<li><span>封包傳送之後立即檢查是否發生碰撞（carrier detection），若是發生碰撞則對通道發出高頻訊號高知其他節點已經發生碰撞</span></li>
+<li><span>碰撞後隨機等待一段時間重新發送封包</span></li>
+<li><span>嘗試 15 次都失敗的話則告知上層 Timeout</span></li>
+</ul><h4 id="CSMACA" data-id="CSMACA"><a class="anchor hidden-xs" href="#CSMACA" title="CSMACA"><span class="octicon octicon-link"></span></a><span>CSMA/CA</span></h4><p><span>Carrier Sense Multiple Access</span><br>
+<span>載波偵測多重存取/碰撞避免</span></p><p><span>CSMA/CA 運作過程如下</span></p><ul>
+<li><span>訊號採用廣播的方式傳送（非常容易受到無線電波干擾）</span></li>
+<li><span>當節點要發送訊號時偵測頻道是否空閒</span></li>
+<li><span>若是空閒則等待 IFS, Interval Frame Space 時間後再次偵測頻道是否空閒</span></li>
+<li><span>若是空閒則發送封包，反之重新進入等待頻道空閒（隨機等待時間）</span></li>
+<li><span>發送 RTS 之後必須在限定時間內收到來至目的端的 CTS 訊號</span></li>
+<li><span>當失敗 32 次之後通知上層 Timeout</span></li>
+<li><span>此外 CSMA/CA 又可分為以下兩種類型</span>
+<ul>
+<li><span>分散式協調功能 (Distributed Coordination Function, DCF)：競爭式服務 (Contention Service)</span></li>
+<li><span>集中式協調功能 (Point Coordination Function, PCF)：無競爭式服務 (Contention-Free Service)</span></li>
+</ul>
+</li>
+</ul><h2 id="TCPIP-link-layer" data-id="TCPIP-link-layer"><a class="anchor hidden-xs" href="#TCPIP-link-layer" title="TCPIP-link-layer"><span class="octicon octicon-link"></span></a><span>TCP/IP link layer</span></h2><p><span>探索 TCP/IP 連結層（Exploring the TCP/IP link layer)</span></p><h3 id="UTP" data-id="UTP"><a class="anchor hidden-xs" href="#UTP" title="UTP"><span class="octicon octicon-link"></span></a><span>UTP</span></h3><p><span>無遮蔽雙絞線 （unshielded twisted-pair, UTP)</span><br>
+<span>乙太網路目前主流都是用無遮蔽雙絞線</span></p><p><img src="https://hackmd.io/_uploads/HJdBvD6_3.png" alt="" loading="lazy"></p><div class="alert alert-success">
+<p><span>Straight-Through or Crossover UTP Cable ???</span></p>
+</div><p><span>平行線（straight-through）及跳線（crosssover）的差異。</span><br>
+<span>在CCNA課程也會稍微講到，簡單來說，兩台交換器如果要對接，理論上應該使用跳線</span></p><p><span>通常只用到 1,2,3,6</span></p><p><img src="https://hackmd.io/_uploads/SJN2DPpO3.png" alt="" loading="lazy"></p><p><span>平行線就是指左側這張圖，</span><br>
+<span>RJ-45接頭的插槽共有8個腳位（Pin），它會將左邊RJ-45接頭的腳位1，傳到右邊的腳位1，其餘以此類推</span></p><h4 id="平行線與跳線的使用時機" data-id="平行線與跳線的使用時機"><a class="anchor hidden-xs" href="#平行線與跳線的使用時機" title="平行線與跳線的使用時機"><span class="octicon octicon-link"></span></a><span>平行線與跳線的使用時機</span></h4><p><img src="https://hackmd.io/_uploads/rkABOvTOh.png" alt="" loading="lazy"></p><h3 id="Fiber" data-id="Fiber"><a class="anchor hidden-xs" href="#Fiber" title="Fiber"><span class="octicon octicon-link"></span></a><span>Fiber</span></h3><p><span>光纖又可分為單模光纖（single-mode fiber）及多模光纖（multimode fiber）</span></p><ul>
+<li><span>single-mode fiber 使用雷射傳輸光訊號，傳輸距離較長</span></li>
+<li><span>multimode fiber 使用LED傳送光訊號，傳輸距離較短</span></li>
+</ul><p><img src="https://hackmd.io/_uploads/HkVqdP6_2.png" alt="" loading="lazy"></p><h3 id="Ethernet-Frame" data-id="Ethernet-Frame"><a class="anchor hidden-xs" href="#Ethernet-Frame" title="Ethernet-Frame"><span class="octicon octicon-link"></span></a><span>Ethernet Frame</span></h3><p><span>訊框（frame）是指在OSI第二層資料鏈結層傳遞的訊息，目前規格主要是乙太二(Ethernet II)</span><br>
+<span>組成方式如下表</span></p><table>
+<thead>
+<tr>
+<th><span>Bytes</span></th>
+<th><span>8</span></th>
+<th><span>6</span></th>
+<th><span>6</span></th>
+<th><span>2</span></th>
+<th><span>46-1500</span></th>
+<th><span>4</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>內容</span></td>
+<td><span>前置訊號(Preamble)</span></td>
+<td><span>目標MAC位址(Destination MAC Address)</span></td>
+<td><span>來源MAC位址(Source MAC Address)</span></td>
+<td><span>類型(Type)</span></td>
+<td><span>訊息內容(Payload)</span></td>
+<td><span>訊框檢查序列(Frame Check Sequence)</span></td>
+</tr>
+</tbody>
+</table><h2 id="Introducing-LANs" data-id="Introducing-LANs"><a class="anchor hidden-xs" href="#Introducing-LANs" title="Introducing-LANs"><span class="octicon octicon-link"></span></a><span>Introducing LANs</span></h2><h3 id="LAN-Communication-Types" data-id="LAN-Communication-Types"><a class="anchor hidden-xs" href="#LAN-Communication-Types" title="LAN-Communication-Types"><span class="octicon octicon-link"></span></a><span>LAN Communication Types</span></h3><p><img src="https://hackmd.io/_uploads/BydiGLCOh.png" alt="" loading="lazy"></p><ul>
+<li><ins><span>Unicast frames forwarding:</span></ins><br>
+<span>The switch examines the destination MAC address and if it is unicast, performs one of the following action depending whether the MAC address is present in the MAC address table.</span></li>
+<li><ins><span>Broadcast frames forwarding:</span></ins><br>
+<span>The switch examines the destination MAC address and if it is boardcast or multicast</span></li>
+</ul><h3 id="MAC位址" data-id="MAC位址"><a class="anchor hidden-xs" href="#MAC位址" title="MAC位址"><span class="octicon octicon-link"></span></a><span>MAC位址</span></h3><p><span>MAC位址(Media Access Control Address)可直譯為媒體存取控制位址</span><br>
+<span>習慣上還是直接稱為MAC位址，可以視為網卡的編號。MAC位址主要是在OSI模型第二層資料鏈結層使用，也就是乙太網路、Wi-Fi、藍芽.</span></p><div class="alert alert-danger">
+<p><span>Mac address is composed of 12 hexadecimal digits, it’s 48 bits long.</span></p>
+</div><p><img src="https://hackmd.io/_uploads/HyppNLAO3.png" alt="" loading="lazy"></p><h4 id="Frame-switching" data-id="Frame-switching"><a class="anchor hidden-xs" href="#Frame-switching" title="Frame-switching"><span class="octicon octicon-link"></span></a><span>Frame switching</span></h4><p><span>Frame switching refers to the process of forwarding network data frames from one interface to another within a network switch</span></p><div class="alert alert-warning">
+<p><span>The MAC address table is stored in the content-addressable memory(CAM), which enables very fast lookups.</span><br>
+<span>MAC table referred to as a CAM table.</span></p>
+</div><p><img src="https://hackmd.io/_uploads/ByS2ywR_h.png" alt="" loading="lazy"></p><h2 id="Starting-a-Switch" data-id="Starting-a-Switch"><a class="anchor hidden-xs" href="#Starting-a-Switch" title="Starting-a-Switch"><span class="octicon octicon-link"></span></a><span>Starting a Switch</span></h2><p><span>在企業網路中，交換器通常都是座落在網路的中心位置，向外輻射狀連結著各類主機</span></p><p><img src="https://hackmd.io/_uploads/HJ_JqDRO2.png" alt="" loading="lazy"></p><h3 id="Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps" data-id="Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps"><a class="anchor hidden-xs" href="#Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps" title="Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps"><span class="octicon octicon-link"></span></a><span>Physical installation and startup of a Catalyst switch requires completion of these steps:</span></h3><ol>
+<li><span>Before performing physical installation, verify the following:</span>
+<ul>
+<li><span>Switch power requirements</span></li>
+<li><span>Switch operating environment requirements (operational temperature and humidity)</span></li>
+</ul>
+</li>
+<li><span>Use the appropriate installation procedures for rack mounting, wall mounting, or table or shelf mounting.</span></li>
+<li><span>Before starting the switch, verify the network cables that provide connectivity to end devices to the local-area network (LAN).</span></li>
+<li><span>Attach the power cable plug to the power supply socket of the switch. The switch will start. Some Catalyst switches do not have power buttons.</span></li>
+<li><span>Observe the boot sequence:</span>
+<ul>
+<li><span>When the switch is on, power-on self test (POST) begins. During POST, the switch LED indicators blink while a series of tests determines that the switch is functioning properly.</span></li>
+<li><span>The Cisco IOS Software output text is displayed on the console.</span></li>
+</ul>
+</li>
+</ol><p><img src="https://hackmd.io/_uploads/SJavjK0u3.png" alt="" loading="lazy"></p><h2 id="Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets" data-id="Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets"><a class="anchor hidden-xs" href="#Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets" title="Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets"><span class="octicon octicon-link"></span></a><span>Introducing the TCP/IP Internet Layer, IPv4 Addressing, and Subnets</span></h2></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#網路元件" title="網路元件">網路元件</a><ul class="nav">
+<li><a href="#Topologies" title="Topologies">Topologies</a></li>
+<li><a href="#Network-Diagram" title="Network Diagram">Network Diagram</a></li>
+<li><a href="#Network-Applications" title="Network Applications">Network Applications</a></li>
+</ul>
+</li>
+<li><a href="#Host-to-host-communication-model" title="Host-to-host communication model">Host-to-host communication model</a><ul class="nav">
+<li><a href="#Open-System-Interconnection-Model" title="Open System Interconnection Model">Open System Interconnection Model</a></li>
+</ul>
+</li>
+<li><a href="#Operating-Cisco-IOS-software" title="Operating Cisco IOS software">Operating Cisco IOS software</a><ul class="nav">
+<li><a href="#Management" title="Management">Management</a></li>
+</ul>
+</li>
+<li><a href="#LAN" title="LAN">LAN</a><ul class="nav">
+<li><a href="#Switches" title="Switches">Switches</a></li>
+<li><a href="#Others" title="Others">Others</a></li>
+</ul>
+</li>
+<li><a href="#TCPIP-link-layer" title="TCP/IP link layer">TCP/IP link layer</a><ul class="nav">
+<li><a href="#UTP" title="UTP">UTP</a></li>
+<li><a href="#Fiber" title="Fiber">Fiber</a></li>
+<li><a href="#Ethernet-Frame" title="Ethernet Frame">Ethernet Frame</a></li>
+</ul>
+</li>
+<li><a href="#Introducing-LANs" title="Introducing LANs">Introducing LANs</a><ul class="nav">
+<li><a href="#LAN-Communication-Types" title="LAN Communication Types">LAN Communication Types</a></li>
+<li><a href="#MAC位址" title="MAC位址">MAC位址</a></li>
+</ul>
+</li>
+<li><a href="#Starting-a-Switch" title="Starting a Switch">Starting a Switch</a><ul class="nav">
+<li><a href="#Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps" title="Physical installation and startup of a Catalyst switch requires completion of these steps:">Physical installation and startup of a Catalyst switch requires completion of these steps:</a></li>
+</ul>
+</li>
+<li><a href="#Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets" title="Introducing the TCP/IP Internet Layer, IPv4 Addressing, and Subnets">Introducing the TCP/IP Internet Layer, IPv4 Addressing, and Subnets</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#網路元件" title="網路元件">網路元件</a><ul class="nav">
+<li><a href="#Topologies" title="Topologies">Topologies</a></li>
+<li><a href="#Network-Diagram" title="Network Diagram">Network Diagram</a></li>
+<li><a href="#Network-Applications" title="Network Applications">Network Applications</a></li>
+</ul>
+</li>
+<li><a href="#Host-to-host-communication-model" title="Host-to-host communication model">Host-to-host communication model</a><ul class="nav">
+<li><a href="#Open-System-Interconnection-Model" title="Open System Interconnection Model">Open System Interconnection Model</a></li>
+</ul>
+</li>
+<li><a href="#Operating-Cisco-IOS-software" title="Operating Cisco IOS software">Operating Cisco IOS software</a><ul class="nav">
+<li><a href="#Management" title="Management">Management</a></li>
+</ul>
+</li>
+<li><a href="#LAN" title="LAN">LAN</a><ul class="nav">
+<li><a href="#Switches" title="Switches">Switches</a></li>
+<li><a href="#Others" title="Others">Others</a></li>
+</ul>
+</li>
+<li><a href="#TCPIP-link-layer" title="TCP/IP link layer">TCP/IP link layer</a><ul class="nav">
+<li><a href="#UTP" title="UTP">UTP</a></li>
+<li><a href="#Fiber" title="Fiber">Fiber</a></li>
+<li><a href="#Ethernet-Frame" title="Ethernet Frame">Ethernet Frame</a></li>
+</ul>
+</li>
+<li><a href="#Introducing-LANs" title="Introducing LANs">Introducing LANs</a><ul class="nav">
+<li><a href="#LAN-Communication-Types" title="LAN Communication Types">LAN Communication Types</a></li>
+<li><a href="#MAC位址" title="MAC位址">MAC位址</a></li>
+</ul>
+</li>
+<li><a href="#Starting-a-Switch" title="Starting a Switch">Starting a Switch</a><ul class="nav">
+<li><a href="#Physical-installation-and-startup-of-a-Catalyst-switch-requires-completion-of-these-steps" title="Physical installation and startup of a Catalyst switch requires completion of these steps:">Physical installation and startup of a Catalyst switch requires completion of these steps:</a></li>
+</ul>
+</li>
+<li><a href="#Introducing-the-TCPIP-Internet-Layer-IPv4-Addressing-and-Subnets" title="Introducing the TCP/IP Internet Layer, IPv4 Addressing, and Subnets">Introducing the TCP/IP Internet Layer, IPv4 Addressing, and Subnets</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
