@@ -1,4 +1,26 @@
-from typing import List, Dict
+'''
+======================================================================================================
+Copyright (c) 2013, Makarov Yurii 
+
+               All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+======================================================================================================
+'''
 
 
 class NginxConfig:
@@ -20,44 +42,6 @@ class NginxConfig:
 
     def __call__(self):
         return self.gen_config()
-
-    def list_proxy_rule(self):
-        """list all location proxy rule"""
-        res: dict = {}
-        data_list: list = self.data
-        for key, item in data_list[0].items():
-            if key == "value" and isinstance(item, list):
-                for ind in item:
-                    if isinstance(ind, dict) and ind.get("param"):
-                        val = ind.get("param")
-                        res[val] = ind.get("value")
-        return res
-
-    # def append_value(self, name: str, rule: List[tuple]) -> None:
-    def append_value(self, name: str, rule: tuple) -> None:
-        """append location proxy rule"""
-        new_rule = {'name': 'location'}
-        new_data_list = self.data
-        for key, item in new_data_list[0].items():
-            print(f"key: {key}, item: {item}")
-            if key == "value" and isinstance(item, list):
-                for ind in item:
-                    if isinstance(ind, dict) and ind.get("param"):
-                        if ind.get("param") == name:
-                            # name in location
-                            ind["value"].extend([rule])
-                            return
-                # name not in location
-                new_rule['param'] = name
-                new_rule['value'] = [rule]
-                item.append(new_rule)
-                return
-
-    def remove_value(self, name: str, rule: tuple) -> None:
-        """remove location proxy rule"""
-
-    def modify_value(self, name: str, rule: tuple) -> None:
-        """modify location proxy rule"""
 
     def get_value(self, data):
         if isinstance(data, tuple):

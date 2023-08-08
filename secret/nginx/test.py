@@ -1,7 +1,9 @@
 import json
-from pynginxconfig import NginxConfig
+# from pynginxconfig import NginxConfig
+from tnginxconfig import TNginxConfig
 
-nc = NginxConfig()
+nc = TNginxConfig()
+# nc = NginxConfig()
 nc.loadf('test.conf')
 # print(f"data: {json.dumps(nc.data,indent=4)}")
 print(f"data: {json.dumps(nc.data)}")
