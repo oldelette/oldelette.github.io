@@ -34,11 +34,12 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><div class="title-tags-preview"><h1 class="font-bold text-19 leading-120 !mt-0 text-zinc-800" id="Untitled" data-id="Untitled" data-toggle="tooltip" data-placement="bottom" data-container=".navbar-default" data-offset="0,5" data-original-title="Title last changed by 孟瑾李 at 8/2/2023, 12:44:36 AM"><a class="anchor hidden-xs" href="#Untitled" title="Untitled"><span class="octicon octicon-link"></span></a>Ngnix</h1><div class="flex flex-wrap gap-1 mb-4"></div></div><p><span>Nginx 是非同步框架的網頁伺服器，主要用於</span></p><ul>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><div class="title-tags-preview"><h1 data-toggle="tooltip" data-placement="bottom" data-container=".navbar-default" data-offset="0,5" data-original-title="Title last changed by 孟瑾李 at 8/2/2023, 12:44:36 AM" class="font-bold text-19 leading-120 !mt-0 text-zinc-800" id="Ngnix" data-id="Ngnix"><a class="anchor hidden-xs" href="#Ngnix" title="Ngnix"><span class="octicon octicon-link"></span></a>Ngnix</h1><div class="flex flex-wrap gap-1 mb-4"></div></div><p><span>Nginx 是非同步框架的網頁伺服器，主要用於</span></p><ul>
 <li><span>反向代理 (reverse proxy) 能作為 API Gateway 進行後端分流</span></li>
 <li><span>負載平衡 (load balancer) 和快取 (HTTP Cache) 可用於靜態網站架設</span></li>
-</ul><h2 id="Nginx-Config" data-id="Nginx-Config"><a class="anchor hidden-xs" href="#Nginx-Config" title="Nginx-Config"><span class="octicon octicon-link"></span></a><span>Nginx Config</span></h2><p><a href="" target="_blank" rel="noopener"><span>Nginx</span></a><span> 設定</span><br>
-<a href="https://ithelp.ithome.com.tw/articles/10241354" target="_blank" rel="noopener"><span>Web Server &amp; Nginx</span></a></p><p><span>Nginx 的主要設定檔通常會放置在 /etc/nginx/nginx.conf</span><br>
+</ul><h2 id="Nginx-Config" data-id="Nginx-Config"><a class="anchor hidden-xs" href="#Nginx-Config" title="Nginx-Config"><span class="octicon octicon-link"></span></a><span>Nginx Config</span></h2><p><a href="https://github.com/DocsHome/nginx-docs/tree/master" target="_blank" rel="noopener"><span>Beginner’s Guide - 中文文檔</span></a><br>
+<a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noopener"><span>Beginner’s Guide</span><br>
+</a></p><p><span>Nginx 的主要設定檔通常會放置在 /etc/nginx/nginx.conf</span><br>
 <span>另外在 /etc/nginx/conf.d/*.conf 則會放置不同域名的 config file</span><br>
 <span>然後在主設定檔中的 http context 加入一行</span></p><pre><code>include /etc/nginx/conf.d/*.conf;
 </code></pre><p><span>即可將不同域名的設定引入，達成方便管理與修改不同域名設定的特性。</span></p><hr><div class="alert alert-info">
@@ -57,7 +58,7 @@ http {
 <p><span>servers.conf is usually an additional configuration file where you can define individual server blocks for various websites or applications hosted by Ng</span></p>
 </div><ul>
 <li><span>/etc/nginx/conf.d/servers.conf</span></li>
-</ul><pre><code>upstream api {
+</ul><pre data-original-title="" title=""><code>upstream api {
     server localhost:5000;
     server localhost:5001;
 }
@@ -135,7 +136,25 @@ http {
 <p><span>optional arguments:</span><br>
 <span>-h, --help            show this help message and exit</span><br>
 <span>-V, --version         show program’s version number and exit</span></p>
-</div><hr></div>
+</div><hr><h2 id="Nginx-Document" data-id="Nginx-Document"><a class="anchor hidden-xs" href="#Nginx-Document" title="Nginx-Document"><span class="octicon octicon-link"></span></a><span>Nginx Document</span></h2><h3 id="Proxy-Module" data-id="Proxy-Module"><a class="anchor hidden-xs" href="#Proxy-Module" title="Proxy-Module"><span class="octicon octicon-link"></span></a><span>Proxy Module</span></h3><p><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass" target="_blank" rel="noopener"><span>Module ngx_http_proxy_module</span></a><br>
+<a href="https://github.com/DocsHome/nginx-docs/blob/master/%E6%A8%A1%E5%9D%97%E5%8F%82%E8%80%83/http/ngx_http_proxy_module.md" target="_blank" rel="noopener"><span>Module ngx_http_proxy_module - 中文</span></a></p><div class="alert alert-info">
+<p><span>The ngx_http_proxy_module module allows passing requests to another server</span></p>
+</div><p><span>69 個參數</span></p><ul>
+<li><span>Example Configuration</span></li>
+</ul><pre><code>location / {
+    proxy_pass       http://localhost:8000;
+    proxy_set_header Host      $host;
+    proxy_set_header X-Real-IP $remote_addr;
+}
+</code></pre><h3 id="Controlling-NGINX-Processes-at-Runtime" data-id="Controlling-NGINX-Processes-at-Runtime"><a class="anchor hidden-xs" href="#Controlling-NGINX-Processes-at-Runtime" title="Controlling-NGINX-Processes-at-Runtime"><span class="octicon octicon-link"></span></a><span>Controlling NGINX Processes at Runtime</span></h3><p><a href="https://docs.nginx.com/nginx/admin-guide/basic-functionality/runtime-control/" target="_blank" rel="noopener"><span>Link</span></a></p><p><span>啟動、停止和重新載入配置</span></p><p><span>Understand the NGINX processes that handle traffic, and how to control them at runtime.</span></p><h4 id="Controlling-NGINX" data-id="Controlling-NGINX"><a class="anchor hidden-xs" href="#Controlling-NGINX" title="Controlling-NGINX"><span class="octicon octicon-link"></span></a><span>Controlling NGINX</span></h4><p><span>To reload your configuration, you can stop or restart NGINX, or send signals to the master process.</span><br>
+<span>A signal can be sent by running the nginx command (invoking the NGINX executable) with the -s argument.</span></p><div class="alert alert-success">
+<p><span>nginx -s </span>&lt;SIGNAL&gt;</p>
+</div><p><span>where </span>&lt;SIGNAL&gt;<span> can be one of the following:</span></p><ul>
+<li><span>quit – Shut down gracefully (the SIGQUIT signal)</span></li>
+<li><span>reload – Reload the configuration file (the SIGHUP signal)</span></li>
+<li><span>reopen – Reopen log files (the SIGUSR1 signal)</span></li>
+<li><span>stop – Shut down immediately (or fast shutdown, the SIGTERM singal)</span></li>
+</ul></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -148,8 +167,13 @@ http {
 <li><a href="#Lab" title="Lab">Lab</a></li>
 </ul>
 </li>
-<li><a href="#Crossplane" title="Crossplane">Crossplane</a><ul class="nav">
-<li><a href="#Command-Line-Interface" title="Command Line Interface">Command Line Interface</a></li>
+<li class=""><a href="#Crossplane" title="Crossplane">Crossplane</a><ul class="nav">
+<li class=""><a href="#Command-Line-Interface" title="Command Line Interface">Command Line Interface</a></li>
+</ul>
+</li>
+<li><a href="#Nginx-Document" title="Nginx Document">Nginx Document</a><ul class="nav">
+<li><a href="#Proxy-Module" title="Proxy Module">Proxy Module</a></li>
+<li><a href="#Controlling-NGINX-Processes-at-Runtime" title="Controlling NGINX Processes at Runtime">Controlling NGINX Processes at Runtime</a></li>
 </ul>
 </li>
 </ul>
@@ -166,8 +190,13 @@ http {
 <li><a href="#Lab" title="Lab">Lab</a></li>
 </ul>
 </li>
-<li><a href="#Crossplane" title="Crossplane">Crossplane</a><ul class="nav">
-<li><a href="#Command-Line-Interface" title="Command Line Interface">Command Line Interface</a></li>
+<li class=""><a href="#Crossplane" title="Crossplane">Crossplane</a><ul class="nav">
+<li class=""><a href="#Command-Line-Interface" title="Command Line Interface">Command Line Interface</a></li>
+</ul>
+</li>
+<li class=""><a href="#Nginx-Document" title="Nginx Document">Nginx Document</a><ul class="nav">
+<li class=""><a href="#Proxy-Module" title="Proxy Module">Proxy Module</a></li>
+<li><a href="#Controlling-NGINX-Processes-at-Runtime" title="Controlling NGINX Processes at Runtime">Controlling NGINX Processes at Runtime</a></li>
 </ul>
 </li>
 </ul>
