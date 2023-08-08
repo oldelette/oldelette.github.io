@@ -15,9 +15,15 @@ for item in nc.data:
 # nc.remove([('server',),('location','/name/')])
 # nc.remove([('server',),("server_name")])
 # nc.remove([('server',)])
-nc.append_value(
-    name="/gavin/", rule=[('proxy_pass', 'http://127.0.0.1/remote/')])
+
+# append proxy rule
+nc.append_value(name="/gavin/", rule=('proxy_pass',
+                'http://127.0.0.1/remote/'))
+# nc.append_value(name="/gavin/",rule=[('proxy_pass', 'http://127.0.0.1/remote/')])
+nc.append_value(name="/name/", rule=('proxy_socket_keepalive', 'off'))
 # nc.append_value(name="/name/",rule=[('proxy_socket_keepalive', 'off')])
+# print("**"*20)
+# print(nc.list_proxy_rule())
 print("--"*20)
 # print(f"after data: {json.dumps(nc.data,indent=4)}")
 nc.savef('nginx_new.conf')

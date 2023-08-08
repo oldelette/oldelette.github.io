@@ -33,7 +33,8 @@ class NginxConfig:
                         res[val] = ind.get("value")
         return res
 
-    def append_value(self, name: str, rule: List[tuple]) -> None:
+    # def append_value(self, name: str, rule: List[tuple]) -> None:
+    def append_value(self, name: str, rule: tuple) -> None:
         """append location proxy rule"""
         new_rule = {'name': 'location'}
         new_data_list = self.data
@@ -44,13 +45,19 @@ class NginxConfig:
                     if isinstance(ind, dict) and ind.get("param"):
                         if ind.get("param") == name:
                             # name in location
-                            ind["value"].extend(rule)
+                            ind["value"].extend([rule])
                             return
                 # name not in location
                 new_rule['param'] = name
-                new_rule['value'] = rule
+                new_rule['value'] = [rule]
                 item.append(new_rule)
                 return
+
+    def remove_value(self, name: str, rule: tuple) -> None:
+        """remove location proxy rule"""
+
+    def modify_value(self, name: str, rule: tuple) -> None:
+        """modify location proxy rule"""
 
     def get_value(self, data):
         if isinstance(data, tuple):
