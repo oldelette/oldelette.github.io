@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        C - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{border-radius:3px;font-size:85%;line-height:1.45;overflow:auto}.markdown-body:not(.next-editor) pre{background-color:#f7f7f7;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Language" data-id="tags-Language"><a class="anchor hidden-xs" href="#tags-Language" title="tags-Language"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Language</code></h6><h1 id="C" data-id="C"><a class="anchor hidden-xs" href="#C" title="C"><span class="octicon octicon-link"></span></a><span>C</span></h1><pre><code>#include&lt;stdio.h&gt;
+</code></pre><p><a href="http://dhcp.tcgs.tc.edu.tw/c/p002.htm" target="_blank" rel="noopener"><span>#include&lt;stdio.h&gt;</span></a><br>
+<span>stdio 是 Standard I/O 也就是標準輸入輸出的意思，它裡面有很多函數的宣告。</span></p><pre><code>#include&lt;stdlib.h&gt;
+</code></pre><p><span>stdio.h 與 stdlib.h差別</span></p><ol>
+<li><span>stdlib.h主要封裝了malloc()、calloc()、realloc()、free()、system()、atoi()、atol()、rand()、srand()、exit()等函數。</span></li>
+<li><span>stdio.h主要封裝了getchar()、putchar()、scanf()、printf()、gets()、puts()、sprintf()等函數。</span></li>
+</ol><hr><h2 id="數值型態" data-id="數值型態"><a class="anchor hidden-xs" href="#數值型態" title="數值型態"><span class="octicon octicon-link"></span></a><span>數值型態</span></h2><p><a href="https://sites.google.com/site/jingprogram/c/var" target="_blank" rel="noopener"><span>變數,資料型態,常數</span></a></p><h3 id="資料型態：" data-id="資料型態："><a class="anchor hidden-xs" href="#資料型態：" title="資料型態："><span class="octicon octicon-link"></span></a><span>資料型態：</span></h3><p><span>(1)基本資料型態：int (整數integer)、float (單精度浮點數)、double (雙精度浮點數)、char (字元character，參閱 ASCII符號表)</span><br>
+<span>(2)延伸資料型態：short (短整數)、long (長整數)、signed (具符號)、unsigned (無符號)</span><br>
+<span>(3)結構類型：陣列、字串、結構</span><br>
+<span>(4)指標資料型態</span><br>
+<span>(5)列舉資料型態</span></p><table>
+<thead>
+<tr>
+<th><span>Name</span></th>
+<th><span>佔記憶體</span></th>
+<th><span>數值範圍</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>char字元</span></td>
+<td><span>1 Byte</span></td>
+<td><span>-128 ~ 127</span></td>
+</tr>
+<tr>
+<td><span>short</span></td>
+<td><span>2 Byte</span></td>
+<td><span>-32,768 ~ 32,767</span></td>
+</tr>
+<tr>
+<td><span>int 整數</span></td>
+<td><span>4 Bytes</span></td>
+<td><span>-2,147,483,648 ~ 2,147,483,647</span></td>
+</tr>
+<tr>
+<td><span>float</span></td>
+<td><span>4 Bytes</span></td>
+<td><span>-3.4E+38 ~ +3.4E+38</span></td>
+</tr>
+<tr>
+<td><span>long</span></td>
+<td><span>4 Bytes</span></td>
+<td><span>-2,147,483,648 ~ 2,147,483,647</span></td>
+</tr>
+<tr>
+<td><span>longlong</span></td>
+<td><span>8 Bytes</span></td>
+<td><span>-9223372036854775808 ~ 9223372036854775807</span></td>
+</tr>
+<tr>
+<td><span>double</span></td>
+<td><span>8 Bytes</span></td>
+<td><span>1.798x10308~1.798x10308</span></td>
+</tr>
+<tr>
+<td><span>unsigned char</span></td>
+<td><span>1 Bytes</span></td>
+<td><span>0 ~ 255</span></td>
+</tr>
+<tr>
+<td><span>unsigned short</span></td>
+<td><span>2 Bytes</span></td>
+<td><span>0 ~ 65,535</span></td>
+</tr>
+<tr>
+<td><span>unsigned int</span></td>
+<td><span>4 Bytes</span></td>
+<td><span>0 ~ 4,294,967,295</span></td>
+</tr>
+</tbody>
+</table><p><span>char 字元，佔 1 Byte</span><br>
+<span>int 整數，佔 2 Bytes (DOS/Win16) 或 4 Bytes(Win32/Unix)</span><br>
+<span>long 長整數，佔 4 Bytes (DOS/Win16) 或 8 Bytes(Win32/Unix)</span><br>
+<span>float 浮點數，佔 4 Bytes (有效位數 6 位)</span><br>
+<span>double 倍精確度浮點數，佔 8 Bytes (有效位數 15 位)</span></p><p><a href="https://www.itread01.com/content/1505890834.html" target="_blank" rel="noopener"><span>不得不說的“return 0;”</span></a><br>
+<span>“return 0”的作用，就是返回了一個標識，表示正常退出。</span><br>
+<span>如果不加return 0的話，系統無法判斷運行結果，會認為他是一個異常返回，會采取相應的措施來處理它。</span></p><h3 id="字元型態（char）" data-id="字元型態（char）"><a class="anchor hidden-xs" href="#字元型態（char）" title="字元型態（char）"><span class="octicon octicon-link"></span></a><span>字元型態（char）</span></h3><ol>
+<li><strong><span>字元型態在記憶體中儲存的是字元的ASCII數值</span></strong><span>，字元型態若包含多個字元，則變數值為最後一個字元。</span><a href="https://zh.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener"><span>參閱 ASCII符號表</span></a></li>
+<li><span>一個 char 字元變數 就是儲存 ASCII 裡的一個整數編號(0 ~ 127)，分成兩種：</span><br>
+<span>(1)可顯示：編號32~126 一個整數編號會對應一個半型字。</span><br>
+<span>(2)不可顯示：編號0~31、127 一個整數編號會對應一個控制字元。</span></li>
+<li><span>宣告格式   char 變數名稱=初始值；        char c=’a’;</span></li>
+<li><span>字元資料必須以一對單引號括起來，只有一個字元。</span></li>
+</ol><pre><code class="c hljs"><span class="token comment">//所以我們可以利用這點直接做英文字母大小寫轉換</span>
+<span class="token keyword">char</span> a<span class="token operator">=</span><span class="token char">'A'</span><span class="token punctuation">,</span>b<span class="token punctuation">;</span> 
+b<span class="token operator">=</span>a<span class="token operator">+</span><span class="token number">32</span><span class="token punctuation">;</span> <span class="token comment">// b=a+('a'-'A');</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c\n"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// b='a'</span>
+</code></pre><h4 id="字元陣列" data-id="字元陣列"><a class="anchor hidden-xs" href="#字元陣列" title="字元陣列"><span class="octicon octicon-link"></span></a><span>字元陣列</span></h4><p><span>C/C++的字元陣列，如果要表示成字串，</span><a href="https://medium.com/andy%E7%9A%84%E8%B6%A3%E5%91%B3%E7%A8%8B%E5%BC%8F%E7%B7%B4%E5%8A%9F%E5%9D%8A/c%E8%AA%9E%E8%A8%80-01-%E5%AD%97%E5%85%83%E9%99%A3%E5%88%97-%E5%AD%97%E4%B8%B2%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E6%A5%9A-45089f69f6be" target="_blank" rel="noopener"><span>要在最後一個元素加上 ’\0’</span></a><span> ，意思是跟系統說，我的字串就到這邊結尾。</span></p><pre><code>字串絕對是char類型陣列，但char類型陣列不一定是字串
+</code></pre><h5 id="字元陣列的幾種初始化方式" data-id="字元陣列的幾種初始化方式"><a class="anchor hidden-xs" href="#字元陣列的幾種初始化方式" title="字元陣列的幾種初始化方式"><span class="octicon octicon-link"></span></a><span>字元陣列的幾種初始化方式</span></h5><ol>
+<li><span>第一種 - 不指定長度，沒有結束符（超不優）</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">char</span> c1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token char">'b'</span><span class="token punctuation">,</span> <span class="token char">'c'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// abc+亂碼</span>
+</code></pre><ol start="2">
+<li><span>第二種 - 指定長度，後面元素沒有賦值（後面的元素自動補空）</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">char</span> c2<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token char">'b'</span><span class="token punctuation">,</span> <span class="token char">'c'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// abc</span>
+</code></pre><ol start="3">
+<li><span>第三種 - 不指定長度，最後加上’\0’ or 0</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">char</span> c1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token char">'b'</span><span class="token punctuation">,</span> <span class="token char">'c'</span> <span class="token punctuation">,</span><span class="token char">'\0'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span> c2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token char">'b'</span><span class="token punctuation">,</span> <span class="token char">'c'</span> <span class="token punctuation">,</span>\<span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//直接寫0也可以</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// abc</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> c2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// abc</span>
+</code></pre><ol start="4">
+<li><span>第四種 - 使用兩個引號初始化，編譯器會自動在後面補’\0’（非常常用）</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">char</span> c2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"你快樂嗎？"</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 你快樂嗎？</span>
+</code></pre><h5 id="字串陣列的幾種初始化方式" data-id="字串陣列的幾種初始化方式"><a class="anchor hidden-xs" href="#字串陣列的幾種初始化方式" title="字串陣列的幾種初始化方式"><span class="octicon octicon-link"></span></a><span>字串陣列的幾種初始化方式</span></h5><p><a href="https://www.delftstack.com/zh-tw/howto/c/array-of-strings-in-c/" target="_blank" rel="noopener"><span>char* 是通常用於儲存字串的型別。</span></a><br>
+<span>宣告 char* 的陣列，我們就可以得到固定數量的指標，指向相同數量的字串。</span><br>
+<span>它可以用字串字元初始化，如下面的例子所示，也可以使用頭 &lt;string.h&gt; 中提供的特殊函式分配或複製。</span></p><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span>a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"black"</span><span class="token punctuation">,</span> <span class="token string">"white"</span><span class="token punctuation">,</span> <span class="token string">"pink"</span><span class="token punctuation">,</span> <span class="token string">"yellow"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//white</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> <span class="token operator">++</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//hite</span>
+</code></pre><h3 id="浮點數-float" data-id="浮點數-float"><a class="anchor hidden-xs" href="#浮點數-float" title="浮點數-float"><span class="octicon octicon-link"></span></a><span>浮點數 float</span></h3><p><span>優點:</span></p><ul>
+<li><span>相較占用同大小的整數格式，浮點數可以表示的數值範圍較廣，比較容易溢位。</span></li>
+<li><span>可以自然地表示小數</span></li>
+</ul><p><span>缺點</span></p><ul>
+<li><span>浮點數表示的可能只是約略值，在做精確計算或比較時可能發生不預期的結果。</span></li>
+<li><span>浮點數格式較為複雜，所以做運算時可能效率略差。</span></li>
+</ul><p><img src="https://i.imgur.com/m3A30gI.png" alt="" loading="lazy"></p><pre><code class="c hljs"><span class="token keyword">float</span> a<span class="token operator">=</span><span class="token number">123.45</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> b<span class="token operator">=</span><span class="token number">123.45</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 123.449997 因為單精確度準確度會比較低</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//123.450000</span>
+</code></pre><h4 id="整數或浮點數的計算" data-id="整數或浮點數的計算"><a class="anchor hidden-xs" href="#整數或浮點數的計算" title="整數或浮點數的計算"><span class="octicon octicon-link"></span></a><span>整數或浮點數的計算</span></h4><ul>
+<li><span>當兩個同樣整數或浮點數型別的值做算術運算時，其結果也是同樣的型別。</span></li>
+<li><span>當兩個為不一樣的型別，如果可以算，</span><strong><span>會"隱性轉型" 成範圍較大的型別</span></strong><span>並算出該型別的值</span></li>
+</ul><p><img src="https://i.imgur.com/4RXLFBZ.png" alt="" loading="lazy"><br>
+<img src="https://i.imgur.com/g6FKkG8.png" alt="" loading="lazy"></p><pre><code>字面常數(literal constant)
+在程式碼內可以使用字面常數來表示已知值的資料，而字面常數一樣具有型別
+</code></pre><p><img src="https://i.imgur.com/mgR4qsI.png" alt="" loading="lazy"></p><ul>
+<li><span>example</span></li>
+</ul><pre><code class="c hljs"><span class="token keyword">double</span> su<span class="token operator">=</span><span class="token punctuation">(</span>a1<span class="token operator">+</span>a2<span class="token operator">+</span>a3<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">;</span> 
+<span class="token comment">// (int) / (int) 會得到 (int)，但會賦予到double裡面，所以是 3.000000</span>
+<span class="token keyword">double</span> su<span class="token operator">=</span><span class="token punctuation">(</span>a1<span class="token operator">+</span>a2<span class="token operator">+</span>a3<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">3.</span><span class="token punctuation">;</span> 
+<span class="token comment">// (int) / (double)  被隱性轉型成 (float) / (float)</span>
+</code></pre><h3 id="C-語言強制轉型-casting" data-id="C-語言強制轉型-casting"><a class="anchor hidden-xs" href="#C-語言強制轉型-casting" title="C-語言強制轉型-casting"><span class="octicon octicon-link"></span></a><span>C 語言強制轉型 (casting)</span></h3><ul>
+<li><span>把無號數轉換成浮點數</span></li>
+</ul><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">double</span> b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>a<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %u, b = %lf in decimal form\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %x, b = %x in hex form\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="Printf" data-id="Printf"><a class="anchor hidden-xs" href="#Printf" title="Printf"><span class="octicon octicon-link"></span></a><span>Printf</span></h3><p><span>如果在使用 printf 時要指定整數、浮點數、字元等進行顯示，要配合格式指定字（format specifier），以下</span><a href="https://openhome.cc/Gossip/CGossip/PrintfScanf.html" target="_blank" rel="noopener"><span>列出幾個可用的格式指定碼：</span></a></p><table>
+<thead>
+<tr>
+<th><span>符號</span></th>
+<th><span>意義</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>%c</span></td>
+<td><span>以字元方式輸出</span></td>
+</tr>
+<tr>
+<td><span>%s</span></td>
+<td><span>字串輸出</span></td>
+</tr>
+<tr>
+<td><span>%d</span></td>
+<td><span>10 進位整數輸出</span></td>
+</tr>
+<tr>
+<td><span>%o</span></td>
+<td><span>以 8 進位整數方式輸出</span></td>
+</tr>
+<tr>
+<td><span>%u</span></td>
+<td><span>無號整數輸出</span></td>
+</tr>
+<tr>
+<td><span>%lu</span></td>
+<td><span>long unsigned 型態的整數</span></td>
+</tr>
+<tr>
+<td><span>%x、%X</span></td>
+<td><span>將整數以 16 進位方式輸出</span></td>
+</tr>
+<tr>
+<td><span>%f</span></td>
+<td><span>浮點數輸出</span></td>
+</tr>
+<tr>
+<td><span>%p</span></td>
+<td><span>指標型態</span></td>
+</tr>
+<tr>
+<td><span>%e、%E</span></td>
+<td><span>使用科學記號顯示浮點數</span></td>
+</tr>
+</tbody>
+</table><h3 id="scanf" data-id="scanf"><a class="anchor hidden-xs" href="#scanf" title="scanf"><span class="octicon octicon-link"></span></a><span>scanf</span></h3><ul>
+<li><span>scanf不能接受空格、製表符Tab、回車等；</span></li>
+<li><span>gets能夠接受空格、製表符Tab和回車等；</span></li>
+</ul><ol>
+<li>
+<p><span>gets</span><br>
+<span>gets 函數，它的任務是從 stdin 流中讀取字串，直至接收到換行符或 EOF 時停止。</span></p>
+<pre><code class="c hljs"><span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">gets</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li>
+<p><span>fgets</span><br>
+<a href="https://tw511.com/a/01/1180.html" target="_blank" rel="noopener"><span>fgets 函數最大的改進就是能夠讀取指定大小的資料</span></a><span>，從而避免 gets 函數從 stdin 接收字串而不檢查它所複製的緩衝區空間大小導致的快取溢位問題。</span></p>
+<pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">fgets</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ol><h4 id="EOF" data-id="EOF"><a class="anchor hidden-xs" href="#EOF" title="EOF"><span class="octicon octicon-link"></span></a><span>EOF</span></h4><p><a href="https://www.itread01.com/content/1544817994.html" target="_blank" rel="noopener"><span>EOF (End Of File)</span></a><span>，通常在文字的最後存在此字元表示資料結束。</span></p><p><span>遇到錯誤或遇到end of file，返回值為EOF，且返回值為int型。</span></p><pre><code class="c hljs"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+</code></pre><hr><h2 id="pointer" data-id="pointer"><a class="anchor hidden-xs" href="#pointer" title="pointer"><span class="octicon octicon-link"></span></a><span>pointer</span></h2><p><a href="https://programming.im.ncnu.edu.tw/Chapter9.htm" target="_blank" rel="noopener"><span>pointer</span></a><br>
+<a href="https://kopu.chat/2017/05/15/c%E8%AA%9E%E8%A8%80-%E8%B6%85%E5%A5%BD%E6%87%82%E7%9A%84%E6%8C%87%E6%A8%99%EF%BC%8C%E5%88%9D%E5%AD%B8%E8%80%85%E8%AB%8B%E9%80%B2%EF%BD%9E/" target="_blank" rel="noopener"><span>C語言: 超好懂的指標，初學者請進～</span></a></p><p><span>指標是C語言主要的特性，是種儲存"記憶體位址"的記憶體位址。</span><br>
+<span>指標變數宣告語法:</span></p><pre><code>資料型別 *變數名稱;
+</code></pre><ul>
+<li><span>表示變數內存放的是一個存放這種 “資料型別” 值的 “記憶體位址”</span></li>
+</ul><p><img src="https://i.imgur.com/wefXBNJ.png" alt="" loading="lazy"></p><hr><ol>
+<li><span>其大小為4 bytes(假設硬體為32位元)</span></li>
+<li><span>其內容存放記憶體的地址(可視為unsigned int)</span></li>
+<li><span>相關的運算符號有*(透過pointer取記憶體內容),&amp;(取變數地址),=,+,-</span></li>
+</ol><p><span>指標的用法</span></p><pre><code>&amp;：取得變數的位址。
+*：間接參考，指使用指標取得某個記憶體的內容。 //跟宣告時的 int* 不一樣
+</code></pre><p><strong><span>「*&amp;b」和「b 」的意義是等價的</span></strong></p><p><span>範例:</span></p><pre><code>int *p;   //宣告p是指向int的指標,英文說成p is a pointer to int
+
+p = &amp;a;  // &amp;a是取a的地址(沒有&amp;的話就變成取a的內容),=讓&amp;a複製到p,也就是說現在p的內容為變數a的地址
+
+b = *p;  //b的值被設定為指標p所指到記憶體的值(沒有*的話就變成取p的內容,而不是透過p去取a的內容了)
+</code></pre><p><span>例題:</span></p><p><img src="https://i.imgur.com/r79cuhw.png" alt="" loading="lazy"></p><pre><code>int a=5,b=7;
+int *c;
+c=&amp;a;
+b=*&amp;a;  //這行等於 b=*c
+</code></pre><p><span>面試例題:</span></p><pre><code>int a[]={6,7,8,9,10};
+int *p=a;
+
+*(p++)+=123;
+*(++p)+=123;
+for(int i=0;i&lt;5;i++)
+    printf("%d ",a[i]);
+
+</code></pre><p><span>ans:129,7,131,9,10</span></p><p><span>原因:</span><br>
+<span>++ 在後 優先權最低  先取值 +=123 再 指標後移。</span><br>
+<span>++ 在前 優先權最高  先指標後移 再取值 +=123。</span></p><pre><code class="c hljs">i<span class="token operator">++</span> <span class="token operator">:</span> 先用 i ，再將 i<span class="token operator">+</span><span class="token number">1</span>
+<span class="token operator">++</span>i <span class="token operator">:</span> 先 i<span class="token operator">+</span><span class="token number">1</span>，再用 i 。
+</code></pre><hr><p><a href="https://www.cnblogs.com/oomusou/archive/2007/03/04/663234.html" target="_blank" rel="noopener"><span>(原創) char s[]字串和char *s字串有什麼差別?</span></a></p><p><span>ex1:</span></p><pre><code>char s1[] = "Hello World";
+char *s2  = "Hello World";
+</code></pre><ul>
+<li>
+<p><span>char s1[] 的s是個char array，含12個byte(包含結尾\0)，"Hello World"對s來說是initializer，將字元一個一個地copy進s陣列。</span><br>
+<strong><span>sizeof(s1)=12byte</span></strong></p>
+</li>
+<li>
+<p><span>char *s2 的s是一個pointer指向char，由於"Hello World"本身就是一個string literal，所以s指向"Hello World"這個string literal的起始記憶體位置</span><br>
+<strong><span>sizeof(s2)=4byte</span></strong></p>
+</li>
+</ul><p><span>ex2:</span></p><pre><code>int v[5]={1,2,3,4,5};
+int *n;  
+for(n=v;n!=&amp;v[5];n++)        //int *n=&amp;v[0] n存的是v[0]的位置
+{
+    printf("%d\n",*n);
+}
+</code></pre><p><img src="https://i.imgur.com/luM0hyU.png" alt="" loading="lazy"></p><h3 id="p-，p-的區別" data-id="p-，p-的區別"><a class="anchor hidden-xs" href="#p-，p-的區別" title="p-，p-的區別"><span class="octicon octicon-link"></span></a><span>*p++ ，(*p)++ 的區別</span></h3><p><a href="https://www.itread01.com/content/1546320623.html" target="_blank" rel="noopener"><span>C語言中*p++ ，(</span><em><span>p)++ ，</span></em><span> ++p ，++*p的區別</span></a></p><ol>
+<li>
+<p><span>(</span><em><span>p++) 先取指標p指向的值（陣列第一個元素1），再將指標 p自增1。</span><br>
+<span>如果 * 和 ++ （單目運算）兩個處於同一優先順序, 結合方向是自右向左 但是前提是當 ++ 在變數前面的時候才處理同一優先順序,當 ++ 在變數之後時,你可以將++的優先順序看成最低階的,比逗號運算子的優先順序還低</span></em><span>*）</span></p>
+</li>
+<li>
+<p><span>(*p)++ 先取指標p指向的值（陣列第一個元素1），再將該值自增1（陣列第一個元素變為2。</span></p>
+</li>
+</ol><h3 id="指標的指標" data-id="指標的指標"><a class="anchor hidden-xs" href="#指標的指標" title="指標的指標"><span class="octicon octicon-link"></span></a><span>指標的指標</span></h3><p><span>指標的指標(pointer to pointer)或雙層指標，顧名思義就是用兩個**去上鎖(宣告)。至於指標的指標，還是指標，因此在該記憶體中存的就仍是指標(記憶體位置)</span></p><h3 id="指標陣列" data-id="指標陣列"><a class="anchor hidden-xs" href="#指標陣列" title="指標陣列"><span class="octicon octicon-link"></span></a><span>指標陣列</span></h3><pre><code>char *ptr1[3];
+</code></pre><p><span>表示陣列的元素，皆指向某特定資料型態的指標。從優先表來看，可以解讀成長度為3的陣列(先)，每個皆存放指標(後)。結構如下</span></p><p><img src="https://i.imgur.com/cg4Q97T.png" alt="" loading="lazy"></p><ul>
+<li><span>指標陣列初始化example</span></li>
+</ul><iframe width="560" height="315" src="https://www.youtube.com/embed/RDWaVN3yKUA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><p><span>兩個容易混淆的東西:</span></p><pre><code class="c hljs">a<span class="token punctuation">.</span> <span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//sizeof(p)=12</span>
+b<span class="token punctuation">.</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span>v<span class="token punctuation">;</span>  <span class="token comment">//sizeof(p)=4 sizeof(*p)=12</span>
+</code></pre><p><span>(a)這種寫法是有3個int型別的指標，分別指向 V陣列中3個元素的記憶體位址。</span><br>
+<span>(b)這種是1個int指標指向v陣列的記憶體位址</span></p><pre><code class="c hljs"><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">int</span> v<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//存的是v的位置 所以改p 會連v也一起改</span>
+<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token operator">*</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">*</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+</code></pre><p><span>output: 005</span></p><pre><code class="c hljs"><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token keyword">int</span> v<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span>v<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>q<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token operator">*</span>q<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+</code></pre><p><span>output: 005</span></p><hr><p><img src="https://i.imgur.com/zm1Bk9K.png" alt="" loading="lazy"></p><ul>
+<li><span>上面這個例子中的*p</span><br>
+<span>可以用 int *n=v  取代</span></li>
+</ul><pre><code class="c hljs">        <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+                n<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token operator">*</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre><p><img src="https://i.imgur.com/3F4uwcZ.png" alt="" loading="lazy"></p><ul>
+<li><span>這兩個差別:</span><br>
+<span>用第一種方法，會多存兩個位置，但是優點是可以不照順序儲存陣列</span></li>
+</ul><hr><h3 id="指標函式" data-id="指標函式"><a class="anchor hidden-xs" href="#指標函式" title="指標函式"><span class="octicon octicon-link"></span></a><span>指標函式</span></h3><p><a href="https://www.itread01.com/content/1547472186.html" target="_blank" rel="noopener"><span>指標函式(Pointer Function)和函式指標(Pointer to Function或Function Pointer)</span></a></p><p><span>指標函式簡單來說，就是一個返回指標的函式,本質是一個函式</span></p><pre><code>int fun(int x,int y);  //這是一個普通函式的宣告，返回值是一個int型別，是一個數值。
+int *fun(in x,int y);  //這就是指標函式，返回值是一個int型別的指標，是一個地址。
+</code></pre><h3 id="函式指標" data-id="函式指標"><a class="anchor hidden-xs" href="#函式指標" title="函式指標"><span class="octicon octicon-link"></span></a><span>函式指標</span></h3><p><span>解釋：</span></p><ul>
+<li><span>指向資料區域的指標，稱為資料指標。</span></li>
+<li><span>指向程式碼區域的指標稱為指向函式的指標，簡稱函式指標。</span></li>
+</ul><p><span>程式在執行時，</span><a href="https://openhome.cc/Gossip/CppGossip/FunctionPointer.html" target="_blank" rel="noopener"><span>函式在記憶體中也佔有一個空間</span></a><span>，將函式名稱作為指定來源時，函式名稱會自動轉為指標，型態由傳回值型態與參數列決定，若要將之指定給另一函式指標，型態的宣告方式如下：</span></p><ul>
+<li><span>function pointer的宣告方法</span></li>
+</ul><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>func_ptr<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> func<span class="token punctuation">;</span>
+</code></pre><p><span>範例:</span><br>
+<span>我們將取單一 int 引數的 foo 函式的地址分配給 void(*fp)(void) 型函式指標</span></p><pre><code class="c hljs"><span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>fp<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> foo<span class="token punctuation">;</span>
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//10</span>
+    <span class="token function">fp</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//15</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p><a href="https://www.delftstack.com/zh-tw/howto/c/c-function-pointer/" target="_blank" rel="noopener"><span>可以使用 typedef 為函式指標定義一個新的型別別名，使程式碼更易讀</span></a></p><pre><code class="c hljs"><span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>FuncPtr<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">fooDouble</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    FuncPtr func1 <span class="token operator">=</span> foo<span class="token punctuation">;</span>
+    FuncPtr func2 <span class="token operator">=</span> fooDouble<span class="token punctuation">;</span>
+    <span class="token function">func1</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//15</span>
+    <span class="token function">func2</span><span class="token punctuation">(</span><span class="token number">20.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//20.3</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="Struct" data-id="Struct"><a class="anchor hidden-xs" href="#Struct" title="Struct"><span class="octicon octicon-link"></span></a><span>Struct</span></h3><p><span>自訂一種資料型態裡面可以包含多種資料型態，並且會按照程式中定義時擺放的順序在內存中排序，按照宣告的順序擺放。</span><br>
+<span>編譯器會自動為struct的成員分配空間。</span></p><p><a href="https://kopu.chat/2017/05/30/c-%E8%AA%9E%E8%A8%80%EF%BC%9A%E7%B5%90%E6%A7%8B%E8%AE%8A%E6%95%B8%E8%88%87%E6%8C%87%E6%A8%99/" target="_blank" rel="noopener"><span>指能夠結合多個彼此相關的變數在一個名稱之下</span></a><span>，且可以包含數個不同資料型態的變數。</span></p><p><span>指向結構變數的指標 example</span></p><pre><code class="c hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">student</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+  <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">//struct student lynn = {23, {'l', 'y', 'n', 'n', '\0'}};</span>
+  <span class="token keyword">struct</span> <span class="token class-name">student</span> lynn <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"gavin"</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> <span class="token class-name">student</span> <span class="token operator">*</span>one <span class="token operator">=</span> <span class="token operator">&amp;</span>lynn<span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d \n"</span><span class="token punctuation">,</span> lynn<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//23</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s \n"</span><span class="token punctuation">,</span> lynn<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//gavin</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d \n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>one<span class="token punctuation">)</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//23</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s \n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>one<span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//gavin</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>主函數中宣告了一個結構變數 lynn，並對它進行初始化。</span></p><pre><code>struct student lynn = {23, {"gavin"}};
+</code></pre><p><span>宣告一個指標變數 one， student * one 的意思是：one 這個指標指向一個 student 類型的結構。</span></p><pre><code>struct student *one = &amp;lynn;
+</code></pre><p><span>one 是一個指標，而 *one 就是這個指標所指向的記憶體空間的內容，也就是一個結構。</span><br>
+<span>在這個結構 *one 的後面使用 .age ，就是引用結構變數裡面的年紀。</span><br>
+<span>同理，.name 就是結構變數裡面的陣列。</span></p><h4 id="typedef" data-id="typedef"><a class="anchor hidden-xs" href="#typedef" title="typedef"><span class="octicon octicon-link"></span></a><span>typedef</span></h4><p><span>重新定義型態名稱 typedef</span></p><pre><code class="c hljs"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">student</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+  <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>st<span class="token punctuation">;</span>
+</code></pre><h3 id="call-by-value-vs-call-by-address" data-id="call-by-value-vs-call-by-address"><a class="anchor hidden-xs" href="#call-by-value-vs-call-by-address" title="call-by-value-vs-call-by-address"><span class="octicon octicon-link"></span></a><span>call by value vs call by address</span></h3><p><a href="https://dotblogs.com.tw/brian/2012/10/18/77588" target="_blank" rel="noopener"><span>C/C++之指標 (pointer)，參考 (reference) 觀念整理與常見問題 (轉貼)</span></a></p><p><strong><span>呼叫副函式時，call by value, address, 或reference是三種不同的參數傳遞方式。</span></strong></p><ol>
+<li>
+<p><span>call by value</span></p>
+<p><span>假設函式A呼叫函式B swap(p, q)，則B中的p和q是「複製」自函式A所傳入的參數，B中對p, q所做的任何運算都不會影響到A中的p和q，因為B執行完後，並不會把複製的p, q存回到A中。這種參數傳遞方式，我們稱之為call by value。</span></p>
+<pre><code class="c hljs"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">int</span> tmp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><span>則呼叫swap(x, y)後，x和y的值並</span><mark><span>不會有變化</span></mark><span>。</span></p>
+</li>
+</ol><p><img src="https://i.imgur.com/TmHfqC4.png" alt="" loading="lazy"></p><ol start="2">
+<li>
+<p><span>call by address (或call by pointer)</span></p>
+<p><span>利用指標來做參數傳遞，這種方法骨子裡仍是call by value，只不過call by value的value，其資料型態為指標罷了。我們同樣看看用call by address來寫swap交換兩個integer的例子。</span></p>
+<pre><code class="c hljs"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">int</span> tmp <span class="token operator">=</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>
+<span class="token operator">*</span>a <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+<span class="token operator">*</span>b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><span>呼叫swap時，要寫成swap(&amp;x, &amp;y)。</span><br>
+<span>呼叫swap時，x的指標 (x的儲存位置) 與y的指標 (y的儲存位置) 會被複製一份到swap中，然後把該位置內所記載的值做更換。swap結束後，&amp;x (address of x) 和&amp;y (address of y) 依然沒變，只是address of x所記錄之變數值與address of y所記錄之變數值交換了</span></p>
+</li>
+</ol><p><img src="https://i.imgur.com/6EcnfvI.png" alt="" loading="lazy"></p><ol start="3">
+<li>
+<p><span>call by reference</span><br>
+<span>這是C++才加進來的東西，C本身並沒有call by reference。call by reference基本上是把參數做個別名 (alias)，以下面的swap為例：</span></p>
+<pre><code class="c hljs"><span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">int</span> tmp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ol><p><img src="https://i.imgur.com/XnILhhx.png" alt="" loading="lazy"></p><h2 id="Recursive" data-id="Recursive"><a class="anchor hidden-xs" href="#Recursive" title="Recursive"><span class="octicon octicon-link"></span></a><span>Recursive</span></h2><h3 id="遞回函式（recursion）" data-id="遞回函式（recursion）"><a class="anchor hidden-xs" href="#遞回函式（recursion）" title="遞回函式（recursion）"><span class="octicon octicon-link"></span></a><span>遞回函式（recursion）</span></h3><p><span>遞回函式（recursive function）簡單來說就是在一個函式當中再去呼叫它自己，其中一個實際的範例就是階層的計算（factorial）。</span></p><p><strong><span>遞迴問題:</span></strong><br>
+<span>做了很多重複的計算，效率很低</span></p><h3 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h3><ol>
+<li><span>走樓梯的方法數</span><br>
+<a href="https://www.youtube.com/watch?v=vsTX9RsL_18&amp;t=195s" target="_blank" rel="noopener"><span>【C 語言入門】13.3 - 求上樓梯方法數的練習 (使用函式)</span></a></li>
+</ol><p><strong><span>Fibonacci sequence</span></strong><br>
+<span>S(1)=1</span><br>
+<span>S(2)=2</span><br>
+<span>S(4)=S(3)+S(2)</span><br>
+<span>S(5)=S(4)+S(3)</span></p><ul>
+<li><span>遞迴函式</span><br>
+<img src="https://i.imgur.com/E56xSaw.png" alt="" loading="lazy"></li>
+</ul><h3 id="Binary-tree" data-id="Binary-tree"><a class="anchor hidden-xs" href="#Binary-tree" title="Binary-tree"><span class="octicon octicon-link"></span></a><span>Binary tree</span></h3><h2 id="Dynamic-Programming" data-id="Dynamic-Programming"><a class="anchor hidden-xs" href="#Dynamic-Programming" title="Dynamic-Programming"><span class="octicon octicon-link"></span></a><span>Dynamic Programming</span></h2><p><a href="https://www.youtube.com/watch?v=j4eab7N3Hfs" target="_blank" rel="noopener"><span>【动态规划专题班】动态规划入门 Introduction to Dynamic Programming</span></a></p><p><span>三種類型</span></p><ol>
+<li>
+<p><span>計數</span><br>
+<span>–有多少種方式走到右下角</span><br>
+<span>–有多少種方法選出k個數使得和是 Sum</span></p>
+</li>
+<li>
+<p><span>求最大最小值</span><br>
+<span>–從左上角走到右下角路徑的最大數字和</span><br>
+<span>–最長上升子序列長度</span></p>
+</li>
+<li>
+<p><span>求存在性</span><br>
+<span>–取石子遊戲，先手是否必勝</span><br>
+<span>–能不能選出k個數使得和為 Sum</span></p>
+</li>
+</ol><h3 id="Example-Coin-Change" data-id="Example-Coin-Change"><a class="anchor hidden-xs" href="#Example-Coin-Change" title="Example-Coin-Change"><span class="octicon octicon-link"></span></a><span>Example: Coin Change</span></h3><p><span>問題: 用2.5.7 三種湊出27元 用最少硬幣</span></p><p><img src="https://i.imgur.com/0nKtBMR.png" alt="" loading="lazy"></p><p><span>關鍵1. 我們不關心前面k-1枚硬幣是怎麼拚出27-ak這個數值，只確定前面硬幣可以拼出27-ak</span><br>
+<span>關鍵2. 因為是最優策略，所以拼出27-ak的硬幣數一定要最少，否則就不是最優策略了</span></p><h4 id="最後一個硬幣可能性" data-id="最後一個硬幣可能性"><a class="anchor hidden-xs" href="#最後一個硬幣可能性" title="最後一個硬幣可能性"><span class="octicon octicon-link"></span></a><span>最後一個硬幣可能性:</span></h4><ul>
+<li><span>如果ak是2，f(27)應該是f(27-2)+1  [加上最後一個硬幣]</span></li>
+<li><span>如果ak是5，f(27)應該是f(27-5)+1  [加上最後一個硬幣]</span></li>
+<li><span>如果ak是7，f(27)應該是f(27-7)+1  [加上最後一個硬幣]</span></li>
+<li><span>所以需求最少的硬幣數:</span><br>
+<span>f(27)=min{f(27-2)+1,f(27-5)+1,f(27-7)+1}</span></li>
+</ul><h4 id="初始條件和邊界的問題" data-id="初始條件和邊界的問題"><a class="anchor hidden-xs" href="#初始條件和邊界的問題" title="初始條件和邊界的問題"><span class="octicon octicon-link"></span></a><span>初始條件和邊界的問題</span></h4><ul>
+<li><span>f[X]=min{f[x-2]+1,f[x-5]+1,f[x-7]+1}</span></li>
+<li><span>有兩個問題</span>
+<ul>
+<li><span>如果X-2,X-5,X-7 小於0怎麼辦? 甚麼時候停下來?</span></li>
+<li><span>如果不能拚出Y，就定義f[Y]= 正無窮</span></li>
+</ul>
+</li>
+<li><span>初始條件: f[0]=0</span></li>
+<li><span>然後計算 f[1],f[2],…,f[27]</span></li>
+</ul><p><img src="https://i.imgur.com/FBiQ7a5.png" alt="" loading="lazy"></p><ul>
+<li><span>每一步常是三種硬幣，一共27步</span></li>
+<li><span>與遞迴算法想比，沒有任何重複的計算。</span></li>
+<li><span>算法時間複雜度: O(n * m) = (27*3)</span></li>
+<li><span>遞迴的時間複雜度: 遠遠大於 27*3</span></li>
+</ul><h2 id="function" data-id="function"><a class="anchor hidden-xs" href="#function" title="function"><span class="octicon octicon-link"></span></a><span>function</span></h2><h3 id="python的Data-Types" data-id="python的Data-Types"><a class="anchor hidden-xs" href="#python的Data-Types" title="python的Data-Types"><span class="octicon octicon-link"></span></a><span>python的Data Types</span></h3><p><a href="https://openhome.cc/Gossip/CGossip/Datatype.html" target="_blank" rel="noopener"><span>資料型態</span></a></p><pre><code>short           2
+int             4
+long            4
+float           4
+double          8
+long double     12
+char            1
+</code></pre><p><a href="https://www.tutorialspoint.com/cprogramming/c_data_types.htm" target="_blank" rel="noopener"><span>C - Data Types</span></a><br>
+<img src="https://i.imgur.com/E1vZYR8.png" alt="" loading="lazy"></p><h3 id="Logical-operator" data-id="Logical-operator"><a class="anchor hidden-xs" href="#Logical-operator" title="Logical-operator"><span class="octicon octicon-link"></span></a><span>Logical operator</span></h3><p><a href="https://openhome.cc/Gossip/CGossip/LogicalBitwise.html" target="_blank" rel="noopener"><span>邏輯運算、位元運算</span></a></p><p><span>數位設計上有 AND、OR、NOT、XOR 與補數等運算，在 C 中提供這些運算的就是位元運算子，它們的對應分別是 AND （&amp;）、OR（|）、NOT（!）、XOR（^）與補數（~）</span></p><p><img src="https://i.imgur.com/snLbuzi.png" alt="" loading="lazy"></p><h4 id="補數運算" data-id="補數運算"><a class="anchor hidden-xs" href="#補數運算" title="補數運算"><span class="octicon octicon-link"></span></a><span>補數運算(~):</span></h4><p><span>將所有的位元 0 變 1，1 變 0，例如 00000001 經補數運算就會變為 11111110</span></p><pre><code>char num = 255;
+printf("%d\n", ~num);   # ~num=0
+</code></pre><ul>
+<li><span>Example</span><br>
+<span>這個程式得以運算的原理是，奇數的數值若以二進位來表示，其最右邊的位元必為 1，而偶數最右邊的位元必為 0</span></li>
+</ul><pre><code>printf("輸入為奇數？%c\n", input &amp; 1 ? 'Y' : 'N');
+</code></pre><hr><p><a href="http://kt0ne.pixnet.net/blog/post/181992206-%5Bc%5D-%E6%A2%9D%E4%BB%B6%E9%81%8B%E7%AE%97%3F-%3A" target="_blank" rel="noopener"><span>條件運算子 " ?: "用法</span></a><br>
+<span>經過條件判斷後，成立則執行do something1否則do something2</span></p><pre><code>條件判斷 ? do something1 : do something2
+</code></pre><hr><h4 id="XOR" data-id="XOR"><a class="anchor hidden-xs" href="#XOR" title="XOR"><span class="octicon octicon-link"></span></a><span>XOR</span></h4><p><span>將位元與 1 作 XOR 的作用其實就是位元反轉</span><br>
+<span>與0作 XOR 的作用是沒作用</span></p><p><span>簡單的 XOR 字元加密例子</span></p><pre><code>char ch = 'A';  #before encoding：A
+ch = ch ^ 0x7;  #after encoding：F
+</code></pre><h4 id="Shift" data-id="Shift"><a class="anchor hidden-xs" href="#Shift" title="Shift"><span class="octicon octicon-link"></span></a><span>Shift</span></h4><p><span>在位元運算上，C 還有</span><strong><span>左移</span></strong><span>（&lt;&lt;）與</span><strong><span>右移</span></strong><span>（&gt;&gt;） 兩個運算子。</span></p><ol>
+<li><span>左移運算子會將所有的位元往左移指定的位數，左邊被擠出去的位元會被丟棄，而右邊會補上 0；</span></li>
+<li><span>右移運算則是相反，會將所有 的位元往右移指定的位數，右邊被擠出去的位元會被丟棄，至於左邊位元補 0 或補 1 則不一定，視系統而定。</span></li>
+</ol><pre><code>int num = 1;  // 00000001
+num = num &lt;&lt; 1;  // 2的1次方 00000010
+num = num &lt;&lt; 1;  // 2的2次方 00000100
+</code></pre><h3 id="includeltmathhgt" data-id="includeltmathhgt"><a class="anchor hidden-xs" href="#includeltmathhgt" title="includeltmathhgt"><span class="octicon octicon-link"></span></a><span>#include&lt;math.h&gt;</span></h3><p><span>包含math 庫， 裡面就是一個頭文件，有寫好的代碼。</span></p><p><span>下面列出一些常用的函式</span></p><ol>
+<li>
+<p><span>pow</span><br>
+<span>功能：計算出某數的某次方值。</span><br>
+<span>使用說明：pow(x,y)，計算x的y次方。</span></p>
+</li>
+<li>
+<p><span>exp</span><br>
+<span>功能：計算浮點為數的指數函數值。</span><br>
+<span>使用說明：exp(x)，計算e的x次方。</span></p>
+</li>
+<li>
+<p><span>sqrt</span><br>
+<span>功能：求某非負浮點數的平方根。</span><br>
+<span>使用說明：sqrt(x)。</span></p>
+</li>
+<li>
+<p><span>floor</span><br>
+<span>功能：計算不大於某浮點數的最大整數。</span><br>
+<span>使用說明：floor(y)。</span></p>
+</li>
+<li>
+<p><span>ceil</span><br>
+<span>功能：計算不小於某浮點數的最小整數。</span><br>
+<span>使用說明：ceil(x)</span></p>
+</li>
+</ol><h3 id="Macro" data-id="Macro"><a class="anchor hidden-xs" href="#Macro" title="Macro"><span class="octicon octicon-link"></span></a><span>Macro</span></h3><p><a href="https://style77125tech.pixnet.net/blog/post/172083699" target="_blank" rel="noopener"><span>[ C ] #define 巨集 (macro)</span></a></p><p><span>巨集(macro)，用途為根據預先設定的規則來替換文字，使用範圍為宣告處一直到程式結束，為了使程式便於維修，通常會將常數以巨集方式宣告，該名稱普遍使用大寫字母表示，其宣告的指令為:</span></p><ol>
+<li><span>常數型</span></li>
+</ol><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX</span> <span class="token expression"><span class="token number">100</span>                        </span><span class="token comment">// 數值</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">WEBSITE</span> <span class="token string">"catforcode.com"</span>       <span class="token comment">// 字串</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">def</span> <span class="token expression"><span class="token function">HALF</span> <span class="token punctuation">(</span>NUM<span class="token operator">/</span><span class="token number">17</span><span class="token punctuation">)</span>                     </span><span class="token comment">// 敘述</span></span>
+</code></pre><ol start="2">
+<li><span>引數型</span></li>
+</ol><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">MAX</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>  <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">:</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span>
+</code></pre><p><span>意思:</span><br>
+<span>返回兩個數中較大的那個（三元運算元）</span><br>
+<span>如果x&gt;y 輸出x ; 反之輸出y</span></p><p><span>返回較小值</span></p><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">Min</span><span class="token expression"><span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span> <span class="token punctuation">(</span>A<span class="token operator">&lt;=</span>B <span class="token operator">?</span> A<span class="token operator">:</span>B<span class="token punctuation">)</span>  </span><span class="token comment">//簡寫這樣即可</span></span>
+</code></pre><h4 id="define-多行" data-id="define-多行"><a class="anchor hidden-xs" href="#define-多行" title="define-多行"><span class="octicon octicon-link"></span></a><span>define 多行</span></h4><p><span>要在每一行的結束加上「＼」。</span></p><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">dlist_push</span><span class="token expression"><span class="token punctuation">(</span>type<span class="token punctuation">,</span> list<span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">{</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>list<span class="token punctuation">)</span> list <span class="token operator">=</span> <span class="token function">dlist_new</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token function">dlist_element</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token operator">*</span>node <span class="token operator">=</span> <span class="token function">dlistel_new</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression">node<span class="token operator">-&gt;</span>data <span class="token operator">=</span> item<span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token function">dlistel_link</span><span class="token punctuation">(</span>list<span class="token operator">-&gt;</span>tail<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression">list<span class="token operator">-&gt;</span>tail <span class="token operator">=</span> node<span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>list<span class="token operator">-&gt;</span>head<span class="token punctuation">)</span> <span class="token punctuation">{</span> </span><span class="token punctuation">\</span>
+        <span class="token expression">list<span class="token operator">-&gt;</span>head <span class="token operator">=</span> node<span class="token punctuation">;</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token punctuation">}</span> </span><span class="token punctuation">\</span>
+<span class="token expression"><span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> </span></span>
+</code></pre><hr><h4 id="三元運算子--Ternary-Operator-" data-id="三元運算子--Ternary-Operator-"><a class="anchor hidden-xs" href="#三元運算子--Ternary-Operator-" title="三元運算子--Ternary-Operator-"><span class="octicon octicon-link"></span></a><span>三元運算子 ( Ternary Operator )</span></h4><p><a href="http://213style.blogspot.com/2013/01/c-x-y-z.html" target="_blank" rel="noopener"><span>if … else …  簡寫</span></a><br>
+<span>下面1跟2等價</span></p><pre><code class="c hljs"><span class="token number">1.</span> val  <span class="token operator">=</span> x <span class="token operator">?</span> y <span class="token operator">:</span> z <span class="token punctuation">;</span>
+</code></pre><pre><code class="c hljs"><span class="token number">2.</span> <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> true<span class="token punctuation">)</span> val <span class="token operator">=</span> y<span class="token punctuation">;</span>
+        <span class="token keyword">else</span>          val <span class="token operator">=</span> z<span class="token punctuation">;</span>
+</code></pre><p><span>C 語言是 不等於零 就是 true，只有 </span><mark><span>等於零 才稱為 false</span></mark></p><hr><h3 id="malloc" data-id="malloc"><a class="anchor hidden-xs" href="#malloc" title="malloc"><span class="octicon octicon-link"></span></a><span>malloc</span></h3><p><strong><span>動態配置記憶體</span></strong><br>
+<span>使用malloc的記憶體不會自動釋放。</span><br>
+<span>因為這些記憶體會被配置在堆積區（Heap），不會自動清除，開發者得在不使用資源時自行釋放記憶體。</span></p><p><span>&lt;stdlib.h&gt; 中提供</span></p><pre><code class="c hljs"><span class="token keyword">void</span><span class="token operator">*</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><ul>
+<li><span>size_t: 非負整數型態，表示要配置的記憶體空間大小。</span></li>
+<li><span>回傳型態為 void* ，表示可以隱性轉型成其他資料型態的指標。</span></li>
+</ul><h4 id="Example1" data-id="Example"><a class="anchor hidden-xs" href="#Example1" title="Example1"><span class="octicon octicon-link"></span></a><span>Example</span></h4><p><span>動態輸入數字進去陣列</span><br>
+<a href="https://www.youtube.com/watch?v=8FYp73uOqLU" target="_blank" rel="noopener"><span>【C 語言入門】28.6 - 動態配置記憶體</span></a></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token operator">*</span>number<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//pointer=0 代表空指標</span>
+<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+<span class="token keyword">int</span> length<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> input<span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>input<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>larger<span class="token operator">=</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        larger<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>number<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//free the memory</span>
+    number<span class="token operator">=</span>larger<span class="token punctuation">;</span>   <span class="token comment">//*larger store the new array location</span>
+    number<span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token operator">=</span>input<span class="token punctuation">;</span>   <span class="token comment">//store the new input number location(value)</span>
+    length<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>number<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h4 id="Memory-leak-Problem" data-id="Memory-leak-Problem"><a class="anchor hidden-xs" href="#Memory-leak-Problem" title="Memory-leak-Problem"><span class="octicon octicon-link"></span></a><span>Memory leak Problem</span></h4><p><span>使用free function 去釋放記憶體位置</span></p><pre><code>void free(void* ptr);
+</code></pre><ul>
+<li><span>ptr就是要釋放的記憶體空間</span></li>
+</ul><p><span>這段程式碼動態配置了 1000 個 int 大小的空間，並傳回空間的第一個位址，配置後的空間資料是未知的。</span><br>
+<span>可以使用 calloc 來宣告空間配置，每個 int 空間會被始為 0，例如：</span></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h3 id="Calloc" data-id="Calloc"><a class="anchor hidden-xs" href="#Calloc" title="Calloc"><span class="octicon octicon-link"></span></a><span>Calloc</span></h3><pre><code class="c hljs"><span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">calloc</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nitems<span class="token punctuation">,</span> <span class="token class-name">size_t</span> size<span class="token punctuation">)</span>：
+</code></pre><p><span>第一個參數表示要分配多少個這樣的位元組單元</span></p><ul>
+<li><span>輸入：要分配的元素數目、每一格元素的字節數</span></li>
+<li><span>回傳：已分配空間的地址，失敗返回 NULL 。</span><br>
+<span>同時把所有空間的數值初始化為 0 。</span></li>
+</ul><h3 id="Realloc" data-id="Realloc"><a class="anchor hidden-xs" href="#Realloc" title="Realloc"><span class="octicon octicon-link"></span></a><span>Realloc</span></h3><pre><code>void* realloc(void* ptr, size_t size);
+</code></pre><ul>
+<li><span>ptr是要重新配置的記憶體空間開頭位置</span><br>
+<span>(原本是由 malloc or 其他動態配置記憶體函示所配置)</span></li>
+<li><span>size 是重新配置後的記憶體空間大小(單位為 byte)</span></li>
+<li><span>回傳值是重新配置後的記憶體空間開頭位址 (可能不需要搬家)</span></li>
+</ul><h4 id="Example2" data-id="Example"><a class="anchor hidden-xs" href="#Example2" title="Example2"><span class="octicon octicon-link"></span></a><span>Example</span></h4><p><span>上面那個例子就可以簡化成一行</span><br>
+<img src="https://i.imgur.com/Kjf6S2L.png" alt="" loading="lazy"></p><pre><code>number=realloc(number,sizeof(int)*(length+1));
+</code></pre><h3 id="memcpy" data-id="memcpy"><a class="anchor hidden-xs" href="#memcpy" title="memcpy"><span class="octicon octicon-link"></span></a><span>memcpy</span></h3><pre><code class="c hljs"><span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">memcpy</span><span class="token punctuation">(</span> <span class="token keyword">void</span> <span class="token operator">*</span> restrict dest<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span> restrict src<span class="token punctuation">,</span> <span class="token class-name">size_t</span> count <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><span>從源src所指的內存地址的起始位置開始 拷貝n個字節 到目標dest所指的內存地址的起始位置中。</span></p><p><span>如果拷貝長度不對，未被拷貝所覆盖的內容會保留了初始值, 顯示是亂碼。</span></p><h3 id="memcmp" data-id="memcmp"><a class="anchor hidden-xs" href="#memcmp" title="memcmp"><span class="octicon octicon-link"></span></a><span>memcmp</span></h3><p><span>string.h 的函數 memcmp() 類似 strncmp() ，</span><mark><span>比較兩個記憶體區段前 n 個字元是否相等</span></mark></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">memcmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>str2<span class="token punctuation">,</span> <span class="token class-name">size_t</span> n<span class="token punctuation">)</span>
+</code></pre><p><span>參數</span></p><ul>
+<li><span>str1 – 這就是指針的內存塊。</span></li>
+<li><span>str2 – 這就是指針的內存塊。</span></li>
+<li><span>n – 這是要比較的字節數。</span></li>
+</ul><p><span>返回值</span></p><ul>
+<li><span>如果返回值&lt;0，則表明str1小於str2</span></li>
+<li><span>如果返回值，如果&gt; 0，則表明str2小於str1</span></li>
+<li><span>如果返回值= 0，則表明str1等於str2</span></li>
+</ul><h3 id="memset" data-id="memset"><a class="anchor hidden-xs" href="#memset" title="memset"><span class="octicon octicon-link"></span></a><span>memset</span></h3><p><a href="http://tw.gitbook.net/c_standard_library/c_function_memset.html" target="_blank" rel="noopener"><span>memset() - C語言庫函數</span></a><br>
+<span>void *memset(void *str, int c, size_t n)</span></p><p><span>參數</span></p><ol>
+<li><span>str – 這是來填充的內存塊的指針。</span></li>
+<li><span>c – 這是要設置的值。作為一個int值傳遞，但使用這個值的無符號字符型轉換函數填充的內存塊。</span></li>
+<li><span>n – 這是要設置的值的字節數。</span></li>
+</ol><h3 id="strcpy-strncpy" data-id="strcpy-strncpy"><a class="anchor hidden-xs" href="#strcpy-strncpy" title="strcpy-strncpy"><span class="octicon octicon-link"></span></a><span>strcpy strncpy</span></h3><p><a href="https://skylinelimit.blogspot.com/2018/02/c-2.html" target="_blank" rel="noopener"><span>strcpy()、strncpy()：字串複製</span></a></p><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">strcpy</span><span class="token punctuation">(</span> <span class="token keyword">char</span> <span class="token operator">*</span>dest<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>src <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//src 限制 read-only</span>
+<span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">strncpy</span><span class="token punctuation">(</span> <span class="token keyword">char</span> <span class="token operator">*</span>dest<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">,</span> <span class="token class-name">size_t</span> count <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><span>從src地址開始拷貝包括’\0’結束符在內的字符串到以dest開始的地址空間，返回值的類型為char*。</span></p><h4 id="自己寫-strcpy" data-id="自己寫-strcpy"><a class="anchor hidden-xs" href="#自己寫-strcpy" title="自己寫-strcpy"><span class="octicon octicon-link"></span></a><span>自己寫 strcpy</span></h4><pre><code class="c hljs"><span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">strcp</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>des<span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        des<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    des<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'\0'</span><span class="token punctuation">;</span>  <span class="token comment">// end of '\0'</span>
+    <span class="token keyword">return</span> des<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="strcmp-amp-strncmp" data-id="strcmp-amp-strncmp"><a class="anchor hidden-xs" href="#strcmp-amp-strncmp" title="strcmp-amp-strncmp"><span class="octicon octicon-link"></span></a><span>strcmp &amp; strncmp</span></h3><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str2<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">strncmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str2<span class="token punctuation">,</span> <span class="token class-name">size_t</span> n<span class="token punctuation">)</span>
+</code></pre><p><span>返回值</span><br>
+<span>這個函數的返回值如下：</span></p><ul>
+<li><span>如果返回值&lt;0，則表明str1小於str2</span></li>
+<li><span>如果返回值，如果&gt; 0，則表明str2 小於 str1</span></li>
+<li><span>如果返回值= 0，則表明str1 等於str2</span></li>
+</ul><h4 id="自己寫strcmp" data-id="自己寫strcmp"><a class="anchor hidden-xs" href="#自己寫strcmp" title="自己寫strcmp"><span class="octicon octicon-link"></span></a><span>自己寫strcmp</span></h4><p><span>ascii大小</span></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">strcm</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>str2<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//if str1&gt;str2 reurn &gt;0 ; if str2&gt;str1 return &lt;0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token operator">*</span>str1<span class="token operator">==</span><span class="token operator">*</span>str2<span class="token punctuation">;</span>str1<span class="token operator">++</span><span class="token punctuation">,</span>str2<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>str1<span class="token operator">==</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token operator">*</span>str1<span class="token operator">-</span><span class="token operator">*</span>str2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h4 id="自己寫strncmp" data-id="自己寫strncmp"><a class="anchor hidden-xs" href="#自己寫strncmp" title="自己寫strncmp"><span class="octicon octicon-link"></span></a><span>自己寫strncmp</span></h4><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">strnc</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>str2<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token operator">*</span>str1<span class="token operator">==</span><span class="token operator">*</span>str2<span class="token punctuation">,</span>n<span class="token operator">--</span><span class="token punctuation">;</span>str1<span class="token operator">++</span><span class="token punctuation">,</span>str2<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token comment">//for (;*str1==*str2,n&gt;0;str1++,str2++,n--)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>str1<span class="token operator">==</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//printf("str1= %d str2= %d\n",*str1,*str2);</span>
+    <span class="token keyword">return</span> <span class="token operator">*</span>str1<span class="token operator">-</span><span class="token operator">*</span>str2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="strstr" data-id="strstr"><a class="anchor hidden-xs" href="#strstr" title="strstr"><span class="octicon octicon-link"></span></a><span>strstr</span></h3><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">strstr</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>haystack<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>needle<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><span>第一個參數haystack是被搜尋字串</span></li>
+<li><span>第二個參數needle是想要搜尋的子字串</span></li>
+</ul><p><span>如果沒找到子字串則傳回 NULL，如果搜尋到第一個符合的子字串，則傳回符合位置的指標</span></p><pre><code class="c hljs">    <span class="token keyword">char</span> haystack<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"TutorialsYiibai"</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> needle<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Yiibai"</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>ret<span class="token punctuation">;</span>
+    ret <span class="token operator">=</span> <span class="token function">strstr</span><span class="token punctuation">(</span>haystack<span class="token punctuation">,</span> needle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The substring is: %p\n"</span><span class="token punctuation">,</span> ret<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0061FEEA Y的記憶體位址</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The string is: %p\n"</span><span class="token punctuation">,</span> haystack<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0061FEE1 hay[0] T的記憶體位址</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The substring location is: %d\n"</span><span class="token punctuation">,</span> ret<span class="token operator">-</span>haystack<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//9</span>
+</code></pre><h4 id="自己寫strstr" data-id="自己寫strstr"><a class="anchor hidden-xs" href="#自己寫strstr" title="自己寫strstr"><span class="octicon octicon-link"></span></a><span>自己寫strstr</span></h4><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">my_strstr</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>substr<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//printf("str: %s\n", str);</span>
+    <span class="token comment">//printf("substr: %s\n", substr);</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>res<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token operator">!=</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>tem1<span class="token operator">=</span>str<span class="token punctuation">,</span><span class="token operator">*</span>tem2<span class="token operator">=</span>substr<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>tem1 <span class="token operator">&amp;&amp;</span> <span class="token operator">*</span>tem2 <span class="token operator">&amp;&amp;</span> <span class="token operator">*</span>tem1<span class="token operator">==</span><span class="token operator">*</span>tem2<span class="token punctuation">)</span>  <span class="token comment">// *tem1 和 *tem2 防止字串相等跳不出來</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"aaaa: %s\n"</span><span class="token punctuation">,</span> tem2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">*</span>tem1<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token operator">*</span>tem2<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>tem2<span class="token operator">==</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        str<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="strchr" data-id="strchr"><a class="anchor hidden-xs" href="#strchr" title="strchr"><span class="octicon octicon-link"></span></a><span>strchr</span></h3><p><span>返回一個字串從字符c第一次開始出現之後，如果沒有找到字串返回NULL。</span></p><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">strchr</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+</code></pre><p><span>參數</span></p><ul>
+<li><span>str – 這是C字符串要搜索的。</span></li>
+<li><span>c – 這是str中的字符進行搜索。</span></li>
+</ul><h3 id="strlen" data-id="strlen"><a class="anchor hidden-xs" href="#strlen" title="strlen"><span class="octicon octicon-link"></span></a><span>strlen</span></h3><p><a href="http://tw.gitbook.net/c_standard_library/c_function_strlen.html" target="_blank" rel="noopener"><span>strlen() - C語言庫函數</span></a><br>
+<span>C庫函數 size_t strlen(const char *str) 計算字符串str的長度，但不包括終止空字符</span></p><pre><code>size_t strlen(const char *str)
+</code></pre><p><span>str – 這是字符串的長度要計算的。</span></p><h4 id="自己寫strlen" data-id="自己寫strlen"><a class="anchor hidden-xs" href="#自己寫strlen" title="自己寫strlen"><span class="octicon octicon-link"></span></a><span>自己寫strlen</span></h4><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">my_strlen</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">//printf("%p\n",str);</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>str<span class="token operator">!=</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+        str<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="strcat" data-id="strcat"><a class="anchor hidden-xs" href="#strcat" title="strcat"><span class="octicon octicon-link"></span></a><span>strcat</span></h3><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">strcat</span><span class="token punctuation">(</span> <span class="token keyword">char</span> <span class="token operator">*</span>strDestination<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>strSource <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><span>字串連接</span></p><h4 id="自己寫strcat" data-id="自己寫strcat"><a class="anchor hidden-xs" href="#自己寫strcat" title="自己寫strcat"><span class="octicon octicon-link"></span></a><span>自己寫strcat</span></h4><pre><code class="c hljs"><span class="token keyword">char</span> <span class="token function">my_strcat</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>str1<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>str2<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>ret<span class="token operator">=</span>str1<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>str1<span class="token operator">!=</span><span class="token char">'\0'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        str1<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>str1<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span>str2<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token operator">*</span>str1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="bool" data-id="bool"><a class="anchor hidden-xs" href="#bool" title="bool"><span class="octicon octicon-link"></span></a><span>bool</span></h3><p><a href="https://zhidao.baidu.com/question/174010089.html" target="_blank" rel="noopener"><span>C语言中 bool的用法</span></a><br>
+<span>true为真，false为假</span></p><pre><code>#include&lt;stdbool.h&gt;
+</code></pre><h3 id="sizeof" data-id="sizeof"><a class="anchor hidden-xs" href="#sizeof" title="sizeof"><span class="octicon octicon-link"></span></a><span>sizeof</span></h3><p><span>sizeof為C語言的特殊運算符號之一，用來取得變數的位元組大小。</span></p><pre><code>char x[]="pcnoproblem"; //宣告一個x字元陣列(即字串)
+int size; //宣告一個整數型態size變數，用來儲存x的位元組大小
+size=sizeof(x);
+</code></pre><p><span>上面輸出會是12，但是”pcnoproblem”(不含引號)共11個半形字元，原因是因為我們是</span><strong><span>以「字串」的方式來儲存</span></strong><span>，所以C會自動將字串後再接個’'(空格)字元，</span><strong><span>‘\0’</span></strong><span>，故總共佔用了12個位元組的記憶體空間。</span></p><p><span>指標(pointer) 大小是 </span><strong><span>8 Byte</span></strong></p><h3 id="plus-plus-i-vs-i-plus-plus" data-id="plus-plus-i-vs-i-plus-plus"><a class="anchor hidden-xs" href="#plus-plus-i-vs-i-plus-plus" title="plus-plus-i-vs-i-plus-plus"><span class="octicon octicon-link"></span></a><span>plus plus i vs i plus plus</span></h3><p><a href="https://ithelp.ithome.com.tw/m/articles/10192800" target="_blank" rel="noopener"><span>i++ 與 ++i可以怎麼理解？</span></a></p><pre><code>int A = 2;
+int B = 2;
+int C = A++; 
+int D = ++B; 
+printf("C=%d  D=%d \n",C,D); \\C=2 D=3
+</code></pre><h3 id="Enum" data-id="Enum"><a class="anchor hidden-xs" href="#Enum" title="Enum"><span class="octicon octicon-link"></span></a><span>Enum</span></h3><p><span>列舉 (enum 或 enumeration) 是另一種複合型別</span><br>
+<span>可以讓我們定義新的</span><strong><span>整數型別</span></strong><span>，並且用列舉的方式指出所有可能的成員。</span></p><p><span>可讓程式看起來比較有意義，因為將單純的數值用有意義的名稱代替，所以程式的可讀性提高了，更容易看出設定變數值代表的意義。</span></p><p><img src="https://i.imgur.com/trhtA5p.png" alt="" loading="lazy"></p><ol>
+<li><span>enum裡的識別字，會以int的型態，從0開始排列，你也可以給于數值。</span></li>
+</ol><pre><code class="c hljs"><span class="token comment">// enum的基本語法 enum identifier</span>
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span> <span class="token punctuation">{</span>
+    sun<span class="token punctuation">,</span> mon<span class="token punctuation">,</span> tue<span class="token punctuation">,</span> wed<span class="token punctuation">,</span> thu<span class="token punctuation">,</span> fri<span class="token punctuation">,</span> sat
+<span class="token punctuation">}</span>week_type<span class="token punctuation">;</span>
+</code></pre><ol start="2">
+<li><span>enum也可以不宣告identifier , 如下面 enum的宣告方法, 可以減少define的使用, enumerator可以是相同的值,如範例中off跟yes都是1。</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">enum</span><span class="token punctuation">{</span>
+    on<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> off<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> no<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> yes<span class="token operator">=</span><span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><ul>
+<li><span>example</span></li>
+</ul><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span> <span class="token punctuation">{</span>sun<span class="token punctuation">,</span> mon<span class="token punctuation">,</span> tue<span class="token punctuation">,</span> wed<span class="token punctuation">,</span> thu<span class="token punctuation">,</span> fri<span class="token punctuation">,</span> sat<span class="token punctuation">}</span>week_type<span class="token punctuation">;</span>
+<span class="token keyword">enum</span><span class="token punctuation">{</span>on<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> off<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> no<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> yes<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   week_type day<span class="token punctuation">;</span>
+
+   day<span class="token operator">=</span>thu<span class="token punctuation">;</span>
+
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\nDay=%d\n"</span><span class="token punctuation">,</span>day<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Day=4</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d %d\n"</span><span class="token punctuation">,</span> on<span class="token punctuation">,</span> off<span class="token punctuation">,</span> no<span class="token punctuation">,</span> yes<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0 1 0 1</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="Union" data-id="Union"><a class="anchor hidden-xs" href="#Union" title="Union"><span class="octicon octicon-link"></span></a><span>Union</span></h3><p><span>聯合 (union) 乍看和結構 (structure) 有點像，但聯合內的屬性共用同一塊記憶體，故同一時間內僅能用聯合內其中一種屬性。</span><br>
+<span>聯合主要用來表示同概念但不同資料類型的實體。</span></p><pre><code class="c hljs"><span class="token comment">/* Forward declaration. */</span>
+<span class="token keyword">typedef</span> <span class="token keyword">union</span> <span class="token class-name">sample_t</span> <span class="token class-name">sample_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">union</span> <span class="token class-name">sample_t</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> f<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">sample_t</span> s<span class="token punctuation">;</span>
+    s<span class="token punctuation">.</span>f <span class="token operator">=</span> <span class="token number">3.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong><span>Union 聯合在同一時間同僅能儲存其中一個屬性</span></strong><span>，故以下程式會引發錯誤：</span></p><pre><code class="c hljs"><span class="token keyword">typedef</span> <span class="token keyword">union</span> <span class="token class-name">sample_t</span> <span class="token class-name">sample_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">union</span> <span class="token class-name">sample_t</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> f<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">sample_t</span> s<span class="token punctuation">;</span>
+    s<span class="token punctuation">.</span>i <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>i <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Update s.</span>
+    s<span class="token punctuation">.</span>f <span class="token operator">=</span> <span class="token number">5.0</span><span class="token punctuation">;</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>f <span class="token operator">==</span> <span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Error!</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>i <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="static-vs-volatile" data-id="static-vs-volatile"><a class="anchor hidden-xs" href="#static-vs-volatile" title="static-vs-volatile"><span class="octicon octicon-link"></span></a><span>static vs volatile</span></h3><ol>
+<li><span>用static修飾區域性變數：使其變為靜態儲存方式(靜態資料區)，那麼這個區域性變數在函數執行完成之後不會被釋放，而是繼續保留在記憶體中。</span></li>
+<li><span>用static修飾全域性變數：使其只在本檔案內部有效，而其他檔案不可連線或參照該變數。</span></li>
+<li><span>用static修飾函數：對函數的連線方式產生影響，使得函數只在本檔案內部有效，對其他檔案是不可見的（這一點在大工程中很重要很重要，避免很多麻煩，很常見）。</span><br>
+<strong><span>這樣的函數又叫作靜態函數。使用靜態函數的好處是，不用擔心與其他檔案的同名函數產生干擾，另外也是對函數本身的一種保護機制。</span></strong></li>
+</ol><p><span>除了範圍不同，static 變數只有宣告的檔案可以使用；</span><br>
+<span>而 global 變數可加上 extern 關鍵字修飾，即可在其他檔案以 .h 標頭檔方式使用該變數 (也就是 internal linkage 和 external linkage 的不同)。</span></p><h4 id="Static-Example" data-id="Static-Example"><a class="anchor hidden-xs" href="#Static-Example" title="Static-Example"><span class="octicon octicon-link"></span></a><span>Static Example</span></h4><p><span>原本下面檔案會輸出 1 1 1 1 1</span></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    k<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> k<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p><span>加入staic 後 ，輸出變成 1 2 3 4 5。</span><br>
+<span>原因是 </span><mark><span>static靜態的區域變數只會有一份，只會初始化一次。</span></mark></p><pre><code>int count(void)
+{
+    static int k=0;
+    k++;
+    return k;
+}
+
+int main()
+{
+    for (int i=0;i&lt;5;i++)
+    {
+        printf("%d\n",count());
+    }
+    return 0;
+}
+</code></pre><h3 id="extern" data-id="extern"><a class="anchor hidden-xs" href="#extern" title="extern"><span class="octicon octicon-link"></span></a><span>extern</span></h3><p><span>如果某個文件需要用到另一個文件中的全局變量，就要用extern說明。</span></p><p><span>例如:</span><br>
+<span>file1.c 定義全局變量 int s;</span><br>
+<span>但在另一個檔案 file2.c 中的函數func1() 需要用這個變量s，</span><br>
+<span>就可以在file2.c 的函數 func1() 中加入外部變量說明語句。</span></p><ul>
+<li><span>定義時就分配記憶體，其他文件引用時不再分配記憶體。</span></li>
+</ul><pre><code class="c hljs"><span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">extern</span> <span class="token keyword">int</span> s<span class="token punctuation">;</span> <span class="token comment">//表明變量是在其他文件定義的</span>
+<span class="token punctuation">}</span>
+</code></pre><ul>
+<li><span>example</span></li>
+</ul><pre><code class="c hljs"><span class="token keyword">int</span> su <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>  <span class="token comment">// file1.c</span>
+</code></pre><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+	<span class="token keyword">extern</span> <span class="token keyword">int</span> su<span class="token punctuation">;</span> <span class="token comment">//加 extern即可使用su此變數</span>
+	i <span class="token operator">=</span> su<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//100</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="inline--內嵌函數" data-id="inline--內嵌函數"><a class="anchor hidden-xs" href="#inline--內嵌函數" title="inline--內嵌函數"><span class="octicon octicon-link"></span></a><span>inline- 內嵌函數</span></h3><p><a href="https://dotblogs.com.tw/v6610688/2013/11/27/introduction_inline_function" target="_blank" rel="noopener"><span>內嵌函數是在一般的函數前面，加上inline這個關鍵字。</span></a><br>
+<span>例如以下的例子，要做一個計算平方的函數，把inline這個關鍵字加上去變成第2行樣子。</span></p><pre><code class="c hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span></div><div class="code"><span class="token keyword">int</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x<span class="token operator">*</span>x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x<span class="token operator">*</span>x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</div></div></code></pre><p><span>內嵌函數是用來加速C++的執行速度，在程式碼的語法上不會有什麼太大的差異，但是</span><strong><span>在Compiler編譯時，卻會有不一樣的效果。</span></strong></p><p><span>C++於是提供這種內嵌函數</span><br>
+<span>當我們加入關鍵字時，</span><mark><span>在編譯時便會把函數中的程式直接展開</span></mark></p><p><span>但是，</span><strong><span>即便加入inline想要使用內嵌函數，編譯時也不一定就會實作</span></strong><span>，編譯器會選擇，如果你執行的函數中程式碼所需時間大於處理呼叫函數的時間，則能節省的時間比較少，反之若是你的函數中程式碼執行的時間很短，則使用內前函數可以省去較多的呼叫函數的時間，並且如果常常會使用到此函數，使用內嵌的效率也會比較好。</span></p><p><span>所以如果你的函數中的程式碼或處理較短，並且常呼叫使用的話，可以給他加上個inline　（因為編譯器可能會應你的要求使用）</span></p><p><span>另外如果是遞迴的程式，使用inline可能編譯器也不會理你（因為裡面的不斷呼叫運算會使編譯器判斷為此函數中程式的行可能會過大）</span></p><p><img src="https://i.imgur.com/Sy4VqDc.png" alt="" loading="lazy"></p><h3 id="const" data-id="const"><a class="anchor hidden-xs" href="#const" title="const"><span class="octicon octicon-link"></span></a><span>const</span></h3><p><strong><span>定義一種變量，它的值不能被改變，在整個作用域中都保持固定</span></strong></p><p><span>1.資料型別被const 修飾的變數在[初始化]之外不能再被賦值</span><br>
+<span>2.在c語言中，可以看成一個read-only 的屬性</span></p><p><img src="https://i.imgur.com/W45IGkz.png" alt="" loading="lazy"></p><ul>
+<li><span>ex</span><br>
+<span>const int MaxNum = 100; //班級的最大人數</span><br>
+<span>MaxNum = 90; //error，試圖向 const 變量寫入數據</span></li>
+</ul><p><span>錯誤訊息</span></p><pre><code>error: assignment of read-only variable ‘MaxNum’
+</code></pre><h4 id="Volatile" data-id="Volatile"><a class="anchor hidden-xs" href="#Volatile" title="Volatile"><span class="octicon octicon-link"></span></a><span>Volatile</span></h4><p><a href="http://adrianhuang.blogspot.com/2011/08/cvolatile.html" target="_blank" rel="noopener"><span>ref1.簡介C語言volatile關鍵字及其陷阱</span></a><br>
+<a href="https://iter01.com/552126.html" target="_blank" rel="noopener"><span>ref2.直接存取原始記憶體地址</span></a><br>
+<span>“易變”是因為外在因素引起的，像多執行緒，中斷等；</span></p><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token keyword">volatile</span> vInt<span class="token punctuation">;</span> 
+</code></pre><p><span>volatile變數代表其所儲存的內容會不定時地被改變，</span><mark><span>宣告volatile變數用來告訴編譯器 (Compiler) 不要對該變數做任何最佳化操作</span></mark><span>，凡牽涉讀取該volatile變數的操作，保證會到該變數的實體位址讀取，而不會讀取CPU暫存器的內容 (提升效能)</span></p><p><span>一般說來，volatile用在如下的幾個地方：</span></p><ol>
+<li><span>中斷服務程式中修改的供其它程式檢測的變數，需要加volatile</span><br>
+<span>當變數在觸發某中斷程式中修改，而編譯器判斷主函式裡面沒有修改該變數，因此可能只執行一次從記憶體到某暫存器的讀操作，而後每次只會從該暫存器中讀取變數副本，使得中斷程式的操作被短路</span></li>
+<li><span>多工環境下各任務間共享的標誌，應該加volatile</span><br>
+<span>在本次執行緒內, 當讀取一個變數時，編譯器優化時有時會先把變數讀取到一個暫存器中；以後，再取變數值時，就直接從暫存器中取值；當記憶體變數或暫存器變數在因別的執行緒等而改變了值，該暫存器的值不會相應改變，從而造成應用程式讀取的值和實際的變數值不一致</span></li>
+<li><span>儲存器對映的硬體暫存器通常也要加volatile說明，因為每次對它的讀寫都可能由不同意義</span><br>
+<span>假設要對一個裝置進行初始化，此裝置的某一個暫存器為0xff800000。for(i=0;i&lt; 10;i++) *output = i;前面迴圈半天都是廢話，對最後的結果毫無影響，因為最終只是將output這個指標賦值為9，省略了對該硬體IO埠反覆讀的操作。</span></li>
+</ol><h5 id="Volatile關鍵字的應用範疇" data-id="Volatile關鍵字的應用範疇"><a class="anchor hidden-xs" href="#Volatile關鍵字的應用範疇" title="Volatile關鍵字的應用範疇"><span class="octicon octicon-link"></span></a><span>Volatile關鍵字的應用範疇</span></h5><ol>
+<li><span>硬體暫存器，如狀態暫存器。</span></li>
+<li><span>多執行緒所共用的全域變數。</span></li>
+<li><span>中斷服務函式 (Interrupt Service Rountie，ISR)所使用的全域變數。</span></li>
+</ol><h5 id="編譯器優化" data-id="編譯器優化"><a class="anchor hidden-xs" href="#編譯器優化" title="編譯器優化"><span class="octicon octicon-link"></span></a><span>編譯器優化</span></h5><p><span>由於記憶體訪問速度遠不及CPU處理速度，為提高機器整體效能，</span></p><ol>
+<li><span>在硬體上：</span><br>
+<span>引入硬體快取記憶體Cache，加速對記憶體的訪問。另外在現代CPU中指令的執行並不一定嚴格按照順序執行，沒有相關性的指令可以亂序執行，以充分利用CPU的指令流水線，提高執行速度。</span></li>
+<li><span>軟體一級的優化：</span><br>
+<span>一種是在編寫程式碼時由程式設計師優化，另一種是由編譯器進行優化。編譯器優化常用的方法有：將記憶體變數快取到暫存器。由於訪問暫存器要比訪問記憶體單元快的多，編譯器在存取變數時，為提高存取速度，編譯器優化有時會先把變數讀取到一個暫存器中；以後再取變數值時就直接從暫存器中取值。但在很多情況下會讀取到髒資料，嚴重影響程式的執行效果。</span></li>
+</ol><h3 id="記憶體的配置" data-id="記憶體的配置"><a class="anchor hidden-xs" href="#記憶體的配置" title="記憶體的配置"><span class="octicon octicon-link"></span></a><span>記憶體的配置</span></h3><ul>
+<li><span>Stack : 存放函數的參數、區域變數等，由空間配置系統自行產生與回收。(會稱作 stack 是由於其配置遵守 LIFO)</span></li>
+<li><span>Heap : 一般由程式設計師分配釋放，執行時才會知道配置大小，如 malloc/new 和 free/delete。(注意其資料結構不是 DS 中的 heap 而是 link-list)</span></li>
+<li><span>Global : 包含 BSS (未初始化的靜態變數)、data section (全域變數、靜態變數) 和 text/code (常數字元)。</span></li>
+</ul><p><img src="https://i.imgur.com/YutMSiH.png" alt="" loading="lazy"></p><h2 id="Array" data-id="Array"><a class="anchor hidden-xs" href="#Array" title="Array"><span class="octicon octicon-link"></span></a><span>Array</span></h2><p><span>陣列是一群具有相同資料型態元素集合的資料型態。</span></p><ul>
+<li><span>在記憶體中，一個陣列會使用一段連續的記憶體空間來存放。</span></li>
+</ul><p><span>陣列變數定義:</span></p><ul>
+<li><span>元素的資料型態 + 陣列變數名稱 + [元素個數] ;</span></li>
+</ul><pre><code>int var[3];
+</code></pre><p><span>陣列元素初始化:</span></p><ul>
+<li><span>元素的資料型態 + 陣列變數名稱 + [元素個數] ={第一個元素的值，第二個元素的值，…，最後一個元素的值}</span>
+<ul>
+<li><span>初始化至少需要指定一個得值，未被指定的元素會被自動指定成0</span><br>
+<span>ex= int counter[3]={0};</span></li>
+<li><span>有初始化時，陣列元素數值可省略，例如下面例子會被自動設定成 int counter[6]</span><br>
+<span>ex= int counter[]={0,0,0,0,0,0}</span></li>
+</ul>
+</li>
+</ul><pre><code class="c hljs"><span class="token keyword">int</span> counter<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span>
+</code></pre><h3 id="陣列的陣列" data-id="陣列的陣列"><a class="anchor hidden-xs" href="#陣列的陣列" title="陣列的陣列"><span class="octicon octicon-link"></span></a><span>陣列的陣列</span></h3><pre><code class="c hljs"><span class="token keyword">int</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><p><img src="https://i.imgur.com/v7xxpX6.png" alt="" loading="lazy"></p><ul>
+<li><span>上圖最下面表示陣列在記憶體位置中儲存的方式</span></li>
+</ul><h3 id="使用指標操作從函式中返回-C-式陣列的方法" data-id="使用指標操作從函式中返回-C-式陣列的方法"><a class="anchor hidden-xs" href="#使用指標操作從函式中返回-C-式陣列的方法" title="使用指標操作從函式中返回-C-式陣列的方法"><span class="octicon octicon-link"></span></a><span>使用指標操作從函式中返回 C 式陣列的方法</span></h3><p><span>在 C/C++ 中，</span><a href="https://www.delftstack.com/zh-tw/howto/cpp/how-to-return-array-from-a-function-in-cpp/" target="_blank" rel="noopener"><span>當 array[] 符號作為函式引數傳遞時，它只是一個指標</span></a><span>，指向交給陣列的第一個元素。</span><br>
+<span>因此，我們需要構造的函式原型是返回儲存在陣列中的型別的指標；</span></p><h4 id="如何回傳一個陣列" data-id="如何回傳一個陣列"><a class="anchor hidden-xs" href="#如何回傳一個陣列" title="如何回傳一個陣列"><span class="octicon octicon-link"></span></a><span>如何回傳一個陣列</span></h4><p><a href="http://www.tutorialspoint.com/cprogramming/c_return_arrays_from_function.htm" target="_blank" rel="noopener"><span>Return array from function in C</span></a></p><h5 id="有2點很重要" data-id="有2點很重要"><a class="anchor hidden-xs" href="#有2點很重要" title="有2點很重要"><span class="octicon octicon-link"></span></a><span>有2點很重要</span></h5><ol>
+<li><span>C語言不能回傳一個陣列，只能回傳指向array的 pointer</span></li>
+</ol><pre><code>C programming does not allow to return an entire array as an argument to a function. 
+However, you can return a pointer to an array by specifying the array's name without an index.
+</code></pre><ol start="2">
+<li><span>C語言不能回傳一個 local_variable，所以需要加入靜態變數</span></li>
+</ol><pre><code>C does not advocate to return the address of a local variable to outside of the function, 
+so you would have to define the local variable as static variable.
+</code></pre><h5 id="範例" data-id="範例"><a class="anchor hidden-xs" href="#範例" title="範例"><span class="octicon octicon-link"></span></a><span>範例</span></h5><p><span>回傳2進位的值</span></p><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> len<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//global variable</span>
+
+<span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">bit</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>n<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">;</span>
+        i<span class="token operator">+=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        n<span class="token operator">/=</span><span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    len<span class="token operator">=</span>i<span class="token punctuation">;</span>
+    <span class="token comment">/**
+    for (i=0;i&lt;len;i++){
+        printf( "%d ",a[i]);
+        }
+    **/</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>   
+    <span class="token keyword">int</span> c<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>i<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    p<span class="token operator">=</span><span class="token function">bit</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"len %d\n"</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%d "</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="Sort" data-id="Sort"><a class="anchor hidden-xs" href="#Sort" title="Sort"><span class="octicon octicon-link"></span></a><span>Sort</span></h2><p><img src="https://i.imgur.com/qLGdlVM.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/pVZahLL.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/E9dYLHR.png" alt="" loading="lazy"></p><hr><p><span>初等排序:</span><br>
+<span>Insertion Sort, Selection Sort, Bubble Sort, Shell Sort</span></p><p><span>高等排序:</span><br>
+<span>Quick Sort, Merge Sort, Heap Sort</span></p><hr><ul>
+<li><span>穩定(Stable)</span><br>
+<span>相同鍵值的資料，排序後順序和排序前一樣</span><br>
+<span>排序前： 2, *7, 9, 3, 7 ⇒ *7在7前面</span><br>
+<span>排序後： 2, 3, *7, 7, 9 ⇒ *7保持在7前面</span></li>
+</ul><p><span>Unstable sort:</span><br>
+<span>Selection Sort,Quick Sort,Shell Sort</span></p><p><span>Stable sort:</span><br>
+<span>其餘</span></p><hr><p><span>Insertion sort 適合用在小型列表: 因為對於n個數只需要比較n-1次</span><br>
+<span>Selecion sort 適合用在大型列表: 因為每回合頂多swap 1次</span></p><hr><h3 id="Bubble-Sort" data-id="Bubble-Sort"><a class="anchor hidden-xs" href="#Bubble-Sort" title="Bubble-Sort"><span class="octicon octicon-link"></span></a><span>Bubble Sort</span></h3><p><strong><span>Stable</span></strong><br>
+<span>Bubble Sort 的方式是從陣列的最前面開始，一次比較陣列中兩兩相鄰的元素，然後根據大小將它們調換順序，大的移到後面：</span><br>
+<img src="https://i.imgur.com/NxefHc1.png" alt="" loading="lazy"></p><ol>
+<li><span>當我們比較過所有元素一次後，可以確保數值最大的元素在最後面</span></li>
+<li><span>接著扣掉陣列中的最後一個元素（因為已經確定它是最大的），接著重複上面的步驟進行兩兩比較</span></li>
+<li><span>重複上述動作，直到排序完畢。假設這個陣列有 6 個元素一共需重複這個動作 5 次（Array.length - 1）才能確保排序完畢。</span></li>
+</ol><h4 id="example" data-id="example"><a class="anchor hidden-xs" href="#example" title="example"><span class="octicon octicon-link"></span></a><span>example</span></h4><p><span>由左而右、兩兩比較相鄰資料，若前者大於後者，則將兩者交換來完成排序。當資料個數為 n 時，比較過程將分成 n-1 回合</span></p><p><span>A[4] = {2, 4, 7, 3} 分成 (n-1=3)回合</span></p><pre><code>Pass 1: 2, 4, 3, 7
+Pass 2: 2, 3, 4, 7
+</code></pre><h4 id="時間複雜度" data-id="時間複雜度"><a class="anchor hidden-xs" href="#時間複雜度" title="時間複雜度"><span class="octicon octicon-link"></span></a><span>時間複雜度</span></h4><p><span>優化-有序停止</span></p><ol>
+<li><span>Best Case: O(n)</span><br>
+<span>input data 恰好由小到大呈現</span></li>
+</ol><pre><code>Pass 1: 經過 (n-1) 次比較後，發現無任何交換發生，排序完成。
+</code></pre><ol start="2">
+<li><span>Worst Case: O(n^2)</span><br>
+<span>input data 反序由大到小呈現。</span></li>
+</ol><pre><code>void bsort(int arr[],int len)
+{
+        int i,j,temp;
+        for(i=0;i&lt;len-1;i++) //i=1~3 the number in array sub 1 (4-1=3)
+        {
+                bool tag=true;
+                for(j=0;j&lt;len-i-1;j++)  //-i is i stable in latest
+                {
+                        if (arr[j]&gt;arr[j+1])
+                        {
+                                temp=arr[j];
+                                arr[j]=arr[j+1];
+                                arr[j+1]=temp;
+                                tag=false;
+                        }
+                }
+                printf("i= %d\n",i);
+                if (tag==true)
+                        break;
+        }
+
+        for(i=0;i&lt;len;i++)
+                printf("%d",arr[i]);
+        printf("\n");
+
+}
+</code></pre><h3 id="Selection-sort" data-id="Selection-sort"><a class="anchor hidden-xs" href="#Selection-sort" title="Selection-sort"><span class="octicon octicon-link"></span></a><span>Selection sort</span></h3><p><span>將資料分成</span><strong><span>已排序</span></strong><span>、</span><strong><span>未排序</span></strong><span>兩部份</span><br>
+<span>依序由未排序中找最小值(or 最大值)，加入到已排序部份的末端</span><br>
+<img src="https://i.imgur.com/6wk7CDl.png" alt="" loading="lazy"></p><ol>
+<li><span>Best Case：Ο(n^2)</span></li>
+<li><span>Worst Case：Ο(n^2)</span></li>
+<li><span>Average Case：Ο(n^2)</span></li>
+</ol><pre><code>void selectsort(int arr[],int len)
+{
+        int i,j,temp,min;
+        for(i=0;i&lt;len-1;i++)
+        {
+                min=i;
+                for(j=i+1;j&lt;len;j++)
+                {
+                        if(arr[j]&lt;arr[min])
+                        {
+                                min=j;
+                        }
+                }
+                printf("min: %d\n",arr[min]);
+                if(min!=i)
+                        swap(&amp;arr[min],&amp;arr[i]);
+        }
+        for(i=0;i&lt;len;i++)
+                printf("%d",arr[i]);
+        printf("\n");
+}
+
+void swap(int *a,int *b)
+{
+        int temp;
+        temp = *a;
+        *a = *b;
+        *b = temp;
+}
+</code></pre><h3 id="Insertion-sort" data-id="Insertion-sort"><a class="anchor hidden-xs" href="#Insertion-sort" title="Insertion-sort"><span class="octicon octicon-link"></span></a><span>Insertion sort</span></h3><ol>
+<li><span>從未排序數列取出一元素。</span></li>
+<li><span>由後往前和已排序數列元素比較，直到遇到不大於自己的元素並插入此元素之後；若都沒有則插入在最前面。</span></li>
+<li><span>重複以上動作直到未排序數列全部處理完成。</span></li>
+</ol><h3 id="Quick-sort" data-id="Quick-sort"><a class="anchor hidden-xs" href="#Quick-sort" title="Quick-sort"><span class="octicon octicon-link"></span></a><span>Quick sort</span></h3><p><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/460267/" target="_blank" rel="noopener"><span>C語言在&lt; stdlib.h&gt; 庫裡提供快排函式實現，這個函式用於對陣列的排序，能對大部分資料型別進行排序。</span></a></p><pre><code class="c hljs"><span class="token keyword">void</span> <span class="token function">qsort</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>base<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nitems<span class="token punctuation">,</span> <span class="token class-name">size_t</span> size<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>compar<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><p><span>這個函式沒有返回值，要有四個引數。其中第四個引數是函式指標</span></p><ol>
+<li><span>base – 指向要排序的陣列的第一個元素的指標。</span></li>
+<li><span>nitems – 由 base 指向的陣列中元素的個數。</span></li>
+<li><span>size – 陣列中每個元素的大小，以位元組為單位。</span></li>
+<li><span>compar – 用來比較兩個元素的函式。</span></li>
+</ol><ul>
+<li><span>比較函式的概述</span><br>
+<span>比較函式即指的是qsort()函式的第四個引數，qsort()為了提高函式的通用性，提供了比較函式的介面，簡單來說就是定義你需要是排序方式，無非是從小到大或者是從大到小。</span></li>
+</ul><p><span>比較函式有三個返回值，1，0，-1。</span><br>
+<span>但其實應該分為&lt; 0, &gt; 0, 0 這三種</span></p><ol>
+<li><span>對int型別排序：</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">cmp</span> <span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>a <span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>b <span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+<span class="token comment">//這兩種方式都是可以的</span>
+<span class="token comment">//return *(int *)a &gt; *(int *)b;//當a&gt;b成立，返回true，否則返回false</span>
+<span class="token keyword">return</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>a <span class="token operator">-</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>b<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre><ol start="2">
+<li><span>對char型別排序</span></li>
+</ol><pre><code class="c hljs"><span class="token keyword">int</span> <span class="token function">cmp</span><span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>a <span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>b <span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+<span class="token keyword">return</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>a <span class="token operator">-</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>b<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+</code></pre><h4 id="example1" data-id="example"><a class="anchor hidden-xs" href="#example1" title="example1"><span class="octicon octicon-link"></span></a><span>example</span></h4><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>a<span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>a<span class="token operator">-</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">qsort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0 1 4 5 7</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><hr><iframe width="560" height="315" src="https://www.youtube.com/embed/5nXrEBhBFpU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><p><a href="http://alrightchiu.github.io/SecondRound/comparison-sort-quick-sortkuai-su-pai-xu-fa.html" target="_blank" rel="noopener"><span>Comparison Sort: Quick Sort(快速排序法)</span></a></p><p><span>設定陣列最後一個元素當 pivot</span><br>
+<img src="https://i.imgur.com/hRDhLBT.png" alt="" loading="lazy"></p><pre><code class="c hljs"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span> temp<span class="token punctuation">;</span>
+	temp<span class="token operator">=</span><span class="token operator">*</span>a<span class="token punctuation">;</span>
+	<span class="token operator">*</span>a<span class="token operator">=</span><span class="token operator">*</span>b<span class="token punctuation">;</span>
+	<span class="token operator">*</span>b<span class="token operator">=</span>temp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">partition</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span><span class="token keyword">int</span> front<span class="token punctuation">,</span><span class="token keyword">int</span> end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span> pivot <span class="token operator">=</span> arr<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> i <span class="token operator">=</span> front <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//start: -1</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>front<span class="token punctuation">;</span>j<span class="token operator">&lt;</span>end<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pivot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			i<span class="token operator">++</span><span class="token punctuation">;</span>
+			<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	i<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">Quick_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span><span class="token keyword">int</span> front<span class="token punctuation">,</span><span class="token keyword">int</span> end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>front<span class="token operator">&lt;</span>end<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">int</span> pivot<span class="token operator">=</span><span class="token function">partition</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span>front<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">Quick_sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span>front<span class="token punctuation">,</span>pivot<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">Quick_sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span>pivot<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><hr><h3 id="Binary-search" data-id="Binary-search"><a class="anchor hidden-xs" href="#Binary-search" title="Binary-search"><span class="octicon octicon-link"></span></a><span>Binary search</span></h3><p><a href="https://emn178.pixnet.net/blog/post/88780407" target="_blank" rel="noopener"><span>搜索的目標資料</span></a><span> </span><strong><span>必須是已經排序過的</span></strong></p><ul>
+<li><span>最佳時間複雜度：O(1)</span></li>
+<li><span>平均時間複雜度：O(log n)</span></li>
+<li><span>最差時間複雜度：O(log n)</span></li>
+<li><span>空間複雜度：O(1)</span></li>
+</ul><p><span>ex: key=4</span><br>
+<img src="https://i.imgur.com/IsbrmQZ.png" alt="" loading="lazy"></p><pre><code># Python
+def binary_search(data,key):
+    left=0
+    right=len(data)-1
+    while left&lt;right:
+        mid=int((left+right)/2)
+        if data[mid]&lt;key:
+            left=mid+1
+        elif data[mid]==key:
+            return mid
+        else:
+            right=mid-1
+</code></pre><hr><h2 id="linklist" data-id="linklist"><a class="anchor hidden-xs" href="#linklist" title="linklist"><span class="octicon octicon-link"></span></a><span>linklist</span></h2><p><a href="http://alrightchiu.github.io/SecondRound/linked-list-introjian-jie.html" target="_blank" rel="noopener"><span>Linked List: Intro(簡介)</span></a></p><p><span>Linked list(連結串列)是一種常見的資料結構，其使用node(節點)來記錄、表示、儲存資料(data)，並利用每個node中的pointer指向下一個node，藉此將多個node串連起來，形成Linked list，並以NULL來代表Linked list的終點</span></p><p><img src="https://i.imgur.com/lEFla3E.png" alt="" loading="lazy"></p><p><span>實際內部:</span><br>
+<img src="https://i.imgur.com/aMHPRBI.png" alt="" loading="lazy"></p><p><span>通常在面對一個Linked list時，能夠公開存取(access)的node只有「第一個node」，以ListNode *first表示，不過因為node中有pointer記錄下一個node的記憶體位置，便能夠讀取下一個node的data與pointer</span></p><p><a href="http://alrightchiu.github.io/SecondRound/linked-list-xin-zeng-zi-liao-shan-chu-zi-liao-fan-zhuan.html" target="_blank" rel="noopener"><span>Linked List: 新增資料、刪除資料、反轉</span></a></p><h3 id="linklist-與-array-的比較" data-id="linklist-與-array-的比較"><a class="anchor hidden-xs" href="#linklist-與-array-的比較" title="linklist-與-array-的比較"><span class="octicon octicon-link"></span></a><span>linklist 與 array 的比較</span></h3><p><img src="https://i.imgur.com/bXbBciT.png" alt="" loading="lazy"></p><h2 id="C-編譯" data-id="C-編譯"><a class="anchor hidden-xs" href="#C-編譯" title="C-編譯"><span class="octicon octicon-link"></span></a><span>C 編譯</span></h2><p><a href="http://epaper.gotop.com.tw/pdf/ael005600.pdf" target="_blank" rel="noopener"><span>原始程式分別經過 前置(Preprocess)、編譯(Compiling)、組譯(Assemblying)處理</span></a><span>，無錯誤之後才能執行程式。</span></p><p><img src="https://i.imgur.com/2E7ukkU.png" alt="" loading="lazy"></p><h3 id="前置處理-Preprocessing" data-id="前置處理-Preprocessing"><a class="anchor hidden-xs" href="#前置處理-Preprocessing" title="前置處理-Preprocessing"><span class="octicon octicon-link"></span></a><span>前置處理 Preprocessing</span></h3><p><span>前置處理即是在程式做翻譯之前要做的工作，主要是因為 C 語言在程式前面大都使用一些不屬於 C 語言的敘述，我們稱為「前置處理指引」(Preprocessor Directive)，編譯前必須將這些敘述交給前置處理器，將它擴充成 C 語言，再進行下一步的編譯處理。</span></p><h4 id="前置處理器Preprocessor" data-id="前置處理器Preprocessor"><a class="anchor hidden-xs" href="#前置處理器Preprocessor" title="前置處理器Preprocessor"><span class="octicon octicon-link"></span></a><span>前置處理器(Preprocessor)</span></h4><p><span>是一個巨集處理器，在編譯器編譯原始程式之前會自動啟動，</span><br>
+<span>主要</span><strong><span>用來處理 C 程式中含有 # 符號開頭的敘述</span></strong><span>，我們稱為「前置處理指引」(Preprocessor directive)敘述。</span></p><p><span>前置處理指引不必像函式必須呼叫，當編譯器在編譯程式之前會自動啟動。</span></p><p><span>C 語言所提供的前置處理指引敘述有下列三種：</span></p><ol>
+<li><span>檔案含入功能： #include</span></li>
+<li><span>字串置換和巨集定義：#define、#undef</span></li>
+<li><span>條件編譯： #if…#elif…#else…#endif ， #ifdef…#else…#endif ， #ifndef…#else…#endif</span></li>
+</ol><ul>
+<li><span>ifndef</span></li>
+</ul><p><span>目的: 避免重複 define</span><br>
+<span>作法: 把頭文件的內容都放在#ifndef和#endif中。</span></p><p><span>若處理器已經 define MYHEADER 就編譯 part A，否則編譯 part B。</span></p><pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">MYHEADER</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MYHEADER</span></span>
+    <span class="token comment">// part A</span>
+<span class="token keyword">else</span>
+    <span class="token comment">//part B</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+</code></pre><h3 id="編譯處理-Compiling" data-id="編譯處理-Compiling"><a class="anchor hidden-xs" href="#編譯處理-Compiling" title="編譯處理-Compiling"><span class="octicon octicon-link"></span></a><span>編譯處理 Compiling</span></h3><p><span>在編譯過程中，主要的工作是對原始程式做六大步驟。</span><br>
+<span>前三步驟若有發生錯誤，編譯器會停止編譯，此時必須將發生錯誤的地方更正，再重新編譯一</span><br>
+<span>直到無錯誤為止。</span><br>
+<span>之後編譯器會進行第 4-6 步驟，將程式中所有敘述透過 Code generation 轉成更低階的組合語言。</span></p><ol>
+<li>
+<p><ins><span>字彙分析 (Lexical Analysis)</span></ins><br>
+<span>字彙分析是將程式中所有敘述拆成有意義的字串，我們將這些獨立字串稱為「Token」。</span><br>
+<span>譬如：total=price*qty; 分成 ”total”、”=”、”price”、”+”、”qty”、”;” 六</span><br>
+<span>個 Tokens。</span></p>
+</li>
+<li>
+<p><ins><span>語法分析 (Parsing)</span></ins><br>
+<span>語法分析就是檢查這些 Token 是否符合 C 語言的文法規則，譬如：是否漏打符號、括號、或括號不成對等錯誤發生。</span></p>
+</li>
+<li>
+<p><ins><span>語意分析 Semantic analysis)</span></ins><br>
+<span>語意分析是檢查是否有拼錯字、變數是否有宣告等錯誤發生。</span></p>
+</li>
+<li>
+<p><ins><span>產生中間碼 (Intermedia code generation)</span></ins></p>
+</li>
+<li>
+<p><ins><span>程式碼最佳化 (Optimization)</span></ins></p>
+</li>
+<li>
+<p><ins><span>產生組合語言程式碼 (Code generation)</span></ins></p>
+</li>
+</ol><h3 id="組譯處理-Assembling" data-id="組譯處理-Assembling"><a class="anchor hidden-xs" href="#組譯處理-Assembling" title="組譯處理-Assembling"><span class="octicon octicon-link"></span></a><span>組譯處理 Assembling</span></h3><p><span>組譯處理主要的工作是將上述編譯完成的組合語言程式，透過編譯器內部所提供的組譯器(Assembler)組譯成機器語言，我們將所得的機器碼稱為「目的檔」其附檔名為 *.obj。</span></p><p><span>當程式編譯完成沒有發生錯誤，便可交給連結器(Linker)，連結相關檔案，而產生一個可執行檔，其附檔名為 *.exe。</span><br>
+<span>此時程式便可以直接執行。</span></p><ul>
+<li><a href="https://kopu.chat/2017/04/14/arm-intel-cpu/" target="_blank" rel="noopener"><span>Example</span></a></li>
+</ul><p><span>希望電腦輸出「Hello, World!」這行字，在高階語言中會這樣寫 (範例為C語言)：</span></p><p><img src="https://i.imgur.com/sjuoyEn.png" alt="" loading="lazy"></p><p><span>在組合語言中是怎麼寫的</span></p><p><img src="https://i.imgur.com/bJIAobI.png" alt="" loading="lazy"></p><p><span>機器語言會怎麼寫</span></p><p><img src="https://i.imgur.com/J8jDkMw.png" alt="" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#C" title="C">C</a><ul class="nav">
+<li><a href="#數值型態" title="數值型態">數值型態</a><ul class="nav">
+<li><a href="#資料型態：" title="資料型態：">資料型態：</a></li>
+<li><a href="#字元型態（char）" title="字元型態（char）">字元型態（char）</a></li>
+<li><a href="#浮點數-float" title="浮點數 float">浮點數 float</a></li>
+<li><a href="#C-語言強制轉型-casting" title="C 語言強制轉型 (casting)">C 語言強制轉型 (casting)</a></li>
+<li><a href="#Printf" title="Printf">Printf</a></li>
+<li><a href="#scanf" title="scanf">scanf</a></li>
+</ul>
+</li>
+<li><a href="#pointer" title="pointer">pointer</a><ul class="nav">
+<li><a href="#p-，p-的區別" title="*p++ ，(*p)++ 的區別">*p++ ，(*p)++ 的區別</a></li>
+<li><a href="#指標的指標" title="指標的指標">指標的指標</a></li>
+<li><a href="#指標陣列" title="指標陣列">指標陣列</a></li>
+<li><a href="#指標函式" title="指標函式">指標函式</a></li>
+<li><a href="#函式指標" title="函式指標">函式指標</a></li>
+<li><a href="#Struct" title="Struct">Struct</a></li>
+<li><a href="#call-by-value-vs-call-by-address" title="call by value vs call by address">call by value vs call by address</a></li>
+</ul>
+</li>
+<li><a href="#Recursive" title="Recursive">Recursive</a><ul class="nav">
+<li><a href="#遞回函式（recursion）" title="遞回函式（recursion）">遞回函式（recursion）</a></li>
+<li><a href="#Example" title="Example">Example</a></li>
+<li><a href="#Binary-tree" title="Binary tree">Binary tree</a></li>
+</ul>
+</li>
+<li><a href="#Dynamic-Programming" title="Dynamic Programming">Dynamic Programming</a><ul class="nav">
+<li><a href="#Example-Coin-Change" title="Example: Coin Change">Example: Coin Change</a></li>
+</ul>
+</li>
+<li><a href="#function" title="function">function</a><ul class="nav">
+<li><a href="#python的Data-Types" title="python的Data Types">python的Data Types</a></li>
+<li><a href="#Logical-operator" title="Logical operator">Logical operator</a></li>
+<li><a href="#includeltmathhgt" title="#include<math.h>">#include&lt;math.h&gt;</a></li>
+<li><a href="#Macro" title="Macro">Macro</a></li>
+<li><a href="#malloc" title="malloc">malloc</a></li>
+<li><a href="#Calloc" title="Calloc">Calloc</a></li>
+<li><a href="#Realloc" title="Realloc">Realloc</a></li>
+<li><a href="#memcpy" title="memcpy">memcpy</a></li>
+<li><a href="#memcmp" title="memcmp">memcmp</a></li>
+<li><a href="#memset" title="memset">memset</a></li>
+<li><a href="#strcpy-strncpy" title="strcpy strncpy">strcpy strncpy</a></li>
+<li><a href="#strcmp-amp-strncmp" title="strcmp &amp; strncmp">strcmp &amp; strncmp</a></li>
+<li><a href="#strstr" title="strstr">strstr</a></li>
+<li><a href="#strchr" title="strchr">strchr</a></li>
+<li><a href="#strlen" title="strlen">strlen</a></li>
+<li><a href="#strcat" title="strcat">strcat</a></li>
+<li><a href="#bool" title="bool">bool</a></li>
+<li><a href="#sizeof" title="sizeof">sizeof</a></li>
+<li><a href="#plus-plus-i-vs-i-plus-plus" title="plus plus i vs i plus plus">plus plus i vs i plus plus</a></li>
+<li><a href="#Enum" title="Enum">Enum</a></li>
+<li><a href="#Union" title="Union">Union</a></li>
+<li><a href="#static-vs-volatile" title="static vs volatile">static vs volatile</a></li>
+<li><a href="#extern" title="extern">extern</a></li>
+<li><a href="#inline--內嵌函數" title="inline- 內嵌函數">inline- 內嵌函數</a></li>
+<li><a href="#const" title="const">const</a></li>
+<li><a href="#記憶體的配置" title="記憶體的配置">記憶體的配置</a></li>
+</ul>
+</li>
+<li><a href="#Array" title="Array">Array</a><ul class="nav">
+<li><a href="#陣列的陣列" title="陣列的陣列">陣列的陣列</a></li>
+<li><a href="#使用指標操作從函式中返回-C-式陣列的方法" title="使用指標操作從函式中返回 C 式陣列的方法">使用指標操作從函式中返回 C 式陣列的方法</a></li>
+</ul>
+</li>
+<li><a href="#Sort" title="Sort">Sort</a><ul class="nav">
+<li><a href="#Bubble-Sort" title="Bubble Sort">Bubble Sort</a></li>
+<li><a href="#Selection-sort" title="Selection sort">Selection sort</a></li>
+<li><a href="#Insertion-sort" title="Insertion sort">Insertion sort</a></li>
+<li><a href="#Quick-sort" title="Quick sort">Quick sort</a></li>
+<li><a href="#Binary-search" title="Binary search">Binary search</a></li>
+</ul>
+</li>
+<li><a href="#linklist" title="linklist">linklist</a><ul class="nav">
+<li><a href="#linklist-與-array-的比較" title="linklist 與 array 的比較">linklist 與 array 的比較</a></li>
+</ul>
+</li>
+<li><a href="#C-編譯" title="C 編譯">C 編譯</a><ul class="nav">
+<li><a href="#前置處理-Preprocessing" title="前置處理 Preprocessing">前置處理 Preprocessing</a></li>
+<li><a href="#編譯處理-Compiling" title="編譯處理 Compiling">編譯處理 Compiling</a></li>
+<li><a href="#組譯處理-Assembling" title="組譯處理 Assembling">組譯處理 Assembling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#C" title="C">C</a><ul class="nav">
+<li><a href="#數值型態" title="數值型態">數值型態</a><ul class="nav">
+<li><a href="#資料型態：" title="資料型態：">資料型態：</a></li>
+<li><a href="#字元型態（char）" title="字元型態（char）">字元型態（char）</a></li>
+<li><a href="#浮點數-float" title="浮點數 float">浮點數 float</a></li>
+<li><a href="#C-語言強制轉型-casting" title="C 語言強制轉型 (casting)">C 語言強制轉型 (casting)</a></li>
+<li><a href="#Printf" title="Printf">Printf</a></li>
+<li><a href="#scanf" title="scanf">scanf</a></li>
+</ul>
+</li>
+<li><a href="#pointer" title="pointer">pointer</a><ul class="nav">
+<li><a href="#p-，p-的區別" title="*p++ ，(*p)++ 的區別">*p++ ，(*p)++ 的區別</a></li>
+<li><a href="#指標的指標" title="指標的指標">指標的指標</a></li>
+<li><a href="#指標陣列" title="指標陣列">指標陣列</a></li>
+<li><a href="#指標函式" title="指標函式">指標函式</a></li>
+<li><a href="#函式指標" title="函式指標">函式指標</a></li>
+<li><a href="#Struct" title="Struct">Struct</a></li>
+<li><a href="#call-by-value-vs-call-by-address" title="call by value vs call by address">call by value vs call by address</a></li>
+</ul>
+</li>
+<li><a href="#Recursive" title="Recursive">Recursive</a><ul class="nav">
+<li><a href="#遞回函式（recursion）" title="遞回函式（recursion）">遞回函式（recursion）</a></li>
+<li><a href="#Example" title="Example">Example</a></li>
+<li><a href="#Binary-tree" title="Binary tree">Binary tree</a></li>
+</ul>
+</li>
+<li><a href="#Dynamic-Programming" title="Dynamic Programming">Dynamic Programming</a><ul class="nav">
+<li><a href="#Example-Coin-Change" title="Example: Coin Change">Example: Coin Change</a></li>
+</ul>
+</li>
+<li><a href="#function" title="function">function</a><ul class="nav">
+<li><a href="#python的Data-Types" title="python的Data Types">python的Data Types</a></li>
+<li><a href="#Logical-operator" title="Logical operator">Logical operator</a></li>
+<li><a href="#includeltmathhgt" title="#include<math.h>">#include&lt;math.h&gt;</a></li>
+<li><a href="#Macro" title="Macro">Macro</a></li>
+<li><a href="#malloc" title="malloc">malloc</a></li>
+<li><a href="#Calloc" title="Calloc">Calloc</a></li>
+<li><a href="#Realloc" title="Realloc">Realloc</a></li>
+<li><a href="#memcpy" title="memcpy">memcpy</a></li>
+<li><a href="#memcmp" title="memcmp">memcmp</a></li>
+<li><a href="#memset" title="memset">memset</a></li>
+<li><a href="#strcpy-strncpy" title="strcpy strncpy">strcpy strncpy</a></li>
+<li><a href="#strcmp-amp-strncmp" title="strcmp &amp; strncmp">strcmp &amp; strncmp</a></li>
+<li><a href="#strstr" title="strstr">strstr</a></li>
+<li><a href="#strchr" title="strchr">strchr</a></li>
+<li><a href="#strlen" title="strlen">strlen</a></li>
+<li><a href="#strcat" title="strcat">strcat</a></li>
+<li><a href="#bool" title="bool">bool</a></li>
+<li><a href="#sizeof" title="sizeof">sizeof</a></li>
+<li><a href="#plus-plus-i-vs-i-plus-plus" title="plus plus i vs i plus plus">plus plus i vs i plus plus</a></li>
+<li><a href="#Enum" title="Enum">Enum</a></li>
+<li><a href="#Union" title="Union">Union</a></li>
+<li><a href="#static-vs-volatile" title="static vs volatile">static vs volatile</a></li>
+<li><a href="#extern" title="extern">extern</a></li>
+<li><a href="#inline--內嵌函數" title="inline- 內嵌函數">inline- 內嵌函數</a></li>
+<li><a href="#const" title="const">const</a></li>
+<li><a href="#記憶體的配置" title="記憶體的配置">記憶體的配置</a></li>
+</ul>
+</li>
+<li><a href="#Array" title="Array">Array</a><ul class="nav">
+<li><a href="#陣列的陣列" title="陣列的陣列">陣列的陣列</a></li>
+<li><a href="#使用指標操作從函式中返回-C-式陣列的方法" title="使用指標操作從函式中返回 C 式陣列的方法">使用指標操作從函式中返回 C 式陣列的方法</a></li>
+</ul>
+</li>
+<li><a href="#Sort" title="Sort">Sort</a><ul class="nav">
+<li><a href="#Bubble-Sort" title="Bubble Sort">Bubble Sort</a></li>
+<li><a href="#Selection-sort" title="Selection sort">Selection sort</a></li>
+<li><a href="#Insertion-sort" title="Insertion sort">Insertion sort</a></li>
+<li><a href="#Quick-sort" title="Quick sort">Quick sort</a></li>
+<li><a href="#Binary-search" title="Binary search">Binary search</a></li>
+</ul>
+</li>
+<li><a href="#linklist" title="linklist">linklist</a><ul class="nav">
+<li><a href="#linklist-與-array-的比較" title="linklist 與 array 的比較">linklist 與 array 的比較</a></li>
+</ul>
+</li>
+<li><a href="#C-編譯" title="C 編譯">C 編譯</a><ul class="nav">
+<li><a href="#前置處理-Preprocessing" title="前置處理 Preprocessing">前置處理 Preprocessing</a></li>
+<li><a href="#編譯處理-Compiling" title="編譯處理 Compiling">編譯處理 Compiling</a></li>
+<li><a href="#組譯處理-Assembling" title="組譯處理 Assembling">組譯處理 Assembling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
