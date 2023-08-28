@@ -34,7 +34,274 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Go" data-id="Go"><a class="anchor hidden-xs" href="#Go" title="Go"><span class="octicon octicon-link"></span></a><span>Go</span></h1><h2 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h2><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Go" data-id="Go"><a class="anchor hidden-xs" href="#Go" title="Go"><span class="octicon octicon-link"></span></a><span>Go</span></h1><p><a href="https://www.udemy.com/course/go-the-complete-developers-guide/" target="_blank" rel="noopener"><span>Udemy - Class</span></a><br>
+<span>account: </span><a href="mailto:oldelette@gmail.com" target="_blank" rel="noopener"><span>oldelette@gmail.com</span></a><br>
+<a href="https://github.com/StephenGrider/GoCasts/tree/master" target="_blank" rel="noopener"><span>Udemy - Diagram GitHub</span></a></p><p><a href="https://play.golang.org" target="_blank" rel="noopener"><span>Ref: Go Playground</span></a></p><pre><code>Go to https://github.com/StephenGrider/GoCasts/tree/master/diagrams
+Open the folder containing the set of diagrams you want to edit
+Click on the ‘.xml’ file
+Click the ‘raw’ button
+Copy the URL
+Go to https://www.draw.io/
+On the ‘Save Diagrams To…’ window click ‘Decide later’ at the bottom
+Click ‘File’ -&gt; ‘Import From’ -&gt; ‘URL’
+Paste the link to the XML file
+</code></pre><h2 id="Simple-Start" data-id="Simple-Start"><a class="anchor hidden-xs" href="#Simple-Start" title="Simple-Start"><span class="octicon octicon-link"></span></a><span>Simple Start</span></h2><h3 id="Boring-Hello-World" data-id="Boring-Hello-World"><a class="anchor hidden-xs" href="#Boring-Hello-World" title="Boring-Hello-World"><span class="octicon octicon-link"></span></a><span>Boring Hello World</span></h3><p><img src="https://hackmd.io/_uploads/BkbAYmc63.png" alt="" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hi there!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>Questions</span></p><div class="alert alert-danger">
+<ol>
+<li><span>How do we run the code in our project?</span></li>
+<li><span>What does ‘package main’ mean?</span></li>
+<li><span>What does ‘import “fmt”’ mean?</span></li>
+<li><span>What’s that ‘func’ thing?</span></li>
+<li><span>How is the main.go file organized?</span></li>
+</ol>
+</div><h3 id="Go-CLI" data-id="Go-CLI"><a class="anchor hidden-xs" href="#Go-CLI" title="Go-CLI"><span class="octicon octicon-link"></span></a><span>Go CLI</span></h3><p><span>go run、go build、go install的</span><a href="https://medium.com/%E4%BC%81%E9%B5%9D%E4%B9%9F%E6%87%82%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/golang-goroot-gopath-go-modules-%E4%B8%89%E8%80%85%E7%9A%84%E9%97%9C%E4%BF%82%E4%BB%8B%E7%B4%B9-d17481d7a655" target="_blank" rel="noopener"><span>差別</span></a></p><h4 id="go-run" data-id="go-run"><a class="anchor hidden-xs" href="#go-run" title="go-run"><span class="octicon octicon-link"></span></a><span>go run</span></h4><p><span>go run指令簡單來說就像是直譯的方式來執行程式碼，而在細節上它其實會將程式碼進行編譯，最後產生可執行檔案，然後運行該可執行檔案，產生程式執行後的結果，而可執行檔會放在特定的暫存檔裡面，執行完就會自動刪除了</span></p><h4 id="go-build" data-id="go-build"><a class="anchor hidden-xs" href="#go-build" title="go-build"><span class="octicon octicon-link"></span></a><span>go build</span></h4><p><span>go build指令就是將程式碼編譯為執行檔，例如：</span></p><pre><code>go build main.go
+</code></pre><p><span>這樣會在main.go當前目錄下產生一個main 名稱的可執行檔，如果是 Windows的話就是 main.exe.</span></p><p><span>但是go build有個缺點就是每次編譯程式碼，比較沒有效率，當專案架構越來越大，build的速度也就越來越慢.</span></p><h4 id="go-install" data-id="go-install"><a class="anchor hidden-xs" href="#go-install" title="go-install"><span class="octicon octicon-link"></span></a><span>go install</span></h4><p><span>因應go build的缺點，因此有go install指令，go install可以做兩件事情：</span></p><ol>
+<li><span>將套件編譯成.a file</span></li>
+<li><span>如果是main套件則編譯成可執行檔</span></li>
+</ol><p><img src="https://hackmd.io/_uploads/rJlwTXqa3.png" alt="" loading="lazy"></p><h3 id="Package" data-id="Package"><a class="anchor hidden-xs" href="#Package" title="Package"><span class="octicon octicon-link"></span></a><span>Package</span></h3><p><span>Package Name and Folder Structure - </span><a href="https://pjchender.dev/golang/modules-and-packages/#package-name-and-folder-structure" target="_blank" rel="noopener"><span>link</span></a></p><ol>
+<li><span>Go 的程式碼都是以 package 的方式在組織，一個 package 就是在「同一資料夾」中的許多 GO 檔案。</span></li>
+<li><span>同一個 package 的所有 Go 檔案會放在同一個資料夾內；而這個資料夾內的所有檔案也都會屬於同一個 package，有相同的 package 名稱。</span></li>
+<li><span>通常 package 的名稱會跟著 folder 的名稱，舉例來說，若檔案放在 math/rand 資料夾中，則該套件會稱作 rand。</span></li>
+</ol><p><img src="https://hackmd.io/_uploads/HkuOxNqp3.png" alt="" loading="lazy"></p><h4 id="Executable--Reusable-package" data-id="Executable--Reusable-package"><a class="anchor hidden-xs" href="#Executable--Reusable-package" title="Executable--Reusable-package"><span class="octicon octicon-link"></span></a><span>Executable / Reusable package</span></h4><p><span>有兩種不同類型的 package</span></p><ul>
+<li><span>executable package：是用來產生我們可以執行的檔案，一定會包含 package main 並且帶有名為 main 的函式，只有這個檔案可以被執行（run）和編譯（build），並且不能被其他檔案給匯入。</span></li>
+<li><span>reusable package(library package)：類似 “helpers” 或常稱作 library / dependency，目的是可以放入可重複使用的程式邏輯，它是不能被直接執行的，可以使用任何的名稱。</span></li>
+</ul><p><img src="https://hackmd.io/_uploads/Sy_wZ4ca3.png" alt="" loading="lazy"></p><p><span>在 Go 裡面要區別這兩種 Package 的主要方式就是利用「package 名稱」</span><br>
+<span>當使用 main 當做 package 名稱時，就會被當作 executable package</span><br>
+<span>因此接著執行 go build &lt;fileName&gt; 時，會產生一支執行檔</span><br>
+<span>但是當使用 main 以外的名稱是，都會被當作是 reusable package，因此當使用 go build 指令時，不會產生任何檔案。</span></p><p><img src="https://hackmd.io/_uploads/HyqVmE5pn.png" alt="" loading="lazy"></p><p><img src="https://hackmd.io/_uploads/HJD_QE9Tn.png" alt="" loading="lazy"></p><h3 id="Import-statement" data-id="Import-statement"><a class="anchor hidden-xs" href="#Import-statement" title="Import-statement"><span class="octicon octicon-link"></span></a><span>Import statement</span></h3><p><a href="https://pkg.go.dev/std" target="_blank" rel="noopener"><span>golang.org/pkg</span></a></p><p><img src="https://hackmd.io/_uploads/B1BQLNc6h.png" alt="" loading="lazy"></p><h4 id="Import-fmt" data-id="Import-fmt"><a class="anchor hidden-xs" href="#Import-fmt" title="Import-fmt"><span class="octicon octicon-link"></span></a><span>Import fmt</span></h4><p><span>可以直接參考文檔 - </span><a href="https://pkg.go.dev/fmt@go1.21.0" target="_blank" rel="noopener"><span>Package fmt</span></a></p><h3 id="func" data-id="func"><a class="anchor hidden-xs" href="#func" title="func"><span class="octicon octicon-link"></span></a><span>func</span></h3><p><a href="https://pjchender.dev/golang/function-and-method/#%E5%87%BD%E5%BC%8F%E5%AE%A3%E5%91%8A" target="_blank" rel="noopener"><span>函式宣告</span></a><span> -  最常見的宣告方式</span></p><ul>
+<li><span>使用 func 來定義函式</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 完整寫法：func add(x int, y iny) int {...}</span>
+<span class="token keyword">func</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><img src="https://hackmd.io/_uploads/H1iMuNcp2.png" alt="" loading="lazy"></p><h3 id="maingo-organized" data-id="maingo-organized"><a class="anchor hidden-xs" href="#maingo-organized" title="maingo-organized"><span class="octicon octicon-link"></span></a><span>main.go organized</span></h3><p><img src="https://hackmd.io/_uploads/Bkrw_4c63.png" alt="" loading="lazy"></p><h2 id="Deeper-Into-Go" data-id="Deeper-Into-Go"><a class="anchor hidden-xs" href="#Deeper-Into-Go" title="Deeper-Into-Go"><span class="octicon octicon-link"></span></a><span>Deeper Into Go</span></h2><h3 id="Variable-Declarations" data-id="Variable-Declarations"><a class="anchor hidden-xs" href="#Variable-Declarations" title="Variable-Declarations"><span class="octicon octicon-link"></span></a><span>Variable Declarations</span></h3><p><a href="https://pjchender.dev/golang/variables/#basic-go-type" target="_blank" rel="noopener"><span>Basic Go Type</span></a></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// var card string = "Ace of spades"</span>
+	card <span class="token operator">:=</span> <span class="token string">"Ace of Spades"</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>上面的 6,7 行是完全等價的</span><br>
+<span>要特別注意一點, 只有在定義新變數的時候, 才能用 :=</span></p><p><img src="https://hackmd.io/_uploads/SJ7zp4563.png" alt="" loading="lazy"></p><p><span>Golang 是一個靜態型別 (statically-typed)</span></p><div class="alert alert-success">
+<p><span>靜態語言 / 動態語言 (Static vs. Dynamic Typing)</span><br>
+<span>變數帶有資料型態是靜態語言，且使用前一定要先宣告；反之則是動態語言.</span></p>
+<ul>
+<li><span>Static：</span><br>
+<span>優點是可避免執行時期型態錯誤、提供重構輔助與更多的文件形式.</span><br>
+<span>缺點是程式語法繁瑣、彈性不足，只能檢查出執行時期前的簡單錯誤.</span><br>
+<span>ex: C++、Java、Go</span></li>
+<li><span>Dynamic：</span><br>
+<span>優點是語法簡潔、具有較高的彈性.</span><br>
+<span>缺點是型態錯誤在執行時期才會呈現出來，效能表現較不理想，編輯輔助工具較為缺乏，依賴慣例或實體文件來得知API使用方式.</span><br>
+<span>ex: Javascript、Ruby、Python</span></li>
+</ul>
+</div><h3 id="Basic-Go-Types" data-id="Basic-Go-Types"><a class="anchor hidden-xs" href="#Basic-Go-Types" title="Basic-Go-Types"><span class="octicon octicon-link"></span></a><span>Basic Go Types</span></h3><p><img src="https://hackmd.io/_uploads/ryFAREc63.png" alt="" loading="lazy"></p><h4 id="第一種宣告方式-short-declaration" data-id="第一種宣告方式-short-declaration"><a class="anchor hidden-xs" href="#第一種宣告方式-short-declaration" title="第一種宣告方式-short-declaration"><span class="octicon octicon-link"></span></a><span>第一種宣告方式: short declaration</span></h4><p><span>使用 := 宣告，表示之前沒有進行宣告過. 這是在 go 中最常使用的變數宣告的方式，因為它很簡潔.</span><br>
+<span>但因為在 package scope 的變數都是以 keyword 作為開頭，因此不能使用縮寫的方式定義變數（foo := bar），只能在 function 中使用，具有區域性（local variable）：</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 第一種宣告方式</span>
+function <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    foo <span class="token operator">:=</span> <span class="token string">"Hello"</span>
+    bar <span class="token operator">:=</span> <span class="token number">100</span>
+
+  <span class="token comment">// 也可以簡寫成</span>
+  foo<span class="token punctuation">,</span> bar <span class="token operator">:=</span> <span class="token string">"Hello"</span><span class="token punctuation">,</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 等同於</span>
+function <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> foo <span class="token builtin">string</span>
+    foo <span class="token operator">=</span> <span class="token string">"Hello"</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><div class="alert alert-info">
+<p><span>在 package scope 宣告的變數會一直保存在記憶體中，直到程式結束才被釋放，因此應該減少在 package scopes 宣告變數</span></p>
+</div><h4 id="第二種宣告方式-variable-declaration" data-id="第二種宣告方式-variable-declaration"><a class="anchor hidden-xs" href="#第二種宣告方式-variable-declaration" title="第二種宣告方式-variable-declaration"><span class="octicon octicon-link"></span></a><span>第二種宣告方式: variable declaration</span></h4><p><span>使用時機主要是：</span></p><ul>
+<li><span>當你不知道變數的起始值</span></li>
+<li><span>需要在 package scope 宣告變數</span></li>
+<li><span>當為了程式的閱讀性，將變數組織在一起時</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 第二種宣告方式，在 main 外面宣告（全域變數），並在 main 內賦值</span>
+<span class="token keyword">var</span> foo <span class="token builtin">string</span>
+<span class="token keyword">var</span> bar <span class="token builtin">int</span>
+
+<span class="token comment">// 可以簡寫成</span>
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+    foo <span class="token builtin">string</span>
+    bar <span class="token builtin">int</span>
+<span class="token punctuation">)</span>
+
+function <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    foo <span class="token operator">=</span> <span class="token string">"Hello"</span>
+    bar <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="第三種宣告方式" data-id="第三種宣告方式"><a class="anchor hidden-xs" href="#第三種宣告方式" title="第三種宣告方式"><span class="octicon octicon-link"></span></a><span>第三種宣告方式</span></h4><p><span>直接宣告並賦值：</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 第三種宣告方式，直接賦值</span>
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+    foo <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">"Hello"</span>
+    bar <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token punctuation">)</span>
+</div></div></code></pre><hr><h4 id="Quiz" data-id="Quiz"><a class="anchor hidden-xs" href="#Quiz" title="Quiz"><span class="octicon octicon-link"></span></a><span>Quiz</span></h4><ul>
+<li><span>Not valid</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// example 1 - syntax error: non-declaration statement outside function body</span>
+<span class="token keyword">package</span> main
+ 
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+deckSize <span class="token operator">:=</span> <span class="token number">20</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>deckSize<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// example 2 - deckSize is assigned before it's initialized</span>
+<span class="token keyword">package</span> main
+ 
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  deckSize <span class="token operator">=</span> <span class="token number">52</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>deckSize<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><ul>
+<li><span>Valid</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// example 1</span>
+<span class="token keyword">package</span> main
+ 
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> deckSize <span class="token builtin">int</span>
+  deckSize <span class="token operator">=</span> <span class="token number">52</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>deckSize<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// example 2 - 可以在 main 函式外宣告變數</span>
+<span class="token keyword">package</span> main
+ 
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token keyword">var</span> deckSize <span class="token builtin">int</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  deckSize <span class="token operator">=</span> <span class="token number">50</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>deckSize<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Functions-and-Return-Types" data-id="Functions-and-Return-Types"><a class="anchor hidden-xs" href="#Functions-and-Return-Types" title="Functions-and-Return-Types"><span class="octicon octicon-link"></span></a><span>Functions and Return Types</span></h3><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// card := "Ace of Spades"</span>
+	card <span class="token operator">:=</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token string">"Five of Diamonds"</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p data-original-title="" title=""><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://hackmd.io/_uploads/S1QmDBcp2.png" alt="" loading="lazy"></p><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
 
 go: creating new go.mod: module test
 go: to add module requirements and sums:
@@ -53,7 +320,7 @@ go: to add module requirements and sums:
 <span>其中-v 可以顯示整個命令的執行過程</span><br>
 <img src="https://hackmd.io/_uploads/H1o-exSpn.png" alt="" loading="lazy"></p>
 </li>
-</ol><h4 id="go-run" data-id="go-run"><a class="anchor hidden-xs" href="#go-run" title="go-run"><span class="octicon octicon-link"></span></a><span>go run</span></h4><p><span>在 Nodejs 中一般會使用 npm install &lt;package&gt; 安裝 package，Python 則是使用 pip install &lt;package&gt;，但在 Go 裡面不需要特地下指令，直接用就可以了</span></p><p><span>譬如說這邊要使用一個 package 叫 logrus，那就直接到 main.go 裡面 import “</span><a href="http://github.com/sirupsen/logrus" target="_blank" rel="noopener"><span>github.com/sirupsen/logrus</span></a><span>”，意思是「我要使用 github 上 sirupsen/logrus 這個 package」，然後就可以開始用了</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</ol><h4 id="go-run1" data-id="go-run"><a class="anchor hidden-xs" href="#go-run1" title="go-run1"><span class="octicon octicon-link"></span></a><span>go run</span></h4><p><span>在 Nodejs 中一般會使用 npm install &lt;package&gt; 安裝 package，Python 則是使用 pip install &lt;package&gt;，但在 Go 裡面不需要特地下指令，直接用就可以了</span></p><p><span>譬如說這邊要使用一個 package 叫 logrus，那就直接到 main.go 裡面 import “</span><a href="http://github.com/sirupsen/logrus" target="_blank" rel="noopener"><span>github.com/sirupsen/logrus</span></a><span>”，意思是「我要使用 github 上 sirupsen/logrus 這個 package」，然後就可以開始用了</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -89,8 +356,24 @@ go: to add module requirements and sums:
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
-<li><a href="#Go-modules" title="Go modules">Go modules</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
+<li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
+<li><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
+<li><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
+<li><a href="#Package" title="Package">Package</a></li>
+<li><a href="#Import-statement" title="Import statement">Import statement</a></li>
+<li><a href="#func" title="func">func</a></li>
+<li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
+</ul>
+</li>
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+</ul>
+</li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Go-modules" title="Go modules">Go modules</a></li>
 <li><a href="#Start" title="Start">Start</a></li>
 </ul>
 </li>
@@ -104,8 +387,24 @@ go: to add module requirements and sums:
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
 <li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
-<li class=""><a href="#Go-modules" title="Go modules">Go modules</a><ul class="nav">
-<li class=""><a href="#Start" title="Start">Start</a></li>
+<li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
+<li><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
+<li><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
+<li><a href="#Package" title="Package">Package</a></li>
+<li><a href="#Import-statement" title="Import statement">Import statement</a></li>
+<li><a href="#func" title="func">func</a></li>
+<li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
+</ul>
+</li>
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+</ul>
+</li>
+<li><a href="#Others" title="Others">Others</a><ul class="nav">
+<li><a href="#Go-modules" title="Go modules">Go modules</a></li>
+<li><a href="#Start" title="Start">Start</a></li>
 </ul>
 </li>
 </ul>
