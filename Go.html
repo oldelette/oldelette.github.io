@@ -36,16 +36,16 @@
 <body>
     <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Go" data-id="Go"><a class="anchor hidden-xs" href="#Go" title="Go"><span class="octicon octicon-link"></span></a><span>Go</span></h1><p><a href="https://www.udemy.com/course/go-the-complete-developers-guide/" target="_blank" rel="noopener"><span>Udemy - Class</span></a><br>
 <span>account: </span><a href="mailto:oldelette@gmail.com" target="_blank" rel="noopener"><span>oldelette@gmail.com</span></a><br>
-<a href="https://github.com/StephenGrider/GoCasts/tree/master" target="_blank" rel="noopener"><span>Udemy - Diagram GitHub</span></a></p><p><a href="https://play.golang.org" target="_blank" rel="noopener"><span>Ref: Go Playground</span></a></p><pre><code>Go to https://github.com/StephenGrider/GoCasts/tree/master/diagrams
-Open the folder containing the set of diagrams you want to edit
-Click on the ‘.xml’ file
-Click the ‘raw’ button
-Copy the URL
-Go to https://www.draw.io/
-On the ‘Save Diagrams To…’ window click ‘Decide later’ at the bottom
-Click ‘File’ -&gt; ‘Import From’ -&gt; ‘URL’
-Paste the link to the XML file
-</code></pre><h2 id="Simple-Start" data-id="Simple-Start"><a class="anchor hidden-xs" href="#Simple-Start" title="Simple-Start"><span class="octicon octicon-link"></span></a><span>Simple Start</span></h2><h3 id="Boring-Hello-World" data-id="Boring-Hello-World"><a class="anchor hidden-xs" href="#Boring-Hello-World" title="Boring-Hello-World"><span class="octicon octicon-link"></span></a><span>Boring Hello World</span></h3><p><img src="https://i.imgur.com/kzotC9P.png" alt="" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<a href="https://github.com/StephenGrider/GoCasts/tree/master" target="_blank" rel="noopener"><span>Udemy - Diagram GitHub</span></a></p><p><a href="https://play.golang.org" target="_blank" rel="noopener"><span>Ref: Go Playground</span></a></p><hr><p><span>Step</span><br>
+<span>Go to </span><a href="https://github.com/StephenGrider/GoCasts/tree/master/diagrams" target="_blank" rel="noopener"><span>https://github.com/StephenGrider/GoCasts/tree/master/diagrams</span></a><br>
+<span>Open the folder containing the set of diagrams you want to edit</span><br>
+<span>Click on the ‘.xml’ file</span><br>
+<span>Click the ‘raw’ button</span><br>
+<span>Copy the URL</span><br>
+<span>Go to </span><a href="https://www.draw.io/" target="_blank" rel="noopener"><span>https://www.draw.io/</span></a><br>
+<span>On the ‘Save Diagrams To…’ window click ‘Decide later’ at the bottom</span><br>
+<span>Click ‘File’ -&gt; ‘Import From’ -&gt; ‘URL’</span><br>
+<span>Paste the link to the XML file</span></p><hr><h2 id="Simple-Start" data-id="Simple-Start"><a class="anchor hidden-xs" href="#Simple-Start" title="Simple-Start"><span class="octicon octicon-link"></span></a><span>Simple Start</span></h2><h3 id="Boring-Hello-World" data-id="Boring-Hello-World"><a class="anchor hidden-xs" href="#Boring-Hello-World" title="Boring-Hello-World"><span class="octicon octicon-link"></span></a><span>Boring Hello World</span></h3><p><img src="https://i.imgur.com/kzotC9P.png" alt="" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -301,10 +301,394 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
 <span class="token keyword">func</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token string">"Five of Diamonds"</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><h3 id="Slice-and-For-Loops" data-id="Slice-and-For-Loops"><a class="anchor hidden-xs" href="#Slice-and-For-Loops" title="Slice-and-For-Loops"><span class="octicon octicon-link"></span></a><span>Slice and For Loops</span></h3><p><a href="https://pjchender.dev/golang/slice-and-array/" target="_blank" rel="noopener"><span>Golang</span></a><span> Slice and Array</span></p><p><span>在 Go 裡面有兩種資料結構可以處理包含許多元素的清單資料，分別是 Array 和 Slice：</span></p><ol>
+</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><hr><h3 id="Slice" data-id="Slice"><a class="anchor hidden-xs" href="#Slice" title="Slice"><span class="octicon octicon-link"></span></a><span>Slice</span></h3><p><a href="https://pjchender.dev/golang/slice-and-array/" target="_blank" rel="noopener"><span>Golang</span></a><span> Slice and Array</span></p><p><span>在 Go 裡面有兩種資料結構可以處理包含許多元素的清單資料，分別是 Array 和 Slice：</span></p><ol>
 <li><span>Array：清單的長度是固定的（fixed length），屬於原生型別（primitive type），較少在程式中使用。</span></li>
 <li><span>Slice：可以增加或減少清單的長度，使用 [] 定義，例如，[]byte 是 byte slice，指元素為 byte 的 slice；[]string 是 string slice，指元素為 string 的 slice。</span></li>
-</ol><p><img src="https://i.imgur.com/YzeemBi.png" alt="" loading="lazy"></p><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
+</ol><p><img src="https://i.imgur.com/YzeemBi.png" alt="" loading="lazy"></p><h4 id="Byte-Slice" data-id="Byte-Slice"><a class="anchor hidden-xs" href="#Byte-Slice" title="Byte-Slice"><span class="octicon octicon-link"></span></a><span>Byte Slice</span></h4><p><span>[]byte 是 byte slice，指元素為 byte 的 slice</span></p><p><img src="https://i.imgur.com/yAHTeuy.png" alt="Imgur" loading="lazy"></p><h4 id="Slice-For-Loop" data-id="Slice-For-Loop"><a class="anchor hidden-xs" href="#Slice-For-Loop" title="Slice-For-Loop"><span class="octicon octicon-link"></span></a><span>Slice For Loop</span></h4><p><span>在疊代陣列時會使用到 for i, card := range cards{…}，其中如果 i 在疊代時沒有被使用到，但有宣告它時，程式會噴錯；因此如果不需要用到這個變數時，需把它命名為 _。</span></p><p><img src="https://i.imgur.com/kQcvYK6.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	cards <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"Ace of Diamonds"</span><span class="token punctuation">,</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+	cards <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>cards<span class="token punctuation">,</span> <span class="token string">"Six of Spages"</span><span class="token punctuation">)</span> <span class="token comment">// 既有的 slice 新增</span>
+	<span class="token keyword">for</span> i<span class="token punctuation">,</span> cards <span class="token operator">:=</span> <span class="token keyword">range</span> cards <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> cards<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token string">"Five of Diamonds"</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Split" data-id="Split"><a class="anchor hidden-xs" href="#Split" title="Split"><span class="octicon octicon-link"></span></a><span>Split</span></h4><p><span>切割須要留意的是，在 golang 中使用 : 來切割 slice 時，並不會複製原本的 slice 中的資料，</span><br>
+<span>而是建立一個新的 slice</span><br>
+<span>但實際上還是指稱到相同位址的底層 array（並沒有複製新的），因此還是會改到原本的元素</span></p><div class="alert alert-danger">
+<p><span>有時我們只需要使用原本 slice 中的一小部分元素，但由於透過 : 的方式重新分割 slice 時</span><br>
+<span>該 slice 仍然會指稱到底層相同的 array，這導致雖然我們只用了原本 slice 中的一小部分元素</span><br>
+<span>但其他多餘的部分因為仍然被保留在底層的 array 中,</span><br>
+<span>進而使得該 array 無法被 garbage collection.</span></p>
+<p><span>因此若只需要使用原本 slice 中一小部分的元素內容時,</span><br>
+<span>建議可以使用 copy 或 append 建立新的 slice 與其對應的新的 array.</span></p>
+</div><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 定義內部元素型別為字串的陣列</span>
+    fruits <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"banana"</span><span class="token punctuation">,</span> <span class="token string">"grape"</span><span class="token punctuation">,</span> <span class="token string">"orange"</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// 取得 slice 的 length 和 capacity</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// length, 4</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">cap</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// capacity, 4</span>
+
+    <span class="token comment">// append 為陣列添加元素（不會改變原陣列）</span>
+    fruits <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>fruits<span class="token punctuation">,</span> <span class="token string">"strawberry"</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// range syntax: fruits[start:end] 可以截取陣列，從 "start" 開始到 "end-1" 的元素</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//  [apple, banana]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">//  [apple, banana, grape]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">//  [grape, orange, strawberry]</span>
+
+    <span class="token comment">// 透過 range cards 可以疊代陣列元素</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> fruit <span class="token operator">:=</span> <span class="token keyword">range</span> fruits <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>另外，使用 : 時，不能超過它本身的 capacity，否則會導致 runtime panic</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// over the slice capacity will cause runtime panic</span>
+    overSliceCap <span class="token operator">:=</span> s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>overSliceCap<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Copy" data-id="Copy"><a class="anchor hidden-xs" href="#Copy" title="Copy"><span class="octicon octicon-link"></span></a><span>Copy</span></h4><ol>
+<li><span>cop 的元素數量如果「多於」被複製進去的元素時，會用 zero value 去補.</span><br>
+<span>ex: 當 cop 的長度是 4，但只複製 3 個元素進去時，最後位置多出來的元素會補 zero value.</span></li>
+<li><span>cop 的元素數量如果「少於」被複製進去的元素時，超過的元素不會被複製進去.</span><br>
+<span>ex: 當 cop 的長度是 1，但卻複製了 3 個元素進去時，只會有 1 個元素被複製進去.</span></li>
+</ol><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	scores <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+	cop <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// 建立空 slice 且長度為 4</span>
+	<span class="token function">copy</span><span class="token punctuation">(</span>cop<span class="token punctuation">,</span> scores<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 使用 copy 將前 scores 中的前三個元素複製到 cop 中</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"cop: "</span><span class="token punctuation">,</span> cop<span class="token punctuation">)</span> <span class="token comment">// cop:  [1 2 3 0]</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="make-amp-new" data-id="make-amp-new"><a class="anchor hidden-xs" href="#make-amp-new" title="make-amp-new"><span class="octicon octicon-link"></span></a><span>make &amp;　new</span></h4><p><span>golang </span><a href="https://medium.com/d-d-mag/golang-%E7%AD%86%E8%A8%98-make-%E8%88%87-new-%E7%9A%84%E5%B7%AE%E5%88%A5-68b05c7ce016" target="_blank" rel="noopener"><span>筆記</span></a><span>：make 與 new 的差別</span></p><p><strong><span>new</span></strong><br>
+<span>new 可以用來初始化泛型，並且返回儲存位址.</span><br>
+<span>所以通常我們會用指標變數來接 new 過後的型別.</span><br>
+<span>特別要注意的是，new 會自動用 zeroed value 來初始化型別，也就是字串會是""，number 會是 0，channel, func, map, slice 等等則會是 nil</span></p><p><strong><span>make</span></strong><br>
+<span>make 與 new 不同，是用來初始化一些特別的型別，像是 channel, map, slice 等等.</span><br>
+<span>另外特別要注意的是 make 並不會回傳指標，如果要拿到指標，就要考慮用像是 new 的方式來初始化型別</span></p><p><span>使用 make 建立 slice 時，可以指定該 slice 的 length 和 capacity</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// make(T, length, capacity)</span>
+    a <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">// len(a)=5, cap(a)=5, [0 0 0 0 0]</span>
+
+    <span class="token comment">// 建立特定 capacity 的 slice</span>
+    b <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">// len=0 cap=5, []</span>
+    b <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token function">cap</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">]</span>         <span class="token comment">// len=5 cap=5, [0 0 0 0 0]</span>
+    b <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>              <span class="token comment">// len=4 cap=4, [0 0 0 0]</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="capacity-and-length" data-id="capacity-and-length"><a class="anchor hidden-xs" href="#capacity-and-length" title="capacity-and-length"><span class="octicon octicon-link"></span></a><span>capacity and length</span></h4><p><a href="https://pjchender.dev/golang/slice-and-array/#capacity-and-length" target="_blank" rel="noopener"><span>link</span></a></p><p><span>在 Slice 中會包含</span></p><ul>
+<li><span>Pointer to Array：這個 pointer 會指向實際上在底層的 array。</span></li>
+<li><span>Capacity：從 slice 的第一個元素開始算起，它底層 array 的元素數目</span></li>
+<li><span>Length：該 slice 中的元素數目</span></li>
+</ul><p><img src="https://i.imgur.com/7yWoeqQ.png" alt="Imgur" loading="lazy"></p><div class="alert alert-info">
+<p><span>len()取得 slice 元素的個數</span><br>
+<span>cap()取得 slice 第一個元素於代表的 array 中的索引起算到最後的長度</span></p>
+</div><p><span>它們會如下圖存放在記憶體中，因此當我們使用該 slice 時，它會先指向該 slice，而該 slice 中的 pointer to head 會在指到底層的 array：</span><br>
+<img src="https://i.imgur.com/OhE4ng3.png" alt="Imgur" loading="lazy"></p><h2 id="Organizing-Data-With-Structs" data-id="Organizing-Data-With-Structs"><a class="anchor hidden-xs" href="#Organizing-Data-With-Structs" title="Organizing-Data-With-Structs"><span class="octicon octicon-link"></span></a><span>Organizing Data With Structs</span></h2><h3 id="Struct-in-Go" data-id="Struct-in-Go"><a class="anchor hidden-xs" href="#Struct-in-Go" title="Struct-in-Go"><span class="octicon octicon-link"></span></a><span>Struct in Go</span></h3><p><a href="https://pjchender.dev/golang/structs/" target="_blank" rel="noopener"><span>Golang</span></a><span> Struct</span></p><p><span>structs 是在 GO 中的一種資料型態，它就類似 python dictionary, JavaScript 中的物件（Object）或是 Ruby 中的 Hash.</span></p><ul>
+<li><span>三種宣告 Person struct 的方式：</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">var</span> user1 <span class="token operator">*</span>Person       <span class="token comment">// nil</span>
+user2 <span class="token operator">:=</span> <span class="token operator">&amp;</span>Person<span class="token punctuation">{</span><span class="token punctuation">}</span>      <span class="token comment">// {}，user2.firstName 會是 ""</span>
+user3 <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>Person<span class="token punctuation">)</span>    <span class="token comment">// {}，user3.firstName 會是 ""</span>
+</div></div></code></pre><p><img src="https://i.imgur.com/CPSh19P.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">type</span> person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	firstName <span class="token builtin">string</span>
+	lastName  <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	alex <span class="token operator">:=</span> person<span class="token punctuation">{</span>firstName<span class="token punctuation">:</span> <span class="token string">"Alex"</span><span class="token punctuation">,</span> lastName<span class="token punctuation">:</span> <span class="token string">"Anderson"</span><span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>alex<span class="token punctuation">)</span> <span class="token comment">// {Alex Anderson}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Golang-zero-value" data-id="Golang-zero-value"><a class="anchor hidden-xs" href="#Golang-zero-value" title="Golang-zero-value"><span class="octicon octicon-link"></span></a><span>Golang zero value</span></h4><p><a href="https://blog.kalan.dev/posts/golang-default-value" target="_blank" rel="noopener"><span>Golang</span></a><span> 當中的預設值以及 zero value</span></p><p><span>在 golang 當中，如果在初始化時沒有賦值，就會使用 zero value.</span></p><p><img src="https://i.imgur.com/KvFKoXw.png" alt="Imgur" loading="lazy"></p><p><span>這時因為 firstName, lastName 都沒有輸入，所以預設都會是 “”</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">type</span> person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	firstName <span class="token builtin">string</span>
+	lastName  <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> alex person
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>alex<span class="token punctuation">)</span> <span class="token comment">// { }</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%+v"</span><span class="token punctuation">,</span> alex<span class="token punctuation">)</span> <span class="token comment">//{firstName: lastName:}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Embedding-Structs" data-id="Embedding-Structs"><a class="anchor hidden-xs" href="#Embedding-Structs" title="Embedding-Structs"><span class="octicon octicon-link"></span></a><span>Embedding Structs</span></h3><p><span>在 struct 內關聯另一個 struct（</span><a href="https://pjchender.dev/golang/structs/#%E5%9C%A8-struct-%E5%85%A7%E9%97%9C%E8%81%AF%E5%8F%A6%E4%B8%80%E5%80%8B-structnested-struct" target="_blank" rel="noopener"><span>nested struct</span></a><span>）</span></p><p><img src="https://i.imgur.com/4X1C8rV.png" alt="Imgur" loading="lazy"></p><pre data-original-title="" title=""><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">type</span> contactInfo <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	email   <span class="token builtin">string</span>
+	zipCode <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	firstName <span class="token builtin">string</span>
+	lastName  <span class="token builtin">string</span>
+	contactInfo
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	jim <span class="token operator">:=</span> person<span class="token punctuation">{</span>
+		firstName<span class="token punctuation">:</span> <span class="token string">"Alex"</span><span class="token punctuation">,</span>
+		lastName<span class="token punctuation">:</span>  <span class="token string">"Anderson"</span><span class="token punctuation">,</span>
+		contactInfo<span class="token punctuation">:</span> contactInfo<span class="token punctuation">{</span>
+			email<span class="token punctuation">:</span>   <span class="token string">"alex@gmail.com"</span><span class="token punctuation">,</span>
+			zipCode<span class="token punctuation">:</span> <span class="token number">94000</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	jim<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p person<span class="token punctuation">)</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%+v"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Pass-by-Value" data-id="Pass-by-Value"><a class="anchor hidden-xs" href="#Pass-by-Value" title="Pass-by-Value"><span class="octicon octicon-link"></span></a><span>Pass by Value</span></h3><p><span>Go 是一個 pass by value 的程式語言，也就是每當我們把值放入函式中時，Go 會把這個值完整的複製一份，並放到新的記憶體位址</span><br>
+<span>以下面的程式碼為例：</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">type</span> person <span class="token keyword">struct</span> <span class="token punctuation">{</span> <span class="token comment">// 建立 person type</span>
+    firstName <span class="token builtin">string</span>
+    lastName  <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 建立 person 的 function receiver</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p person<span class="token punctuation">)</span> <span class="token function">updateName</span><span class="token punctuation">(</span>newFirstName <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Before update: %+v\n"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>Ｇ
+    p<span class="token punctuation">.</span>firstName <span class="token operator">=</span> newFirstName
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"After update: %+v\n"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p person<span class="token punctuation">)</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Current person is: %+v\n"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    jim <span class="token operator">:=</span> person<span class="token punctuation">{</span>
+        firstName<span class="token punctuation">:</span> <span class="token string">"Jim"</span><span class="token punctuation">,</span>
+        lastName<span class="token punctuation">:</span>  <span class="token string">"Party"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token comment">// Before update: {firstName:Jim lastName:Party}</span>
+    jim<span class="token punctuation">.</span><span class="token function">updateName</span><span class="token punctuation">(</span><span class="token string">"Aaron"</span><span class="token punctuation">)</span>
+  <span class="token comment">// After update: {firstName:Aaron lastName:Party}</span>
+
+    jim<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Current person is: {firstName:Jim lastName:Party}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>會發現到雖然呼叫了 jim.updateName() 這個方法，但 jim 的 firstName 並沒有改變.</span><br>
+<span>這是因為當我們呼叫 jim.updateName() 時，Go 會把呼叫此方法的 jim 複製一份到新的記憶體位置，修改的 jim 其實是存在另一個記憶體位置，</span><br>
+<span>這就是為什麼當我們在 updateName() 這個函式中呼叫 p 時，</span><br>
+<span>會看到 firstName 是有改變的，</span><br>
+<span>但最後呼叫 jim.print() 時，卻還是得到舊的 jim</span></p><p><img src="https://i.imgur.com/1deNSJb.png" alt="Imgur" loading="lazy"></p><h3 id="Struct-with-Pointers" data-id="Struct-with-Pointers"><a class="anchor hidden-xs" href="#Struct-with-Pointers" title="Struct-with-Pointers"><span class="octicon octicon-link"></span></a><span>Struct with Pointers</span></h3><div class="alert alert-info">
+<p><span>使用 struct pointer 時才可以修改到原本的物件，否則會複製一個新的</span></p>
+</div><p><span>當 pointer 指稱到的是 struct 時，可以直接使用這個 pointer 來對該 struct 進行設值和取值.</span><br>
+<span>在 golang 中可以直接使用 pointer 來修改 struct 中的欄位.</span></p><p><img src="https://i.imgur.com/bplD75C.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	jim <span class="token operator">:=</span> person<span class="token punctuation">{</span>
+		firstName<span class="token punctuation">:</span> <span class="token string">"Alex"</span><span class="token punctuation">,</span>
+		lastName<span class="token punctuation">:</span>  <span class="token string">"Anderson"</span><span class="token punctuation">,</span>
+		contactInfo<span class="token punctuation">:</span> contactInfo<span class="token punctuation">{</span>
+			email<span class="token punctuation">:</span>   <span class="token string">"alex@gmail.com"</span><span class="token punctuation">,</span>
+			zipCode<span class="token punctuation">:</span> <span class="token number">94000</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	jimPointer <span class="token operator">:=</span> <span class="token operator">&amp;</span>jim
+	jimPointer<span class="token punctuation">.</span><span class="token function">updateName</span><span class="token punctuation">(</span><span class="token string">"jimmy"</span><span class="token punctuation">)</span>
+	jim<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// {firstName:jimmy lastName:Anderson contactInfo:{email:alex@gmail.com zipCode:94000}}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pointerToPerson <span class="token operator">*</span>person<span class="token punctuation">)</span> <span class="token function">updateName</span><span class="token punctuation">(</span>newFirstName <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">(</span><span class="token operator">*</span>pointerToPerson<span class="token punctuation">)</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> newFirstName
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><img src="https://i.imgur.com/nE2ghNy.png" alt="Imgur" loading="lazy"></p><h3 id="Pointer-Shortcut" data-id="Pointer-Shortcut"><a class="anchor hidden-xs" href="#Pointer-Shortcut" title="Pointer-Shortcut"><span class="octicon octicon-link"></span></a><span>Pointer Shortcut</span></h3><p><span>一般來說，若想要透過 struct pointer（&amp;v）來修改該 struct 中的屬性</span><br>
+<span>需要先解出其值（*p）後使用 (*p).X = 10，但這樣做太麻煩了</span><br>
+<span>因此在 golang 中允許開發者直接使用 p.X 的方式來修改</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">jimPointer <span class="token operator">:=</span> <span class="token operator">&amp;</span>jim
+jimPointer<span class="token punctuation">.</span><span class="token function">updateName</span><span class="token punctuation">(</span><span class="token string">"jimmy"</span><span class="token punctuation">)</span>
+<span class="token comment">// same</span>
+jim<span class="token punctuation">.</span><span class="token function">updateName</span><span class="token punctuation">(</span><span class="token string">"jimmy"</span><span class="token punctuation">)</span>
+</div></div></code></pre><p><img src="https://i.imgur.com/9XpH3De.png" alt="Imgur" loading="lazy"></p><h3 id="Data-type" data-id="Data-type"><a class="anchor hidden-xs" href="#Data-type" title="Data-type"><span class="octicon octicon-link"></span></a><span>Data type</span></h3><p><span>Value vs Reference Types - </span><a href="https://pjchender.dev/golang/data-types/" target="_blank" rel="noopener"><span>資料型別 Data Types</span></a></p><p><span>在 Golang 中，雖然所有資料結構都是 Pass by value</span><br>
+<span>但當碰到 slices、maps、functions 時，雖然它還是會 copy 一份新的</span><br>
+<span>只是實際上，它 copy 的是一個 pointer，所以即使它依然是 copy by value，但對這個變數進行修改時，會修改到 pointer 背後實際所指稱到的記憶體位址</span><br>
+<span>進而使得在操作這些資料結構時，會感覺像是 Pass by Reference</span></p><p><img src="https://i.imgur.com/WURtQey.png" alt="Imgur" loading="lazy"></p><h4 id="Custom-Type" data-id="Custom-Type"><a class="anchor hidden-xs" href="#Custom-Type" title="Custom-Type"><span class="octicon octicon-link"></span></a><span>Custom Type</span></h4><p><span>自定義資料型別</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 定義 cards 這個型別，它的本質是 slice of strings</span>
+<span class="token keyword">type</span> cards <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
+
+<span class="token comment">// 定義 person 這個型別，它的本質是 struct</span>
+<span class="token keyword">type</span> person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    firstName <span class="token builtin">string</span>
+    lastName <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Type-Conversion" data-id="Type-Conversion"><a class="anchor hidden-xs" href="#Type-Conversion" title="Type-Conversion"><span class="octicon octicon-link"></span></a><span>Type Conversion</span></h4><p><span>型別轉換（Type Conversion）</span><br>
+<span>T(v) 這種方式，可以把 v 的值轉換成 T 這個型別.</span><br>
+<span>舉例來說:</span></p><p><img src="https://i.imgur.com/rsmOKON.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    i <span class="token operator">:=</span> <span class="token number">42</span>              <span class="token comment">// int</span>
+    f <span class="token operator">:=</span> <span class="token function">float64</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>      <span class="token comment">// int 轉成 float64</span>
+    u <span class="token operator">:=</span> <span class="token function">uint</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>         <span class="token comment">// float 64 轉成 uint</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> f<span class="token punctuation">,</span> u<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
 
 go: creating new go.mod: module test
 go: to add module requirements and sums:
@@ -359,7 +743,7 @@ go: to add module requirements and sums:
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
 <li><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
@@ -373,7 +757,16 @@ go: to add module requirements and sums:
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
-<li><a href="#Slice-and-For-Loops" title="Slice and For Loops">Slice and For Loops</a></li>
+<li><a href="#Slice" title="Slice">Slice</a></li>
+</ul>
+</li>
+<li class=""><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
+<li><a href="#Struct-in-Go" title="Struct in Go">Struct in Go</a></li>
+<li><a href="#Embedding-Structs" title="Embedding Structs">Embedding Structs</a></li>
+<li class=""><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
+<li><a href="#Struct-with-Pointers" title="Struct with Pointers">Struct with Pointers</a></li>
+<li><a href="#Pointer-Shortcut" title="Pointer Shortcut">Pointer Shortcut</a></li>
+<li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
 <li><a href="#Others" title="Others">Others</a><ul class="nav">
@@ -390,7 +783,7 @@ go: to add module requirements and sums:
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
 <li><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
@@ -404,7 +797,16 @@ go: to add module requirements and sums:
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
-<li><a href="#Slice-and-For-Loops" title="Slice and For Loops">Slice and For Loops</a></li>
+<li><a href="#Slice" title="Slice">Slice</a></li>
+</ul>
+</li>
+<li class=""><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
+<li><a href="#Struct-in-Go" title="Struct in Go">Struct in Go</a></li>
+<li><a href="#Embedding-Structs" title="Embedding Structs">Embedding Structs</a></li>
+<li class=""><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
+<li><a href="#Struct-with-Pointers" title="Struct with Pointers">Struct with Pointers</a></li>
+<li><a href="#Pointer-Shortcut" title="Pointer Shortcut">Pointer Shortcut</a></li>
+<li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
 <li><a href="#Others" title="Others">Others</a><ul class="nav">
