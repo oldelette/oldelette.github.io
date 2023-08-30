@@ -489,7 +489,7 @@ user3 <span class="token operator">:=</span> <span class="token function">new</s
 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>alex<span class="token punctuation">)</span> <span class="token comment">// { }</span>
 	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%+v"</span><span class="token punctuation">,</span> alex<span class="token punctuation">)</span> <span class="token comment">//{firstName: lastName:}</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><h3 id="Embedding-Structs" data-id="Embedding-Structs"><a class="anchor hidden-xs" href="#Embedding-Structs" title="Embedding-Structs"><span class="octicon octicon-link"></span></a><span>Embedding Structs</span></h3><p><span>在 struct 內關聯另一個 struct（</span><a href="https://pjchender.dev/golang/structs/#%E5%9C%A8-struct-%E5%85%A7%E9%97%9C%E8%81%AF%E5%8F%A6%E4%B8%80%E5%80%8B-structnested-struct" target="_blank" rel="noopener"><span>nested struct</span></a><span>）</span></p><p><img src="https://i.imgur.com/4X1C8rV.png" alt="Imgur" loading="lazy"></p><pre data-original-title="" title=""><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><h3 id="Embedding-Structs" data-id="Embedding-Structs"><a class="anchor hidden-xs" href="#Embedding-Structs" title="Embedding-Structs"><span class="octicon octicon-link"></span></a><span>Embedding Structs</span></h3><p><span>在 struct 內關聯另一個 struct（</span><a href="https://pjchender.dev/golang/structs/#%E5%9C%A8-struct-%E5%85%A7%E9%97%9C%E8%81%AF%E5%8F%A6%E4%B8%80%E5%80%8B-structnested-struct" target="_blank" rel="noopener"><span>nested struct</span></a><span>）</span></p><p><img src="https://i.imgur.com/4X1C8rV.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -688,7 +688,99 @@ jim<span class="token punctuation">.</span><span class="token function">updateNa
 
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> f<span class="token punctuation">,</span> u<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
+</div></div></code></pre><h2 id="Map" data-id="Map"><a class="anchor hidden-xs" href="#Map" title="Map"><span class="octicon octicon-link"></span></a><span>Map</span></h2><p><span>在 Go 中，</span><a href="https://pjchender.dev/golang/maps/" target="_blank" rel="noopener"><span>Map</span></a><span> 也是 Key-Value pair 的組合，但是 Map 所有 Key 的資料型別都要一樣；</span><br>
+<span>所有 Value 的資料型別也要一樣.</span><br>
+<span>另外，在設值和取值需要使用 [] 而非 .</span><br>
+<span>map 的 zero value 是 nil</span></p><p><img src="https://imgur.com/q9tSqzP.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// m := map[Tkey]Tvalue{}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 第一種方式</span>
+  <span class="token comment">// 建立一個型別為 map 的變數，</span>
+  <span class="token comment">// 其中的 key 都會是 string，value 也都會是 string</span>
+  colors <span class="token operator">:=</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment">// 也可以直接帶值</span>
+    colors <span class="token operator">:=</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>
+        <span class="token string">"red"</span><span class="token punctuation">:</span>   <span class="token string">"#ff0000"</span><span class="token punctuation">,</span>
+        <span class="token string">"green"</span><span class="token punctuation">:</span> <span class="token string">"#4bf745"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token comment">// 第二種方式</span>
+  <span class="token keyword">var</span> colors <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">string</span>
+
+  <span class="token comment">// 第三種方式，使用 make 建立 Map。</span>
+  <span class="token comment">// Key 的型別是 string，Value 是 int</span>
+  colors <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+    colors<span class="token punctuation">[</span><span class="token string">"red"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>colors<span class="token punctuation">)</span> <span class="token comment">// map[red:10]</span>
+
+  <span class="token comment">// 如果對於鍵值的數量有概念的話，也可以給定初始大小，將有助於效能提升</span>
+  <span class="token comment">// （The little Go book）</span>
+  m <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><img src="https://imgur.com/p1ut4qJ.png" alt="Imgur" loading="lazy"></p><h3 id="Map-delete-amp-len" data-id="Map-delete-amp-len"><a class="anchor hidden-xs" href="#Map-delete-amp-len" title="Map-delete-amp-len"><span class="octicon octicon-link"></span></a><span>Map delete &amp; len</span></h3><p><a href="https://pjchender.dev/golang/maps/#map-%E7%9A%84%E6%93%8D%E4%BD%9C" target="_blank" rel="noopener"><span>Map 的操作</span></a><br>
+<span>keywords: delete, len</span></p><p><span>在 map 中因為 key 本身是有資料型別的，因此只能使用 [] 來設值和取值，不能使用 .</span></p><ul>
+<li><span>使用 len() 可以取得 map 鍵值的數量</span></li>
+<li><span>使用 delete(map, key) 可以移除 map 中的鍵值</span></li>
+<li><span>使用 value, isExist := m[key] 可以用來取值，同時判斷該 key 是否存在</span></li>
+</ul><h3 id="Struct-vs-Map" data-id="Struct-vs-Map"><a class="anchor hidden-xs" href="#Struct-vs-Map" title="Struct-vs-Map"><span class="octicon octicon-link"></span></a><span>Struct vs Map</span></h3><p><span>Map 和 Structure 的</span><a href="https://pjchender.dev/golang/maps/#map-%E5%92%8C-structure-%E7%9A%84%E9%81%B8%E6%93%87" target="_blank" rel="noopener"><span>選擇</span></a></p><p><img src="https://imgur.com/LMmpie7.png" alt="Imgur" loading="lazy"></p><table>
+<thead>
+<tr>
+<th><span>Map</span></th>
+<th><span>Structure</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>所有的 key 都需要是相同型別</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span>所有的 value 都需要是相同型別</span></td>
+<td><span>value 可以是不同型別</span></td>
+</tr>
+<tr>
+<td><span>Key 有被 indexed，因此可以進行疊代，列出所有的 key-value pairs</span></td>
+<td><span>Key 沒有被 indexed，因此沒辦法透過疊代的方式列出所有的 key-value pair</span></td>
+</tr>
+<tr>
+<td><span>Reference Type</span></td>
+<td><span>Value Type</span></td>
+</tr>
+<tr>
+<td><span>通常用在資料集合關聯性非常強的資料，例如 colors</span></td>
+<td><span>通常用在一個帶有多種屬性的東西，例如 person</span></td>
+</tr>
+<tr>
+<td><span>不用一開始就知道所有的 key 有哪些，因為可以後續新增和刪除</span></td>
+<td><span>需要一開</span></td>
+</tr>
+</tbody>
+</table><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
 
 go: creating new go.mod: module test
 go: to add module requirements and sums:
@@ -760,13 +852,18 @@ go: to add module requirements and sums:
 <li><a href="#Slice" title="Slice">Slice</a></li>
 </ul>
 </li>
-<li class=""><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
+<li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
 <li><a href="#Struct-in-Go" title="Struct in Go">Struct in Go</a></li>
 <li><a href="#Embedding-Structs" title="Embedding Structs">Embedding Structs</a></li>
-<li class=""><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
+<li><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
 <li><a href="#Struct-with-Pointers" title="Struct with Pointers">Struct with Pointers</a></li>
 <li><a href="#Pointer-Shortcut" title="Pointer Shortcut">Pointer Shortcut</a></li>
 <li><a href="#Data-type" title="Data type">Data type</a></li>
+</ul>
+</li>
+<li class=""><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
+<li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
 </li>
 <li><a href="#Others" title="Others">Others</a><ul class="nav">
@@ -800,13 +897,18 @@ go: to add module requirements and sums:
 <li><a href="#Slice" title="Slice">Slice</a></li>
 </ul>
 </li>
-<li class=""><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
+<li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
 <li><a href="#Struct-in-Go" title="Struct in Go">Struct in Go</a></li>
 <li><a href="#Embedding-Structs" title="Embedding Structs">Embedding Structs</a></li>
-<li class=""><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
+<li><a href="#Pass-by-Value" title="Pass by Value">Pass by Value</a></li>
 <li><a href="#Struct-with-Pointers" title="Struct with Pointers">Struct with Pointers</a></li>
 <li><a href="#Pointer-Shortcut" title="Pointer Shortcut">Pointer Shortcut</a></li>
 <li><a href="#Data-type" title="Data type">Data type</a></li>
+</ul>
+</li>
+<li class=""><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
+<li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
 </li>
 <li><a href="#Others" title="Others">Others</a><ul class="nav">
