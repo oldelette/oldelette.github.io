@@ -438,7 +438,14 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
     b <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token function">cap</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">]</span>         <span class="token comment">// len=5 cap=5, [0 0 0 0 0]</span>
     b <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>              <span class="token comment">// len=4 cap=4, [0 0 0 0]</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><h4 id="capacity-and-length" data-id="capacity-and-length"><a class="anchor hidden-xs" href="#capacity-and-length" title="capacity-and-length"><span class="octicon octicon-link"></span></a><span>capacity and length</span></h4><p><a href="https://pjchender.dev/golang/slice-and-array/#capacity-and-length" target="_blank" rel="noopener"><span>link</span></a></p><p><span>在 Slice 中會包含</span></p><ul>
+</div></div></code></pre><h5 id="create-make" data-id="create-make"><a class="anchor hidden-xs" href="#create-make" title="create-make"><span class="octicon octicon-link"></span></a><span>create make</span></h5><p><span>有三種不同的建立方式</span></p><ol>
+<li><span>make(map[string]string)</span><br>
+<span>缺少長度的參數, 只能用在 map 跟 channel, 如果用 make([]int) 會報錯</span></li>
+<li><span>make([]int, 2)</span><br>
+<span>指定了長度, 例如 make([]int,2) 返回的會是長度為 2 的 slice</span></li>
+<li><span>make([]int, 2, 4)</span><br>
+<span>第二個參數指定的是 slice 的長度, 第三個參數是指定預留的空間長度</span></li>
+</ol><h4 id="capacity-and-length" data-id="capacity-and-length"><a class="anchor hidden-xs" href="#capacity-and-length" title="capacity-and-length"><span class="octicon octicon-link"></span></a><span>capacity and length</span></h4><p><a href="https://pjchender.dev/golang/slice-and-array/#capacity-and-length" target="_blank" rel="noopener"><span>link</span></a></p><p><span>在 Slice 中會包含</span></p><ul>
 <li><span>Pointer to Array：這個 pointer 會指向實際上在底層的 array。</span></li>
 <li><span>Capacity：從 slice 的第一個元素開始算起，它底層 array 的元素數目</span></li>
 <li><span>Length：該 slice 中的元素數目</span></li>
@@ -845,9 +852,9 @@ go: to add module requirements and sums:
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
-<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 </ul>
@@ -861,7 +868,7 @@ go: to add module requirements and sums:
 <li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
-<li class=""><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map" title="Map">Map</a><ul class="nav">
 <li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
@@ -890,9 +897,9 @@ go: to add module requirements and sums:
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
-<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 </ul>
@@ -906,7 +913,7 @@ go: to add module requirements and sums:
 <li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
-<li class=""><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map" title="Map">Map</a><ul class="nav">
 <li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
