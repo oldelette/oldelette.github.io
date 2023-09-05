@@ -154,7 +154,152 @@
 <span>缺點是型態錯誤在執行時期才會呈現出來，效能表現較不理想，編輯輔助工具較為缺乏，依賴慣例或實體文件來得知API使用方式.</span><br>
 <span>ex: Javascript、Ruby、Python</span></li>
 </ul>
-</div><h3 id="Basic-Go-Types" data-id="Basic-Go-Types"><a class="anchor hidden-xs" href="#Basic-Go-Types" title="Basic-Go-Types"><span class="octicon octicon-link"></span></a><span>Basic Go Types</span></h3><p><img src="https://i.imgur.com/6fR6u1A.png" alt="" loading="lazy"></p><p><span>Know about 25 </span><a href="https://articles.wesionary.team/know-about-25-keywords-in-go-eca109855d4d" target="_blank" rel="noopener"><span>Keywords</span></a><span> in GO</span></p><p><span>Let’s divide all 25 keywords in 4 groups as follows so that we will able to know the purpose of the keyword.</span><br>
+</div><h3 id="Basic-Go-Types" data-id="Basic-Go-Types"><a class="anchor hidden-xs" href="#Basic-Go-Types" title="Basic-Go-Types"><span class="octicon octicon-link"></span></a><span>Basic Go Types</span></h3><p><img src="https://i.imgur.com/6fR6u1A.png" alt="" loading="lazy"></p><p><span>Golang 具有多種內建的資料型別，用於表示常見的值，如數字、布林值、字串等… </span><a href="https://calvertyang.github.io/2019/11/05/golang-basic-types-operators-type-conversion/" target="_blank" rel="noopener"><span>link</span></a></p><p><span>數字型別用於表示數字。可以分為整數和浮點數型別：</span></p><h4 id="1整數" data-id="1整數"><a class="anchor hidden-xs" href="#1整數" title="1整數"><span class="octicon octicon-link"></span></a><span>1.整數</span></h4><p><span>整數用於儲存整數。Go 具有多種大小不一的內建整數型別，用於儲存有號數和無號數：</span></p><ul>
+<li><span>有號數</span></li>
+</ul><table>
+<thead>
+<tr>
+<th><span>型別</span></th>
+<th><span>大小</span></th>
+<th><span>範圍</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>int8</span></td>
+<td><span>8 bits</span></td>
+<td><span>-128 ~ 127</span></td>
+</tr>
+<tr>
+<td><span>int16</span></td>
+<td><span>16 bits</span></td>
+<td><span>-2^15 ~ 2^15 -1</span></td>
+</tr>
+<tr>
+<td><span>int32</span></td>
+<td><span>32 bits</span></td>
+<td><span>-2^31 ~ 2^31 -1</span></td>
+</tr>
+<tr>
+<td><span>int64</span></td>
+<td><span>64 bits</span></td>
+<td><span>-26^3 ~ 2^63 -1</span></td>
+</tr>
+<tr>
+<td><span>int</span></td>
+<td><span>取決於平台</span></td>
+<td><span>取決於平台</span></td>
+</tr>
+</tbody>
+</table><div class="alert alert-warning">
+<p><span>泛型 int 型別的大小取決於平台。在 32 位元系統上，它的大小為 32 位元，在 64 位元系統上，它的大小為 64 位元.</span><br>
+<span>泛型 uint 型別的大小取決於平台。在 32 位元系統上，它的大小為 32 位元，在 64 位元系統上，它的大小為 64 位元.</span></p>
+</div><ul>
+<li><span>無號數</span></li>
+</ul><table>
+<thead>
+<tr>
+<th><span>型別</span></th>
+<th><span>大小</span></th>
+<th><span>範圍</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>uint8</span></td>
+<td><span>8 bits</span></td>
+<td><span>0 ~ 255</span></td>
+</tr>
+<tr>
+<td><span>uint16</span></td>
+<td><span>16 bits</span></td>
+<td><span>0 ~ 2^16 -1</span></td>
+</tr>
+<tr>
+<td><span>uint32</span></td>
+<td><span>32 bits</span></td>
+<td><span>0 ~ 2^32 -1</span></td>
+</tr>
+<tr>
+<td><span>uint64</span></td>
+<td><span>64 bits</span></td>
+<td><span>0 ~ 2^64 -1</span></td>
+</tr>
+<tr>
+<td><span>uint</span></td>
+<td><span>取決於平台</span></td>
+<td><span>取決於平台</span></td>
+</tr>
+</tbody>
+</table><h4 id="整數型別別名" data-id="整數型別別名"><a class="anchor hidden-xs" href="#整數型別別名" title="整數型別別名"><span class="octicon octicon-link"></span></a><span>整數型別別名</span></h4><p><span>Golang 還有另外兩個稱為 byte 和 rune 的整數型別，分別是 uint8 和 int32 資料型別的別名.</span></p><table>
+<thead>
+<tr>
+<th><span>別名</span></th>
+<th><span>型別</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>byte</span></td>
+<td><span>uint8</span></td>
+</tr>
+<tr>
+<td><span>rune</span></td>
+<td><span>int32</span></td>
+</tr>
+</tbody>
+</table><p><span>Golang 沒有 char 資料型別。它使用 byte 和 rune 來表示字元值.</span><br>
+<span>byte 資料型別用於表示 ASCII 字元，以及 rune 資料型別用於表示以 UTF-8 格式編碼的一組更廣泛的 Unicode 字元.</span></p><div class="alert alert-warning">
+<p><span>ASCII: 總共收錄128個字元，因此使用 1byte (8bits)就足夠編碼 (沒有中文字)</span><br>
+<span>Unicode: （中文稱：萬國碼）給每個字元提供了一個唯一的數位</span><br>
+<span>UTF-8: 最主流的編碼, 使用 1~4 byte, 優化 Unicode 的編碼 (是針對 unicode 的可變長度的編碼)</span></p>
+</div><p><a href="https://www.youtube.com/watch?v=kOp0W08Ad0s&amp;ab_channel=%E6%9E%97%E7%B2%92%E7%B2%92%E5%91%80" target="_blank" rel="noopener"><span>vedio</span></a><br>
+<img src="https://imgur.com/b4uxntq.png" alt="Imgur" loading="lazy"></p><p><span>字元值的預設型別是 rune。也就是說，當宣告帶有字元值的變數而未明確指定型別時，則 Go 會將型別推斷為 rune</span></p><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> firstLetter <span class="token operator">=</span> <span class="token char">'A'</span>
+	<span class="token keyword">var</span> lastLetter <span class="token builtin">byte</span> <span class="token operator">=</span> <span class="token char">'Z'</span>
+        <span class="token comment">// var lastLetter uint8 = 'Z'</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>firstLetter<span class="token punctuation">,</span> lastLetter<span class="token punctuation">)</span> <span class="token comment">// 65,90</span>
+<span class="token punctuation">}</span>
+</code></pre><h4 id="浮點數型別" data-id="浮點數型別"><a class="anchor hidden-xs" href="#浮點數型別" title="浮點數型別"><span class="octicon octicon-link"></span></a><span>浮點數型別</span></h4><p><span>浮點數型別用於儲存帶小數部分的數字（如：1.24、4.50000）.</span><br>
+<span>Go 有兩種浮點數型別：float32 和 float64。</span></p><ol>
+<li><span>float32 在記憶體中佔用 32 位元，並以單精度浮點數格式儲存數值.</span></li>
+<li><span>float64 在記憶體中佔用 64 位元，並以雙精度浮點數格式儲存數值.</span></li>
+</ol><div class="alert alert-danger">
+<p><span>浮點數的預設型別是 float64.</span><br>
+<span>因此，當你使用初始值初始化浮點數變數而未明確指定型別時，編譯器會將型別推斷為 float64</span></p>
+</div><h4 id="String" data-id="String"><a class="anchor hidden-xs" href="#String" title="String"><span class="octicon octicon-link"></span></a><span>String</span></h4><p><span>在 Go 中，字串是byte (字元組)序列。</span></p><div class="alert alert-success">
+<p><span>type string string:</span></p>
+<pre><code>string is the set of all strings of 8-bit bytes, conventionally but not
+necessarily representing UTF-8-encoded text. A string may be empty, but not
+nil. Values of string type are immutable.
+</code></pre>
+</div><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	s <span class="token operator">:=</span> <span class="token string">"abc"</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment">// abc</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 3</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 97</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> 
+	<span class="token punctuation">}</span>
+        <span class="token comment">// 97 98 99</span>
+<span class="token punctuation">}</span>
+</code></pre><p><span>Golang 中的字串可以使用如 “Hello World” 中的雙引號宣告，也可以使用如 </span><code>Hello World</code><span> 中的反引號宣告。</span></p><div class="alert alert-info">
+<p><span>用雙引號括起來的字串不能包含換行，但可以包含跳脫字元，如 \n、\t 等。</span><br>
+<span>在雙引號字串中，會用換行字元替換 \n 字元，並用 tab 空格替換 \t 字元，依此類推。</span></p>
+<p><span>單引號內包含的字串是原始字串。它們可以跨越多行.</span><br>
+<span>此外，跳脫字元在原始字串中沒有任何特殊含義.</span></p>
+</div><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"Steve Jobs\tTest"</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token comment">// Steve Jobs      Test</span>
+    
+	<span class="token comment">// Raw String (Can span multiple lines. Escape characters are not interpreted)</span>
+	<span class="token keyword">var</span> bio <span class="token operator">=</span> <span class="token string">`Steve Jobs was an American entrepreneur and \tinventor.
+			   He was the CEO and co-founder of Apple Inc.`</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>bio<span class="token punctuation">)</span>
+    <span class="token comment">// Steve Jobs was an American entrepreneur and \tinventor.</span>
+    <span class="token comment">//                       He was the CEO and co-founder of Apple Inc.</span>
+<span class="token punctuation">}</span>
+</code></pre><h4 id="Keywords" data-id="Keywords"><a class="anchor hidden-xs" href="#Keywords" title="Keywords"><span class="octicon octicon-link"></span></a><span>Keywords</span></h4><p><span>Know about 25 </span><a href="https://articles.wesionary.team/know-about-25-keywords-in-go-eca109855d4d" target="_blank" rel="noopener"><span>Keywords</span></a><span> in GO</span></p><p><span>Go 有25個保留關鍵字, 各有作用</span></p><p><span>Let’s divide all 25 keywords in 4 groups as follows so that we will able to know the purpose of the keyword.</span><br>
 <span>分成4組, 我們可以更了解這些關鍵字的用途</span></p><p><img src="https://i.imgur.com/QbdmcUM.png" alt="Imgur" loading="lazy"></p><h4 id="Declaration" data-id="Declaration"><a class="anchor hidden-xs" href="#Declaration" title="Declaration"><span class="octicon octicon-link"></span></a><span>Declaration</span></h4><ol>
 <li><span>const</span><br>
 <span>The ‘const’ keyword is used to introduce a name for a scalar value like 2 or 3.14, etc.</span></li>
@@ -370,7 +515,41 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
 <span class="token keyword">func</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token string">"Five of Diamonds"</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><hr><h3 id="Array" data-id="Array"><a class="anchor hidden-xs" href="#Array" title="Array"><span class="octicon octicon-link"></span></a><span>Array</span></h3><p><span>在 Go 裡面有兩種資料結構可以處理包含許多元素的清單資料，分別是 Array 和 Slice：</span></p><ol>
+</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><h3 id="Pointer" data-id="Pointer"><a class="anchor hidden-xs" href="#Pointer" title="Pointer"><span class="octicon octicon-link"></span></a><span>Pointer</span></h3><p><span>指標簡單來說，指的就是存放該變數的記憶體位址.</span></p><p><span>記憶體中一個格子的大小是 1 個 byte，而一個 int （整數型）的大小就占了 4 個 byte，所以這邊寫的地址，是 2 這個整數所占的這一塊記憶體空間的起始地址。</span></p><p><span>從起始地址開始起算、共佔了 4 個格子，也就是 4 byte</span><br>
+<img src="https://imgur.com/Oarvlxq.png" alt="Imgur" loading="lazy"></p><h4 id="指標宣告" data-id="指標宣告"><a class="anchor hidden-xs" href="#指標宣告" title="指標宣告"><span class="octicon octicon-link"></span></a><span>指標宣告</span></h4><p><span>說明： 型別 T 是指標指向的變數的型別， T 可替換成其他資料型別</span></p><div class="alert alert-info">
+<p><span>var p *T</span></p>
+</div><p><span>不管指向的型別為何，任何未初始化的指標都會是 nil → 指標的零值為 nil</span></p><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">int</span>
+	<span class="token keyword">var</span> s <span class="token operator">*</span><span class="token builtin">string</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"p = "</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token comment">//  p =  &lt;nil&gt;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"s = "</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span> <span class="token comment">// s =  &lt;nil&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre><h4 id="-and-amp" data-id="-and-amp"><a class="anchor hidden-xs" href="#-and-amp" title="-and-amp"><span class="octicon octicon-link"></span></a><span>* and &amp;</span></h4><p><span>如果要把位址變成值, 我們會使用 *</span><br>
+<span>如果要把值變成位址, 我們會使用 &amp;</span></p><div class="alert alert-info">
+<p><span>當我們使用 &amp;variable 時，會回傳該變數 value 的 address，表示給我這個變數值的「記憶體位置」。</span><br>
+<span>當我們使用 *pointer 時，會回傳該 address 的 value，表示給我這個記憶體位置指稱到的「值」。</span></p>
+</div><p><img src="https://imgur.com/YT6gNS8.png" alt="Imgur" loading="lazy"><br>
+<span>今天有個變數 x 放在記憶體位址 0x201 </span><a href="https://www.geeksforgeeks.org/pointers-in-golang/" target="_blank" rel="noopener"><span>link</span></a></p><ol>
+<li><span>想要知道 x 的記憶體位址, 使用 var y *int = &amp;x</span></li>
+<li><span>那我想要裡用 y pointer 去拿 x value, 就要使用 *y</span></li>
+</ol><p><span>3,4 行可以縮寫成第5行</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	num <span class="token operator">:=</span> <span class="token number">100</span>
+	<span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">int</span>
+	p <span class="token operator">=</span> <span class="token operator">&amp;</span>num
+	<span class="token comment">// p := &amp;num</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"num address"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>      <span class="token comment">// num address 0xc00000a118</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"num value"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span>       <span class="token comment">// num value 100</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"pointer address"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>p<span class="token punctuation">)</span> <span class="token comment">// pointer address 0xc000054020</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><hr><h3 id="Array" data-id="Array"><a class="anchor hidden-xs" href="#Array" title="Array"><span class="octicon octicon-link"></span></a><span>Array</span></h3><p><span>在 Go 裡面有兩種資料結構可以處理包含許多元素的清單資料，分別是 Array 和 Slice：</span></p><ol>
 <li><span>Array：清單的長度是固定的（fixed length），屬於原生型別（primitive type），較少在程式中使用。</span></li>
 <li><span>Slice：可以增加或減少清單的長度，使用 [] 定義，例如，[]byte 是 byte slice，指元素為 byte 的 slice；[]string 是 string slice，指元素為 string 的 slice。</span></li>
 </ol><p><span>The slice type is an abstraction built on top of Go’s array type, and so to understand slices we must first understand arrays.</span></p><p><span>array 定義指定長度和元素的類型, array 的大小是固定的</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
@@ -635,7 +814,65 @@ user3 <span class="token operator">:=</span> <span class="token function">new</s
 	alex <span class="token operator">:=</span> person<span class="token punctuation">{</span>firstName<span class="token punctuation">:</span> <span class="token string">"Alex"</span><span class="token punctuation">,</span> lastName<span class="token punctuation">:</span> <span class="token string">"Anderson"</span><span class="token punctuation">}</span>
 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>alex<span class="token punctuation">)</span> <span class="token comment">// {Alex Anderson}</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><h4 id="Golang-zero-value" data-id="Golang-zero-value"><a class="anchor hidden-xs" href="#Golang-zero-value" title="Golang-zero-value"><span class="octicon octicon-link"></span></a><span>Golang zero value</span></h4><p><a href="https://blog.kalan.dev/posts/golang-default-value" target="_blank" rel="noopener"><span>Golang</span></a><span> 當中的預設值以及 zero value</span></p><p><span>在 golang 當中，如果在初始化時沒有賦值，就會使用 zero value.</span></p><p><img src="https://i.imgur.com/KvFKoXw.png" alt="Imgur" loading="lazy"></p><p><span>這時因為 firstName, lastName 都沒有輸入，所以預設都會是 “”</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><h4 id="Golang-zero-value" data-id="Golang-zero-value"><a class="anchor hidden-xs" href="#Golang-zero-value" title="Golang-zero-value"><span class="octicon octicon-link"></span></a><span>Golang zero value</span></h4><p><a href="https://blog.kalan.dev/posts/golang-default-value" target="_blank" rel="noopener"><span>Golang</span></a><span> 當中的預設值以及 zero value</span></p><p><span>在 golang 當中，如果在初始化時沒有賦值，就會使用 zero value.</span></p><p><span>Below are Zero values of different data types in Golang.</span><br>
+<a href="https://www.scaler.com/topics/golang/golang-zero-values/" target="_blank" rel="noopener"><span>link</span></a></p><table>
+<thead>
+<tr>
+<th><span>Type</span></th>
+<th><span>Zero Value</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>Integer</span></td>
+<td><span>0</span></td>
+</tr>
+<tr>
+<td><span>Float</span></td>
+<td><span>0.0</span></td>
+</tr>
+<tr>
+<td><span>Complex</span></td>
+<td><span>0 Real and 0 Imaginary</span></td>
+</tr>
+<tr>
+<td><span>Byte</span></td>
+<td><span>0</span></td>
+</tr>
+<tr>
+<td><span>Rune</span></td>
+<td><span>0</span></td>
+</tr>
+<tr>
+<td><span>String</span></td>
+<td><span>“”</span></td>
+</tr>
+<tr>
+<td><span>Bool</span></td>
+<td><span>false</span></td>
+</tr>
+<tr>
+<td><span>Map</span></td>
+<td><span>nil</span></td>
+</tr>
+<tr>
+<td><span>Channel</span></td>
+<td><span>nil</span></td>
+</tr>
+<tr>
+<td><span>Interface</span></td>
+<td><span>nil</span></td>
+</tr>
+<tr>
+<td><span>Slices</span></td>
+<td><span>nil</span></td>
+</tr>
+<tr>
+<td><span>Pointer</span></td>
+<td><span>nil</span></td>
+</tr>
+</tbody>
+</table><p><img src="https://i.imgur.com/KvFKoXw.png" alt="Imgur" loading="lazy"></p><p><span>這時因為 firstName, lastName 都沒有輸入，所以預設都會是 “”</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -1000,7 +1237,7 @@ go: to add module requirements and sums:
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1013,10 +1250,11 @@ go: to add module requirements and sums:
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+<li class=""><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
@@ -1051,22 +1289,23 @@ go: to add module requirements and sums:
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
 <li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
-<li class=""><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
-<li class=""><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
-<li class=""><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
-<li class=""><a href="#Init-Function" title="Init Function">Init Function</a></li>
-<li class=""><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
-<li class=""><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
+<li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
+<li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
+<li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
+<li><a href="#Init-Function" title="Init Function">Init Function</a></li>
+<li><a href="#Boring-Hello-World" title="Boring Hello World">Boring Hello World</a></li>
+<li><a href="#Go-CLI" title="Go CLI">Go CLI</a></li>
 <li><a href="#Package" title="Package">Package</a></li>
 <li><a href="#Import-statement" title="Import statement">Import statement</a></li>
 <li><a href="#func" title="func">func</a></li>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+<li class=""><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
