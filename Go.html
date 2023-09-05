@@ -248,8 +248,10 @@
 <td><span>int32</span></td>
 </tr>
 </tbody>
-</table><p><span>Golang 沒有 char 資料型別。它使用 byte 和 rune 來表示字元值.</span><br>
-<span>byte 資料型別用於表示 ASCII 字元，以及 rune 資料型別用於表示以 UTF-8 格式編碼的一組更廣泛的 Unicode 字元.</span></p><div class="alert alert-warning">
+</table><p><span>Golang 沒有 char 資料型別 --&gt; 使用 byte 和 rune 來表示字元值.</span></p><ul>
+<li><span>rune 等同於 int32，即4個 byte,常用來處理 unicode 或 utf-8 字元</span></li>
+<li><span>byte 等同於 uint8，即1個 byte 長度，常用來處理 ascii 字元</span></li>
+</ul><p><span>golang 默認的編碼是 utf-8</span></p><div class="alert alert-warning">
 <p><span>ASCII: 總共收錄128個字元，因此使用 1byte (8bits)就足夠編碼 (沒有中文字)</span><br>
 <span>Unicode: （中文稱：萬國碼）給每個字元提供了一個唯一的數位</span><br>
 <span>UTF-8: 最主流的編碼, 使用 1~4 byte, 優化 Unicode 的編碼 (是針對 unicode 的可變長度的編碼)</span></p>
@@ -260,7 +262,78 @@
         <span class="token comment">// var lastLetter uint8 = 'Z'</span>
 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>firstLetter<span class="token punctuation">,</span> lastLetter<span class="token punctuation">)</span> <span class="token comment">// 65,90</span>
 <span class="token punctuation">}</span>
-</code></pre><h4 id="浮點數型別" data-id="浮點數型別"><a class="anchor hidden-xs" href="#浮點數型別" title="浮點數型別"><span class="octicon octicon-link"></span></a><span>浮點數型別</span></h4><p><span>浮點數型別用於儲存帶小數部分的數字（如：1.24、4.50000）.</span><br>
+</code></pre><div class="alert alert-info">
+<p><span>len() 地雷</span><br>
+<span>A string contains characters as unicode points, not bytes.</span><br>
+<span>len(string) returns the number of bytes in this string, but not the number of characters</span></p>
+</div><ul>
+<li><span>example</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	str <span class="token operator">:=</span> <span class="token string">"你好 world"</span>
+	<span class="token comment">// 以 byte 來計算長度</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"len(str):%d\n"</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment">// 返回len(str):12</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"len(byte(str)):%d\n"</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment">// 返回len(str):12</span>
+
+	<span class="token comment">// 以字元數來計算長度</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"len(rune(str)):%d\n"</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">rune</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment">// 返回len(rune(str)):8</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">len</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// ä½&amp;nbsp;å¥½ world</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">//使用range，其實是使用rune 類型來編碼的</span>
+        <span class="token comment">//rune 類型用來表示 utf8 字元，一個 rune 字元由一個或多個byte组成。</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> str <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token comment">// 你好 world</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment">// 修改全是 ASCII 編碼的字串</span>
+	str1 <span class="token operator">:=</span> <span class="token string">"abc"</span>
+	s1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span>str1<span class="token punctuation">)</span>
+	s1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'b'</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">string</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// bbc</span>
+
+	<span class="token comment">// 修改非 ASCII 编码的字串</span>
+	str2 <span class="token operator">:=</span> <span class="token string">"你好，世界"</span>
+	s2 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">rune</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span>
+	s2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'不'</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">string</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 不好，世界</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="浮點數型別" data-id="浮點數型別"><a class="anchor hidden-xs" href="#浮點數型別" title="浮點數型別"><span class="octicon octicon-link"></span></a><span>浮點數型別</span></h4><p><span>浮點數型別用於儲存帶小數部分的數字（如：1.24、4.50000）.</span><br>
 <span>Go 有兩種浮點數型別：float32 和 float64。</span></p><ol>
 <li><span>float32 在記憶體中佔用 32 位元，並以單精度浮點數格式儲存數值.</span></li>
 <li><span>float64 在記憶體中佔用 64 位元，並以雙精度浮點數格式儲存數值.</span></li>
@@ -1251,10 +1324,10 @@ go: to add module requirements and sums:
 </ul>
 </li>
 <li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
-<li class=""><a href="#Pointer" title="Pointer">Pointer</a></li>
+<li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
@@ -1302,10 +1375,10 @@ go: to add module requirements and sums:
 </ul>
 </li>
 <li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
-<li class=""><a href="#Pointer" title="Pointer">Pointer</a></li>
+<li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
