@@ -356,10 +356,11 @@ nil. Values of string type are immutable.
 	<span class="token punctuation">}</span>
         <span class="token comment">// 97 98 99</span>
 <span class="token punctuation">}</span>
-</code></pre><p><span>Golang 中的字串可以使用如 “Hello World” 中的雙引號宣告，也可以使用如 </span><code>Hello World</code><span> 中的反引號宣告。</span></p><div class="alert alert-info">
+</code></pre><p><span>Golang 中的字串可以使用如 “Hello World” 中的雙引號宣告，也可以使用如 </span><code>Hello World</code><span> 中的反引號宣告.</span><br>
+<span>(注意跟單引號不同)</span></p><div class="alert alert-info">
 <p><span>用雙引號括起來的字串不能包含換行，但可以包含跳脫字元，如 \n、\t 等。</span><br>
 <span>在雙引號字串中，會用換行字元替換 \n 字元，並用 tab 空格替換 \t 字元，依此類推。</span></p>
-<p><span>單引號內包含的字串是原始字串。它們可以跨越多行.</span><br>
+<p><span>反引號內包含的字串是原始字串.它們可以跨越多行.</span><br>
 <span>此外，跳脫字元在原始字串中沒有任何特殊含義.</span></p>
 </div><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 	<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"Steve Jobs\tTest"</span>
@@ -562,6 +563,159 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   deckSize <span class="token operator">=</span> <span class="token number">50</span>
   fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>deckSize<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Variable-Scope" data-id="Variable-Scope"><a class="anchor hidden-xs" href="#Variable-Scope" title="Variable-Scope"><span class="octicon octicon-link"></span></a><span>Variable Scope</span></h3><p><a href="https://www.tutorialspoint.com/go/go_scope_rules.htm" target="_blank" rel="noopener"><span>Ref1</span></a><br>
+<a href="https://www.scaler.com/topics/golang/scope-of-variables-in-go/#topic-challenge-container-425415" target="_blank" rel="noopener"><span>Ref2</span></a></p><p><span>A Golang variable scope is a part of the code where a specified variable can be accessed and modified. In abstract terms, the scope of a variable is its lifetime in the program.</span></p><p><span>Golang variable scope 是可以訪問和修改指定變數的代碼的一部分.</span><br>
+<span>抽像地說，變數的 variable scope 是它在程序中的生命週期。</span></p><p><span>Golang 變數 scope 根據宣告位置可以分為兩類</span></p><p><span>Golang variable scope can be divided into two categories based on where they were declared:</span></p><ol>
+<li><span>Local variables</span></li>
+<li><span>Global variables</span></li>
+</ol><h4 id="Local-Variables" data-id="Local-Variables"><a class="anchor hidden-xs" href="#Local-Variables" title="Local-Variables"><span class="octicon octicon-link"></span></a><span>Local Variables</span></h4><p><span>Variables that are declared inside a function or a block are called local variables.</span><br>
+<span>They can be used only by statements that are inside that function or block of code.</span><br>
+<span>Local variables are not known to functions outside their own.</span></p><p><span>在 function 或 block 內宣告的變數稱為 local variable.</span><br>
+<span>只能在該 function 跟 block 內所使用</span><br>
+<span>而 loacl variable 對於自身 function 來說是未知的</span></p><p><span>The following example uses local variables. Here all the variables a, b, and c are local to the main() function.</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* local variable declaration */</span>
+   <span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token builtin">int</span> 
+
+   <span class="token comment">/* actual initialization */</span>
+   a <span class="token operator">=</span> <span class="token number">10</span>
+   b <span class="token operator">=</span> <span class="token number">20</span>
+   c <span class="token operator">=</span> a <span class="token operator">+</span> b
+
+   fmt<span class="token punctuation">.</span>Printf <span class="token punctuation">(</span><span class="token string">"value of a = %d, b = %d and c = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Global-Variables" data-id="Global-Variables"><a class="anchor hidden-xs" href="#Global-Variables" title="Global-Variables"><span class="octicon octicon-link"></span></a><span>Global Variables</span></h4><p><span>Global variables are defined outside of a function, usually on top of the program.</span><br>
+<span>Global variables hold their value throughout the lifetime of the program and they can be accessed inside any of the functions defined for the program.</span><br>
+<span>A global variable can be accessed by any function.</span><br>
+<span>That is, a global variable is available for use throughout the program after its declaration.</span></p><p><span>global variable 是在 function 外面定義, 通常我們會放在程式的最上面</span><br>
+<span>global variable 在整個程式的 lifetime 保有值, -而且可以被任何 function 讀到</span></p><p><span>The following example uses both global and local variables −</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token comment">/* global variable declaration */</span>
+<span class="token keyword">var</span> g <span class="token builtin">int</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* local variable declaration */</span>
+   <span class="token keyword">var</span> a<span class="token punctuation">,</span> b <span class="token builtin">int</span>
+
+   <span class="token comment">/* actual initialization */</span>
+   a <span class="token operator">=</span> <span class="token number">10</span>
+   b <span class="token operator">=</span> <span class="token number">20</span>
+   g <span class="token operator">=</span> a <span class="token operator">+</span> b
+
+   fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> g<span class="token punctuation">)</span> <span class="token comment">// 10,20,30</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><div class="alert alert-success">
+<p><span>A program can have the same name for local and global variables</span><br>
+<span>but the value of the local variable inside a function takes preference.</span></p>
+<p><span>loacl/global variable 可以有相同名稱, 但函數內使用以 函數內的值優先</span></p>
+</div><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token comment">/* global variable declaration */</span>
+<span class="token keyword">var</span> g <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">20</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* local variable declaration */</span>
+   <span class="token keyword">var</span> g <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
+ 
+   fmt<span class="token punctuation">.</span>Printf <span class="token punctuation">(</span><span class="token string">"value of g = %d\n"</span><span class="token punctuation">,</span>  g<span class="token punctuation">)</span> <span class="token comment">// g=10</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Formal-Parameters" data-id="Formal-Parameters"><a class="anchor hidden-xs" href="#Formal-Parameters" title="Formal-Parameters"><span class="octicon octicon-link"></span></a><span>Formal Parameters</span></h4><p><span>Formal parameters are treated as local variables with-in that function and they take preference over the global variables.</span></p><p><span>形式參數（formal parameters）是函式定義中的參數列表</span></p><p><span>For example</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+ 
+<span class="token comment">/* global variable declaration */</span>
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* local variable declaration in main function */</span>
+   <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
+   <span class="token keyword">var</span> b <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">20</span>
+   <span class="token keyword">var</span> c <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span>
+
+   fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"value of a in main() = %d\n"</span><span class="token punctuation">,</span>  a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   c <span class="token operator">=</span> <span class="token function">sum</span><span class="token punctuation">(</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"value of c in main() = %d\n"</span><span class="token punctuation">,</span>  c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* function to add two integers */</span>
+<span class="token keyword">func</span> <span class="token function">sum</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+   fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"value of a in sum() = %d\n"</span><span class="token punctuation">,</span>  a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"value of b in sum() = %d\n"</span><span class="token punctuation">,</span>  b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </div></div></code></pre><h3 id="Functions-and-Return-Types" data-id="Functions-and-Return-Types"><a class="anchor hidden-xs" href="#Functions-and-Return-Types" title="Functions-and-Return-Types"><span class="octicon octicon-link"></span></a><span>Functions and Return Types</span></h3><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -1255,7 +1409,8 @@ jim<span class="token punctuation">.</span><span class="token function">updateNa
 <td><span>需要一開</span></td>
 </tr>
 </tbody>
-</table><hr><h2 id="Others" data-id="Others"><a class="anchor hidden-xs" href="#Others" title="Others"><span class="octicon octicon-link"></span></a><span>Others</span></h2><h3 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h3><p><span>Go modules 是 Go 從 1.11 版開始提供的套件管理工具，就像 Nodejs 的 npm 或是 python 的 pip，用起來也很簡單</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
+</table><hr><h2 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h2><p><a href="https://myapollo.com.tw/blog/golang-go-module-tutorial/" target="_blank" rel="noopener"><span>Ref</span></a><br>
+<span>Go 1.11 之後提供 go modules 讓我們可以不需要把專案程式碼放在 $GOPATH/src 中開發，此外還能管理套件相依性，相當便利.</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
 
 go: creating new go.mod: module test
 go: to add module requirements and sums:
@@ -1324,8 +1479,9 @@ go: to add module requirements and sums:
 </ul>
 </li>
 <li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
+<li class=""><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
@@ -1347,8 +1503,7 @@ go: to add module requirements and sums:
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
 </li>
-<li><a href="#Others" title="Others">Others</a><ul class="nav">
-<li><a href="#Go-modules" title="Go modules">Go modules</a></li>
+<li><a href="#Go-modules" title="Go modules">Go modules</a><ul class="nav">
 <li><a href="#Start" title="Start">Start</a></li>
 </ul>
 </li>
@@ -1375,8 +1530,9 @@ go: to add module requirements and sums:
 </ul>
 </li>
 <li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
+<li class=""><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
@@ -1398,8 +1554,7 @@ go: to add module requirements and sums:
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
 </li>
-<li><a href="#Others" title="Others">Others</a><ul class="nav">
-<li><a href="#Go-modules" title="Go modules">Go modules</a></li>
+<li><a href="#Go-modules" title="Go modules">Go modules</a><ul class="nav">
 <li><a href="#Start" title="Start">Start</a></li>
 </ul>
 </li>
