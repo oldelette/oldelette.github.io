@@ -36,7 +36,8 @@
 <body>
     <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Go" data-id="Go"><a class="anchor hidden-xs" href="#Go" title="Go"><span class="octicon octicon-link"></span></a><span>Go</span></h1><p><a href="https://www.udemy.com/course/go-the-complete-developers-guide/" target="_blank" rel="noopener"><span>Udemy - Class</span></a><br>
 <span>account: </span><a href="mailto:oldelette@gmail.com" target="_blank" rel="noopener"><span>oldelette@gmail.com</span></a><br>
-<a href="https://github.com/StephenGrider/GoCasts/tree/master" target="_blank" rel="noopener"><span>Udemy - Diagram GitHub</span></a></p><p><a href="https://play.golang.org" target="_blank" rel="noopener"><span>Ref: Go Playground</span></a></p><hr><p><span>Step</span><br>
+<a href="https://github.com/StephenGrider/GoCasts/tree/master" target="_blank" rel="noopener"><span>Udemy - Diagram GitHub</span></a></p><p><a href="https://play.golang.org" target="_blank" rel="noopener"><span>Ref: Go Playground</span></a></p><p><a href="https://github.com/dariubs/GoBooks" target="_blank" rel="noopener"><span>Github - Awesome Go Books</span></a><br>
+<a href="https://go101.org/article/101.html" target="_blank" rel="noopener"><span>Go 101</span></a></p><hr><p><span>Step</span><br>
 <span>Go to </span><a href="https://github.com/StephenGrider/GoCasts/tree/master/diagrams" target="_blank" rel="noopener"><span>https://github.com/StephenGrider/GoCasts/tree/master/diagrams</span></a><br>
 <span>Open the folder containing the set of diagrams you want to edit</span><br>
 <span>Click on the ‘.xml’ file</span><br>
@@ -717,7 +718,7 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
 
    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><h3 id="Functions-and-Return-Types" data-id="Functions-and-Return-Types"><a class="anchor hidden-xs" href="#Functions-and-Return-Types" title="Functions-and-Return-Types"><span class="octicon octicon-link"></span></a><span>Functions and Return Types</span></h3><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><h4 id="Packages-Scope" data-id="Packages-Scope"><a class="anchor hidden-xs" href="#Packages-Scope" title="Packages-Scope"><span class="octicon octicon-link"></span></a><span>Packages Scope</span></h4><p><span>Package Scope：同一個 </span><a href="https://pjchender.dev/golang/modules-and-packages/" target="_blank" rel="noopener"><span>Package</span></a><span> 來的變數和方法是共享的</span></p><p><span>在 Go 語言中，並沒有區分 public、private 或 protected，而是根據變數名稱的第一個字母大小寫來判斷能否被外部引用.</span></p><p><span>在同一個 package 中變數、函式、常數和 type，都隸屬於同一個 package scope，因此雖然可能在不同支檔案內，但只要隸屬於同一個 package，都可以使用（visible）</span></p><p><span>如果需要讓 package 內的變數或函式等能夠在 package 外部被使用，則該變數的第一個字母要大寫才能讓外部引用（Exported names），否則的話會無法使用</span></p><h5 id="Package-Name-and-Folder-Structure" data-id="Package-Name-and-Folder-Structure"><a class="anchor hidden-xs" href="#Package-Name-and-Folder-Structure" title="Package-Name-and-Folder-Structure"><span class="octicon octicon-link"></span></a><span>Package Name and Folder Structure</span></h5><p><span>Go 的程式碼都是以 package 的方式在組織，一個 package 就是在「同一資料夾」中的許多 GO 檔案.</span></p><p><span>同一個 package 的所有 Go 檔案會放在同一個資料夾內；而這個資料夾內的所有檔案也都會屬於同一個 package，有相同的 package 名稱.</span></p><h3 id="Functions-and-Return-Types" data-id="Functions-and-Return-Types"><a class="anchor hidden-xs" href="#Functions-and-Return-Types" title="Functions-and-Return-Types"><span class="octicon octicon-link"></span></a><span>Functions and Return Types</span></h3><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -1410,12 +1411,50 @@ jim<span class="token punctuation">.</span><span class="token function">updateNa
 </tr>
 </tbody>
 </table><hr><h2 id="Go-modules" data-id="Go-modules"><a class="anchor hidden-xs" href="#Go-modules" title="Go-modules"><span class="octicon octicon-link"></span></a><span>Go modules</span></h2><p><a href="https://myapollo.com.tw/blog/golang-go-module-tutorial/" target="_blank" rel="noopener"><span>Ref</span></a><br>
-<span>Go 1.11 之後提供 go modules 讓我們可以不需要把專案程式碼放在 $GOPATH/src 中開發，此外還能管理套件相依性，相當便利.</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
+<span>Go 1.11 之後提供 go modules 讓我們可以不需要把專案程式碼放在 $GOPATH/src 中開發，此外還能管理套件相依性，相當便利.</span></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><pre><code># 初始化 Go Module
+$ export GO111MODULE=on  # 在 GOPATH 外要使用 module 需要啟動
+
+# go mod init [module_path]
+$ go mod init example.com/user/hello        # 宣告 module path
+$ go mod tidy        # 移除沒用到的 library
+$ go mod download    # 下載套件（go build 和 go test 也會自動下載）
+
+$ go get [library]   # 新增或更新 package 到 Module 內
+$ go get -u ./...    # 等同於，go get -u=patch ./...
+$ go get foo@master. # 下載特定版本的 go package
+
+$ go list -m all      # 印出 module 正在使用的所有套件
+$ go list -m -versions [package]   # 列出所有此套件可下載的版本
+$ go list -u -m all   # 檢視有無任何 minor 或 patch 的更新
+</code></pre><ul>
+<li><span>一個 repository 會包含一個或以上的 Go modules</span></li>
+<li><span>每個 module 會包含一個或以上的 Go packages</span></li>
+<li><span>每個 package 會包含一個或以上的檔案在單一資料夾中</span></li>
+</ul><h4 id="go-mod-init" data-id="go-mod-init"><a class="anchor hidden-xs" href="#go-mod-init" title="go-mod-init"><span class="octicon octicon-link"></span></a><span>go mod init</span></h4><p><span>這邊要使用 go mod init &lt;project-name&gt; 進行初始化（類似 npm init），完成後會多一個檔案 go.mod</span></p><pre><code>go mod init test
 
 go: creating new go.mod: module test
 go: to add module requirements and sums:
         go mod tidy
-</code></pre><h4 id="go-mod-tidy" data-id="go-mod-tidy"><a class="anchor hidden-xs" href="#go-mod-tidy" title="go-mod-tidy"><span class="octicon octicon-link"></span></a><span>go mod tidy</span></h4><div class="alert alert-success">
+</code></pre><ul>
+<li><span>go.mod example</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// go.mod</span>
+<span class="token comment">// go.mod</span>
+module github<span class="token punctuation">.</span>com<span class="token operator">/</span>my<span class="token operator">/</span>thing
+
+require <span class="token punctuation">(</span>
+    github<span class="token punctuation">.</span>com<span class="token operator">/</span>some<span class="token operator">/</span>dependency v1<span class="token punctuation">.</span><span class="token number">2.3</span>
+    github<span class="token punctuation">.</span>com<span class="token operator">/</span>another<span class="token operator">/</span>dependency<span class="token operator">/</span>v4 v4<span class="token punctuation">.</span><span class="token number">0.0</span>
+<span class="token punctuation">)</span>
+</div></div></code></pre><h5 id="module" data-id="module"><a class="anchor hidden-xs" href="#module" title="module"><span class="octicon octicon-link"></span></a><span>module</span></h5><p><span>用來宣告 Module 的身份，並帶入 module 的路徑.</span><br>
+<span>在這個 module 中所有匯入的路徑都會以這個 module path 當作前綴（prefix）</span><br>
+<span>透過 module 的路徑，以及 go.mod 到 package’s 資料夾的相對路徑，會共同決定 import package’s 時要使用的路徑.</span></p><h4 id="go-mod-tidy" data-id="go-mod-tidy"><a class="anchor hidden-xs" href="#go-mod-tidy" title="go-mod-tidy"><span class="octicon octicon-link"></span></a><span>go mod tidy</span></h4><div class="alert alert-success">
 <p><span>go mod tidy</span></p>
 </div><p><span>這個 command 有兩個作用</span></p><ol>
 <li>
@@ -1516,7 +1555,7 @@ go: to add module requirements and sums:
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1529,8 +1568,8 @@ go: to add module requirements and sums:
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
