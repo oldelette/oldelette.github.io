@@ -743,7 +743,252 @@ deckSize <span class="token operator">:=</span> <span class="token number">20</s
 <span class="token keyword">func</span> <span class="token function">newCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token string">"Five of Diamonds"</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><h3 id="Pointer" data-id="Pointer"><a class="anchor hidden-xs" href="#Pointer" title="Pointer"><span class="octicon octicon-link"></span></a><span>Pointer</span></h3><p><span>指標簡單來說，指的就是存放該變數的記憶體位址.</span></p><p><span>記憶體中一個格子的大小是 1 個 byte，而一個 int （整數型）的大小就占了 4 個 byte，所以這邊寫的地址，是 2 這個整數所占的這一塊記憶體空間的起始地址。</span></p><p><span>從起始地址開始起算、共佔了 4 個格子，也就是 4 byte</span><br>
+</div></div></code></pre><p><span>Go 清楚定義無論何時執行 newCard 這個 function, 它的回傳值都要是 string type</span></p><p><img src="https://i.imgur.com/xye6G72.png" alt="" loading="lazy"></p><h3 id="Callback" data-id="Callback"><a class="anchor hidden-xs" href="#Callback" title="Callback"><span class="octicon octicon-link"></span></a><span>Callback</span></h3><p><span>因為function可以當作值傳遞</span><br>
+<span>因此，對於函式中流程幾乎相同，只有少數操作不同的情況，就可以將操作不同的部份以回呼（Callback）函式取代.</span></p><p><span>例如，可以設計一個 filter 函式，用來過濾出符合特定條件的值</span><br>
+<span>在這個例子中，filter 函式重用了 for range 與 if 等流程，只要傳入過濾用的函式，就可以讓 filter 具有各種的過濾用途</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">type</span> Predicate <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span>
+
+<span class="token keyword">func</span> <span class="token function">filter</span><span class="token punctuation">(</span>origin <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> predicate <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
+	filtered <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> elem <span class="token operator">:=</span> <span class="token keyword">range</span> origin <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token function">predicate</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			filtered <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>filtered<span class="token punctuation">,</span> elem<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> filtered
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">greaterThan7</span><span class="token punctuation">(</span>n <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> n <span class="token operator">&gt;</span> <span class="token number">7</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">lessThan5</span><span class="token punctuation">(</span>n <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> n <span class="token operator">&lt;</span> <span class="token number">5</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	data <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">filter</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> greaterThan7<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [8 9 10]</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">filter</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> lessThan5<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [1 2 3 4]</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Closure" data-id="Closure"><a class="anchor hidden-xs" href="#Closure" title="Closure"><span class="octicon octicon-link"></span></a><span>Closure</span></h3><p><a href="https://betterprogramming.pub/closures-made-simple-with-golang-69db3017cd7b" target="_blank" rel="noopener"><span>Closures Made Simple With Golang</span></a></p><pre><code>In Golang, a closure is a function that references variables outside of its scope
+A closure can outlive the scope in which it was created.
+Thus it can access variables within that scope, even after the scope is destroyed
+
+在 Golang 中，closure 是一個引用其作用域之外的變量的函數
+closure 的壽命可以超過它創建的範圍
+因此，即使scope 被銷毀，它也可以訪問該scope 內的變數
+</code></pre><p><span>closure 是一個 function, 可以引用本身 function 之外的變數.</span><br>
+<span>具體來說, closure 允許 function 訪問其外部 scope 宣告的變數</span></p><h4 id="example" data-id="example"><a class="anchor hidden-xs" href="#example" title="example"><span class="octicon octicon-link"></span></a><span>example</span></h4><pre data-original-title="" title=""><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">returnFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token comment">// function return closure</span>
+    sum <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+        sum <span class="token operator">+=</span> x
+        <span class="token keyword">return</span> sum
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Create instances of the closure</span>
+    increment <span class="token operator">:=</span> <span class="token function">returnFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// Use the closure instances to increment values</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 3</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 8</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>一般來說, 當 returnFunc() 執行完後, 他會把內部的變數回收再清除 (sum)</span><br>
+<span>但因為 sum 這個變數被 Anonymous Functions 這個 function 參考, 所以我們稱這個sum 變數是 capture variable.</span><br>
+<span>capture variable, 他會一直保持著參考上層變數的內容, 在未來每次執行這個匿名 function 的時候, 都會持續被參考(參考 sum), 導致不會把 sum 這個變數的記憶體釋放掉.</span></p><hr><p><span>returnFunc 這個 function 回傳了一個 closure，這個 closure 能夠訪問外部 function returnFunc 中的 sum 變數</span><br>
+<span>即使已經 return 了, 每次使用 increment  的時候, 他都會繼續增加 sum 變數的值並返回新的結果</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Create instances of the closure</span>
+    addr <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+        <span class="token comment">// function return closure</span>
+        sum <span class="token operator">:=</span> <span class="token number">0</span>
+        <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+            sum <span class="token operator">+=</span> x
+            <span class="token keyword">return</span> sum
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    increment <span class="token operator">:=</span> <span class="token function">addr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// Use the closure instances to increment values</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 3</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 8</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><a href="https://www.youtube.com/watch?v=5DFc5OKm-Tw" target="_blank" rel="noopener"><span>Python3 教程 - 入門系列 - 016. Closure 閉包</span></a></p><p><span>python 使用 nonlocal 關鍵字來指示 add function 修改外部function 的 sum 變數而不是創建一個新的 local variable</span><br>
+<span>這使得在每次使用 increment function 時，都可以訪問並更新 sum 的值</span></p><p><span>相比之下，Go 语言中的closure 和 capture variable 更簡單和一致，不需要特殊的關鍵字來宣告變數是非 local 的</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">def</span> <span class="hljs-title function_">returnFunc</span>():
+    <span class="hljs-comment"># function return closure</span>
+    <span class="hljs-built_in">sum</span> = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x</span>):
+        <span class="hljs-keyword">nonlocal</span> <span class="hljs-built_in">sum</span>
+        <span class="hljs-built_in">sum</span> += x
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>
+    <span class="hljs-keyword">return</span> add
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    <span class="hljs-comment"># Create instances of the closure</span>
+    increment = returnFunc()
+    <span class="hljs-comment"># print(increment)</span>
+    <span class="hljs-comment"># Use the closure instances to increment values</span>
+    <span class="hljs-built_in">print</span>(increment(<span class="hljs-number">1</span>))  <span class="hljs-comment"># 1</span>
+    <span class="hljs-built_in">print</span>(increment(<span class="hljs-number">2</span>))  <span class="hljs-comment"># 3</span>
+    <span class="hljs-built_in">print</span>(increment(<span class="hljs-number">5</span>))  <span class="hljs-comment"># 8</span>
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+</div></div></code></pre><h4 id="Anonymous-Functions" data-id="Anonymous-Functions"><a class="anchor hidden-xs" href="#Anonymous-Functions" title="Anonymous-Functions"><span class="octicon octicon-link"></span></a><span>Anonymous Functions</span></h4><p><span>Anonymous Functions in Go</span></p><p><span>Function 可作為值傳遞的一個應用</span><br>
+<span>那除了傳遞具名的函式之外，有時會想要臨時建立一個函式進行傳遞</span></p><ul>
+<li><span>For instance, let’s create a regular function:</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">send</span><span class="token punctuation">(</span>message <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Hello TSMC"</span><span class="token punctuation">)</span> <span class="token comment">// Hello TSMC</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><ul>
+<li><span>create an anonymous version of this function:</span></li>
+</ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">func</span><span class="token punctuation">(</span>message <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token string">"Hello TSMC"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>這兩個 function 是等價的</span><br>
+<span>可以看到匿名函式也是可使用 func 建立，同樣必須指定參數與傳回值型態</span></p><p><span>在 Go 中，不允許在函式中又宣告函式</span><br>
+<span>例如，以下是不允許的 (python 可以)</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">funcB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>這會出現 “nested func not allowed” 的錯誤，然而，你可以建立匿名函式，然後將之指定給某個變數</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    funcB <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Pointer" data-id="Pointer"><a class="anchor hidden-xs" href="#Pointer" title="Pointer"><span class="octicon octicon-link"></span></a><span>Pointer</span></h3><p><span>指標簡單來說，指的就是存放該變數的記憶體位址.</span></p><p><span>記憶體中一個格子的大小是 1 個 byte，而一個 int （整數型）的大小就占了 4 個 byte，所以這邊寫的地址，是 2 這個整數所占的這一塊記憶體空間的起始地址。</span></p><p><span>從起始地址開始起算、共佔了 4 個格子，也就是 4 byte</span><br>
 <img src="https://imgur.com/Oarvlxq.png" alt="Imgur" loading="lazy"></p><h4 id="指標宣告" data-id="指標宣告"><a class="anchor hidden-xs" href="#指標宣告" title="指標宣告"><span class="octicon octicon-link"></span></a><span>指標宣告</span></h4><p><span>說明： 型別 T 是指標指向的變數的型別， T 可替換成其他資料型別</span></p><div class="alert alert-info">
 <p><span>var p *T</span></p>
 </div><p><span>不管指向的型別為何，任何未初始化的指標都會是 nil → 指標的零值為 nil</span></p><pre><code class="go hljs"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1504,7 +1749,7 @@ require <span class="token punctuation">(</span>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1517,11 +1762,13 @@ require <span class="token punctuation">(</span>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+<li><a href="#Callback" title="Callback">Callback</a></li>
+<li class=""><a href="#Closure" title="Closure">Closure</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
@@ -1569,10 +1816,12 @@ require <span class="token punctuation">(</span>
 </ul>
 </li>
 <li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
-<li class=""><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
+<li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
+<li><a href="#Callback" title="Callback">Callback</a></li>
+<li class=""><a href="#Closure" title="Closure">Closure</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
