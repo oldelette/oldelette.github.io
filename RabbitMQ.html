@@ -34,7 +34,8 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="RabbitMQ" data-id="RabbitMQ"><a class="anchor hidden-xs" href="#RabbitMQ" title="RabbitMQ"><span class="octicon octicon-link"></span></a><span>RabbitMQ</span></h1><p><a href="https://enzochang.com/rabbitmq-management-interface/" target="_blank" rel="noopener"><span>Ref-1</span></a></p><h2 id="docker-compose" data-id="docker-compose"><a class="anchor hidden-xs" href="#docker-compose" title="docker-compose"><span class="octicon octicon-link"></span></a><span>docker-compose</span></h2><pre><code>version: "3"
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="RabbitMQ" data-id="RabbitMQ"><a class="anchor hidden-xs" href="#RabbitMQ" title="RabbitMQ"><span class="octicon octicon-link"></span></a><span>RabbitMQ</span></h1><p><a href="https://enzochang.com/rabbitmq-management-interface/" target="_blank" rel="noopener"><span>Ref-1</span></a></p><h2 id="Setting-default-user-and-password" data-id="Setting-default-user-and-password"><a class="anchor hidden-xs" href="#Setting-default-user-and-password" title="Setting-default-user-and-password"><span class="octicon octicon-link"></span></a><span>Setting default user and password</span></h2><p><span>If you wish to change the default username and password of guest / guest</span><br>
+<span>you can do so with the RABBITMQ_DEFAULT_USER and RABBITMQ_DEFAULT_PASS environmental variables.</span></p><p><span>These variables were available previously in the docker-specific entrypoint shell script but are now available in RabbitMQ directly.</span></p><p><span>如果設定有問題, 會用 default 帳密進去</span></p><h2 id="docker-compose" data-id="docker-compose"><a class="anchor hidden-xs" href="#docker-compose" title="docker-compose"><span class="octicon octicon-link"></span></a><span>docker-compose</span></h2><pre><code>version: "3"
 services:
   rabbitmq:
     image: "rabbitmq:3-management"
@@ -223,6 +224,7 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
 <li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
 <li><a href="#docker-compose" title="docker-compose">docker-compose</a></li>
 <li><a href="#pika" title="pika">pika</a></li>
 <li><a href="#Producer" title="Producer">Producer</a></li>
@@ -243,6 +245,7 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
 <li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
 <li><a href="#docker-compose" title="docker-compose">docker-compose</a></li>
 <li><a href="#pika" title="pika">pika</a></li>
 <li><a href="#Producer" title="Producer">Producer</a></li>
