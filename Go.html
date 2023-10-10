@@ -814,7 +814,7 @@ Thus it can access variables within that scope, even after the scope is destroye
 closure 的壽命可以超過它創建的範圍
 因此，即使scope 被銷毀，它也可以訪問該scope 內的變數
 </code></pre><p><span>closure 是一個 function, 可以引用本身 function 之外的變數.</span><br>
-<span>具體來說, closure 允許 function 訪問其外部 scope 宣告的變數</span></p><h4 id="example" data-id="example"><a class="anchor hidden-xs" href="#example" title="example"><span class="octicon octicon-link"></span></a><span>example</span></h4><pre data-original-title="" title=""><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span>具體來說, closure 允許 function 訪問其外部 scope 宣告的變數</span></p><h4 id="example" data-id="example"><a class="anchor hidden-xs" href="#example" title="example"><span class="octicon octicon-link"></span></a><span>example</span></h4><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -1263,7 +1263,221 @@ e<span class="token punctuation">[</span><span class="token number">1</span><spa
 </ul><pre><code>stack-overflow:
 stack不會隨著程式的增長而增加，所以如果函式呼叫的深度過大，
 stack的容量會不夠，此時會導致程式崩潰，此現象稱為stack-overflow
-</code></pre><p><img src="https://i.imgur.com/IPhiovF.png" alt="Imgur" loading="lazy"></p><h2 id="Organizing-Data-With-Structs" data-id="Organizing-Data-With-Structs"><a class="anchor hidden-xs" href="#Organizing-Data-With-Structs" title="Organizing-Data-With-Structs"><span class="octicon octicon-link"></span></a><span>Organizing Data With Structs</span></h2><h3 id="Struct-in-Go" data-id="Struct-in-Go"><a class="anchor hidden-xs" href="#Struct-in-Go" title="Struct-in-Go"><span class="octicon octicon-link"></span></a><span>Struct in Go</span></h3><p><a href="https://pjchender.dev/golang/structs/" target="_blank" rel="noopener"><span>Golang</span></a><span> Struct</span></p><p><span>structs 是在 GO 中的一種資料型態，它就類似 python dictionary, JavaScript 中的物件（Object）或是 Ruby 中的 Hash.</span></p><ul>
+</code></pre><p><img src="https://i.imgur.com/IPhiovF.png" alt="Imgur" loading="lazy"></p><h3 id="Golang-mutable-immutable" data-id="Golang-mutable-immutable"><a class="anchor hidden-xs" href="#Golang-mutable-immutable" title="Golang-mutable-immutable"><span class="octicon octicon-link"></span></a><span>Golang mutable-immutable</span></h3><p><a href="https://www.meetgor.com/golang-mutable-immutable/" target="_blank" rel="noopener"><span>Golang: Mutable and Immutable Data Types</span></a></p><pre><code>Python immutable object: int, float, string, tuple
+如果物件被創造出來後，其 value 沒辦法被改變，稱之為 Immutable objects.
+</code></pre><ul>
+<li><span>immutable data types</span></li>
+</ul><div class="alert alert-warning">
+<p><span>Boolean, Int, Float</span><br>
+<span>Pointers</span><br>
+<span>String</span><br>
+<span>Interfaces</span></p>
+</div><ul>
+<li><span>mutable data types</span></li>
+</ul><div class="alert alert-info">
+<p><span>Slice</span><br>
+<span>Array</span><br>
+<span>Map</span><br>
+<span>Channels</span></p>
+</div><h4 id="Mutable-Data-Type" data-id="Mutable-Data-Type"><a class="anchor hidden-xs" href="#Mutable-Data-Type" title="Mutable-Data-Type"><span class="octicon octicon-link"></span></a><span>Mutable Data Type</span></h4><p><span>Mutable data type is a data type which can be modified without reallocating any chunk of the memory assigned at the time of initialization.</span><br>
+<span>In simple words, a variable is mutable if its value can be altered without reallocating itself to a new memory space.</span></p><p><span>Mutable Data Type 中，可以修改位於記憶體位址中的值.</span><br>
+<span>這代表我們不必重新分配任何記憶體或將變數的指標更改為指向其他位址 即可更改變數的值</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	age <span class="token operator">:=</span> <span class="token number">12</span>
+	experience <span class="token operator">:=</span> age
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>age<span class="token punctuation">,</span> <span class="token operator">&amp;</span>experience<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a118 0xc00000a130</span>
+	experience <span class="token operator">=</span> <span class="token number">17</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>age<span class="token punctuation">,</span> <span class="token operator">&amp;</span>experience<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a118 0xc00000a130</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h5 id="Slice1" data-id="Slice"><a class="anchor hidden-xs" href="#Slice1" title="Slice1"><span class="octicon octicon-link"></span></a><span>Slice</span></h5><p><span>Slice and Arrays are mutable data types in golang, this means the value of the elements in slice or array can be changed after initialization without re-allocations of memory</span></p><p><span>切片和陣列是golang中的可變資料類型，這代表切片或陣列中元素的值可以在初始化後更改，而無需重新分配記憶體</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span>     <span class="token comment">// Slice</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"S[1] -&gt; %p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 0xc000012278</span>
+    p <span class="token operator">:=</span> s
+    p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"S[1] -&gt; %p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 0xc000012278</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"s ="</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span> <span class="token comment">// [1 4 3]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"p ="</span><span class="token punctuation">,</span>p<span class="token punctuation">)</span> <span class="token comment">// [1 4 3]</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>在上面的例子中，我們可以看到切片已被初始化為 {1,2,3}</span><br>
+<span>如果我們修改 slice p，因為它指向與 slices指向的記憶體位址相同的記憶體位址，所以它也會修改 slice s（它們是同一個 slice）</span></p><ul>
+<li><span>這就是 Mutable Data 的作用，它直接修改儲存在記憶體位址中的值，而不為變數分配任何額外的記憶體.</span></li>
+<li><span>Python arrary 也是 mutable type</span></li>
+</ul><div class="alert alert-info">
+<p><span>In Golang, when you assign an array to another variable or pass it as a parameter to a function, it is copied by value.</span><br>
+<span>當把 array 指派給另一個變數或將其作為參數傳遞給函數時，它會 pass by value</span></p>
+</div><p><span>如果我們更改array b 中的一個元素，array a 的元素不會發生任何變化，因為這些元素儲存在完全不同的記憶體位置</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// Arrays</span>
+	a <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"A[1] -&gt; %p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// A[1] -&gt; 0xc000012278</span>
+	b <span class="token operator">:=</span> a <span class="token comment">// copying arr a by value to arr b</span>
+	b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">40</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"A[1] -&gt; %p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// A[1] -&gt; 0xc000012278</span>
+
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"a ="</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+    <span class="token comment">// [10 20 30] 0xc000012270 0xc000012278 0xc000012280</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b ="</span><span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+    <span class="token comment">// [10 40 30] 0xc0000122a0 0xc0000122a8 0xc0000122b0</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h5 id="Map" data-id="Map"><a class="anchor hidden-xs" href="#Map" title="Map"><span class="octicon octicon-link"></span></a><span>Map</span></h5><p><span>Map is similar to slices in a way they are references to the memory address.</span><br>
+<span>map 與 slice 類似，它們都是對記憶體位址的引用</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Map</span>
+    m <span class="token operator">:=</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token string">"level"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"health"</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"m ="</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span> <span class="token comment">// m = map[health:9 level:5]</span>
+    n <span class="token operator">:=</span> m
+    n<span class="token punctuation">[</span><span class="token string">"food"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">12</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"m ="</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span> <span class="token comment">// m = map[food:12 health:9 level:5]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"n ="</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token comment">// n = map[food:12 health:9 level:5]</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>範例中，我們可以看到m map 是一個帶有 2個key-value 的 map</span><br>
+<span>創建一個名為的 n map 並將其引用 m map, 這將使 n map 指向與 m map 相同的 hash map</span><br>
+<span>所以改變 n, 也會同時改變到 m</span></p><p><img src="https://i.imgur.com/WURtQey.png" alt="Imgur" loading="lazy"></p><h4 id="Immutable-Data-Types" data-id="Immutable-Data-Types"><a class="anchor hidden-xs" href="#Immutable-Data-Types" title="Immutable-Data-Types"><span class="octicon octicon-link"></span></a><span>Immutable Data Types</span></h4><p><span>Immutable data type is a data type which cannot be modified without allocating a new memory.</span><br>
+<span>So, the immutable data type has to reallocate memory for making changes to the value of a variable. This might be a downside if the variable is holding a large sets of values, it will require a lot of memory re-allocation for a slight change in the value.</span></p><p><span>Immutable Data Types 是一種在不分配新記憶體的情況下無法修改的資料型別.</span><br>
+<span>因此如果 Immutable Data Types 想要更改變數的值, 需要重新分配記憶體.</span><br>
+<span>這會是一個缺點，如果變數保存大量值，因為值的微小變化將需要大量記憶體重新分配.</span></p><h5 id="Boolean" data-id="Boolean"><a class="anchor hidden-xs" href="#Boolean" title="Boolean"><span class="octicon octicon-link"></span></a><span>Boolean</span></h5><p><span>The boolean data type on golang is an immutable data type which means it re-allocates the memory for any change in the value of the boolean variable</span></p><p><span>golang 上的 bool 型是一種 Immutable Data Types. (pass by value)</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// bool</span>
+	boolean <span class="token operator">:=</span> <span class="token boolean">true</span>
+	b <span class="token operator">:=</span> boolean
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"boolean address "</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>boolean<span class="token punctuation">,</span> <span class="token string">", b address "</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
+        <span class="token comment">// boolean address  0xc00000a118 , b address  0xc00000a119</span>
+	b <span class="token operator">=</span> <span class="token boolean">false</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"boolean = "</span><span class="token punctuation">,</span> boolean<span class="token punctuation">,</span> <span class="token operator">&amp;</span>boolean<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a118</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b = "</span><span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a119</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h5 id="pointer" data-id="pointer"><a class="anchor hidden-xs" href="#pointer" title="pointer"><span class="octicon octicon-link"></span></a><span>pointer</span></h5><p><span>Pointer as well is an immutable data type in golang, we cannot change the value in this case the memory address of a variable which we are pointing to, directly but we need to re-allocate the memory for changing the value of the variable.</span></p><p><span>pointer 在 golang 中也是不可變的資料類型，我們不能直接改變我們指向的變數的記憶體位址，但我們需要重新分配記憶體來改變變數的值</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// Pointer</span>
+	n <span class="token operator">:=</span> <span class="token number">567</span>
+	t <span class="token operator">:=</span> <span class="token number">123</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"n = "</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token string">"t = "</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>t<span class="token punctuation">)</span>
+	<span class="token comment">// n=0xc00000a118, t=0xc00000a130</span>
+	ptr <span class="token operator">:=</span> <span class="token operator">&amp;</span>n
+	ptr_new <span class="token operator">:=</span> ptr
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"ptr = "</span><span class="token punctuation">,</span> ptr<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ptr<span class="token punctuation">)</span>             <span class="token comment">// 0xc00000a118 0xc000054020</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"ptr_new = "</span><span class="token punctuation">,</span> ptr_new<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ptr_new<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a118 0xc000054028</span>
+
+	ptr_new <span class="token operator">=</span> <span class="token operator">&amp;</span>t
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"ptr = "</span><span class="token punctuation">,</span> ptr<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ptr<span class="token punctuation">)</span>             <span class="token comment">// 0xc00000a118 0xc000054020</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"ptr_new = "</span><span class="token punctuation">,</span> ptr_new<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ptr_new<span class="token punctuation">)</span> <span class="token comment">// 0xc00000a130 0xc000054028</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>創建了一個指針 ptr 指向變數 n，然後創建了另一個指針 ptr_new，並將它賦值為指針 ptr 的值</span><br>
+<span>這將使這兩個指針都指向同一個變數 n。然後，我們將指針 ptr_new 指向變數 t，這會改變指針 ptr_new 的值，但由於指針存儲的是一個內存地址，它並不保存內存地址中的實際值.</span><br>
+<span>所以，改變了指針 ptr_new 的指向值並不會改變指針 ptr 的值</span></p><h5 id="string" data-id="string"><a class="anchor hidden-xs" href="#string" title="string"><span class="octicon octicon-link"></span></a><span>string</span></h5><p><span>Strings are the classical example of immutable data types in golang, this data type is quite commonly used and is quite important for creating a wide variety of applications.</span><br>
+<span>The value of the string variable can be changed but the process happens with/without changing the value of the memory address of the initial value, we have to change the memory address of the variable in order to change the value.</span></p><p><span>string 是 Go 语言中的典型不可變數據類型，這種數據類型相當常用，對於創建各種不同類型的應用程序非常重要.</span><br>
+<span>string 變量的值可以被更改，但這個過程發生時，是否更改了初始值的內存地址的值取決於具體情況.</span><br>
+<span>如果要更改值，我們必須更改變數的 memory address.</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// String</span>
+	str <span class="token operator">:=</span> <span class="token string">"gopher"</span>
+	str_copy <span class="token operator">:=</span> str
+	str_copy <span class="token operator">=</span> <span class="token string">"cooper"</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"str = "</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> <span class="token operator">&amp;</span>str<span class="token punctuation">)</span>
+	<span class="token comment">// str=gopher, 0xc00002a070</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"str_copy = "</span><span class="token punctuation">,</span> str_copy<span class="token punctuation">,</span> <span class="token operator">&amp;</span>str_copy<span class="token punctuation">)</span>
+	<span class="token comment">// str_copy=cooper, 0xc00002a080</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>在上面的例子中，我們創建了一個具有值 “gopher” 的變量 str，然後創建了另一個變量 str_copy，並賦值為 str 的值.</span><br>
+<span>如果我們更改 str_copy 的值，str 的值不會變更.</span></p><p><span>用下面的範例我們可以更加理解 string 的不可變性的 是對 string 的字符修改. (python 也是)</span><br>
+<span>在 Go 中，我們無法更改 string 的特定索引處的字符</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Character at index cannot be changed in string</span>
+    s <span class="token operator">:=</span> <span class="token string">"StarWars"</span>
+    s<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'C'</span>
+    <span class="token comment">// won't work</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><ul>
+<li><span>python string example</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">original_string = <span class="hljs-string">"Hello, World!"</span>
+index = <span class="hljs-number">7</span>  <span class="hljs-comment"># Index of the character 'W' in the original string</span>
+new_character = <span class="hljs-string">'X'</span>
+
+<span class="hljs-comment"># Create a new string with the character at the specified index changed</span>
+new_string = original_string[:index] + new_character + original_string[index + <span class="hljs-number">1</span>:]
+
+<span class="hljs-built_in">print</span>(new_string)  <span class="hljs-comment"># Output: Hello, Xorld!</span>
+</div></div></code></pre><div class="alert alert-danger">
+<p><span>immutable data types, we cannot change the value directly at the memory address, we change the internal location for any change in the value which is dependent on the decision by the garbage collector.</span><br>
+<span>我們無法直接在原本的 memory address 上直接更改值，我們需要改變值的 memory address，這取決於垃圾回收器的決策</span></p>
+</div><h2 id="Organizing-Data-With-Structs" data-id="Organizing-Data-With-Structs"><a class="anchor hidden-xs" href="#Organizing-Data-With-Structs" title="Organizing-Data-With-Structs"><span class="octicon octicon-link"></span></a><span>Organizing Data With Structs</span></h2><h3 id="Struct-in-Go" data-id="Struct-in-Go"><a class="anchor hidden-xs" href="#Struct-in-Go" title="Struct-in-Go"><span class="octicon octicon-link"></span></a><span>Struct in Go</span></h3><p><a href="https://pjchender.dev/golang/structs/" target="_blank" rel="noopener"><span>Golang</span></a><span> Struct</span></p><p><span>structs 是在 GO 中的一種資料型態，它就類似 python dictionary, JavaScript 中的物件（Object）或是 Ruby 中的 Hash.</span></p><ul>
 <li><span>三種宣告 Person struct 的方式：</span></li>
 </ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -1563,7 +1777,7 @@ jim<span class="token punctuation">.</span><span class="token function">updateNa
 
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> f<span class="token punctuation">,</span> u<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</div></div></code></pre><h2 id="Map" data-id="Map"><a class="anchor hidden-xs" href="#Map" title="Map"><span class="octicon octicon-link"></span></a><span>Map</span></h2><p><span>在 Go 中，</span><a href="https://pjchender.dev/golang/maps/" target="_blank" rel="noopener"><span>Map</span></a><span> 也是 Key-Value pair 的組合，但是 Map 所有 Key 的資料型別都要一樣；</span><br>
+</div></div></code></pre><h2 id="Map1" data-id="Map"><a class="anchor hidden-xs" href="#Map1" title="Map1"><span class="octicon octicon-link"></span></a><span>Map</span></h2><p><span>在 Go 中，</span><a href="https://pjchender.dev/golang/maps/" target="_blank" rel="noopener"><span>Map</span></a><span> 也是 Key-Value pair 的組合，但是 Map 所有 Key 的資料型別都要一樣；</span><br>
 <span>所有 Value 的資料型別也要一樣.</span><br>
 <span>另外，在設值和取值需要使用 [] 而非 .</span><br>
 <span>map 的 zero value 是 nil</span></p><p><img src="https://imgur.com/q9tSqzP.png" alt="Imgur" loading="lazy"></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
@@ -1749,7 +1963,7 @@ require <span class="token punctuation">(</span>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
+<li><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1762,17 +1976,18 @@ require <span class="token punctuation">(</span>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Callback" title="Callback">Callback</a></li>
-<li class=""><a href="#Closure" title="Closure">Closure</a></li>
+<li><a href="#Closure" title="Closure">Closure</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
+<li><a href="#Golang-mutable-immutable" title="Golang mutable-immutable">Golang mutable-immutable</a></li>
 </ul>
 </li>
 <li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
@@ -1784,7 +1999,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
-<li><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map1" title="Map">Map</a><ul class="nav">
 <li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
@@ -1802,7 +2017,7 @@ require <span class="token punctuation">(</span>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
+<li><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1815,17 +2030,18 @@ require <span class="token punctuation">(</span>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
 <li><a href="#Functions-and-Return-Types" title="Functions and Return Types">Functions and Return Types</a></li>
 <li><a href="#Callback" title="Callback">Callback</a></li>
-<li class=""><a href="#Closure" title="Closure">Closure</a></li>
+<li><a href="#Closure" title="Closure">Closure</a></li>
 <li><a href="#Pointer" title="Pointer">Pointer</a></li>
 <li><a href="#Array" title="Array">Array</a></li>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
+<li><a href="#Golang-mutable-immutable" title="Golang mutable-immutable">Golang mutable-immutable</a></li>
 </ul>
 </li>
 <li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
@@ -1837,7 +2053,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#Data-type" title="Data type">Data type</a></li>
 </ul>
 </li>
-<li><a href="#Map" title="Map">Map</a><ul class="nav">
+<li><a href="#Map1" title="Map">Map</a><ul class="nav">
 <li><a href="#Map-delete-amp-len" title="Map delete &amp; len">Map delete &amp; len</a></li>
 <li><a href="#Struct-vs-Map" title="Struct vs Map">Struct vs Map</a></li>
 </ul>
