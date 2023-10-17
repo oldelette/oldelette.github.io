@@ -1477,7 +1477,218 @@ new_string = original_string[:index] + new_character + original_string[index + <
 </div></div></code></pre><div class="alert alert-danger">
 <p><span>immutable data types, we cannot change the value directly at the memory address, we change the internal location for any change in the value which is dependent on the decision by the garbage collector.</span><br>
 <span>我們無法直接在原本的 memory address 上直接更改值，我們需要改變值的 memory address，這取決於垃圾回收器的決策</span></p>
-</div><h2 id="Organizing-Data-With-Structs" data-id="Organizing-Data-With-Structs"><a class="anchor hidden-xs" href="#Organizing-Data-With-Structs" title="Organizing-Data-With-Structs"><span class="octicon octicon-link"></span></a><span>Organizing Data With Structs</span></h2><h3 id="Struct-in-Go" data-id="Struct-in-Go"><a class="anchor hidden-xs" href="#Struct-in-Go" title="Struct-in-Go"><span class="octicon octicon-link"></span></a><span>Struct in Go</span></h3><p><a href="https://pjchender.dev/golang/structs/" target="_blank" rel="noopener"><span>Golang</span></a><span> Struct</span></p><p><span>structs 是在 GO 中的一種資料型態，它就類似 python dictionary, JavaScript 中的物件（Object）或是 Ruby 中的 Hash.</span></p><ul>
+</div><h3 id="Golang-Type-Comparison" data-id="Golang-Type-Comparison"><a class="anchor hidden-xs" href="#Golang-Type-Comparison" title="Golang-Type-Comparison"><span class="octicon octicon-link"></span></a><span>Golang Type Comparison</span></h3><p><a href="https://medium.com/learning-the-go-programming-language/comparing-values-in-go-8f7b002e767a" target="_blank" rel="noopener"><span>1. Comparing Values in Go</span></a><br>
+<a href="https://levelup.gitconnected.com/comparable-in-golang-d7b080e49443" target="_blank" rel="noopener"><span>2. Comparable in Golang</span></a></p><p><span>In Go, the comparable constraint is used to specify that a type can be compared using the standard comparison operators (==, &lt;, &lt;=, &gt;, &gt;=). This is an important concept in Go because some types, such as slices, maps, and functions, are not comparable.</span></p><p><span>comparable constraint 用於指定一種類型可以使用標準比較運算符（==、&lt;、&lt;=、&gt;、&gt;=）進行比較.</span><br>
+<span>這是Go語言中的一個重要概念，因為一些類型，例如切片（slices）、映射（maps）和函數（functions），是不可比較的</span></p><div class="alert alert-success">
+<p><span>可以使用 “comparable” 關鍵詞來確保只有可比較的類型可以與該函數或類型一起使用</span></p>
+</div><p><span>下面這個範例中，max function 接受兩個類型T的參數，並返回其中兩個值的最大值</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> max<span class="token punctuation">[</span>T comparable<span class="token punctuation">]</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y T<span class="token punctuation">)</span> T
+    <span class="token keyword">if</span> x <span class="token operator">&gt;</span> y <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> y
+<span class="token punctuation">}</span> 
+</div></div></code></pre><h4 id="Comparable" data-id="Comparable"><a class="anchor hidden-xs" href="#Comparable" title="Comparable"><span class="octicon octicon-link"></span></a><span>Comparable</span></h4><p><span>In Go, the concept of “comparable” applies to both types (type) and values (value)</span></p><p><span>這是一個重要的概念 “comparable” 在 Go 中既涵蓋了可比較的類型(Comparable Types)跟可比較的值(Comparable Values)</span></p><div class="alert alert-danger">
+<p><span>The Go programming language has a small set of known rules for comparing and ordering values. As you saw, while values from all types are comparable using the == (or !=) operator, only a few types can be compared using order operators such as &lt;, &gt;, &lt;=, and &gt;=</span></p>
+</div><p><span>總結:</span><br>
+<span>1.所有類型的value 都可以使用==（或!=）運算子進行比較</span><br>
+<span>2.有少數類型可以使用順序運算子比較 (&lt;, &gt;, &lt;=, &gt;=)</span></p><h5 id="Comparable-Types" data-id="Comparable-Types"><a class="anchor hidden-xs" href="#Comparable-Types" title="Comparable-Types"><span class="octicon octicon-link"></span></a><span>Comparable Types</span></h5><p><span>可比較的類型是指可以使用標準比較運算符（==、&lt;、&lt;=、&gt;、&gt;=）進行比較的類型</span></p><div class="alert alert-info">
+<p><span>Go 中可比較的類型 Comparable Type</span></p>
+<ul>
+<li><span>Numeric types (int, float, etc.)</span></li>
+<li><span>String</span></li>
+<li><span>Bool</span></li>
+<li><span>Pointers</span></li>
+<li><span>Structs containing only comparable types</span></li>
+</ul>
+</div><div class="alert alert-warning">
+<p><span>不可比較的類型 Not Comparable Type</span></p>
+<ul>
+<li><span>Slices</span></li>
+<li><span>Maps</span></li>
+<li><span>Functions</span></li>
+<li><span>Channels</span></li>
+<li><span>Structs containing non-comparable types</span></li>
+</ul>
+</div><h5 id="Comparable-Values" data-id="Comparable-Values"><a class="anchor hidden-xs" href="#Comparable-Values" title="Comparable-Values"><span class="octicon octicon-link"></span></a><span>Comparable Values</span></h5><p><span>This means that specific data values, regardless of their type, can be compared using standard comparison operators as long as they belong to comparable types.</span><br>
+<span>這代表著具體的數據值，無論其類型如何，都可以使用標準比較運算符進行比較，只要它們屬於可比較的類型</span></p><p><span>For example, you can compare two integer values, two floating-point values, two string values, or two boolean values, as long as they have the same values.</span><br>
+<span>例如我們可以比較兩個整數值，兩個浮點數值，兩個字符串值，或兩個布爾值，只要它們具有相同的值</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code">a <span class="token operator">:=</span> <span class="token number">10</span>
+b <span class="token operator">:=</span> <span class="token number">20</span>
+result <span class="token operator">:=</span> a <span class="token operator">&lt;</span> b <span class="token comment">// 這是合法的，因為a和b都是整數值</span>
+</div></div></code></pre><h4 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h4><h5 id="Boolean1" data-id="Boolean"><a class="anchor hidden-xs" href="#Boolean1" title="Boolean1"><span class="octicon octicon-link"></span></a><span>Boolean</span></h5><p><span>Boolean 可以與true或false的預定義值（或產生的表達式）進行比較.</span><br>
+<span>嘗試將 Boolean與 數值進行比較會錯誤</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	a <span class="token operator">:=</span> <span class="token boolean">true</span>
+	<span class="token keyword">if</span> a <span class="token operator">!=</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">==</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// if a == 1 { // (mismatched types bool and untyped int)</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"a not true"</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// a not true</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h4 id="Integer-and-Floating-point-numbers" data-id="Integer-and-Floating-point-numbers"><a class="anchor hidden-xs" href="#Integer-and-Floating-point-numbers" title="Integer-and-Floating-point-numbers"><span class="octicon octicon-link"></span></a><span>Integer and Floating-point numbers</span></h4><p><span>Due to Go’s strict type adherence however, integers can only be compared with other integers and floating point values can only be compared with other floating point values (or expression that produce them).</span></p><p><span>由於Go語言的嚴格類型規則，整數只能與其他整數進行比較，浮點數值只能與其他浮點數值（或產生它們的表達式）進行比較</span></p><pre><code class="golang hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">func main() {
+	a :<span class="hljs-operator">=</span> <span class="hljs-number">3.1415</span>
+	b :<span class="hljs-operator">=</span> <span class="hljs-number">6</span>
+	<span class="hljs-keyword">if</span> a <span class="hljs-operator">!</span><span class="hljs-operator">=</span> b {
+		<span class="hljs-comment">// invalid operation: a != b (mismatched types float64 and int)</span>
+		fmt.Println(<span class="hljs-string">"a is not b"</span>)
+	} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> a <span class="hljs-operator">&lt;</span><span class="hljs-operator">=</span> b {
+		<span class="hljs-comment">// invalid operation: a &lt;= b (mismatched types float64 and int)</span>
+		fmt.Println(<span class="hljs-string">"a is in the right position"</span>)
+	}
+}
+</div></div></code></pre><p><span>在前面的範例中，僅當兩個變數宣告為相同類型或轉換為相同類型時，此程式碼才會編譯 (如下圖)</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	a <span class="token operator">:=</span> <span class="token number">3.1415</span>
+	b <span class="token operator">:=</span> <span class="token number">6</span>
+	<span class="token keyword">if</span> a <span class="token operator">!=</span> <span class="token function">float64</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"a is not b"</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h5 id="Complex-Numbers" data-id="Complex-Numbers"><a class="anchor hidden-xs" href="#Complex-Numbers" title="Complex-Numbers"><span class="octicon octicon-link"></span></a><span>Complex Numbers</span></h5><p><span>Complex numbers can also be tested for equality. Two complex values are equal if their real and imaginary parts are equal respectively.</span><br>
+<span>Due to the nature of complex numbers, however, they do not support ordering operators in Go.</span><br>
+<span>複數也可以進行相等性測試。如果兩個複數的實部和虛部分別相等，則它們被認為相等.</span><br>
+<span>然而由於複數的性質，它們不支援 Go 中的排序運算子。</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	a <span class="token operator">:=</span> <span class="token function">complex</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3.25</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+	b <span class="token operator">:=</span> <span class="token operator">-</span><span class="token number">3.25</span> <span class="token operator">+</span> <span class="token number">2i</span>
+	<span class="token comment">// if a &lt; b { // invalid operation: a &lt; b (operator &lt; not defined on complex128)</span>
+	<span class="token keyword">if</span> a <span class="token operator">==</span> b <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"a complex as b"</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h5 id="String-Values" data-id="String-Values"><a class="anchor hidden-xs" href="#String-Values" title="String-Values"><span class="octicon octicon-link"></span></a><span>String Values</span></h5><p><span>String values support both the standard equality and ordering operators. There are no additional functions needed to compare strings.</span><br>
+<span>Values can be automatically compared lexically using ==, !=, &lt;=, &lt;, &gt;, and &gt;= operators.</span></p><p><span>字串值 支援標準的相等性和排序運算符。不需要額外的函數來比較 string。</span><br>
+<span>可以使用 ==、!=、&lt;=、&lt;、&gt;和&gt;=運算符 自動按字典順序比較值</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	cols <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>
+		<span class="token string">"xanadu"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">,</span> <span class="token string">"fulvous"</span><span class="token punctuation">,</span>
+		<span class="token string">"white"</span><span class="token punctuation">,</span> <span class="token string">"green"</span><span class="token punctuation">,</span> <span class="token string">"blue"</span><span class="token punctuation">,</span>
+		<span class="token string">"orange"</span><span class="token punctuation">,</span> <span class="token string">"black"</span><span class="token punctuation">,</span> <span class="token string">"almond"</span><span class="token punctuation">}</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> col <span class="token operator">:=</span> <span class="token keyword">range</span> cols <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> col <span class="token operator">&gt;=</span> <span class="token string">"red"</span> <span class="token operator">||</span> col <span class="token operator">==</span> <span class="token string">"black"</span> <span class="token punctuation">{</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>col<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>Ans: xanadu, red, white, black</span></p><h5 id="Struct-Values" data-id="Struct-Values"><a class="anchor hidden-xs" href="#Struct-Values" title="Struct-Values"><span class="octicon octicon-link"></span></a><span>Struct Values</span></h5><p><span>Two struct values can be tested for equality by comparing the values of their individual fields. In general, two struct values are considered equal if they are of the same type and the their corresponding fields are equal.</span></p><p><span>兩個struct值 可以通過比較它們各自字段的值來進行相等性測試</span><br>
+<span>一般來說，如果兩個struct 值的類型相同且它們對應的字段相等，則它們被視為相等</span><br>
+<span>(把 b 改成 int32 這樣寫就會編譯錯了, 不是判斷不等於是直接噴 error)</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    p1 <span class="token operator">:=</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>a <span class="token builtin">string</span><span class="token punctuation">;</span> b <span class="token builtin">int</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token string">"left"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span>
+    p2 <span class="token operator">:=</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>a <span class="token builtin">string</span><span class="token punctuation">;</span> b <span class="token builtin">int</span><span class="token punctuation">}</span><span class="token punctuation">{</span>a<span class="token punctuation">:</span> <span class="token string">"left"</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> p1 <span class="token operator">==</span> p2 <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Same position"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>在上面的程式中，struct p1等於p2，因為它們的類型相同，且它們對應的字段值相同.</span><br>
+<span>對字段值 的任何更改都將導致 struct 不相等</span></p><p><span>然而 struct 值不能使用排序運算符進行比較, 因此下面的程式將無法編譯…</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    p1 <span class="token operator">:=</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>a <span class="token builtin">string</span><span class="token punctuation">;</span> b <span class="token builtin">int</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token string">"left"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span>
+    p2 <span class="token operator">:=</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>a <span class="token builtin">string</span><span class="token punctuation">;</span> b <span class="token builtin">int32</span><span class="token punctuation">}</span><span class="token punctuation">{</span>a<span class="token punctuation">:</span> <span class="token string">"left"</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> p1 <span class="token operator">&gt;</span> p2 <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Same position"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// compilation error</span>
+<span class="token comment">// invalid operation: p1 &gt; p2 (operator &gt; not defined on struct)</span>
+</div></div></code></pre><h5 id="Arrays" data-id="Arrays"><a class="anchor hidden-xs" href="#Arrays" title="Arrays"><span class="octicon octicon-link"></span></a><span>Arrays</span></h5><p><span>Array values are compared for equality by comparing elements of the their defined types. Arrays are equal if their corresponding values are equal.</span></p><p><span>透過比較其定義類型的元素來比較 array 是否相等. 如果 array 對應的值相等，則 array 相等</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	pair1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span>
+	pair2 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span>
+	<span class="token keyword">if</span> pair1 <span class="token operator">!=</span> pair2 <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"different pair"</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"same pair"</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>Ans: different pair</span></p><h5 id="Pointers" data-id="Pointers"><a class="anchor hidden-xs" href="#Pointers" title="Pointers"><span class="octicon octicon-link"></span></a><span>Pointers</span></h5><p><span>Pointer values can be compared for equality but not for ordering.</span><br>
+<span>Two pointer values are considered equal if they point to the same value in memory (or if they are nil). For instance, in the following snippet &amp;pair is equal to ptr2 while &amp;pair is not equal ptr.</span></p><p><span>Pointer 可以用在相等性比較，但不能用在排序比較.</span><br>
+<span>如果兩個 Pointer 指向 memory 中的相同值（或者都是 nil），則它們被認為是相等的.</span><br>
+<span>例如，在下面程式碼中，&amp;pair 等於 ptr2，而 &amp;pair 不等於 ptr</span></p><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pair <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    ptr <span class="token operator">:=</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    ptr2 <span class="token operator">:=</span> <span class="token operator">&amp;</span>pair
+ 
+    <span class="token keyword">if</span> <span class="token operator">&amp;</span>pair <span class="token operator">!=</span> ptr <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"pointing different"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token operator">&amp;</span>pair <span class="token operator">==</span> ptr2 <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"pointing the same"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><p><span>Ans: pointing different 跟 pointing the same 這兩行都會印出來</span></p><h2 id="Organizing-Data-With-Structs" data-id="Organizing-Data-With-Structs"><a class="anchor hidden-xs" href="#Organizing-Data-With-Structs" title="Organizing-Data-With-Structs"><span class="octicon octicon-link"></span></a><span>Organizing Data With Structs</span></h2><h3 id="Struct-in-Go" data-id="Struct-in-Go"><a class="anchor hidden-xs" href="#Struct-in-Go" title="Struct-in-Go"><span class="octicon octicon-link"></span></a><span>Struct in Go</span></h3><p><a href="https://pjchender.dev/golang/structs/" target="_blank" rel="noopener"><span>Golang</span></a><span> Struct</span></p><p><span>structs 是在 GO 中的一種資料型態，它就類似 python dictionary, JavaScript 中的物件（Object）或是 Ruby 中的 Hash.</span></p><ul>
 <li><span>三種宣告 Person struct 的方式：</span></li>
 </ul><pre><code class="go hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -1963,7 +2174,7 @@ require <span class="token punctuation">(</span>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -1976,7 +2187,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
@@ -1988,6 +2199,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
 <li><a href="#Golang-mutable-immutable" title="Golang mutable-immutable">Golang mutable-immutable</a></li>
+<li class=""><a href="#Golang-Type-Comparison" title="Golang Type Comparison">Golang Type Comparison</a></li>
 </ul>
 </li>
 <li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
@@ -2017,7 +2229,7 @@ require <span class="token punctuation">(</span>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Go" title="Go">Go</a><ul class="nav">
+<li class=""><a href="#Go" title="Go">Go</a><ul class="nav">
 <li><a href="#Simple-Start" title="Simple Start">Simple Start</a><ul class="nav">
 <li><a href="#Program-initialization" title="Program initialization">Program initialization</a></li>
 <li><a href="#Package-initialization" title="Package initialization">Package initialization</a></li>
@@ -2030,7 +2242,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#maingo-organized" title="main.go organized">main.go organized</a></li>
 </ul>
 </li>
-<li><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
+<li class=""><a href="#Deeper-Into-Go" title="Deeper Into Go">Deeper Into Go</a><ul class="nav">
 <li><a href="#Basic-Go-Types" title="Basic Go Types">Basic Go Types</a></li>
 <li><a href="#Variable-Declarations" title="Variable Declarations">Variable Declarations</a></li>
 <li><a href="#Variable-Scope" title="Variable Scope">Variable Scope</a></li>
@@ -2042,6 +2254,7 @@ require <span class="token punctuation">(</span>
 <li><a href="#Slice" title="Slice">Slice</a></li>
 <li><a href="#Golang-Stack-and-Heap" title="Golang Stack and Heap">Golang Stack and Heap</a></li>
 <li><a href="#Golang-mutable-immutable" title="Golang mutable-immutable">Golang mutable-immutable</a></li>
+<li class=""><a href="#Golang-Type-Comparison" title="Golang Type Comparison">Golang Type Comparison</a></li>
 </ul>
 </li>
 <li><a href="#Organizing-Data-With-Structs" title="Organizing Data With Structs">Organizing Data With Structs</a><ul class="nav">
