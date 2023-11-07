@@ -34,7 +34,119 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="RabbitMQ" data-id="RabbitMQ"><a class="anchor hidden-xs" href="#RabbitMQ" title="RabbitMQ"><span class="octicon octicon-link"></span></a><span>RabbitMQ</span></h1><p><a href="https://enzochang.com/rabbitmq-management-interface/" target="_blank" rel="noopener"><span>Ref-1</span></a></p><h2 id="Setting-default-user-and-password" data-id="Setting-default-user-and-password"><a class="anchor hidden-xs" href="#Setting-default-user-and-password" title="Setting-default-user-and-password"><span class="octicon octicon-link"></span></a><span>Setting default user and password</span></h2><p><span>If you wish to change the default username and password of guest / guest</span><br>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="RabbitMQ" data-id="RabbitMQ"><a class="anchor hidden-xs" href="#RabbitMQ" title="RabbitMQ"><span class="octicon octicon-link"></span></a><span>RabbitMQ</span></h1><p><a href="https://enzochang.com/rabbitmq-management-interface/" target="_blank" rel="noopener"><span>Ref-1</span></a></p><h2 id="Account--Password" data-id="Account--Password"><a class="anchor hidden-xs" href="#Account--Password" title="Account--Password"><span class="octicon octicon-link"></span></a><span>Account / Password</span></h2><pre><code># 新建用戶
+rabbitmqctl add_user new_user new_password
+
+# 刪除用戶
+rabbitmqctl delete_user test
+
+# 設定權限
+rabbitmqctl set_permissions -p / test ".*" ".*" ".*"
+
+# 設定不能新建刪除 queue 的帳戶
+rabbitmqctl set_permissions -p / test "^$" ".*" ".*"
+
+</code></pre><p><span>順序: 配置, 寫入, 讀取</span></p><p><span>^$ 表示一個空的正規表示式，表示不允许創建或刪除 queue</span><br>
+<span>^.* 表示任何 queue 的名稱，表示允許讀取現有 queue</span></p><h3 id="Hash" data-id="Hash"><a class="anchor hidden-xs" href="#Hash" title="Hash"><span class="octicon octicon-link"></span></a><span>Hash</span></h3><p><span>使用 rabbitmqctl 去產生 definitions.json 欄位中的 password_hash</span></p><div class="alert alert-success">
+<p><span>rabbitmqctl hash_password test</span></p>
+</div><p><img src="https://imgur.com/SdHBuCa.png" alt="Imgur" loading="lazy"></p><p><span>python3 </span><a href="http://hash.py" target="_blank" rel="noopener"><span>hash.py</span></a><span> </span>&lt;password&gt;</p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> hashlib
+<span class="hljs-keyword">import</span> struct
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># This is the password we wish to encode</span>
+password = sys.argv[<span class="hljs-number">1</span>]
+
+<span class="hljs-comment"># 1.Generate a random 32 bit salt:</span>
+<span class="hljs-comment"># This will generate 32 bits of random data:</span>
+salt = os.urandom(<span class="hljs-number">4</span>)
+
+<span class="hljs-comment"># 2.Concatenate that with the UTF-8 representation of the plaintext password</span>
+tmp0 = salt + password.encode(<span class="hljs-string">'utf-8'</span>)
+
+<span class="hljs-comment"># 3. Take the SHA256 hash and get the bytes back</span>
+tmp1 = hashlib.sha256(tmp0).digest()
+
+<span class="hljs-comment"># 4. Concatenate the salt again:</span>
+salted_hash = salt + tmp1
+
+<span class="hljs-comment"># 5. convert to base64 encoding:</span>
+pass_hash = base64.b64encode(salted_hash)
+
+<span class="hljs-built_in">print</span>(pass_hash.decode(<span class="hljs-string">"utf-8"</span>))
+</div></div></code></pre><h3 id="definitionsjson" data-id="definitionsjson"><a class="anchor hidden-xs" href="#definitionsjson" title="definitionsjson"><span class="octicon octicon-link"></span></a><span>definitions.json</span></h3><p><span>重點是 docker-compose 中 volumes 設定</span></p><pre><code>volumes:
+  - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+  - ./definitions.json:/etc/rabbitmq/definitions.json:ro
+</code></pre><p><span>設定兩組帳密的範例:</span></p><ol>
+<li><span>admin/test</span><br>
+<span>可以建立刪除 queue</span></li>
+<li><span>user/user</span><br>
+<span>不可以建立刪除 queue</span></li>
+</ol><pre><code>{
+  "rabbit_version":"3.6.3",
+  "users": [
+    {
+      "name":"admin",
+      "password_hash":"WWyP1x6QJwJz/FitDZX2pVfi6+BmkcmYtWpWx5e2378sv9OX",
+      "hashing_algorithm":"rabbit_password_hashing_sha256",
+      "tags":"administrator"
+    },
+    {
+      "name": "user",
+      "password_hash": "y44I83KOtCrzpOFWAAPZG5q/gcbNGY5O/Vu8k5ZVdlK+mxLz",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "producer/consumer"
+    }
+  ],
+  "vhosts": [
+    {
+      "name":"/"
+    }
+  ],
+  "permissions":[
+    {
+      "user":"admin",
+      "vhost":"/",
+      "configure":".*",
+      "write":".*",
+      "read":".*"
+    },
+    {
+      "user": "user",
+      "vhost": "/",
+      "configure":"/",
+      "write": ".*",
+      "read": ".*"
+    }
+  ]
+}
+</code></pre><h2 id="Setting-default-user-and-password" data-id="Setting-default-user-and-password"><a class="anchor hidden-xs" href="#Setting-default-user-and-password" title="Setting-default-user-and-password"><span class="octicon octicon-link"></span></a><span>Setting default user and password</span></h2><p><span>If you wish to change the default username and password of guest / guest</span><br>
 <span>you can do so with the RABBITMQ_DEFAULT_USER and RABBITMQ_DEFAULT_PASS environmental variables.</span></p><p><span>These variables were available previously in the docker-specific entrypoint shell script but are now available in RabbitMQ directly.</span></p><p><span>如果設定有問題, 會用 default 帳密進去</span></p><h2 id="docker-compose" data-id="docker-compose"><a class="anchor hidden-xs" href="#docker-compose" title="docker-compose"><span class="octicon octicon-link"></span></a><span>docker-compose</span></h2><pre><code>version: "3"
 services:
   rabbitmq:
@@ -223,7 +335,12 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li class=""><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li class=""><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
+<li><a href="#Hash" title="Hash">Hash</a></li>
+<li class=""><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
+</ul>
+</li>
 <li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
 <li><a href="#docker-compose" title="docker-compose">docker-compose</a></li>
 <li><a href="#pika" title="pika">pika</a></li>
@@ -244,7 +361,12 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li class=""><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li class=""><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
+<li><a href="#Hash" title="Hash">Hash</a></li>
+<li class=""><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
+</ul>
+</li>
 <li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
 <li><a href="#docker-compose" title="docker-compose">docker-compose</a></li>
 <li><a href="#pika" title="pika">pika</a></li>
