@@ -165,7 +165,7 @@ services:
 <p><span>如果你是架設在伺服器或虛擬主機上，只要開啟防火牆 TCP 15672 port</span><br>
 <span>其他人就可以透過 Public IP 進入你的 RabbitMQ 網頁管理介面 http://&lt;your_puclic_ip_address&gt;:15672</span></p>
 </div><h2 id="pika" data-id="pika"><a class="anchor hidden-xs" href="#pika" title="pika"><span class="octicon octicon-link"></span></a><span>pika</span></h2><p><span>建立連線(Connetion &amp; Channel)</span><br>
-<span>與自己本機(localhost)架設的 RabbitMQ 建立連線（5672 port），使用之前建設定的帳號密碼，得到一個連線(connection)的通道(channel).</span></p><p><span>接下來大部分的操作都是在通道(channel)上進行，包括宣告 Queue、定義 Exchange、绑定 Queue 與 Exchange、發佈/接收訊息等。</span></p><p><img src="https://imgur.com/6BvqWdv.png" alt="Imgur" loading="lazy"></p><h2 id="Producer" data-id="Producer"><a class="anchor hidden-xs" href="#Producer" title="Producer"><span class="octicon octicon-link"></span></a><span>Producer</span></h2><p><a href="https://enzochang.com/rabbitmq-python-example/" target="_blank" rel="noopener"><span>Ref</span></a></p><p><span>首先宣告名稱為 hello 的 Queue（若不存在則會創建），接著對 Queue 發佈一則訊息 Hello World!，最後記得要關閉(close)連線.</span></p><p><span>在 RabbitMQ 中，訊息不能直接發送到 Queue，而必須經過一個 Exchange，本範例使用空字串 exchange，並使用與 Queue 名稱相同的 routing_key 綁定.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span>與自己本機(localhost)架設的 RabbitMQ 建立連線（5672 port），使用之前建設定的帳號密碼，得到一個連線(connection)的通道(channel).</span></p><p><span>接下來大部分的操作都是在通道(channel)上進行，包括宣告 Queue、定義 Exchange、绑定 Queue 與 Exchange、發佈/接收訊息等。</span></p><p><img src="https://imgur.com/6BvqWdv.png" alt="Imgur" loading="lazy"></p><h2 id="Producer" data-id="Producer"><a class="anchor hidden-xs" href="#Producer" title="Producer"><span class="octicon octicon-link"></span></a><span>Producer</span></h2><p><a href="https://enzochang.com/rabbitmq-python-example/" target="_blank" rel="noopener"><span>Ref</span></a></p><p><span>首先宣告名稱為 hello 的 Queue（若不存在則會創建），接著對 Queue 發佈一則訊息 Hello World!，最後記得要關閉(close)連線.</span></p><p><span>在 RabbitMQ 中，訊息不能直接發送到 Queue，而必須經過一個 Exchange，本範例使用空字串 exchange，並使用與 Queue 名稱相同的 routing_key 綁定.</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -215,7 +215,7 @@ channel.basic_publish(exchange=<span class="hljs-string">""</span>, routing_key=
 
 connection.close()
 </div></div></code></pre><h2 id="Consumer" data-id="Consumer"><a class="anchor hidden-xs" href="#Consumer" title="Consumer"><span class="octicon octicon-link"></span></a><span>Consumer</span></h2><p><span>首先同樣是宣告名稱為 hello 的 Queue（必須與 Producer 的相同），接著從 Queue 裡取出訊息，確認訊息處理完要 ack，告知 Queue 可拋棄訊息</span><br>
-<span>假設訊息處理不如預期要 nack，訊息將再次回到 Queue</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span>假設訊息處理不如預期要 nack，訊息將再次回到 Queue</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -250,7 +250,7 @@ method, properties, body = channel.basic_get(queue=<span class="hljs-string">'he
 <span class="hljs-comment"># channel.basic_ack(method.delivery_tag)</span>
 
 connection.close()
-</div></div></code></pre><p><span>Pika 提供三種從 RabbitMQ Broker 消費(consume)訊息的方法：</span></p><h3 id="1-Using-channelbasic_get-to-consume-a-message" data-id="1-Using-channelbasic_get-to-consume-a-message"><a class="anchor hidden-xs" href="#1-Using-channelbasic_get-to-consume-a-message" title="1-Using-channelbasic_get-to-consume-a-message"><span class="octicon octicon-link"></span></a><span>1. Using channel.basic_get() to consume a message</span></h3><p><span>使用 basic_get() 方法，每次取出一則訊息，需要開發者手動調用.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><p><span>Pika 提供三種從 RabbitMQ Broker 消費(consume)訊息的方法：</span></p><h3 id="1-Using-channelbasic_get-to-consume-a-message" data-id="1-Using-channelbasic_get-to-consume-a-message"><a class="anchor hidden-xs" href="#1-Using-channelbasic_get-to-consume-a-message" title="1-Using-channelbasic_get-to-consume-a-message"><span class="octicon octicon-link"></span></a><span>1. Using channel.basic_get() to consume a message</span></h3><p><span>使用 basic_get() 方法，每次取出一則訊息，需要開發者手動調用.</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -265,7 +265,7 @@ method, properties, body = channel.basic_get(queue=<span class="hljs-string">'he
 <span class="hljs-comment"># channel.basic_ack(method.delivery_tag)</span>
 
 connection.close()
-</div></div></code></pre><h3 id="2-Using-channelbasic_consume-to-consume-messages" data-id="2-Using-channelbasic_consume-to-consume-messages"><a class="anchor hidden-xs" href="#2-Using-channelbasic_consume-to-consume-messages" title="2-Using-channelbasic_consume-to-consume-messages"><span class="octicon octicon-link"></span></a><span>2. Using channel.basic_consume() to consume messages</span></h3><p><span>使用 basic_consume 方法，指定收到訊息的 callback function，channel.start_consuming() 後就會持續監聽 Queue，直到手動關閉(stop)</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><h3 id="2-Using-channelbasic_consume-to-consume-messages" data-id="2-Using-channelbasic_consume-to-consume-messages"><a class="anchor hidden-xs" href="#2-Using-channelbasic_consume-to-consume-messages" title="2-Using-channelbasic_consume-to-consume-messages"><span class="octicon octicon-link"></span></a><span>2. Using channel.basic_consume() to consume messages</span></h3><p><span>使用 basic_consume 方法，指定收到訊息的 callback function，channel.start_consuming() 後就會持續監聽 Queue，直到手動關閉(stop)</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -297,7 +297,7 @@ channel.start_consuming()
 
 connection.close()
 </div></div></code></pre><h3 id="3-Using-channelconsume-generator-to-consume-messages" data-id="3-Using-channelconsume-generator-to-consume-messages"><a class="anchor hidden-xs" href="#3-Using-channelconsume-generator-to-consume-messages" title="3-Using-channelconsume-generator-to-consume-messages"><span class="octicon octicon-link"></span></a><span>3. Using channel.consume() generator to consume messages</span></h3><p><span>consume 方法會返回生成器(generator)，用 for loop 迭代取出訊息.</span><br>
-<span>若 Consumer 與 Queue 沒有活動(訊息傳遞)的狀態持續 inactivity_timeout 秒，將會收到 method, properties &amp; body 皆等於 None</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span>若 Consumer 與 Queue 沒有活動(訊息傳遞)的狀態持續 inactivity_timeout 秒，將會收到 method, properties &amp; body 皆等於 None</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -327,6 +327,95 @@ connection.close()
     <span class="hljs-built_in">print</span>(<span class="hljs-string">"結果是"</span>,result)
 
 add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle1)  <span class="hljs-comment"># 印出 結果是 7</span>
+</div></div></code></pre><h3 id="aiopika" data-id="aiopika"><a class="anchor hidden-xs" href="#aiopika" title="aiopika"><span class="octicon octicon-link"></span></a><span>aio.pika</span></h3><p><a href="https://aio-pika.readthedocs.io/en/latest/quick-start.html" target="_blank" rel="noopener"><span>Quick start</span></a></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">import</span> asyncio
+<span class="hljs-keyword">import</span> logging
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-keyword">import</span> aio_pika
+<span class="hljs-keyword">import</span> aiormq
+
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_message</span>(<span class="hljs-params">message</span>):
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">with</span> message.process():
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Received message: '<span class="hljs-subst">{message.body.decode()}</span>'"</span>)
+        <span class="hljs-keyword">await</span> asyncio.sleep(<span class="hljs-number">5</span>)  <span class="hljs-comment"># Wait for 5 seconds after processing each message</span>
+
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">consume</span>(<span class="hljs-params">queue_name, num_messages</span>):
+    connection = <span class="hljs-keyword">await</span> aio_pika.connect_robust(<span class="hljs-string">"amqp://admin:test@localhost/"</span>)
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">with</span> connection.channel() <span class="hljs-keyword">as</span> channel:
+        queue = <span class="hljs-keyword">await</span> channel.declare_queue(queue_name)
+
+        tasks = []
+        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_messages):
+            <span class="hljs-comment"># message = await queue.get(timeout=5)  # Wait for 5 seconds for a message</span>
+            message = <span class="hljs-keyword">await</span> queue.get()
+            <span class="hljs-keyword">if</span> message:
+                task = asyncio.ensure_future(process_message(message))
+                tasks.append(task)
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"No more messages in the queue. Stopping the consumer."</span>)
+                <span class="hljs-keyword">break</span>
+
+        <span class="hljs-comment"># Wait for all tasks to complete</span>
+        <span class="hljs-keyword">await</span> asyncio.gather(*tasks)
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    start = time.time()
+    queue_name = <span class="hljs-string">"test_queue"</span>
+    num_messages = <span class="hljs-number">10</span>
+    asyncio.run(consume(queue_name, num_messages))
+    end = time.time()
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"total time: <span class="hljs-subst">{end - start}</span>"</span>)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    main()
 </div></div></code></pre></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
@@ -335,10 +424,10 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li class=""><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
-<li class=""><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
+<li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
 <li><a href="#Hash" title="Hash">Hash</a></li>
-<li class=""><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
+<li><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
 </ul>
 </li>
 <li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
@@ -350,6 +439,7 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
 <li><a href="#2-Using-channelbasic_consume-to-consume-messages" title="2. Using channel.basic_consume() to consume messages">2. Using channel.basic_consume() to consume messages</a></li>
 <li><a href="#3-Using-channelconsume-generator-to-consume-messages" title="3. Using channel.consume() generator to consume messages">3. Using channel.consume() generator to consume messages</a></li>
 <li><a href="#Callback" title="Callback">Callback</a></li>
+<li><a href="#aiopika" title="aio.pika">aio.pika</a></li>
 </ul>
 </li>
 </ul>
@@ -361,10 +451,10 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li class=""><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
-<li class=""><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
+<li><a href="#RabbitMQ" title="RabbitMQ">RabbitMQ</a><ul class="nav">
+<li><a href="#Account--Password" title="Account / Password">Account / Password</a><ul class="nav">
 <li><a href="#Hash" title="Hash">Hash</a></li>
-<li class=""><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
+<li><a href="#definitionsjson" title="definitions.json">definitions.json</a></li>
 </ul>
 </li>
 <li><a href="#Setting-default-user-and-password" title="Setting default user and password">Setting default user and password</a></li>
@@ -376,6 +466,7 @@ add(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,handle
 <li><a href="#2-Using-channelbasic_consume-to-consume-messages" title="2. Using channel.basic_consume() to consume messages">2. Using channel.basic_consume() to consume messages</a></li>
 <li><a href="#3-Using-channelconsume-generator-to-consume-messages" title="3. Using channel.consume() generator to consume messages">3. Using channel.consume() generator to consume messages</a></li>
 <li><a href="#Callback" title="Callback">Callback</a></li>
+<li><a href="#aiopika" title="aio.pika">aio.pika</a></li>
 </ul>
 </li>
 </ul>
