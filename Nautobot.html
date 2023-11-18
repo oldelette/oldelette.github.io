@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Nautobot - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{border-radius:3px;font-size:85%;line-height:1.45;overflow:auto}.markdown-body:not(.next-editor) pre{background-color:#f7f7f7;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert{display:flex;flex-direction:column;gap:16px}.markdown-body .alert>*{margin:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Nautobot" data-id="Nautobot"><a class="anchor hidden-xs" href="#Nautobot" title="Nautobot"><span class="octicon octicon-link"></span></a><span>Nautobot</span></h1><p><span>2023.11.18</span></p><h2 id="Install-Nautobot" data-id="Install-Nautobot"><a class="anchor hidden-xs" href="#Install-Nautobot" title="Install-Nautobot"><span class="octicon octicon-link"></span></a><span>Install Nautobot</span></h2><h3 id="Poetry" data-id="Poetry"><a class="anchor hidden-xs" href="#Poetry" title="Poetry"><span class="octicon octicon-link"></span></a><span>Poetry</span></h3><pre><code>pip install poetry
+poetry new download_config
+
+poetry shell
+source /home/gavin/.cache/pypoetry/virtualenvs/download-config-ckh1PK7B-py3.8/bin/activate.fish
+</code></pre><p><img src="https://imgur.com/B2CJhrY.png" alt="Imgur" loading="lazy"></p><ul>
+<li><span>init</span></li>
+</ul><pre><code>poetry add nautobot
+poetry install
+</code></pre><p><a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/administration/installation/nautobot/" target="_blank" rel="noopener"><span>Nautobot Documentation</span></a></p><h4 id="Initialize-your-configuration¶" data-id="Initialize-your-configuration¶"><a class="anchor hidden-xs" href="#Initialize-your-configuration¶" title="Initialize-your-configuration¶"><span class="octicon octicon-link"></span></a><span>Initialize your configuration¶</span></h4><pre><code>nautobot-server init
+</code></pre><p><span>改動 nautobot_config.py</span><br>
+<span>需要指定 database 的帳號密碼</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-keyword">from</span> nautobot.core.settings <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># noqa F401,F403</span>
+<span class="hljs-keyword">from</span> nautobot.core.settings_funcs <span class="hljs-keyword">import</span> is_truthy, parse_redis_connection
+
+<span class="hljs-comment">#########################</span>
+<span class="hljs-comment">#                       #</span>
+<span class="hljs-comment">#   Required settings   #</span>
+<span class="hljs-comment">#                       #</span>
+<span class="hljs-comment">#########################</span>
+
+<span class="hljs-comment"># ALLOWED_HOSTS = os.getenv("NAUTOBOT_ALLOWED_HOSTS", "").split(" ")</span>
+ALLOWED_HOSTS = <span class="hljs-string">"*"</span>
+
+DATABASES = {
+    <span class="hljs-string">"default"</span>: {
+        <span class="hljs-string">"NAME"</span>: os.getenv(<span class="hljs-string">"NAUTOBOT_DB_NAME"</span>, <span class="hljs-string">"nautobot"</span>),  <span class="hljs-comment"># Database name</span>
+        <span class="hljs-string">"USER"</span>: os.getenv(<span class="hljs-string">"NAUTOBOT_DB_USER"</span>, <span class="hljs-string">"nautobot"</span>),  <span class="hljs-comment"># Database username</span>
+        <span class="hljs-string">"PASSWORD"</span>: os.getenv(<span class="hljs-string">"NAUTOBOT_DB_PASSWORD"</span>, <span class="hljs-string">"decinablesprewad"</span>),  <span class="hljs-comment"># Database password</span>
+        <span class="hljs-string">"HOST"</span>: os.getenv(<span class="hljs-string">"NAUTOBOT_DB_HOST"</span>, <span class="hljs-string">"127.0.0.1"</span>),  <span class="hljs-comment"># Database server</span>
+        <span class="hljs-string">"PORT"</span>: os.getenv(<span class="hljs-string">"NAUTOBOT_DB_PORT"</span>, <span class="hljs-number">3306</span>),  <span class="hljs-comment"># Database port (leave blank for default)</span>
+        <span class="hljs-string">"CONN_MAX_AGE"</span>: <span class="hljs-built_in">int</span>(os.getenv(<span class="hljs-string">"NAUTOBOT_DB_TIMEOUT"</span>, <span class="hljs-string">"300"</span>)),  <span class="hljs-comment"># Database timeout</span>
+        <span class="hljs-string">"ENGINE"</span>: <span class="hljs-string">"django.db.backends.mysql"</span>,
+        <span class="hljs-comment"># "ENGINE": os.getenv(</span>
+        <span class="hljs-comment">#     "NAUTOBOT_DB_ENGINE",</span>
+        <span class="hljs-comment">#     "django_prometheus.db.backends.postgresql" if METRICS_ENABLED else "django.db.backends.postgresql",</span>
+        <span class="hljs-comment"># ),  # Database driver ("mysql" or "postgresql")</span>
+    }
+}
+
+<span class="hljs-comment"># Ensure proper Unicode handling for MySQL</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-keyword">if</span> DATABASES[<span class="hljs-string">"default"</span>][<span class="hljs-string">"ENGINE"</span>].endswith(<span class="hljs-string">"mysql"</span>):
+    DATABASES[<span class="hljs-string">"default"</span>][<span class="hljs-string">"OPTIONS"</span>] = {<span class="hljs-string">"charset"</span>: <span class="hljs-string">"utf8mb4"</span>}
+
+<span class="hljs-comment"># This key is used for secure generation of random numbers and strings. It must never be exposed outside of this file.</span>
+<span class="hljs-comment"># For optimal security, SECRET_KEY should be at least 50 characters in length and contain a mix of letters, numbers, and</span>
+<span class="hljs-comment"># symbols. Nautobot will not run without this defined. For more information, see</span>
+<span class="hljs-comment"># https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-SECRET_KEY</span>
+SECRET_KEY = os.getenv(<span class="hljs-string">"NAUTOBOT_SECRET_KEY"</span>, <span class="hljs-string">"sth5owyc5%&amp;70#yp41ysl6bb0_omkx(c3v0qkt9acsaj0ea$i4"</span>)
+
+INSTALLATION_METRICS_ENABLED = is_truthy(os.getenv(<span class="hljs-string">"NAUTOBOT_INSTALLATION_METRICS_ENABLED"</span>, <span class="hljs-string">"True"</span>))
+
+</div></div></code></pre><h4 id="Prepare-the-Database" data-id="Prepare-the-Database"><a class="anchor hidden-xs" href="#Prepare-the-Database" title="Prepare-the-Database"><span class="octicon octicon-link"></span></a><span>Prepare the Database</span></h4><pre><code>poetry add mysqlclient
+</code></pre><p><span>假設安裝 mysqlclient 出錯 (如下圖), 執行下面指令</span></p><pre><code>sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config
+</code></pre><p><img src="https://imgur.com/B7xunpb.png" alt="Imgur" loading="lazy"></p><pre data-original-title="" title=""><code>nautobot-server migrate
+</code></pre><p><span>順利完成</span></p><p><img src="https://imgur.com/s1ZPPAM.png" alt="Imgur" loading="lazy"></p><h4 id="Create-a-Superuser" data-id="Create-a-Superuser"><a class="anchor hidden-xs" href="#Create-a-Superuser" title="Create-a-Superuser"><span class="octicon octicon-link"></span></a><span>Create a Superuser</span></h4><p><span>建立帳號</span></p><pre data-original-title="" title=""><code>nautobot-server createsuperuser
+</code></pre><h4 id="Test-the-Application" data-id="Test-the-Application"><a class="anchor hidden-xs" href="#Test-the-Application" title="Test-the-Application"><span class="octicon octicon-link"></span></a><span>Test the Application</span></h4><pre><code>nautobot-server runserver 0.0.0.0:8080 --insecure
+</code></pre><p><img src="https://imgur.com/TF0l2iL.png" alt="Imgur" loading="lazy"></p><h3 id="Docker-Compose" data-id="Docker-Compose"><a class="anchor hidden-xs" href="#Docker-Compose" title="Docker-Compose"><span class="octicon octicon-link"></span></a><span>Docker Compose</span></h3><p><span>下面為 mysql, adminer, redis 的相關 docker-compose 設定</span></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.7'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>7.0.5
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> redis<span class="token punctuation">-</span>nautobot
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 6379<span class="token punctuation">:</span><span class="token number">6379</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> redis<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nautobot_internal
+    <span class="token comment"># network_mode: host  # Use host network mode</span>
+
+  <span class="token key atrule">mysql-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql<span class="token punctuation">:</span><span class="token number">8</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>server
+    <span class="token key atrule">env_file</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"local.env"</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 3306<span class="token punctuation">:</span><span class="token number">3306</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> mysql<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/mysql
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nautobot_internal
+    <span class="token comment"># network_mode: host  # Use host network mode</span>
+
+  <span class="token key atrule">nautobot-adminer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> adminer<span class="token punctuation">:</span>latest
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nautobot<span class="token punctuation">-</span>adminer
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ADMINER_DEFAULT_SERVER</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>server
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">"php"</span><span class="token punctuation">,</span> <span class="token string">"-S"</span><span class="token punctuation">,</span> <span class="token string">"0.0.0.0:8000"</span><span class="token punctuation">,</span> <span class="token string">"-t"</span><span class="token punctuation">,</span> <span class="token string">"/var/www/html"</span> <span class="token punctuation">]</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 28080<span class="token punctuation">:</span><span class="token number">8000</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+      <span class="token key atrule">driver</span><span class="token punctuation">:</span> none
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nautobot_internal
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">redis-data</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token key atrule">mysql-data</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">nautobot_internal</span><span class="token punctuation">:</span>
+     <span class="token key atrule">driver</span><span class="token punctuation">:</span>  bridge
+</div></div></code></pre><h2 id="Install-Nautobot-Plugin" data-id="Install-Nautobot-Plugin"><a class="anchor hidden-xs" href="#Install-Nautobot-Plugin" title="Install-Nautobot-Plugin"><span class="octicon octicon-link"></span></a><span>Install Nautobot Plugin</span></h2><p><a href="https://docs.nautobot.com/projects/core/en/v1.0.0/plugins/development/" target="_blank" rel="noopener"><span>Plugin Development</span><br>
+</a><br>
+<a href="https://docs.nautobot.com/projects/core/en/stable/development/apps/api/setup/" target="_blank" rel="noopener"><span>App Developer Guide - Nautobot Documentation</span></a></p><ul>
+<li><span>pyproject.toml</span></li>
+</ul><pre><code class="toml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-section">[tool.poetry]</span>
+<span class="hljs-attr">name</span> = <span class="hljs-string">"download-config"</span>
+<span class="hljs-attr">version</span> = <span class="hljs-string">"0.1.0"</span>
+<span class="hljs-attr">description</span> = <span class="hljs-string">""</span>
+<span class="hljs-attr">authors</span> = [<span class="hljs-string">"oldelette &lt;oldelette@gmail.com&gt;"</span>]
+<span class="hljs-attr">readme</span> = <span class="hljs-string">"README.md"</span>
+
+<span class="hljs-section">[tool.poetry.dependencies]</span>
+<span class="hljs-attr">python</span> = <span class="hljs-string">"3.8.10"</span>
+
+
+<span class="hljs-section">[build-system]</span>
+<span class="hljs-attr">requires</span> = [<span class="hljs-string">"poetry-core&gt;=1.0.0"</span>]
+<span class="hljs-attr">build-backend</span> = <span class="hljs-string">"poetry.core.masonry.api"</span>
+</div></div></code></pre><h3 id="Define-a-PluginConfig" data-id="Define-a-PluginConfig"><a class="anchor hidden-xs" href="#Define-a-PluginConfig" title="Define-a-PluginConfig"><span class="octicon octicon-link"></span></a><span>Define a PluginConfig</span></h3><p><span>PluginConfig class 是Nautobot 特定的 wrapper, wrapper 是 Django內建的 AppConfig class.</span><br>
+<span>它用於在 Python wrapper中宣告 Nautobot plugin.</span><br>
+<span>每個 plugin 都應該提供自己的子類，定義其名稱、元數據，以及默認和必需的配置參數</span></p><pre><code>__init__.py
+from nautobot.extras.plugins import PluginConfig
+
+class DownloadConfig(PluginConfig):
+    name = 'download_config'
+    verbose_name = 'Download Config'
+    description = 'An example plugin for development purposes'
+    version = '0.1'
+    author = 'mcleezs'
+    author_email = 'mcleezs@tsmc.com'
+    base_url = 'download-config'
+    required_settings = []
+    min_version= '2.0.2'
+    max_version= '2.0.4'
+
+config = DownloadConfig
+</code></pre><p><span>定義好後, 先執行 poetry install</span></p><p><img src="https://imgur.com/T85eBPy.png" alt="Imgur" loading="lazy"></p><p><span>再把這個 plugin 名稱加入 nautobot nautobot_config.py 檔案中後重啟 nautobot</span></p><p><span>Once the plugin has been installed, add it to the plugin configuration for Nautobot:</span></p><pre><code>PLUGINS = ["nautobot_download_config"]
+</code></pre><p><span>成功看到 plugin 欄位有我們的 plugin</span></p><p><img src="https://imgur.com/jZmeorY.png" alt="Imgur" loading="lazy"></p><h3 id="Database-Models" data-id="Database-Models"><a class="anchor hidden-xs" href="#Database-Models" title="Database-Models"><span class="octicon octicon-link"></span></a><span>Database Models</span></h3><p><span>A model is essentially a Python representation of a database table, with attributes that represent individual columns. Model instances can be created, manipulated, and deleted using queries. Models must be defined within a file named </span><a href="http://models.py" target="_blank" rel="noopener"><span>models.py</span></a></p><pre><code class="pyt hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># models.py</span>
+<span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DeviceConfig</span>(models.Model):
+    <span class="hljs-string">"""Base model for config."""</span>
+
+    name = models.CharField(max_length=<span class="hljs-number">50</span>)
+    running_config= models.CharField(max_length=<span class="hljs-number">50</span>)
+    startup_config= models.CharField(max_length=<span class="hljs-number">50</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> self.name
+</div></div></code></pre><p><span>幫 Plugin 定義了 model, 我們需要 migrate new model</span><br>
+<span>migrate 文件基本上是一組指令，用於操作資料庫以支持我們的新 model，或者修改現有的 model</span></p><pre data-original-title="" title=""><code>nautobot-server makemigrations download_config
+nautobot-server migrate download_config
+</code></pre><h4 id="Django-admin" data-id="Django-admin"><a class="anchor hidden-xs" href="#Django-admin" title="Django-admin"><span class="octicon octicon-link"></span></a><span>Django admin</span></h4><p><a href="https://ithelp.ithome.com.tw/m/articles/10334639" target="_blank" rel="noopener"><span>Django admin 介紹</span></a></p><p><span>Django admin 是 Django 框架內建的一個功能，用於建立一個強大的、可自訂的管理後台界面，使開發者和管理者能夠輕鬆管理和維護網站的數據</span></p><ol>
+<li><span>數據管理: 直接在這邊使用 CRUD 功能，快速新增物件</span></li>
+<li><span>權限設定: 提供精細的網站權限設定，可以設定哪些用戶組可以訪問哪些特定的網頁</span></li>
+<li><span>圖形化介面: 可以直接在瀏覽器輸入連結，進入該網站進行設定</span></li>
+</ol><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># admin.py</span>
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+
+<span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> DownloadConfig
+
+
+<span class="hljs-meta">@admin.register(<span class="hljs-params">DownloadConfig</span>)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AnimalAdmin</span>(admin.ModelAdmin):
+    list_display = (<span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
+</div></div></code></pre><p><span>所以加入 </span><a href="http://admin.py" target="_blank" rel="noopener"><span>admin.py</span></a><span> 後, 可以點到 nautobot admin 頁面, 透過 後台系統新增物件</span></p><p><img src="https://imgur.com/w33UV91.png" alt="Imgur" loading="lazy"></p><p><span>list_display 輸入的幾項欄位 (這邊就是 name, running_config, startup_config)</span></p><p><img src="https://imgur.com/vMQMTEI.png" alt="Imgur" loading="lazy"></p><h3 id="Web-UI-Views" data-id="Web-UI-Views"><a class="anchor hidden-xs" href="#Web-UI-Views" title="Web-UI-Views"><span class="octicon octicon-link"></span></a><span>Web UI Views</span></h3><ul>
+<li><span>Overview</span></li>
+</ul><p><img src="https://imgur.com/UZ4bkIK.png" alt="Imgur" loading="lazy"></p><p><span>如果我們的 Plugin 程式需要在 Nautobot Web UI 中擁有自己的一個或多個頁面，則需要定義 view</span></p><pre data-original-title="" title=""><code class="PYTHON hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># views.py</span>
+<span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render
+<span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+
+<span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> DownloadConfig
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RandomConfigView</span>(<span class="hljs-title class_ inherited__">View</span>):
+    <span class="hljs-string">"""Display a randomly-selected Animal."""</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">self, request</span>):
+        <span class="hljs-comment"># config = DownloadConfig.objects.order_by('?').first()</span>
+        configs = DownloadConfig.objects.<span class="hljs-built_in">all</span>()
+        <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">'nautobot_download_config/download_config.html'</span>, {
+            <span class="hljs-string">'configs'</span>: configs,
+        })
+</div></div></code></pre><p><span>這個 view 中，configs 是從 database 中找 DownloadConfig object 的结果</span><br>
+<span>然後透過 render function 把這些數據傳遞给了 nautobot_download_config/download_config.html 這個 template</span></p><h4 id="Extending-the-Base-Template" data-id="Extending-the-Base-Template"><a class="anchor hidden-xs" href="#Extending-the-Base-Template" title="Extending-the-Base-Template"><span class="octicon octicon-link"></span></a><span>Extending the Base Template</span></h4><div class="alert alert-success">
+<p><span>Template，在django中即是html檔案，主要用來顯示使用者畫面</span></p>
+</div><p><span>Nautobot 提供了一個基本 template 來確保一致的使用者體驗, plugin 程式可以使用自己的內容進行擴充</span></p><pre><code>{# templates/nautobot_download_config/download_config.html #}
+{% extends 'base.html' %}
+
+{% block title %}Download Configs{% endblock %}
+
+{% block content %}
+    &lt;h1&gt;Download Configurations&lt;/h1&gt;
+
+    &lt;style&gt;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color:
+        }
+    &lt;/style&gt;
+
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Name&lt;/th&gt;
+                &lt;th&gt;Running Config&lt;/th&gt;
+                &lt;th&gt;Startup Config&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            {% for config in configs %}
+                &lt;tr&gt;
+                    &lt;td&gt;{{ config.name }}&lt;/td&gt;
+                    &lt;td&gt;{{ config.running_config }}&lt;/td&gt;
+                    &lt;td&gt;{{ config.startup_config }}&lt;/td&gt;
+                &lt;/tr&gt;
+            {% endfor %}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+{% endblock %}
+</code></pre><p><span>xxx.html 的第一行是 {% extends ‘base.html’ %}</span><br>
+<span>這個標籤用來告訴 Django 使用 base.html 作為母版 (這邊不需要額外定義 base.html, 直接跟 nautobot 共用 )</span></p><h4 id="Vscode-extension" data-id="Vscode-extension"><a class="anchor hidden-xs" href="#Vscode-extension" title="Vscode-extension"><span class="octicon octicon-link"></span></a><span>Vscode extension</span></h4><p><img src="https://imgur.com/chATi1B.png" alt="Imgur" loading="lazy"></p><p><span>安裝了這個套件後，在開發 Django Template(樣板)時，就可以使用Code Snippets自動產生程式碼片段</span></p><h4 id="URL" data-id="URL"><a class="anchor hidden-xs" href="#URL" title="URL"><span class="octicon octicon-link"></span></a><span>URL</span></h4><p><span>Finally, to make the view accessible to users, we need to register a URL for it. We do this in </span><a href="http://urls.py" target="_blank" rel="noopener"><span>urls.py</span></a><span> by defining a urlpatterns variable containing a list of paths</span><br>
+<span>為了讓 user 可以看到我們定義的 view, 我們需要為其註冊一個 URL.</span><br>
+<span>我們 </span><a href="http://urls.py" target="_blank" rel="noopener"><span>urls.py</span></a><span> 透過定義一個 urlpatterns 包含 __init__.py 中的 base_url variable 來做到這一點</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># urls.py</span>
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+
+urlpatterns = [
+    path(<span class="hljs-string">'config/'</span>, views.RandomConfigView.as_view(), name=<span class="hljs-string">'download_config'</span>),
+]
+</div></div></code></pre><p><span>定義好 view, template 跟 url 後, 可以看到已經可以呈現我們的內容了</span><br>
+<span>查看 </span><a href="http://127.0.0.1:8080/plugins/download_config/config/" target="_blank" rel="noopener"><span>http://127.0.0.1:8080/plugins/download_config/config/</span></a></p><h5 id="Result" data-id="Result"><a class="anchor hidden-xs" href="#Result" title="Result"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><img src="https://imgur.com/DA34G6q.png" alt="Imgur" loading="lazy"></p><h3 id="REST-API-Endpoints" data-id="REST-API-Endpoints"><a class="anchor hidden-xs" href="#REST-API-Endpoints" title="REST-API-Endpoints"><span class="octicon octicon-link"></span></a><span>REST API Endpoints</span></h3><p><span>Plugins can declare custom endpoints on Nautobot’s REST API to retrieve or manipulate models or other data</span></p><p><span>定義 Serializers, 這個目的是把你的資料庫中設定的欄位, 轉換成可以傳輸的模式</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># serializers.py</span>
+<span class="hljs-keyword">from</span> rest_framework.serializers <span class="hljs-keyword">import</span> ModelSerializer
+
+<span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> DownloadConfig
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigSerializer</span>(<span class="hljs-title class_ inherited__">ModelSerializer</span>):
+    <span class="hljs-string">"""API serializer for interacting with Animal objects."""</span>
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
+        model = DownloadConfig
+        fields = (<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
+</div></div></code></pre><p><span>然後需要更改 </span><a href="http://view.py" target="_blank" rel="noopener"><span>view.py</span></a><span> 以及 </span><a href="http://url.py" target="_blank" rel="noopener"><span>url.py</span></a><span> 的寫法</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># views.py</span>
+<span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render
+<span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+<span class="hljs-keyword">from</span> rest_framework.viewsets <span class="hljs-keyword">import</span> ModelViewSet
+<span class="hljs-keyword">from</span> .serializers <span class="hljs-keyword">import</span> ConfigSerializer
+<span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> DownloadConfig
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigViewSet</span>(<span class="hljs-title class_ inherited__">ModelViewSet</span>):
+    <span class="hljs-string">"""API viewset for interacting with DownloadConfig objects."""</span>
+
+    queryset = DownloadConfig.objects.<span class="hljs-built_in">all</span>()
+    <span class="hljs-comment"># queryset = DownloadConfig.objects.order_by('id')[:1]</span>
+    serializer_class = ConfigSerializer
+    
+---
+
+<span class="hljs-comment"># urls.py</span>
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+<span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> routers
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+router = routers.DefaultRouter()
+router.register(<span class="hljs-string">'config'</span>, views.ConfigViewSet)
+urlpatterns = router.urls
+</div></div></code></pre><h5 id="Result1" data-id="Result"><a class="anchor hidden-xs" href="#Result1" title="Result1"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><span>有了這三個檔案，我們就可以用 /api/plugins/download_config/config/ 查看所有定義的 DownloadConfig object 的清單</span></p><p><img src="https://imgur.com/9GdoaKi.png" alt="Imgur" loading="lazy"></p><h3 id="Navigation-Menu-Items" data-id="Navigation-Menu-Items"><a class="anchor hidden-xs" href="#Navigation-Menu-Items" title="Navigation-Menu-Items"><span class="octicon octicon-link"></span></a><span>Navigation Menu Items</span></h3><p><span>增加 導覽選項清單</span></p><p><span>To make its views easily accessible to users, a plugin can inject items in Nautobot’s navigation menu under the “Plugins” header</span></p><p><span>填寫的 link 可以去看 plugin 裡面的定義</span><br>
+<img src="https://imgur.com/dYdICQN.png" alt="Imgur" loading="lazy"></p><ul>
+<li><a href="http://navigation.py" target="_blank" rel="noopener"><span>navigation.py</span></a></li>
+</ul><pre><code class="wrap python hljs"><span class="hljs-comment"># navigation.py</span>
+<span class="hljs-keyword">from</span> nautobot.apps.ui <span class="hljs-keyword">import</span> NavMenuImportButton,NavMenuAddButton, NavMenuGroup, NavMenuItem, NavMenuTab
+
+items_operate = [
+    NavMenuItem(
+        link=<span class="hljs-string">"plugins:download_config:downloadconfig-list"</span>,
+        name=<span class="hljs-string">"Config Overview"</span>,
+        permissions=[],
+        <span class="hljs-comment"># buttons=(</span>
+        <span class="hljs-comment">#     NavMenuAddButton(</span>
+        <span class="hljs-comment">#         link="plugins:download_config:custom_view",</span>
+        <span class="hljs-comment">#         permissions=[],</span>
+        <span class="hljs-comment">#     ),</span>
+        <span class="hljs-comment"># ), </span>
+    ),
+    NavMenuItem(
+        link=<span class="hljs-string">"plugins:download_config:custom_view"</span>,
+        name=<span class="hljs-string">"User Define"</span>,
+        permissions=[],
+    )
+]
+
+menu_items = (
+    NavMenuTab(
+        name=<span class="hljs-string">"Download Config"</span>,
+        weight=<span class="hljs-number">1000</span>,
+        groups=(
+            NavMenuGroup(name=<span class="hljs-string">"Manage"</span>, weight=<span class="hljs-number">100</span>, items=<span class="hljs-built_in">tuple</span>(items_operate)),
+            <span class="hljs-comment"># NavMenuGroup(name="Setup", weight=100, items=tuple(items_setup)),</span>
+        ),
+    ),
+)
+</code></pre><h5 id="Result2" data-id="Result"><a class="anchor hidden-xs" href="#Result2" title="Result2"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><span>我們在上面的 </span><a href="http://navigation.py" target="_blank" rel="noopener"><span>navigation.py</span></a><span> 定義了兩個 button, 結果如下圖</span></p><p><img src="https://imgur.com/aTlx66b.png" alt="Imgur" loading="lazy"></p><h3 id="Extending-Core-Templates" data-id="Extending-Core-Templates"><a class="anchor hidden-xs" href="#Extending-Core-Templates" title="Extending-Core-Templates"><span class="octicon octicon-link"></span></a><span>Extending Core Templates</span></h3><ul>
+<li><span>template_content</span></li>
+</ul><pre><code class="wrap python hljs"><span class="hljs-comment"># template_content</span>
+<span class="hljs-string">"""Added content to the device model view for config compliance."""</span>
+<span class="hljs-keyword">from</span> django.core.exceptions <span class="hljs-keyword">import</span> ObjectDoesNotExist
+<span class="hljs-keyword">from</span> django.db.models <span class="hljs-keyword">import</span> Count, Q
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> reverse
+<span class="hljs-keyword">from</span> nautobot.dcim.models <span class="hljs-keyword">import</span> Device
+<span class="hljs-keyword">from</span> nautobot.extras.plugins <span class="hljs-keyword">import</span> PluginTemplateExtension
+<span class="hljs-keyword">from</span> download_config.models <span class="hljs-keyword">import</span> DownloadConfig
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigDeviceCheck</span>(<span class="hljs-title class_ inherited__">PluginTemplateExtension</span>):  <span class="hljs-comment"># pylint: disable=abstract-method</span>
+    <span class="hljs-string">"""Plugin extension class for config compliance."""</span>
+
+    model = <span class="hljs-string">"dcim.device"</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_device</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Get device object."""</span>
+        <span class="hljs-keyword">return</span> self.context[<span class="hljs-string">"object"</span>]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">right_page</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Content to add to the configuration compliance."""</span>
+
+        <span class="hljs-keyword">return</span> self.render(
+            <span class="hljs-string">"nautobot_download_config/download_config.html"</span>,
+        )
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">detail_tabs</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Add a Configuration Compliance tab to the Device detail view if the Configuration Compliance associated to it."""</span>
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">return</span> [
+                {
+                    <span class="hljs-string">"title"</span>: <span class="hljs-string">"Configuration Link"</span>,
+                    <span class="hljs-string">"url"</span>: <span class="hljs-string">"plugins:nautobot_download_config:config"</span>,
+                }
+            ]
+        <span class="hljs-keyword">except</span> ObjectDoesNotExist:
+            <span class="hljs-keyword">return</span> []
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigDeviceDetails</span>(<span class="hljs-title class_ inherited__">PluginTemplateExtension</span>):  <span class="hljs-comment"># pylint: disable=abstract-method</span>
+    <span class="hljs-string">"""Plugin extension class for config compliance."""</span>
+
+    model = <span class="hljs-string">"dcim.device"</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_device</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Get device object."""</span>
+        <span class="hljs-keyword">return</span> self.context[<span class="hljs-string">"object"</span>]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">right_page</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Content to add to the configuration compliance."""</span>
+        device = self.get_device()
+        download_config = DownloadConfig.objects.<span class="hljs-built_in">filter</span>(name=device).first()
+        extra_context = {
+            <span class="hljs-string">"device"</span>: self.get_device(),  <span class="hljs-comment"># device,</span>
+            <span class="hljs-string">"golden_config"</span>: download_config,
+            <span class="hljs-string">"template_type"</span>: <span class="hljs-string">"device-configs"</span>,
+        }
+        <span class="hljs-keyword">return</span> self.render(
+            <span class="hljs-string">"nautobot_download_config/download_config.html"</span>,
+            extra_context=extra_context,
+        )
+
+
+
+extensions = [ConfigDeviceDetails]
+extensions.append(ConfigDeviceCheck)
+
+
+
+template_extensions = extensions
+</code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li class=""><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
+<li class=""><a href="#Poetry" title="Poetry">Poetry</a></li>
+<li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
+</ul>
+</li>
+<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
+<li><a href="#Database-Models" title="Database Models">Database Models</a></li>
+<li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
+<li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
+<li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
+<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li class=""><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
+<li class=""><a href="#Poetry" title="Poetry">Poetry</a></li>
+<li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
+</ul>
+</li>
+<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
+<li><a href="#Database-Models" title="Database Models">Database Models</a></li>
+<li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
+<li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
+<li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
+<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
