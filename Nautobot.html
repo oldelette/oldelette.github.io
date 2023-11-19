@@ -134,8 +134,8 @@ INSTALLATION_METRICS_ENABLED = is_truthy(os.getenv(<span class="hljs-string">"NA
 
 </div></div></code></pre><h4 id="Prepare-the-Database" data-id="Prepare-the-Database"><a class="anchor hidden-xs" href="#Prepare-the-Database" title="Prepare-the-Database"><span class="octicon octicon-link"></span></a><span>Prepare the Database</span></h4><pre><code>poetry add mysqlclient
 </code></pre><p><span>假設安裝 mysqlclient 出錯 (如下圖), 執行下面指令</span></p><pre><code>sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config
-</code></pre><p><img src="https://imgur.com/B7xunpb.png" alt="Imgur" loading="lazy"></p><pre data-original-title="" title=""><code>nautobot-server migrate
-</code></pre><p><span>順利完成</span></p><p><img src="https://imgur.com/s1ZPPAM.png" alt="Imgur" loading="lazy"></p><h4 id="Create-a-Superuser" data-id="Create-a-Superuser"><a class="anchor hidden-xs" href="#Create-a-Superuser" title="Create-a-Superuser"><span class="octicon octicon-link"></span></a><span>Create a Superuser</span></h4><p><span>建立帳號</span></p><pre data-original-title="" title=""><code>nautobot-server createsuperuser
+</code></pre><p><img src="https://imgur.com/B7xunpb.png" alt="Imgur" loading="lazy"></p><pre><code>nautobot-server migrate
+</code></pre><p><span>順利完成</span></p><p><img src="https://imgur.com/s1ZPPAM.png" alt="Imgur" loading="lazy"></p><h4 id="Create-a-Superuser" data-id="Create-a-Superuser"><a class="anchor hidden-xs" href="#Create-a-Superuser" title="Create-a-Superuser"><span class="octicon octicon-link"></span></a><span>Create a Superuser</span></h4><p><span>建立帳號</span></p><pre><code>nautobot-server createsuperuser
 </code></pre><h4 id="Test-the-Application" data-id="Test-the-Application"><a class="anchor hidden-xs" href="#Test-the-Application" title="Test-the-Application"><span class="octicon octicon-link"></span></a><span>Test the Application</span></h4><pre><code>nautobot-server runserver 0.0.0.0:8080 --insecure
 </code></pre><p><img src="https://imgur.com/TF0l2iL.png" alt="Imgur" loading="lazy"></p><h3 id="Docker-Compose" data-id="Docker-Compose"><a class="anchor hidden-xs" href="#Docker-Compose" title="Docker-Compose"><span class="octicon octicon-link"></span></a><span>Docker Compose</span></h3><p><span>下面為 mysql, adminer, redis 的相關 docker-compose 設定</span></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -308,7 +308,7 @@ config = DownloadConfig
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):
         <span class="hljs-keyword">return</span> self.name
 </div></div></code></pre><p><span>幫 Plugin 定義了 model, 我們需要 migrate new model</span><br>
-<span>migrate 文件基本上是一組指令，用於操作資料庫以支持我們的新 model，或者修改現有的 model</span></p><pre data-original-title="" title=""><code>nautobot-server makemigrations download_config
+<span>migrate 文件基本上是一組指令，用於操作資料庫以支持我們的新 model，或者修改現有的 model</span></p><pre><code>nautobot-server makemigrations download_config
 nautobot-server migrate download_config
 </code></pre><h4 id="Django-admin" data-id="Django-admin"><a class="anchor hidden-xs" href="#Django-admin" title="Django-admin"><span class="octicon octicon-link"></span></a><span>Django admin</span></h4><p><a href="https://ithelp.ithome.com.tw/m/articles/10334639" target="_blank" rel="noopener"><span>Django admin 介紹</span></a></p><p><span>Django admin 是 Django 框架內建的一個功能，用於建立一個強大的、可自訂的管理後台界面，使開發者和管理者能夠輕鬆管理和維護網站的數據</span></p><ol>
 <li><span>數據管理: 直接在這邊使用 CRUD 功能，快速新增物件</span></li>
@@ -333,7 +333,7 @@ nautobot-server migrate download_config
     list_display = (<span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
 </div></div></code></pre><p><span>所以加入 </span><a href="http://admin.py" target="_blank" rel="noopener"><span>admin.py</span></a><span> 後, 可以點到 nautobot admin 頁面, 透過 後台系統新增物件</span></p><p><img src="https://imgur.com/w33UV91.png" alt="Imgur" loading="lazy"></p><p><span>list_display 輸入的幾項欄位 (這邊就是 name, running_config, startup_config)</span></p><p><img src="https://imgur.com/vMQMTEI.png" alt="Imgur" loading="lazy"></p><h3 id="Web-UI-Views" data-id="Web-UI-Views"><a class="anchor hidden-xs" href="#Web-UI-Views" title="Web-UI-Views"><span class="octicon octicon-link"></span></a><span>Web UI Views</span></h3><ul>
 <li><span>Overview</span></li>
-</ul><p><img src="https://imgur.com/UZ4bkIK.png" alt="Imgur" loading="lazy"></p><p><span>如果我們的 Plugin 程式需要在 Nautobot Web UI 中擁有自己的一個或多個頁面，則需要定義 view</span></p><pre data-original-title="" title=""><code class="PYTHON hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</ul><p><img src="https://imgur.com/UZ4bkIK.png" alt="Imgur" loading="lazy"></p><p><span>如果我們的 Plugin 程式需要在 Nautobot Web UI 中擁有自己的一個或多個頁面，則需要定義 view</span></p><pre><code class="PYTHON hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -453,7 +453,7 @@ urlpatterns = [
     <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
         model = DownloadConfig
         fields = (<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
-</div></div></code></pre><p><span>然後需要更改 </span><a href="http://view.py" target="_blank" rel="noopener"><span>view.py</span></a><span> 以及 </span><a href="http://url.py" target="_blank" rel="noopener"><span>url.py</span></a><span> 的寫法</span></p><pre data-original-title="" title=""><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><p><span>然後需要更改 </span><a href="http://view.py" target="_blank" rel="noopener"><span>view.py</span></a><span> 以及 </span><a href="http://url.py" target="_blank" rel="noopener"><span>url.py</span></a><span> 的寫法</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -615,19 +615,19 @@ template_extensions = extensions
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
-<li class=""><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
-<li class=""><a href="#Poetry" title="Poetry">Poetry</a></li>
+<li><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
+<li><a href="#Poetry" title="Poetry">Poetry</a></li>
 <li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
 </ul>
 </li>
-<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
 <li><a href="#Database-Models" title="Database Models">Database Models</a></li>
 <li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
 <li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
 <li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
-<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
 </ul>
 </li>
 </ul>
@@ -639,19 +639,19 @@ template_extensions = extensions
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
-<li class=""><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
-<li class=""><a href="#Poetry" title="Poetry">Poetry</a></li>
+<li><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
+<li><a href="#Poetry" title="Poetry">Poetry</a></li>
 <li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
 </ul>
 </li>
-<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
 <li><a href="#Database-Models" title="Database Models">Database Models</a></li>
 <li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
 <li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
 <li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
-<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
 </ul>
 </li>
 </ul>
