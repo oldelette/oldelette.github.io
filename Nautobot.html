@@ -233,8 +233,8 @@ INSTALLATION_METRICS_ENABLED = is_truthy(os.getenv(<span class="hljs-string">"NA
   <span class="token key atrule">nautobot_internal</span><span class="token punctuation">:</span>
      <span class="token key atrule">driver</span><span class="token punctuation">:</span>  bridge
 </div></div></code></pre><h2 id="Install-Nautobot-Plugin" data-id="Install-Nautobot-Plugin"><a class="anchor hidden-xs" href="#Install-Nautobot-Plugin" title="Install-Nautobot-Plugin"><span class="octicon octicon-link"></span></a><span>Install Nautobot Plugin</span></h2><p><a href="https://docs.nautobot.com/projects/core/en/v1.0.0/plugins/development/" target="_blank" rel="noopener"><span>Plugin Development</span><br>
-</a><br>
-<a href="https://docs.nautobot.com/projects/core/en/stable/development/apps/api/setup/" target="_blank" rel="noopener"><span>App Developer Guide - Nautobot Documentation</span></a></p><ul>
+</a><a href="https://docs.nautobot.com/projects/core/en/stable/development/apps/api/setup/" target="_blank" rel="noopener"><span>App Developer Guide - Nautobot Documentation</span></a><br>
+<a href="https://gitlab.com/oldelette1/nautobot-plugin" target="_blank" rel="noopener"><span>Test-Repo</span></a></p><ul>
 <li><span>pyproject.toml</span></li>
 </ul><pre><code class="toml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -265,24 +265,29 @@ INSTALLATION_METRICS_ENABLED = is_truthy(os.getenv(<span class="hljs-string">"NA
 <span class="hljs-attr">build-backend</span> = <span class="hljs-string">"poetry.core.masonry.api"</span>
 </div></div></code></pre><h3 id="Define-a-PluginConfig" data-id="Define-a-PluginConfig"><a class="anchor hidden-xs" href="#Define-a-PluginConfig" title="Define-a-PluginConfig"><span class="octicon octicon-link"></span></a><span>Define a PluginConfig</span></h3><p><span>PluginConfig class 是Nautobot 特定的 wrapper, wrapper 是 Django內建的 AppConfig class.</span><br>
 <span>它用於在 Python wrapper中宣告 Nautobot plugin.</span><br>
-<span>每個 plugin 都應該提供自己的子類，定義其名稱、元數據，以及默認和必需的配置參數</span></p><pre><code>__init__.py
-from nautobot.extras.plugins import PluginConfig
+<span>每個 plugin 都應該提供自己的子類，定義其名稱、元數據，以及默認和必需的配置參數</span></p><pre><code class="python hljs">__init__.py
+<span class="hljs-keyword">from</span> nautobot.extras.plugins <span class="hljs-keyword">import</span> PluginConfig
 
-class DownloadConfig(PluginConfig):
-    name = 'download_config'
-    verbose_name = 'Download Config'
-    description = 'An example plugin for development purposes'
-    version = '0.1'
-    author = 'mcleezs'
-    author_email = 'mcleezs@tsmc.com'
-    base_url = 'download-config'
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DownloadConfig</span>(<span class="hljs-title class_ inherited__">PluginConfig</span>):
+    name = <span class="hljs-string">'download_config'</span>
+    verbose_name = <span class="hljs-string">'Download Config'</span>
+    description = <span class="hljs-string">'An example plugin for development purposes'</span>
+    version = <span class="hljs-string">'0.1'</span>
+    author = <span class="hljs-string">'mcleezs'</span>
+    author_email = <span class="hljs-string">'mcleezs@tsmc.com'</span>
+    base_url = <span class="hljs-string">'download-config'</span>
     required_settings = []
-    min_version= '2.0.2'
-    max_version= '2.0.4'
+    min_version= <span class="hljs-string">'2.0.2'</span>
+    max_version= <span class="hljs-string">'2.0.4'</span>
 
 config = DownloadConfig
 </code></pre><p><span>定義好後, 先執行 poetry install</span></p><p><img src="https://imgur.com/T85eBPy.png" alt="Imgur" loading="lazy"></p><p><span>再把這個 plugin 名稱加入 nautobot nautobot_config.py 檔案中後重啟 nautobot</span></p><p><span>Once the plugin has been installed, add it to the plugin configuration for Nautobot:</span></p><pre><code>PLUGINS = ["nautobot_download_config"]
-</code></pre><p><span>成功看到 plugin 欄位有我們的 plugin</span></p><p><img src="https://imgur.com/jZmeorY.png" alt="Imgur" loading="lazy"></p><h3 id="Database-Models" data-id="Database-Models"><a class="anchor hidden-xs" href="#Database-Models" title="Database-Models"><span class="octicon octicon-link"></span></a><span>Database Models</span></h3><p><span>A model is essentially a Python representation of a database table, with attributes that represent individual columns. Model instances can be created, manipulated, and deleted using queries. Models must be defined within a file named </span><a href="http://models.py" target="_blank" rel="noopener"><span>models.py</span></a></p><pre><code class="pyt hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</code></pre><p><span>成功看到 plugin 欄位有我們的 plugin</span></p><p><img src="https://imgur.com/jZmeorY.png" alt="Imgur" loading="lazy"></p><h4 id="How-to-add-plugin" data-id="How-to-add-plugin"><a class="anchor hidden-xs" href="#How-to-add-plugin" title="How-to-add-plugin"><span class="octicon octicon-link"></span></a><span>How to add plugin</span></h4><p><span>如何新增 opensource 別人寫好的 plugin</span><br>
+<span>使用 </span><a href="https://github.com/nautobot/nautobot-plugin-device-lifecycle-mgmt" target="_blank" rel="noopener"><span>nautobot-device-lifecycle-mgmt</span></a><span> 為例子</span></p><p><span>定義好 nautobot_config 檔案後</span></p><pre><code class="wrap python hljs">PLUGINS = [<span class="hljs-string">"nautobot_device_lifecycle_mgmt"</span>]
+</code></pre><p><span>按照下面步驟:</span></p><pre><code>step1. poetry add nautobot-device-lifecycle-mgmt
+step2. nautobot-server migrate
+step3. nautobot-server runserver 0.0.0.0:8080 --insecure
+</code></pre><p><img src="https://imgur.com/j1OswQB.png" alt="Imgur" loading="lazy"></p><h3 id="Database-Models" data-id="Database-Models"><a class="anchor hidden-xs" href="#Database-Models" title="Database-Models"><span class="octicon octicon-link"></span></a><span>Database Models</span></h3><p><span>A model is essentially a Python representation of a database table, with attributes that represent individual columns. Model instances can be created, manipulated, and deleted using queries. Models must be defined within a file named </span><a href="http://models.py" target="_blank" rel="noopener"><span>models.py</span></a></p><pre><code class="pyt hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -501,6 +506,7 @@ router = routers.DefaultRouter()
 router.register(<span class="hljs-string">'config'</span>, views.ConfigViewSet)
 urlpatterns = router.urls
 </div></div></code></pre><h5 id="Result1" data-id="Result"><a class="anchor hidden-xs" href="#Result1" title="Result1"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><span>有了這三個檔案，我們就可以用 /api/plugins/download_config/config/ 查看所有定義的 DownloadConfig object 的清單</span></p><p><img src="https://imgur.com/9GdoaKi.png" alt="Imgur" loading="lazy"></p><h3 id="Navigation-Menu-Items" data-id="Navigation-Menu-Items"><a class="anchor hidden-xs" href="#Navigation-Menu-Items" title="Navigation-Menu-Items"><span class="octicon octicon-link"></span></a><span>Navigation Menu Items</span></h3><p><span>增加 導覽選項清單</span></p><p><span>To make its views easily accessible to users, a plugin can inject items in Nautobot’s navigation menu under the “Plugins” header</span></p><p><span>填寫的 link 可以去看 plugin 裡面的定義</span><br>
+<span>(跟 __init__.py 裡面定義的 project name 有關)</span><br>
 <img src="https://imgur.com/dYdICQN.png" alt="Imgur" loading="lazy"></p><ul>
 <li><a href="http://navigation.py" target="_blank" rel="noopener"><span>navigation.py</span></a></li>
 </ul><pre><code class="wrap python hljs"><span class="hljs-comment"># navigation.py</span>
@@ -607,7 +613,7 @@ extensions.append(ConfigDeviceCheck)
 
 
 template_extensions = extensions
-</code></pre></div>
+</code></pre><h3 id="Result3" data-id="Result"><a class="anchor hidden-xs" href="#Result3" title="Result3"><span class="octicon octicon-link"></span></a><span>Result</span></h3><p><img src="https://imgur.com/58hGuPd.png" alt="Imgur" loading="lazy"></p></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -615,19 +621,20 @@ template_extensions = extensions
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
 <li><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
 <li><a href="#Poetry" title="Poetry">Poetry</a></li>
 <li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
 </ul>
 </li>
-<li><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
 <li><a href="#Database-Models" title="Database Models">Database Models</a></li>
 <li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
 <li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
 <li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
-<li><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li><a href="#Result3" title="Result">Result</a></li>
 </ul>
 </li>
 </ul>
@@ -639,19 +646,20 @@ template_extensions = extensions
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
+<li class=""><a href="#Nautobot" title="Nautobot">Nautobot</a><ul class="nav">
 <li><a href="#Install-Nautobot" title="Install Nautobot">Install Nautobot</a><ul class="nav">
 <li><a href="#Poetry" title="Poetry">Poetry</a></li>
 <li><a href="#Docker-Compose" title="Docker Compose">Docker Compose</a></li>
 </ul>
 </li>
-<li><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
-<li><a href="#Database-Models" title="Database Models">Database Models</a></li>
-<li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
+<li class=""><a href="#Database-Models" title="Database Models">Database Models</a></li>
+<li class=""><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
 <li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
-<li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
-<li><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li class=""><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
+<li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
+<li class=""><a href="#Result3" title="Result">Result</a></li>
 </ul>
 </li>
 </ul>
