@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Nautobot" data-id="Nautobot"><a class="anchor hidden-xs" href="#Nautobot" title="Nautobot"><span class="octicon octicon-link"></span></a><span>Nautobot</span></h1><p><span>2023.11.18</span></p><h2 id="Install-Nautobot" data-id="Install-Nautobot"><a class="anchor hidden-xs" href="#Install-Nautobot" title="Install-Nautobot"><span class="octicon octicon-link"></span></a><span>Install Nautobot</span></h2><h3 id="Poetry" data-id="Poetry"><a class="anchor hidden-xs" href="#Poetry" title="Poetry"><span class="octicon octicon-link"></span></a><span>Poetry</span></h3><pre><code>pip install poetry
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Nautobot" data-id="Nautobot"><a class="anchor hidden-xs" href="#Nautobot" title="Nautobot"><span class="octicon octicon-link"></span></a><span>Nautobot</span></h1><p><span>nautobot github </span><a href="https://github.com/nautobot/nautobot" target="_blank" rel="noopener"><span>link</span></a></p><p><span>v2.0.1 - 2023-10-04</span></p><h2 id="Install-Nautobot" data-id="Install-Nautobot"><a class="anchor hidden-xs" href="#Install-Nautobot" title="Install-Nautobot"><span class="octicon octicon-link"></span></a><span>Install Nautobot</span></h2><h3 id="Poetry" data-id="Poetry"><a class="anchor hidden-xs" href="#Poetry" title="Poetry"><span class="octicon octicon-link"></span></a><span>Poetry</span></h3><pre><code>pip install poetry
 poetry new download_config
 
 poetry shell
@@ -234,7 +234,7 @@ INSTALLATION_METRICS_ENABLED = is_truthy(os.getenv(<span class="hljs-string">"NA
      <span class="token key atrule">driver</span><span class="token punctuation">:</span>  bridge
 </div></div></code></pre><h2 id="Install-Nautobot-Plugin" data-id="Install-Nautobot-Plugin"><a class="anchor hidden-xs" href="#Install-Nautobot-Plugin" title="Install-Nautobot-Plugin"><span class="octicon octicon-link"></span></a><span>Install Nautobot Plugin</span></h2><p><a href="https://docs.nautobot.com/projects/core/en/v1.0.0/plugins/development/" target="_blank" rel="noopener"><span>Plugin Development</span><br>
 </a><a href="https://docs.nautobot.com/projects/core/en/stable/development/apps/api/setup/" target="_blank" rel="noopener"><span>App Developer Guide - Nautobot Documentation</span></a><br>
-<a href="https://gitlab.com/oldelette1/nautobot-plugin" target="_blank" rel="noopener"><span>Test-Repo</span></a></p><ul>
+<a href="https://gitlab.com/oldelette1/nautobot-plugin" target="_blank" rel="noopener"><span>Test-Repo</span></a></p><h3 id="Plugin-Structure" data-id="Plugin-Structure"><a class="anchor hidden-xs" href="#Plugin-Structure" title="Plugin-Structure"><span class="octicon octicon-link"></span></a><span>Plugin Structure</span></h3><p><a href="https://docs.nautobot.com/projects/core/en/v1.4.7/plugins/development/#plugin-structure" target="_blank" rel="noopener"><span>Plugin Structure</span></a></p><p><span>使用本文檔中描述的所有可用 plugin 功能的 Nautobot plugin 如下圖:</span></p><p><img src="https://imgur.com/9VURBVO.png" alt="Imgur" loading="lazy"></p><h3 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h3><ul>
 <li><span>pyproject.toml</span></li>
 </ul><pre><code class="toml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -315,7 +315,10 @@ step3. nautobot-server runserver 0.0.0.0:8080 --insecure
 </div></div></code></pre><p><span>幫 Plugin 定義了 model, 我們需要 migrate new model</span><br>
 <span>migrate 文件基本上是一組指令，用於操作資料庫以支持我們的新 model，或者修改現有的 model</span></p><pre><code>nautobot-server makemigrations download_config
 nautobot-server migrate download_config
-</code></pre><h4 id="Django-admin" data-id="Django-admin"><a class="anchor hidden-xs" href="#Django-admin" title="Django-admin"><span class="octicon octicon-link"></span></a><span>Django admin</span></h4><p><a href="https://ithelp.ithome.com.tw/m/articles/10334639" target="_blank" rel="noopener"><span>Django admin 介紹</span></a></p><p><span>Django admin 是 Django 框架內建的一個功能，用於建立一個強大的、可自訂的管理後台界面，使開發者和管理者能夠輕鬆管理和維護網站的數據</span></p><ol>
+</code></pre><p><span>假設你新增加了一個 Model, 你需要執行 makemigrations.</span><br>
+<span>但執行完 makemigrations 只是生成了對應的 sql command, 還沒有把真正的改動加入到 database 中, 還需要執行 migrate 才能把改變遷移到 database.</span></p><div class="alert alert-success">
+<p><span>makemigrations 作用是 Django 會去檢查我們 建立或修改的 database, 如果不合法就會給提示</span></p>
+</div><p><span>這邊範例就是我成功新建了一個 DnsZoneModel</span></p><p><img src="https://imgur.com/pU25hjL.png" alt="Imgur" loading="lazy"></p><p><span>然後在 adminer 裡面看到成功新建了 DnsZoneModel 這個 model</span></p><p><img src="https://imgur.com/4wviyGH.png" alt="Imgur" loading="lazy"></p><h4 id="Django-admin" data-id="Django-admin"><a class="anchor hidden-xs" href="#Django-admin" title="Django-admin"><span class="octicon octicon-link"></span></a><span>Django admin</span></h4><p><a href="https://ithelp.ithome.com.tw/m/articles/10334639" target="_blank" rel="noopener"><span>Django admin 介紹</span></a></p><p><span>Django admin 是 Django 框架內建的一個功能，用於建立一個強大的、可自訂的管理後台界面，使開發者和管理者能夠輕鬆管理和維護網站的數據</span></p><ol>
 <li><span>數據管理: 直接在這邊使用 CRUD 功能，快速新增物件</span></li>
 <li><span>權限設定: 提供精細的網站權限設定，可以設定哪些用戶組可以訪問哪些特定的網頁</span></li>
 <li><span>圖形化介面: 可以直接在瀏覽器輸入連結，進入該網站進行設定</span></li>
@@ -336,7 +339,8 @@ nautobot-server migrate download_config
 <span class="hljs-meta">@admin.register(<span class="hljs-params">DownloadConfig</span>)</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">AnimalAdmin</span>(admin.ModelAdmin):
     list_display = (<span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
-</div></div></code></pre><p><span>所以加入 </span><a href="http://admin.py" target="_blank" rel="noopener"><span>admin.py</span></a><span> 後, 可以點到 nautobot admin 頁面, 透過 後台系統新增物件</span></p><p><img src="https://imgur.com/w33UV91.png" alt="Imgur" loading="lazy"></p><p><span>list_display 輸入的幾項欄位 (這邊就是 name, running_config, startup_config)</span></p><p><img src="https://imgur.com/vMQMTEI.png" alt="Imgur" loading="lazy"></p><h3 id="Web-UI-Views" data-id="Web-UI-Views"><a class="anchor hidden-xs" href="#Web-UI-Views" title="Web-UI-Views"><span class="octicon octicon-link"></span></a><span>Web UI Views</span></h3><ul>
+</div></div></code></pre><p><span>所以加入 </span><a href="http://admin.py" target="_blank" rel="noopener"><span>admin.py</span></a><span> 後, 可以點到 nautobot admin 頁面, 透過 後台系統新增物件</span></p><p><img src="https://imgur.com/w33UV91.png" alt="Imgur" loading="lazy"></p><p><span>list_display 是一個用於定義管理後台列表顯示的屬性. 允許我們指定在管理後台中展示哪些 modle field 的列表</span><br>
+<span>list_display 輸入的幾項欄位 (這邊就是 name, running_config, startup_config)</span></p><p><img src="https://imgur.com/vMQMTEI.png" alt="Imgur" loading="lazy"></p><h3 id="Web-UI-Views" data-id="Web-UI-Views"><a class="anchor hidden-xs" href="#Web-UI-Views" title="Web-UI-Views"><span class="octicon octicon-link"></span></a><span>Web UI Views</span></h3><ul>
 <li><span>Overview</span></li>
 </ul><p><img src="https://imgur.com/UZ4bkIK.png" alt="Imgur" loading="lazy"></p><p><span>如果我們的 Plugin 程式需要在 Nautobot Web UI 中擁有自己的一個或多個頁面，則需要定義 view</span></p><pre><code class="PYTHON hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
@@ -435,7 +439,8 @@ urlpatterns = [
     path(<span class="hljs-string">'config/'</span>, views.RandomConfigView.as_view(), name=<span class="hljs-string">'download_config'</span>),
 ]
 </div></div></code></pre><p><span>定義好 view, template 跟 url 後, 可以看到已經可以呈現我們的內容了</span><br>
-<span>查看 </span><a href="http://127.0.0.1:8080/plugins/download_config/config/" target="_blank" rel="noopener"><span>http://127.0.0.1:8080/plugins/download_config/config/</span></a></p><h5 id="Result" data-id="Result"><a class="anchor hidden-xs" href="#Result" title="Result"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><img src="https://imgur.com/DA34G6q.png" alt="Imgur" loading="lazy"></p><h3 id="REST-API-Endpoints" data-id="REST-API-Endpoints"><a class="anchor hidden-xs" href="#REST-API-Endpoints" title="REST-API-Endpoints"><span class="octicon octicon-link"></span></a><span>REST API Endpoints</span></h3><p><span>Plugins can declare custom endpoints on Nautobot’s REST API to retrieve or manipulate models or other data</span></p><p><span>定義 Serializers, 這個目的是把你的資料庫中設定的欄位, 轉換成可以傳輸的模式</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span>查看 </span><a href="http://127.0.0.1:8080/plugins/download_config/config/" target="_blank" rel="noopener"><span>http://127.0.0.1:8080/plugins/download_config/config/</span></a></p><h5 id="Result" data-id="Result"><a class="anchor hidden-xs" href="#Result" title="Result"><span class="octicon octicon-link"></span></a><span>Result</span></h5><p><img src="https://imgur.com/DA34G6q.png" alt="Imgur" loading="lazy"></p><h3 id="REST-API-Endpoints" data-id="REST-API-Endpoints"><a class="anchor hidden-xs" href="#REST-API-Endpoints" title="REST-API-Endpoints"><span class="octicon octicon-link"></span></a><span>REST API Endpoints</span></h3><p><span>Plugins can declare custom endpoints on Nautobot’s REST API to retrieve or manipulate models or other data</span></p><p><span>Plugins 可以在 Nautobot 的 REST API 上聲明自訂 endpoint, 用來擷取或操作 model 或其他資料</span><br>
+<span>它們的行為與 view 非常相似, 只不過不是使用模板呈現任意內容m 而是使用 serializers以 JSON 格式傳回資料.</span></p><p><span>定義 Serializers, 這個目的是把你的資料庫中設定的欄位, 轉換成可以傳輸的模式</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -446,7 +451,7 @@ urlpatterns = [
 <span></span>
 <span></span>
 <span></span>
-<span></span></div><div class="code"><span class="hljs-comment"># serializers.py</span>
+<span></span></div><div class="code"><span class="hljs-comment"># api/serializers.py</span>
 <span class="hljs-keyword">from</span> rest_framework.serializers <span class="hljs-keyword">import</span> ModelSerializer
 
 <span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> DownloadConfig
@@ -458,7 +463,13 @@ urlpatterns = [
     <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
         model = DownloadConfig
         fields = (<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'running_config'</span>, <span class="hljs-string">'startup_config'</span>)
-</div></div></code></pre><p><span>然後需要更改 </span><a href="http://view.py" target="_blank" rel="noopener"><span>view.py</span></a><span> 以及 </span><a href="http://url.py" target="_blank" rel="noopener"><span>url.py</span></a><span> 的寫法</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</div></div></code></pre><div class="alert alert-success">
+<p><span>queryset :定義了在 ViewSet 中用於檢索數據的查詢 set.</span><br>
+<span>這個屬性指定了需要在 ViewSet 中呈現 的model 數據的來源.</span><br>
+<span>它通常是 model 的查詢 set,例如 MyModel.objects.all(), 指定了要從 database 中檢索的特定 model 數據集合</span></p>
+</div><p><span>然後需要更改 </span><a href="http://view.py" target="_blank" rel="noopener"><span>view.py</span></a><span> 以及 </span><a href="http://url.py" target="_blank" rel="noopener"><span>url.py</span></a><span> 的寫法</span><br>
+<span>建立一個通用 API view, 允許對 DownloadConfig model 進行基本的 CRUD（建立、讀取、更新和刪除）操作.</span><br>
+<span>這是定義在api/views.py</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -481,7 +492,7 @@ urlpatterns = [
 <span></span>
 <span></span>
 <span></span>
-<span></span></div><div class="code"><span class="hljs-comment"># views.py</span>
+<span></span></div><div class="code"><span class="hljs-comment"># api/views.py</span>
 <span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render
 <span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
 <span class="hljs-keyword">from</span> rest_framework.viewsets <span class="hljs-keyword">import</span> ModelViewSet
@@ -613,7 +624,170 @@ extensions.append(ConfigDeviceCheck)
 
 
 template_extensions = extensions
-</code></pre><h3 id="Result3" data-id="Result"><a class="anchor hidden-xs" href="#Result3" title="Result3"><span class="octicon octicon-link"></span></a><span>Result</span></h3><p><img src="https://imgur.com/58hGuPd.png" alt="Imgur" loading="lazy"></p></div>
+</code></pre><h3 id="Result3" data-id="Result"><a class="anchor hidden-xs" href="#Result3" title="Result3"><span class="octicon octicon-link"></span></a><span>Result</span></h3><p><img src="https://imgur.com/58hGuPd.png" alt="Imgur" loading="lazy"></p><h2 id="Relationships" data-id="Relationships"><a class="anchor hidden-xs" href="#Relationships" title="Relationships"><span class="octicon octicon-link"></span></a><span>Relationships</span></h2><p><a href="https://docs.nautobot.com/projects/core/en/v1.5.6/models/extras/relationship/" target="_blank" rel="noopener"><span>Relationships</span></a></p><p><span>relationships 是定義特定 object 之間的連結，這些連結可能特定於您的網路或資料.</span></p><p><span>To create a relationship, from the top-level navigation menu select Extensibility &gt; Data Management &gt; Relationships</span></p><h3 id="Relationship-Types" data-id="Relationship-Types"><a class="anchor hidden-xs" href="#Relationship-Types" title="Relationship-Types"><span class="octicon octicon-link"></span></a><span>Relationship Types</span></h3><ol>
+<li>
+<p><ins><span>Many-to-many</span></ins><br>
+<span>多對多: 兩側的 relationship 可以連接到多個物件. 例如，VLANs 可以連接到多個 device，而 device 也可以擁有多個 VLANs.</span><br>
+<span>where both sides of the relationship connection can be connected to multiple objects. For example, VLANs can be connected to multiple devices and devices will have multiple VLANs.</span></p>
+</li>
+<li>
+<p><ins><span>One-to-many</span></ins><br>
+<span>一對多: 連接的一側只能擁有一個物件.</span><br>
+<span>where one side of the connection can only have one object. For example, where a controller has many supplicants like FEX and parent switch. A FEX can be uplinked to one parent switch (in most cases), but the parent switch can have many FEX.</span></p>
+</li>
+<li>
+<p><ins><span>One-to-one</span></ins><br>
+<span>一對一: 每側relationship 只能有一個物件.</span><br>
+<span>where there can be only one object on either side of the relationship. For example, an IP address serving as a router-id for a device. Each device has at most one router-id, and each IP address can be a router-id for at most one device.</span></p>
+</li>
+</ol><h4 id="Django-Model" data-id="Django-Model"><a class="anchor hidden-xs" href="#Django-Model" title="Django-Model"><span class="octicon octicon-link"></span></a><span>Django Model</span></h4><p><a href="https://medium.com/@leealice033/%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98-django-%E4%B8%89-b7a289a52f38" target="_blank" rel="noopener"><span>技術筆記：Django(四)</span></a></p><p><span>Django 預設會為每一個 Model 加上 id 欄位, 並將這個欄位設成 primary key（主鍵）,簡稱 pk.</span><br>
+<span>讓每一筆資料都會有一個獨一無二的 ID</span></p><p><span>Model fields 可為 Django Model 定義不同型態的屬性</span></p><table>
+<thead>
+<tr>
+<th><span>Model fields</span></th>
+<th><span>Description</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>CharField</span></td>
+<td><span>字串欄位, 適合像 title、location 這種有長度限制的字串</span></td>
+</tr>
+<tr>
+<td><span>TextField</span></td>
+<td><span>合放大量文字的欄位</span></td>
+</tr>
+<tr>
+<td><span>URLField</span></td>
+<td><span>URL 設計的欄位</span></td>
+</tr>
+<tr>
+<td><span>DateTimeField</span></td>
+<td><span>日期與時間的欄位，使用時會轉成 Python datetime 型別</span></td>
+</tr>
+<tr>
+<td><span>IntegerField</span></td>
+<td><span>整數欄位</span></td>
+</tr>
+<tr>
+<td><span>GenericIPAddressField</span></td>
+<td><span>protocol=‘both’, unpack_ipv4=False，ipv4 ipv6位址 protocol 可選擇 ipv4 | ipv6 | both</span></td>
+</tr>
+<tr>
+<td><span>EmailField</span></td>
+<td><span>max_length=254，檢驗email是否為有效的email</span></td>
+</tr>
+</tbody>
+</table><h4 id="Relationships-Plugin" data-id="Relationships-Plugin"><a class="anchor hidden-xs" href="#Relationships-Plugin" title="Relationships-Plugin"><span class="octicon octicon-link"></span></a><span>Relationships Plugin</span></h4><p><a href="https://blog.networktocode.com/post/developing-nautobot-plugins-2/" target="_blank" rel="noopener"><span>Developing Nautobot Plugins - Part 2</span></a></p><p><span>initial Model DnsZoneModel，並且我們將從 Nautobot 繼承PrimaryModel。這PrimaryModel是一個 Nautobot 特定的類，它提供了功能和繼承的基線，以便更輕鬆地利用 Nautobot 功能</span></p><h4 id="Slug-Field" data-id="Slug-Field"><a class="anchor hidden-xs" href="#Slug-Field" title="Slug-Field"><span class="octicon octicon-link"></span></a><span>Slug Field</span></h4><p><a href="https://docs.nautobot.com/projects/core/en/stable/development/core/best-practices/#slug-field" target="_blank" rel="noopener"><span>Slug Field</span></a></p><div class="alert alert-info">
+<p><span>Changed in version 2.0.0</span><br>
+<span>Models should generally not have a slug field, and should use the model’s primary key (UUID) in URL patterns for both the UI and the REST API. All models should have a human-friendly natural key, either a single unique field (typically name) or a minimally complex unique-together set of fields (such as DeviceType’s (manufacturer, model)).</span></p>
+</div><p><span>在舊版的 Django 中, 常常使用 slug 作為一種 natural key 的概念.</span><br>
+<span>但在更新的版本中, natural_key_field_names 可以更靈活地指定一個或多個欄位作為 natural key</span></p><h4 id="Registry" data-id="Registry"><a class="anchor hidden-xs" href="#Registry" title="Registry"><span class="octicon octicon-link"></span></a><span>Registry</span></h4><p><a href="https://docs.nautobot.com/projects/core/en/v2.0.3/development/core/application-registry/?h=registry" target="_blank" rel="noopener"><span>Application Registry</span></a></p><p><span>是一種記憶體資料結構，其中包含各種應用程式範圍的參數，例如 enabled plugins (啟用的插件清單)</span></p><p><span>它不會向使用者公開, 也不會被 Nautobot 核心以外的任何程式碼修改</span></p><h4 id="Populating-Extensibility" data-id="Populating-Extensibility"><a class="anchor hidden-xs" href="#Populating-Extensibility" title="Populating-Extensibility"><span class="octicon octicon-link"></span></a><span>Populating Extensibility</span></h4><p><a href="https://docs.nautobot.com/projects/core/en/v1.4.7/plugins/development/#populating-extensibility-features" target="_blank" rel="noopener"><span>Populating Extensibility Features</span></a></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># signals.py</span>
+<span class="hljs-keyword">from</span> nautobot.extras.choices <span class="hljs-keyword">import</span> RelationshipTypeChoices
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">post_migrate_create_relationships</span>(<span class="hljs-params">sender, apps, **kwargs</span>):
+    <span class="hljs-string">"""Create a Device-to-MacTable Relationship if it doesn't already exist."""</span>
+
+    <span class="hljs-comment"># Use apps.get_model to look up Nautobot core models</span>
+    ContentType = apps.get_model(<span class="hljs-string">"contenttypes"</span>, <span class="hljs-string">"ContentType"</span>)
+    Device = apps.get_model(<span class="hljs-string">"dcim"</span>, <span class="hljs-string">"Device"</span>)
+    Device = apps.get_model(<span class="hljs-string">"dcim"</span>, <span class="hljs-string">"Device"</span>)
+    MacTable = sender.get_model(<span class="hljs-string">"MacTableModel"</span>)
+    _Relationship = apps.get_model(<span class="hljs-string">"extras"</span>, <span class="hljs-string">"Relationship"</span>)
+
+    <span class="hljs-comment"># Ensure that the Relationship exists</span>
+    <span class="hljs-keyword">for</span> relationship_dict <span class="hljs-keyword">in</span> [
+        {
+            <span class="hljs-string">"label"</span>: <span class="hljs-string">"MacTable on Device"</span>,
+            <span class="hljs-string">"key"</span>: <span class="hljs-string">"device_mactable"</span>,
+            <span class="hljs-string">"type"</span>: RelationshipTypeChoices.TYPE_ONE_TO_MANY,
+            <span class="hljs-string">"source_type"</span>: ContentType.objects.get_for_model(MacTable),
+            <span class="hljs-string">"source_label"</span>: <span class="hljs-string">"Device that mac address table"</span>,
+            <span class="hljs-string">"destination_type"</span>: ContentType.objects.get_for_model(Device),
+            <span class="hljs-string">"destination_label"</span>: <span class="hljs-string">"Mac Address Table"</span>,
+        },
+    ]:
+        _Relationship.objects.get_or_create(label=relationship_dict[<span class="hljs-string">"label"</span>], defaults=relationship_dict)
+</div></div></code></pre><p><span>加完後還要在 __init__.py 的 PluginConfig ready() function 中, 將此 callback function 連接到 nautobot_database_ready signal</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment"># __init__.py</span>
+<span class="hljs-keyword">from</span> nautobot.extras.plugins <span class="hljs-keyword">import</span> PluginConfig
+<span class="hljs-keyword">from</span> nautobot.core.signals <span class="hljs-keyword">import</span> nautobot_database_ready
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DownloadConfig</span>(<span class="hljs-title class_ inherited__">PluginConfig</span>):
+    name = <span class="hljs-string">'download_config'</span>
+    verbose_name = <span class="hljs-string">'Download Config'</span>
+    description = <span class="hljs-string">'An example plugin for development purposes'</span>
+    version = <span class="hljs-string">'0.1'</span>
+    author = <span class="hljs-string">'mcleezs'</span>
+    author_email = <span class="hljs-string">'mcleezs@tsmc.com'</span>
+    base_url = <span class="hljs-string">'download_config'</span>
+    required_settings = []
+    min_version= <span class="hljs-string">'2.0.2'</span>
+    max_version= <span class="hljs-string">'2.0.4'</span>
+
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ready</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-string">"""Register custom signals."""</span>
+        <span class="hljs-keyword">from</span> .signals <span class="hljs-keyword">import</span> post_migrate_create_relationships  <span class="hljs-comment"># pylint: disable=import-outside-toplevel</span>
+
+        nautobot_database_ready.connect(post_migrate_create_relationships, sender=self)
+
+        <span class="hljs-built_in">super</span>().ready()
+
+
+config = DownloadConfig
+</div></div></code></pre><p><span>編寫此程式碼後, 執行nautobot-server migrate 或 nautobot-server post_upgrade</span><br>
+<span>然後重新啟動 Nautobot 伺服器</span></p><p><img src="https://imgur.com/zUN3zaD.png" alt="Imgur" loading="lazy"></p><p><span>可以看到 自訂的 Relationships 現在已自動建立.</span></p><p><img src="https://imgur.com/Dx02mNB.png" alt="Imgur" loading="lazy"></p></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -628,6 +802,8 @@ template_extensions = extensions
 </ul>
 </li>
 <li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Plugin-Structure" title="Plugin Structure">Plugin Structure</a></li>
+<li><a href="#Start" title="Start">Start</a></li>
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
 <li><a href="#Database-Models" title="Database Models">Database Models</a></li>
 <li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
@@ -635,6 +811,10 @@ template_extensions = extensions
 <li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
 <li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
 <li><a href="#Result3" title="Result">Result</a></li>
+</ul>
+</li>
+<li><a href="#Relationships" title="Relationships">Relationships</a><ul class="nav">
+<li><a href="#Relationship-Types" title="Relationship Types">Relationship Types</a></li>
 </ul>
 </li>
 </ul>
@@ -653,13 +833,19 @@ template_extensions = extensions
 </ul>
 </li>
 <li class=""><a href="#Install-Nautobot-Plugin" title="Install Nautobot Plugin">Install Nautobot Plugin</a><ul class="nav">
+<li><a href="#Plugin-Structure" title="Plugin Structure">Plugin Structure</a></li>
+<li><a href="#Start" title="Start">Start</a></li>
 <li><a href="#Define-a-PluginConfig" title="Define a PluginConfig">Define a PluginConfig</a></li>
-<li class=""><a href="#Database-Models" title="Database Models">Database Models</a></li>
-<li class=""><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
+<li><a href="#Database-Models" title="Database Models">Database Models</a></li>
+<li><a href="#Web-UI-Views" title="Web UI Views">Web UI Views</a></li>
 <li><a href="#REST-API-Endpoints" title="REST API Endpoints">REST API Endpoints</a></li>
-<li class=""><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
+<li><a href="#Navigation-Menu-Items" title="Navigation Menu Items">Navigation Menu Items</a></li>
 <li class=""><a href="#Extending-Core-Templates" title="Extending Core Templates">Extending Core Templates</a></li>
 <li class=""><a href="#Result3" title="Result">Result</a></li>
+</ul>
+</li>
+<li><a href="#Relationships" title="Relationships">Relationships</a><ul class="nav">
+<li><a href="#Relationship-Types" title="Relationship Types">Relationship Types</a></li>
 </ul>
 </li>
 </ul>
