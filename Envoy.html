@@ -34,11 +34,156 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Envoy" data-id="Envoy"><a class="anchor hidden-xs" href="#Envoy" title="Envoy"><span class="octicon octicon-link"></span></a><span>Envoy</span></h1><p><span>當在 Kubernetes 中使用 Envoy 作為邊緣代理時, 通常會將 Envoy 部署為一個 Sidecar container, 與後端 service 共同運行在同一個 Pod 中</span></p><p><img src="https://imgur.com/gpiqcFf.png" alt="Imgur" loading="lazy"></p><h2 id="Function" data-id="Function"><a class="anchor hidden-xs" href="#Function" title="Function"><span class="octicon octicon-link"></span></a><span>Function</span></h2><h3 id="代理（Proxy）" data-id="代理（Proxy）"><a class="anchor hidden-xs" href="#代理（Proxy）" title="代理（Proxy）"><span class="octicon octicon-link"></span></a><span>代理（Proxy）</span></h3><p><span>Envoy 是一個代理服務器, 位於 Client 端和後端 service 之間, 用於管理和轉發網路流量.</span><br>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Envoy" data-id="Envoy"><a class="anchor hidden-xs" href="#Envoy" title="Envoy"><span class="octicon octicon-link"></span></a><span>Envoy</span></h1><p><span>當在 Kubernetes 中使用 Envoy 作為邊緣代理時, 通常會將 Envoy 部署為一個 Sidecar container, 與後端 service 共同運行在同一個 Pod 中</span></p><p><img src="https://imgur.com/gpiqcFf.png" alt="Imgur" loading="lazy"></p><div class="alert alert-success">
+<p><span>Envoy is an L7 proxy and communication bus designed for large modern service oriented architectures. The project was born out of the belief that:</span></p>
+<p><span>The network should be transparent to applications. When network and application problems do occur it should be easy to determine the source of the problem.</span></p>
+</div><h2 id="Deploy" data-id="Deploy"><a class="anchor hidden-xs" href="#Deploy" title="Deploy"><span class="octicon octicon-link"></span></a><span>Deploy</span></h2><p><span>Envoy 一般有三種部屬方式：</span></p><ol>
+<li><span>Front Proxy：前端代理, 也叫邊緣代理, 通常是部屬在整個 service 網路的邊緣, 用來接收來自於 service 網路外的请求</span></li>
+<li><span>Ingress Listener：service 代理, 通常部署在 service 網路内 service 的前面, 用來接收發該 service 的請求, 並轉發给該 service</span></li>
+<li><span>Egress Listener：跟 Ingress Listener 相反, 用來代理 service 發出的所有請求, 並把請求轉發给其他 service（可能是網路内 service, 也可能是網路外 service）</span></li>
+</ol><p><img src="https://imgur.com/G8YRl4s.png" alt="Imgur" loading="lazy"></p><h2 id="Function" data-id="Function"><a class="anchor hidden-xs" href="#Function" title="Function"><span class="octicon octicon-link"></span></a><span>Function</span></h2><h3 id="代理（Proxy）" data-id="代理（Proxy）"><a class="anchor hidden-xs" href="#代理（Proxy）" title="代理（Proxy）"><span class="octicon octicon-link"></span></a><span>代理（Proxy）</span></h3><p><span>Envoy 是一個代理服務器, 位於 Client 端和後端 service 之間, 用於管理和轉發網路流量.</span><br>
 <span>它通過處理請求 和 response 來提供負載均衡、流量控制、故障恢復和安全性等功能</span></p><h3 id="過濾器（Filters）" data-id="過濾器（Filters）"><a class="anchor hidden-xs" href="#過濾器（Filters）" title="過濾器（Filters）"><span class="octicon octicon-link"></span></a><span>過濾器（Filters）</span></h3><p><span>Envoy 使用過濾器鏈來處理請求和響應.</span><br>
 <span>每個過濾器執行特定的任務, 如身份驗證、路由、日誌記錄等, 它們可以按順序修改流量的內容.</span></p><h3 id="上游和下游（Upstream-and-Downstream）" data-id="上游和下游（Upstream-and-Downstream）"><a class="anchor hidden-xs" href="#上游和下游（Upstream-and-Downstream）" title="上游和下游（Upstream-and-Downstream）"><span class="octicon octicon-link"></span></a><span>上游和下游（Upstream and Downstream）</span></h3><p><span>上游表示請求的來源, 而下游表示服務的目標.</span><br>
 <span>Envoy作為客戶端與上游服務通信, 同時作為伺服器與下游服務通信.</span></p><h3 id="集群（Cluster）" data-id="集群（Cluster）"><a class="anchor hidden-xs" href="#集群（Cluster）" title="集群（Cluster）"><span class="octicon octicon-link"></span></a><span>集群（Cluster）</span></h3><p><span>Envoy將多個後端服務組織為邏輯集群, 每個成員具有相同的服務接口.</span><br>
-<span>它可以根據負載均衡策略將請求分發給集群中的成員</span></p><h2 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h2><p><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy.html" target="_blank" rel="noopener"><span>Front proxy</span></a></p><p><span>這三個容器將部署在名為 的虛擬網路內 envoymesh</span></p><p><img src="https://imgur.com/BrMuyHI.png" alt="Imgur" loading="lazy"></p></div>
+<span>它可以根據負載均衡策略將請求分發給集群中的成員</span></p><h2 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h2><p><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy.html" target="_blank" rel="noopener"><span>Front proxy</span></a></p><p><span>這三個容器將部署在名為 的虛擬網路內 envoymesh</span></p><p><img src="https://imgur.com/BrMuyHI.png" alt="Imgur" loading="lazy"></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">envoy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> envoyproxy/envoy<span class="token punctuation">:</span>v1.21.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> envoy_proxy
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./envoy.yaml<span class="token punctuation">:</span>/etc/envoy/envoy.yaml
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8080:8080"</span> <span class="token comment"># Adjust the ports as needed</span>
+
+  <span class="token key atrule">nginx_service1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nginx1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8081:80"</span> <span class="token comment"># Adjust the ports as needed</span>
+
+  <span class="token key atrule">nginx_service2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nginx2
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8082:80"</span> <span class="token comment"># Adjust the ports as needed</span>
+</div></div></code></pre><h3 id="envoyyaml" data-id="envoyyaml"><a class="anchor hidden-xs" href="#envoyyaml" title="envoyyaml"><span class="octicon octicon-link"></span></a><span>envoy.yaml</span></h3><p><span>envoy.yaml 是用來設定 Envoy 代理的配置文件.</span><br>
+<span>它定義了 Envoy 如何處理網路流量、路由請求、執行過濾器以及其他相關設定</span></p><ul>
+<li><span>Listeners（監聽器）：指定 Envoy 代理監聽的端口和協定，以及應用於傳入連線的 filter_chains</span></li>
+<li><span>Filters（過濾器）：定義用於處理請求和響應的 filter_chains, 包括路由、日誌、監控、負載均衡等功能</span></li>
+<li><span>Routes（路由）：設定請求的路由規則, 指定如何將請求轉發到後端服務或集群。</span></li>
+<li><span>Clusters（集群）：指定後端服務的設定, 包括它們的地址、端口、健康檢查等資訊。</span></li>
+<li><span>TLS（傳輸層安全）：配置傳輸層安全性, 包括證書和加密設定, 確保網路通訊的安全性</span></li>
+</ul><hr><p><span>下面的範例 envoy.yaml 檔案, 依序介紹</span></p><ul>
+<li><span>static_resources: 這是 Envoy 配置的靜態資源, 包含了 listeners 和 clusters.</span></li>
+<li><span>listeners: 定義了 Envoy 的監聽器, 指定 Envoy 如何接收和處理傳入的流量.</span></li>
+<li><span>filter_chains: 包含了一系列 filter_chains, 用於對傳入的連接進行處理, 這邊使用 envoy.filters.network.http_connection_manager 去處理 HTTP 連線</span></li>
+<li><span>route_config: 設置了 route rule, 指定了傳入请求的處理方式.</span><br>
+<span>這裡定義了名為 local_route 的route rule, 把所有請求 route 到了nginx_service1_cluster 的 cluster.</span></li>
+<li><span>clusters: 定義了後端 service 的 cluster information, 這裡配置了叫做 nginx_service1_cluster 的 cluster, 使用嚴格的 DNS 解析方式並採用 Pollong 方式進行 load balancing, 連接到了地址為 nginx_service1 的後端 servoce 的 port 80.</span></li>
+</ul><p><span>组成 filter_chains 的 list, 用來跟 listener 建立連接. 順序很重要, 因為 filters 在連接事件按順序處理. 注意如果 filters list 為空, default 關閉連接</span></p><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token key atrule">static_resources</span><span class="token punctuation">:</span>
+  <span class="token key atrule">listeners</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> listener_1
+      <span class="token key atrule">address</span><span class="token punctuation">:</span>
+        <span class="token key atrule">socket_address</span><span class="token punctuation">:</span>
+          <span class="token key atrule">address</span><span class="token punctuation">:</span> 0.0.0.0
+          <span class="token key atrule">port_value</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+      <span class="token key atrule">filter_chains</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">filters</span><span class="token punctuation">:</span> 
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> envoy.filters.network.http_connection_manager
+              <span class="token key atrule">typed_config</span><span class="token punctuation">:</span>
+                <span class="token key atrule">"@type"</span><span class="token punctuation">:</span> type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                <span class="token key atrule">codec_type</span><span class="token punctuation">:</span> auto
+                <span class="token key atrule">stat_prefix</span><span class="token punctuation">:</span> ingress_http
+                <span class="token key atrule">route_config</span><span class="token punctuation">:</span>
+                  <span class="token key atrule">name</span><span class="token punctuation">:</span> local_route
+                  <span class="token key atrule">virtual_hosts</span><span class="token punctuation">:</span>
+                    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> service1
+                      <span class="token key atrule">domains</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"*"</span><span class="token punctuation">]</span>
+                      <span class="token key atrule">routes</span><span class="token punctuation">:</span>
+                        <span class="token punctuation">-</span> <span class="token key atrule">match</span><span class="token punctuation">:</span>
+                            <span class="token key atrule">prefix</span><span class="token punctuation">:</span> <span class="token string">"/"</span>
+                          <span class="token key atrule">route</span><span class="token punctuation">:</span>
+                            <span class="token key atrule">cluster</span><span class="token punctuation">:</span> nginx_service1_cluster
+                <span class="token key atrule">http_filters</span><span class="token punctuation">:</span>
+                  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> envoy.filters.http.router
+
+  <span class="token key atrule">clusters</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx_service1_cluster
+      <span class="token key atrule">connect_timeout</span><span class="token punctuation">:</span> 0.25s
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> strict_dns
+      <span class="token key atrule">lb_policy</span><span class="token punctuation">:</span> round_robin
+      <span class="token key atrule">load_assignment</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cluster_name</span><span class="token punctuation">:</span> nginx_service1_cluster
+        <span class="token key atrule">endpoints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">lb_endpoints</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">endpoint</span><span class="token punctuation">:</span>
+                  <span class="token key atrule">address</span><span class="token punctuation">:</span>
+                    <span class="token key atrule">socket_address</span><span class="token punctuation">:</span>
+                      <span class="token key atrule">address</span><span class="token punctuation">:</span> nginx_service1
+                      <span class="token key atrule">port_value</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment"># Adjust the port if needed</span>
+</div></div></code></pre></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
@@ -47,6 +192,7 @@
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
 <li class=""><a href="#Envoy" title="Envoy">Envoy</a><ul class="nav">
+<li><a href="#Deploy" title="Deploy">Deploy</a></li>
 <li><a href="#Function" title="Function">Function</a><ul class="nav">
 <li><a href="#代理（Proxy）" title="代理（Proxy）">代理（Proxy）</a></li>
 <li><a href="#過濾器（Filters）" title="過濾器（Filters）">過濾器（Filters）</a></li>
@@ -54,7 +200,10 @@
 <li><a href="#集群（Cluster）" title="集群（Cluster）">集群（Cluster）</a></li>
 </ul>
 </li>
-<li><a href="#Example" title="Example">Example</a></li>
+<li><a href="#Example" title="Example">Example</a><ul class="nav">
+<li><a href="#envoyyaml" title="envoy.yaml">envoy.yaml</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -65,14 +214,18 @@
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
 <li class=""><a href="#Envoy" title="Envoy">Envoy</a><ul class="nav">
-<li><a href="#Function" title="Function">Function</a><ul class="nav">
-<li><a href="#代理（Proxy）" title="代理（Proxy）">代理（Proxy）</a></li>
-<li><a href="#過濾器（Filters）" title="過濾器（Filters）">過濾器（Filters）</a></li>
-<li><a href="#上游和下游（Upstream-and-Downstream）" title="上游和下游（Upstream and Downstream）">上游和下游（Upstream and Downstream）</a></li>
-<li><a href="#集群（Cluster）" title="集群（Cluster）">集群（Cluster）</a></li>
+<li class=""><a href="#Deploy" title="Deploy">Deploy</a></li>
+<li class=""><a href="#Function" title="Function">Function</a><ul class="nav">
+<li class=""><a href="#代理（Proxy）" title="代理（Proxy）">代理（Proxy）</a></li>
+<li class=""><a href="#過濾器（Filters）" title="過濾器（Filters）">過濾器（Filters）</a></li>
+<li class=""><a href="#上游和下游（Upstream-and-Downstream）" title="上游和下游（Upstream and Downstream）">上游和下游（Upstream and Downstream）</a></li>
+<li class=""><a href="#集群（Cluster）" title="集群（Cluster）">集群（Cluster）</a></li>
 </ul>
 </li>
-<li><a href="#Example" title="Example">Example</a></li>
+<li class=""><a href="#Example" title="Example">Example</a><ul class="nav">
+<li class=""><a href="#envoyyaml" title="envoy.yaml">envoy.yaml</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
