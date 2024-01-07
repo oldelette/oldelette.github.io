@@ -72,7 +72,10 @@
         <span class="token key atrule">state</span><span class="token punctuation">:</span> touch
         <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">"u=rw,g=r,o=r"</span>
       <span class="token key atrule">when</span><span class="token punctuation">:</span> stat_vimrc.stat.exists == false
-</code></pre><h1 id="Ansible" data-id="Ansible"><a class="anchor hidden-xs" href="#Ansible" title="Ansible"><span class="octicon octicon-link"></span></a><span>Ansible</span></h1><p><a href="https://hackmd.io/@blueskyson/learn-ansible" target="_blank" rel="noopener"><span>學習 Ansible</span></a></p><h2 id="Introduction" data-id="Introduction"><a class="anchor hidden-xs" href="#Introduction" title="Introduction"><span class="octicon octicon-link"></span></a><span>Introduction</span></h2><p><span>ANSIBLE 的優點</span></p><ul>
+</code></pre><h1 id="Ansible" data-id="Ansible"><a class="anchor hidden-xs" href="#Ansible" title="Ansible"><span class="octicon octicon-link"></span></a><span>Ansible</span></h1><p><a href="https://hackmd.io/@blueskyson/learn-ansible" target="_blank" rel="noopener"><span>學習 Ansible</span></a></p><p><img src="https://imgur.com/UlbYsdn.png" alt="Imgur" loading="lazy"></p><p><span>Ansible 的系統架構:</span></p><ul>
+<li><span>Ansible的部署模式不需要依靠代理程式 (agent), 與 Puppet 的拉取（Pull model）屬性相比, Ansible 的屬性則為推播式（Push model)</span></li>
+<li><span>Ansible 不需要透過架設額外的 Master 主機來主導部署過程（除非使用 Ansible Tower), Ansible 只需透過SSH協定, 即可對遠端伺服器進行控制或部署, 而這樣的設計, 因為不必為所有管理節點預先安裝代理程式, 因而方便了使用者.</span></li>
+</ul><h2 id="Introduction" data-id="Introduction"><a class="anchor hidden-xs" href="#Introduction" title="Introduction"><span class="octicon octicon-link"></span></a><span>Introduction</span></h2><p><span>ANSIBLE 的優點</span></p><ul>
 <li><span>簡化的自動化作業</span><br>
 <span>Ansible 是一個簡單易用的平台,易於安裝與設定,學習速度非常快.</span><br>
 <span>在不到 30 分鐘的時間內,就能安裝及設定系統,並針對伺服器執行臨時命令,以解決特定問題</span></li>
@@ -82,10 +85,46 @@
 <span>方針會在清單中定義的主機上推送所需的設定,甚至可以臨時執行（透過命令列，而不需要在檔案中定義）</span></li>
 <li><span>立即自動化</span><br>
 <span>可以透過 Ansible ping 主機的那一刻,就能開始將環境自動化.從小型工作開始,遵循最佳實務做法,優先處理可為企業創造更多價值、解決重大問題及節省時間的工作,並提高生產力。</span></li>
-</ul><h3 id="CHEF-vs-Puppet-vs-Ansible" data-id="CHEF-vs-Puppet-vs-Ansible"><a class="anchor hidden-xs" href="#CHEF-vs-Puppet-vs-Ansible" title="CHEF-vs-Puppet-vs-Ansible"><span class="octicon octicon-link"></span></a><span>CHEF vs Puppet vs Ansible</span></h3><p><span>Ansible 比起其他自動化部屬的工具有兩大特點：</span></p><ol>
+</ul><h3 id="CHEF-vs-Puppet-vs-Ansible-vs-Terraform" data-id="CHEF-vs-Puppet-vs-Ansible-vs-Terraform"><a class="anchor hidden-xs" href="#CHEF-vs-Puppet-vs-Ansible-vs-Terraform" title="CHEF-vs-Puppet-vs-Ansible-vs-Terraform"><span class="octicon octicon-link"></span></a><span>CHEF vs Puppet vs Ansible vs Terraform</span></h3><p><a href="https://medium.com/gemini-open-cloud/%E6%9E%B6%E6%A7%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC-iii-devops-%E5%AF%A6%E6%96%BD%E5%B7%A5%E5%85%B7-873301f662e7" target="_blank" rel="noopener"><span>架構程式碼的實施工具</span></a></p><p><span>Ansible 比起其他自動化部屬的工具有兩大特點：</span></p><ol>
 <li><span>在遠端只需要 python 環境與 ssh server，不需要其他 agent 也沒有額外的自定義安全基礎設施, 因此易於部署.</span></li>
 <li><span>它使用 YAML, 以 Ansible Playbook 的形式, 允許您以接近英語的方式描述您的自動化作業.</span></li>
-</ol><p><img src="https://imgur.com/dqnipch.png" alt="Imgur" loading="lazy"></p><h3 id="Ansible-Terminology" data-id="Ansible-Terminology"><a class="anchor hidden-xs" href="#Ansible-Terminology" title="Ansible-Terminology"><span class="octicon octicon-link"></span></a><span>Ansible Terminology</span></h3><p><span>Ansible 的術語</span></p><ul>
+</ol><p><img src="https://imgur.com/dqnipch.png" alt="Imgur" loading="lazy"></p><ul>
+<li><span>Puppet 是很傳統的主從模式（master-slave）架構.</span></li>
+<li><span>Ansible 是不需要代理人（agent）的</span></li>
+<li><span>Terraform 則是較新一代的 IaC 工具, 它比較重視程式碼所代表的雲端服務生命週期（Cloud Service Lifecycle）</span></li>
+</ul><h4 id="Puppet" data-id="Puppet"><a class="anchor hidden-xs" href="#Puppet" title="Puppet"><span class="octicon octicon-link"></span></a><span>Puppet</span></h4><p><span>Puppet 是主從式架構（Master Slave architecture, 所有配置的體現方式（manifests）都是存在 Master Server 上, 每個 server 節點上都會裝一個 agent.</span></p><div class="alert alert-success">
+<p><span>在節點上的 agent 會向 master 要求 catalog 去部署節點伺服器</span><br>
+<span>這個叫做 Pull Model（拉取模式）</span></p>
+</div><ul>
+<li><span>Puppet 算是「宣示式」的架構程式碼</span><br>
+<span>Puppet catalog 是一個描述被部署節點最終狀態的文檔.</span><br>
+<span>它包括了在節點上需部署的軟體，, 各模組間的相關連性.</span></li>
+<li><span>每個部署節點上的 agent 會把伺服器節點的特定資訊（Facts）傳回給 Master, Master 會根據這些 Facts 去生出該節點的 catalog, 再把 catalog 傳回給節點上的 agent, 再由 agent 在節點上安裝軟體、配置參數.</span></li>
+<li><span>Agent 安裝完畢後,會把結果傳回 Master node 上的報告收集程式（Report Collector, 作為審核日誌</span></li>
+</ul><p><span>Puppet 的配置架構，相對簡單.如下圖所示, Puppet Manifest 是用來記錄雲端服務所有節點需要安裝的程式及其次序, 這也就是雲端服務的部署腳本</span></p><p><img src="https://imgur.com/qMiaMRU.png" alt="Imgur" loading="lazy"></p><h4 id="Terraform" data-id="Terraform"><a class="anchor hidden-xs" href="#Terraform" title="Terraform"><span class="octicon octicon-link"></span></a><span>Terraform</span></h4><p><span>Differences Between Terraform and Ansible </span><a href="https://spacelift.io/blog/ansible-vs-terraform" target="_blank" rel="noopener"><span>link</span></a></p><p><span>從架構面來看，Terraform 與 Puppet 或 Ansible 相似, 它仍是一個宣示式的架構程式碼編譯工具, 可以高效能地部署、更新、版本化基礎設施和雲端服務, 具有多層次的資源管理功能, 從上層的 SaaS 配置到底層的 IaaS 配置, 都可以使用 Terraform 統一進行管理.</span></p><p><img src="https://imgur.com/2OM3z1m.png" alt="Imgur" loading="lazy"></p><ul>
+<li>
+<p><ins><span>Terraform Core</span></ins><br>
+<span>TF core 負責把 TF-config 讀入, 與 project 的現狀（state）比較</span><br>
+<span>然後查詢 Terraform 平台上 provider 的 plugin, 以產生一個 Terraform Action Plan, 在相關 Provider 的伺服器上執行</span></p>
+</li>
+<li>
+<p><ins><span>Terraform config file</span></ins><br>
+<span>每個專案會用 HCL (HashiCorp Configuration Language) 撰寫 一個 TF config file, 來描述一個服務.</span><br>
+<span>Terraform 特別的地方, 就是它支援很多很多不同的 Providers, 包括了 IaaS、PaaS、utilities、SaaS.</span><br>
+<span>所以 TF config file 通常可以作為雲端服務的 藍圖（blueprint), 也可以用來做版控.</span></p>
+</li>
+<li>
+<p><ins><span>Project State</span></ins><br>
+<span>Terraform 的另一個特色, 是它會根據上次部署的紀錄log, 把服務配置的狀態存在內部.</span></p>
+</li>
+<li>
+<p><ins><span>Providers</span></ins><br>
+<span>Terraform 支援非常多的私有雲與公有雲服務供應商（Providers）</span></p>
+</li>
+</ul><p><img src="https://imgur.com/vV6bPpl.png" alt="Imgur" loading="lazy"></p><div class="alert alert-info">
+<p><span>Terraform： 適合建立和管理基础設施, 尤其是涉及跨多層平台的情况.</span><br>
+<span>Ansible： 更適合配置管理、應用程式部署和通用的自動化任務,尤其在網路設備的自動化方面具有廣泛的支持</span></p>
+</div><h3 id="Ansible-Terminology" data-id="Ansible-Terminology"><a class="anchor hidden-xs" href="#Ansible-Terminology" title="Ansible-Terminology"><span class="octicon octicon-link"></span></a><span>Ansible Terminology</span></h3><p><span>Ansible 的術語</span></p><ul>
 <li>
 <p><ins><span>Modules</span></ins><br>
 <span>透過 Ansible 推送到各個節點的腳本稱為 “module”, Ansible 預設會透過 ssh 來執行 module.</span><br>
@@ -294,9 +333,9 @@ host_key_checking = False
 </li>
 </ul>
 </li>
-<li><a href="#Ansible" title="Ansible">Ansible</a><ul class="nav">
-<li><a href="#Introduction" title="Introduction">Introduction</a><ul class="nav">
-<li><a href="#CHEF-vs-Puppet-vs-Ansible" title="CHEF vs Puppet vs Ansible">CHEF vs Puppet vs Ansible</a></li>
+<li class=""><a href="#Ansible" title="Ansible">Ansible</a><ul class="nav">
+<li class=""><a href="#Introduction" title="Introduction">Introduction</a><ul class="nav">
+<li class=""><a href="#CHEF-vs-Puppet-vs-Ansible-vs-Terraform" title="CHEF vs Puppet vs Ansible vs Terraform">CHEF vs Puppet vs Ansible vs Terraform</a></li>
 <li><a href="#Ansible-Terminology" title="Ansible Terminology">Ansible Terminology</a></li>
 <li><a href="#Install" title="Install">Install</a></li>
 <li><a href="#Inventory" title="Inventory">Inventory</a></li>
@@ -312,24 +351,24 @@ host_key_checking = False
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Ansible-Module" title="Ansible Module">Ansible Module</a><ul class="nav">
-<li><a href="#Network-Moduel" title="Network Moduel">Network Moduel</a><ul class="nav">
-<li><a href="#HPE" title="HPE">HPE</a></li>
-<li><a href="#Cisco" title="Cisco">Cisco</a></li>
-<li><a href="#Aruba" title="Aruba">Aruba</a></li>
-<li><a href="#Juniper" title="Juniper">Juniper</a></li>
+<li class=""><a href="#Ansible-Module" title="Ansible Module">Ansible Module</a><ul class="nav">
+<li class=""><a href="#Network-Moduel" title="Network Moduel">Network Moduel</a><ul class="nav">
+<li class=""><a href="#HPE" title="HPE">HPE</a></li>
+<li class=""><a href="#Cisco" title="Cisco">Cisco</a></li>
+<li class=""><a href="#Aruba" title="Aruba">Aruba</a></li>
+<li class=""><a href="#Juniper" title="Juniper">Juniper</a></li>
 </ul>
 </li>
-<li><a href="#Sample" title="Sample">Sample</a><ul class="nav">
-<li><a href="#command" title="command">command</a></li>
-<li><a href="#stat" title="stat">stat</a></li>
+<li class=""><a href="#Sample" title="Sample">Sample</a><ul class="nav">
+<li class=""><a href="#command" title="command">command</a></li>
+<li class=""><a href="#stat" title="stat">stat</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#Ansible" title="Ansible">Ansible</a><ul class="nav">
-<li><a href="#Introduction" title="Introduction">Introduction</a><ul class="nav">
-<li><a href="#CHEF-vs-Puppet-vs-Ansible" title="CHEF vs Puppet vs Ansible">CHEF vs Puppet vs Ansible</a></li>
+<li class=""><a href="#Ansible" title="Ansible">Ansible</a><ul class="nav">
+<li class=""><a href="#Introduction" title="Introduction">Introduction</a><ul class="nav">
+<li class=""><a href="#CHEF-vs-Puppet-vs-Ansible-vs-Terraform" title="CHEF vs Puppet vs Ansible vs Terraform">CHEF vs Puppet vs Ansible vs Terraform</a></li>
 <li><a href="#Ansible-Terminology" title="Ansible Terminology">Ansible Terminology</a></li>
 <li><a href="#Install" title="Install">Install</a></li>
 <li><a href="#Inventory" title="Inventory">Inventory</a></li>
