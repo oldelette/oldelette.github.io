@@ -1,0 +1,61 @@
+<div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><span>tags: </span><code>Work</code></h6><h1 id="EVENG" data-id="EVENG"><span>EVENG</span></h1><p><span>EmulatedVirtual Environment</span></p><p><span>這款模擬器已經不僅可以模擬網絡設備，也可以運行一切虛擬機。</span><br>
+<span>理論上，只要能將虛擬機的虛擬磁碟格式轉換為qcow2 都可以在EVE-NG上運行</span></p><p><span>EVE-NG 内嵌KVM（Kernel-basedVirtual Machine）</span><br>
+<span>用 Virtualbox/Vmware 裝 EVE-NG，再用 EVE-NG 中的 KVM虛擬化網路設備。</span></p><p><span>Eve-ng Download </span><a href="https://www.eve-ng.net/index.php/download/#DL-COMM" target="_blank" rel="noopener"><span>– link</span></a><br>
+<a href="https://www.ptt.cc/bbs/MIS/M.1579362310.A.B19.html" target="_blank" rel="noopener"><span>EVE-NG模擬器基本安裝與設定</span></a></p><p><img src="https://i.imgur.com/wdLbVc8.png" alt="" loading="lazy"></p><p><span>登入 eve-ng 預設帳密為 root/eve</span></p><p><img src="https://i.imgur.com/UNLZLz5.png" alt="" loading="lazy"></p><h2 id="Useage" data-id="Useage"><span>Useage</span></h2><p><span>映像檔上傳完畢後，輸入 IP (</span><a href="http://192.168.0.147/" target="_blank" rel="noopener"><span>http://192.168.0.147/</span></a><span>) 開啟瀏覽器登入EVE-NG WebUI</span><br>
+<span>預設登入帳號密碼為admin/eve，連線方式可選Native console或Html5 console</span></p><p><span>登入後，點選Add new lab建立一個新的LAB</span><br>
+<img src="https://i.imgur.com/MQTdYkK.png" alt="" loading="lazy"></p><p><span>點選左手邊的Add an object可新增Node、Network…等等</span></p><p><img src="https://i.imgur.com/2lu21kv.png" alt="" loading="lazy"></p><p><a href="https://www.youtube.com/watch?v=9gEIKq02PuI&amp;ab_channel=InterNetworkTraining" target="_blank" rel="noopener"><span>影片參考: Adding Juniper vMX Router, Juniper Router Setup and Download</span></a></p><p><span>Adding Juniper vMX Router</span></p><ul>
+<li><span>Winscp</span></li>
+</ul><p><img src="https://i.imgur.com/YnjEZ6r.png" alt="" loading="lazy"></p><p><span>把 vmx-Juniper Router 14.1 傳過去 eve-ng root user</span></p><ol>
+<li><span>注意放的位置要在 /opt/unetlab/addons/qemu</span></li>
+<li><span>回到 eve-ng vm 中執行此 command:</span></li>
+</ol><pre><code>/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+</code></pre><p><img src="https://i.imgur.com/UlBZ1GD.png" alt="" loading="lazy"></p><p><span>完成即可增加 Juniper VMX node</span></p><p><span>Add a new network</span></p><p><img src="https://i.imgur.com/cgpKTP7.png" alt="" loading="lazy"></p><p><span>啟動 vmx， 並看到右上角有收到通知</span><br>
+<img src="https://i.imgur.com/Tzti0aF.png" alt="" loading="lazy"></p><h2 id="Appliance" data-id="Appliance"><span>Appliance</span></h2><p><a href="https://gns3.com/marketplace/appliances/juniper-vqfx-pfe" target="_blank" rel="noopener"><span>Juniper vQFX PFE</span></a></p><p><a href="https://www.hauman.com.tw/webc/html/internet/product/03.aspx?num=245&amp;page=1" target="_blank" rel="noopener"><span>Juniper Networks QFX 系列</span></a><span>資料數據中心交換器能滿足當今要求最嚴苛的企業和服務提供者環境的需求。</span><br>
+<span>此高性能、高密度網路交換器平台專為Top-of-Rack 及 Eed-of-Row建置以及主幹與核心聚合建置而設計。</span></p><p><span>QFX 系列具有以下特點</span></p><ol>
+<li><ins><span>高性能、低延遲(High performance with low latency)</span></ins><br>
+<span>憑藉高達每個插槽 6 Tbps 的吞吐量，QFX 系列交換器可為虛擬化資料中心環境提供低延遲、低抖動的持續wires</span><br>
+<span>peed交換。</span></li>
+<li><ins><span>高可用性(High availability)</span></ins><br>
+<span>備援架構、電源和冷卻，外加獨立的控制和資料平面確保最高系統可用性。</span></li>
+<li><ins><span>建構資料中心交換織網區塊(Data center fabric building blocks)</span></ins><br>
+<span>QFX 系列交換器為多種資料中心提供通用交換織網區塊，包括 Junos Fusion、QFabric 系統、Virtual Chassis,</span><br>
+<span>and Virtual Chassis Fabric。</span></li>
+<li><ins><span>基於標準(Standards-based)</span></ins><br>
+<span>使用標準的橋接、路由、VMware NSX Layer 2 gateway以及光纖通道技術支援互通性和整合性。</span></li>
+<li><ins><span>網路自動化(Network automation)</span></ins><br>
+<span>QFX 系列具有如 Python、Chef、Puppet 和全自動建置 (ZTP) 等豐富的自動化特點，可減少人為錯誤，改進 SLA</span><br>
+<span>並提高員工工作效率。</span></li>
+<li><ins><span>無縫軟體升級(Seamless software upgrades)</span></ins><br>
+<span>支援不中斷服務的軟體升級 (ISSU)，可無縫移轉到新的軟體版本，而不會出現停機影響服務。</span></li>
+</ol><h2 id="vMX-environment" data-id="vMX-environment"><span>vMX environment</span></h2><p><a href="https://www.twblogs.net/a/5b81747c2b71772165acaecd" target="_blank" rel="noopener"><span>vMX architecture</span></a><span> is organized in layers:</span></p><p><span>The vMX router at the top</span><br>
+<span>Linux, third-party software, and the hypervisor like KVM or VMware Esxi in the middle layer</span><br>
+<span>The x86 server in the physical layer at the bottom</span></p><p><img src="https://i.imgur.com/Ac5rQK9.png" alt="" loading="lazy"></p><p><a href="https://www.youtube.com/watch?v=-Vj803RLZ3c&amp;ab_channel=InterNetworkTraining" target="_blank" rel="noopener"><span>Vedio: Installing Juniper vMX Router 18 1 in EVE NG | Evaluation trial 60 days</span></a><br>
+<span>Download Juniper  vCP  </span><a href="https://drive.google.com/file/d/1OIHE9FTVZrty52P3WnC_tA6jZX0SFM97/view" target="_blank" rel="noopener"><span>- link</span></a><br>
+<span>Download Juniper vFP  </span><a href="https://drive.google.com/file/d/12Dy_kAfw94N8mntQ0vv-UtNFz099-D-b/view" target="_blank" rel="noopener"><span>- link</span></a></p><h3 id="VCP" data-id="VCP"><span>VCP</span></h3><p><span>virtual forwarding plane</span></p><h3 id="VCP1" data-id="VCP"><span>VCP</span></h3><p><span>virtual control plane</span></p><h1 id="GNS3" data-id="GNS3"><span>GNS3</span></h1><p><a href="https://docs.gns3.com/docs/" target="_blank" rel="noopener"><span>Getting Started with GNS3</span></a><br>
+<a href="https://www.jannet.hk/graphical-network-simulator-3-gns3-zh-hant/" target="_blank" rel="noopener"><span>參考這篇</span></a></p><p><a href="https://ithelp.ithome.com.tw/articles/10267354?sc=iThomeR" target="_blank" rel="noopener"><span>文章: network simulator GNS3</span></a><br>
+<a href="https://www.twblogs.net/a/5b9840b32b717736c6232c49" target="_blank" rel="noopener"><span>[CCNA圖文筆記]-6-Ubuntu使用GNS3+IOU搭建Cisco試驗環境</span></a></p><p><span>Graphical Network Simulator-3（簡稱為GNS3）是一款可以模擬出真實的 Cisco不同系列路由器（Router）、交換器（Switch）和防火牆（Firewall）等等的圖形化介面、跨平台（可以在Windows、Linux和macOS跨平台執行）與開放原始碼的免費軟體</span></p><p><span>GNS3優點</span></p><ul>
+<li><span>支援多種裝置，包括Cisco、Juniper、MikroTik等</span></li>
+<li><span>跨平台支援： GNS3可以在多個操作系統上運行，包括Windows、macOS和Linux。這使得它成為一個具有高度可移植性的平台</span></li>
+<li><span>模擬技術： GNS3使用多種模擬技術, 包括Dynamips、IOU（IOS on Unix）、QEMU</span></li>
+</ul><h2 id="VMware-Workstation" data-id="VMware-Workstation"><span>VMware Workstation</span></h2><p><span>Import GNS3 VM into VMware Workstation </span><a href="https://docs.gns3.com/docs/getting-started/setup-wizard-gns3-vm/#import-gns3-vm-into-vmware-workstation" target="_blank" rel="noopener"><span>link</span></a></p><p><a href="https://drive.google.com/file/d/1zUoXhHfj4Eio24vVjSI5qeOwPHv-qz1K/view?usp=sharing" target="_blank" rel="noopener"><span>GNS3 VM.ova</span></a></p><p><span>將其匯入 VMware Workstation</span></p><p><img src="https://imgur.com/nsjw0Ek.png" alt="Imgur" loading="lazy"></p><p><span>啟動完成</span><br>
+<img src="https://imgur.com/97r3hpD.png" alt="Imgur" loading="lazy"></p><h2 id="GNS3-Linux-Install" data-id="GNS3-Linux-Install"><span>GNS3 Linux Install</span></h2><p><a href="https://docs.gns3.com/docs/getting-started/installation/linux/" target="_blank" rel="noopener"><span>Installation from Packages</span></a></p><pre><code>sudo add-apt-repository ppa:gns3/ppa
+sudo apt update                                
+sudo apt install gns3-gui gns3-server
+</code></pre><p><span>當提示是否允許非root使用者使用 wireshark 和 ubridge時，兩次選擇「是」</span></p><p><img src="https://imgur.com/aWIbO38.png" alt="Imgur" loading="lazy"></p><p><span>Ubuntu termainal 中輸入 gns3 來打開 GNS3 圖形化界面</span></p><pre><code>gns3
+</code></pre><p><img src="https://imgur.com/7YszhUK.png" alt="Imgur" loading="lazy"></p><h2 id="Setting" data-id="Setting"><span>Setting</span></h2><p><span>Edit -&gt; Perferences -&gt; Server</span></p><h3 id="Import-GNS3-appliance" data-id="Import-GNS3-appliance"><span>Import GNS3 appliance</span></h3><p><a href="https://docs.gns3.com/docs/using-gns3/beginners/import-gns3-appliance/" target="_blank" rel="noopener"><span>Import GNS3 appliance</span></a></p><p><span>在 GNS3 使用者介面中, 按一下文件, 然後按一下匯入設備：</span></p><p><img src="https://imgur.com/sojtztb.png" alt="Imgur" loading="lazy"></p><p><span>GNS3 將根據 .gns3a example 中列出的值檢查檔案的 md5sum 和大小.</span><br>
+<span>如果這些匹配, GNS3 會將該檔案的副本上傳到 GNS3 虛擬機器.</span></p><p><img src="https://imgur.com/cEH1lG8.png" alt="Imgur" loading="lazy"></p><p><span>實測 </span><a href="https://networkrare.com/download-cisco-iou-iol-images-gns3-gns3-iou-vm-oracle-virtual-box-l2-l3-cisco-switch-images/" target="_blank" rel="noopener"><span>i86bi-linux-l2-ipbasek9-15.1g.bin</span></a><span> 這個可以成功 load 進去</span></p><p><span>按一下設備類型以查看設備詳細資訊：</span></p><p><img src="https://imgur.com/iSHwhmD.png" alt="Imgur" loading="lazy"></p><h3 id="Load-Image" data-id="Load-Image"><span>Load Image</span></h3><ul>
+<li><span>Dynamips:</span><br>
+<span>Dynamips是一個用於模擬 Cisco IOS Router 的開源工具.</span><br>
+<span>它允許你在一臺普通的計算機上運行 Cisco 路由器的 image, 從而進行網路實驗和測試.</span></li>
+<li><span>IOU（IOS on UNIX):</span><br>
+<span>IOU 是一種 Cisco 內部使用的 IOS 模擬器.</span><br>
+<span>它可以在UNIX系統上運行, 模擬Cisco設備的行為.</span><br>
+<span>IOU不是公開發布的, 在一些情況下人們可能使用它進行非官方的網絡模擬。</span></li>
+<li><span>QEMU（Quick Emulator)</span><br>
+<span>QEMU是一個開源的虛擬化和模擬工具, 可以模擬多種架構的硬體.</span><br>
+<span>它支持在虛擬機中運行多種操作系統, 包括Linux、Windows等. 在網絡模擬中, QEMU可以用來模擬不同的硬體環境</span></li>
+</ul><p><img src="https://imgur.com/6PI55rU.png" alt="Imgur" loading="lazy"></p><h4 id="QEMU" data-id="QEMU"><span>QEMU</span></h4><p><span>記得要打開 vm 的 nested vm</span></p><pre><code>VBoxManage modifyvm &lt;VirtualMachineName&gt; --nested-hw-virt on
+
+VBoxManage modifyvm 2023 --nested-hw-virt on
+</code></pre><p><img src="https://imgur.com/a2iWVjx.png" alt="Imgur" loading="lazy"></p><pre><code>sudo apt install qemu
+</code></pre><h4 id="IOS-Router" data-id="IOS-Router"><span>IOS Router</span></h4><h2 id="GNS3-API" data-id="GNS3-API"><span>GNS3 API</span></h2><p><a href="https://gns3-server.readthedocs.io/en/stable/curl.html" target="_blank" rel="noopener"><span>Sample sessions using curl</span></a></p></div>
