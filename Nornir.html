@@ -38,7 +38,38 @@
 <li><span>提供高度的可擴展性，可以應對複雜的自動化場景。</span></li>
 <li><span>支援 async 操作，能夠同時處理多個設備，提高效率。</span></li>
 <li><span>允許使用者自定義任務和過濾器，以滿足特定需求</span></li>
-</ul><h2 id="Architecture" data-id="Architecture"><a class="anchor hidden-xs" href="#Architecture" title="Architecture"><span class="octicon octicon-link"></span></a><span>Architecture</span></h2><p><span>Nornir 的大部分概念及簡單的交互邏輯，可以幫助剛開始使用 Nornir 的人稍微加深一些理解</span></p><p><img src="https://imgur.com/aidH7ji.png" alt="Imgur" loading="lazy"></p><h2 id="Start" data-id="Start"><a class="anchor hidden-xs" href="#Start" title="Start"><span class="octicon octicon-link"></span></a><span>Start</span></h2><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+</ul><h2 id="Architecture" data-id="Architecture"><a class="anchor hidden-xs" href="#Architecture" title="Architecture"><span class="octicon octicon-link"></span></a><span>Architecture</span></h2><p><span>Nornir 的大部分概念及簡單的交互邏輯，可以幫助剛開始使用 Nornir 的人稍微加深一些理解</span></p><p><img src="https://imgur.com/aidH7ji.png" alt="Imgur" loading="lazy"></p><h2 id="Unit" data-id="Unit"><a class="anchor hidden-xs" href="#Unit" title="Unit"><span class="octicon octicon-link"></span></a><span>Unit</span></h2><p><a href="https://zhuanlan.zhihu.com/p/634623257" target="_blank" rel="noopener"><span>link</span></a></p><h3 id="Processing-results" data-id="Processing-results"><a class="anchor hidden-xs" href="#Processing-results" title="Processing-results"><span class="octicon octicon-link"></span></a><span>Processing results</span></h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet_and_count</span>(<span class="hljs-params">task: Task, number: <span class="hljs-built_in">int</span></span>):
+    task.run(
+        name=<span class="hljs-string">"Greeting is the polite thing to do"</span>,
+        severity_level=logging.DEBUG,
+        task=say,
+        text=<span class="hljs-string">"hi!"</span>,
+    )
+</div></div></code></pre><p><span>default 情况下，severity_level 只有標記為 INFO 的任務, 其结果才會被打印出来.</span><br>
+<span>這也是 default level, 不指定的话就是這種 level</span></p><h3 id="AggregatedResult" data-id="AggregatedResult"><a class="anchor hidden-xs" href="#AggregatedResult" title="AggregatedResult"><span class="octicon octicon-link"></span></a><span>AggregatedResult</span></h3><p><span>我們知道 nornir 任務返回一個 </span><a href="https://nornir.readthedocs.io/en/latest/api/nornir/core/task.html#nornir.core.task.AggregatedResult" target="_blank" rel="noopener"><span>AggregatedResult</span></a><span> object.</span><br>
+<span>這個 object 有點像字典類型, 你可以 iterate 它, 也可以指定提取對應的設備</span></p><pre data-original-title="" title=""><code>AggregatedResult (greet_and_count): 
+{
+    'host1.cmh': MultiResult: 
+    [
+            Result: "greet_and_count", 
+            Result: "Greeting is the polite thing to do", 
+            Result: "Counting beans", 
+            Result: "We should say bye too"
+    ], 
+    'host2.cmh': MultiResult:
+    [
+        Result: "greet_and_count", 
+        Result: "Greeting is the polite thing to do"
+    ]
+}
+</code></pre><p><span>每一個 AggregatedResult object 中 key-value（類日於字典 type, 都包含着一個 MultiResult object.</span><br>
+<span>這個 MultiResult object 則類似於一個列表, 你可以進行 iterator 或直接提取任意 Result object.</span></p><h2 id="Example" data-id="Example"><a class="anchor hidden-xs" href="#Example" title="Example"><span class="octicon octicon-link"></span></a><span>Example</span></h2><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
 <span></span>
 <span></span>
 <span></span>
@@ -135,7 +166,12 @@ CSR2:
                 <div class="toc"><ul class="nav">
 <li><a href="#Nornir" title="Nornir">Nornir</a><ul class="nav">
 <li><a href="#Architecture" title="Architecture">Architecture</a></li>
-<li><a href="#Start" title="Start">Start</a><ul class="nav">
+<li><a href="#Unit" title="Unit">Unit</a><ul class="nav">
+<li><a href="#Processing-results" title="Processing results">Processing results</a></li>
+<li><a href="#AggregatedResult" title="AggregatedResult">AggregatedResult</a></li>
+</ul>
+</li>
+<li><a href="#Example" title="Example">Example</a><ul class="nav">
 <li><a href="#Config" title="Config">Config</a></li>
 </ul>
 </li>
@@ -152,16 +188,21 @@ CSR2:
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li><a href="#Nornir" title="Nornir">Nornir</a><ul class="nav">
-<li><a href="#Architecture" title="Architecture">Architecture</a></li>
-<li><a href="#Start" title="Start">Start</a><ul class="nav">
-<li><a href="#Config" title="Config">Config</a></li>
+<li class=""><a href="#Nornir" title="Nornir">Nornir</a><ul class="nav">
+<li class=""><a href="#Architecture" title="Architecture">Architecture</a></li>
+<li class=""><a href="#Unit" title="Unit">Unit</a><ul class="nav">
+<li class=""><a href="#Processing-results" title="Processing results">Processing results</a></li>
+<li class=""><a href="#AggregatedResult" title="AggregatedResult">AggregatedResult</a></li>
+</ul>
+</li>
+<li class=""><a href="#Example" title="Example">Example</a><ul class="nav">
+<li class=""><a href="#Config" title="Config">Config</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#Napalm" title="Napalm">Napalm</a><ul class="nav">
-<li><a href="#Supported-Devices" title="Supported Devices">Supported Devices</a></li>
+<li class=""><a href="#Napalm" title="Napalm">Napalm</a><ul class="nav">
+<li class=""><a href="#Supported-Devices" title="Supported Devices">Supported Devices</a></li>
 </ul>
 </li>
 </ul>
