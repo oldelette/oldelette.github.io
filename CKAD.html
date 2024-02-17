@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        CKAD - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{border-radius:3px;font-size:85%;line-height:1.45;overflow:auto}.markdown-body:not(.next-editor) pre{background-color:#f7f7f7;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert{display:flex;flex-direction:column;gap:16px}.markdown-body .alert>*{margin:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Work" data-id="tags-Work"><a class="anchor hidden-xs" href="#tags-Work" title="tags-Work"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Work</code></h6><h1 id="CKAD" data-id="CKAD"><a class="anchor hidden-xs" href="#CKAD" title="CKAD"><span class="octicon octicon-link"></span></a><span>CKAD</span></h1><p><span>CKAD </span><a href="https://trainingportal.linuxfoundation.org/learn/course/certified-kubernetes-application-developer-ckad/exam/exam" target="_blank" rel="noopener"><span>報名連結</span></a><br>
+<span>udemy </span><a href="https://www.udemy.com/course/kubernetes-ckad124/learn/lecture/35455676#overview" target="_blank" rel="noopener"><span>小莫</span></a><br>
+<span>官方練習題: </span><a href="https://killer.sh/dashboard" target="_blank" rel="noopener"><span>killer.sh</span></a><br>
+<span>免費練習環境 </span><a href="https://killercoda.com/killer-shell-cka/scenario/playground" target="_blank" rel="noopener"><span>Playground 連結</span></a></p><p><span>考試只能查詢 </span><a href="https://kubernetes.io/docs/concepts/" target="_blank" rel="noopener"><span>官網文件</span></a></p><ul>
+<li><span>2024/2/24 考試</span><br>
+<img src="https://imgur.com/6M5IBMM.png" alt="Imgur" loading="lazy"></li>
+</ul><h2 id="Pre-check" data-id="Pre-check"><a class="anchor hidden-xs" href="#Pre-check" title="Pre-check"><span class="octicon octicon-link"></span></a><span>Pre-check</span></h2><h3 id="kubectl-自動補全" data-id="kubectl-自動補全"><a class="anchor hidden-xs" href="#kubectl-自動補全" title="kubectl-自動補全"><span class="octicon octicon-link"></span></a><span>kubectl 自動補全</span></h3><p><span>注意使用 kubectl 自動補全, 考試環境 default 配置了 kubectl 自動補全, 無須考生另行配置, 但這還不夠, 我們可以用 k 代替kubectl</span></p><pre><code>alias k=kubectl
+complete -F __start_kubectl k
+</code></pre><h2 id="題目" data-id="題目"><a class="anchor hidden-xs" href="#題目" title="題目"><span class="octicon octicon-link"></span></a><span>題目</span></h2><ol>
+<li><span>Pod操作，ex: rolling update, debug &amp; edit, label &amp; annotations, etc.</span></li>
+<li><span>Network操作，ex: create service, debug &amp; fix service, change &amp; verify service type, network policy, etc.</span></li>
+<li><span>Deployment操作，ex: multi-container, request &amp; limit, replica control, etc</span></li>
+<li><span>Configmap操作，ex: create from a different source of type, mount configmap as file or env, etc</span></li>
+<li><span>Storage操作，ex: PersistentVolume create &amp; bind</span></li>
+</ol><h3 id="1-CronJob---1" data-id="1-CronJob---1"><a class="anchor hidden-xs" href="#1-CronJob---1" title="1-CronJob---1"><span class="octicon octicon-link"></span></a><span>1. CronJob - 1</span></h3><p><span>題目:</span><br>
+<img src="https://imgur.com/NLVnOdy.png" alt="Imgur" loading="lazy"></p><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/" target="_blank" rel="noopener"><span>kubernet.io - CronJob</span></a></p><h4 id="答案-1-1" data-id="答案-1-1"><a class="anchor hidden-xs" href="#答案-1-1" title="答案-1-1"><span class="octicon octicon-link"></span></a><span>答案 1-1</span></h4><pre><code>apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ppi
+spec:
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4  
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 8
+      template:
+        spec:
+          containers:
+          - name: pi
+            image: perl:5
+            imagePullPolicy: IfNotPresent
+            command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+          restartPolicy: Never
+</code></pre><h5 id="檢查" data-id="檢查"><a class="anchor hidden-xs" href="#檢查" title="檢查"><span class="octicon octicon-link"></span></a><span>檢查</span></h5><pre><code>k describe cronjobs
+</code></pre><p><img src="https://imgur.com/9MHUsMY.png" alt="Imgur" loading="lazy"></p><h4 id="答案-1-11" data-id="答案-1-1"><a class="anchor hidden-xs" href="#答案-1-11" title="答案-1-11"><span class="octicon octicon-link"></span></a><span>答案 1-1</span></h4><pre><code>k create job ppi-test --from=cronjob/ppi
+k get job,cronjob
+</code></pre><p><img src="https://imgur.com/KQP2V8H.png" alt="Imgur" loading="lazy"></p><h4 id="Jobs-history-limits" data-id="Jobs-history-limits"><a class="anchor hidden-xs" href="#Jobs-history-limits" title="Jobs-history-limits"><span class="octicon octicon-link"></span></a><span>Jobs history limits</span></h4><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#jobs-history-limits" target="_blank" rel="noopener"><span>The .spec.successfulJobsHistoryLimit and .spec.failedJobsHistoryLimit fields are optional.</span></a><br>
+<span>These fields specify how many completed and failed Jobs should be kept.</span><br>
+<span>By default, they are set to 3 and 1 respectively. Setting a limit to 0 corresponds to keeping none of the corresponding kind of Jobs after they finish</span></p><p><span>可以設定 historyLimit 去指定保留的完成的任務歷史紀錄的數量.</span><br>
+<span>historyLimit 決定了在每個 Jobs 對象中保留的完成任務的最大數量.</span><br>
+<span>當 Jobs 完成並達到設定的 historyLimit 時, 舊的完成任務紀錄將被删除, 以便為新任務騰出空间</span></p><h4 id="Job-termination-and-cleanup" data-id="Job-termination-and-cleanup"><a class="anchor hidden-xs" href="#Job-termination-and-cleanup" title="Job-termination-and-cleanup"><span class="octicon octicon-link"></span></a><span>Job termination and cleanup</span></h4><p><span>自動清理完成的 Job</span><br>
+<span>因為完成的 Job 通常不需要繼續留存在系統中</span></p><ul>
+<li><span>.spec.activeDeadlineSeconds:</span><br>
+<span>如果 Job 或 Pod 的執行時間超過了指定的時間限制, Kubernetes 將會终止該任務或 Pod 的執行.</span><br>
+<span>這有助於防止任務或 Pod 無限期地占用資源, 從而釋放資源以供其他任務或 Pod 使用, 並防止潛在的資源浪費</span></li>
+</ul><h4 id="Linux-Crontab" data-id="Linux-Crontab"><a class="anchor hidden-xs" href="#Linux-Crontab" title="Linux-Crontab"><span class="octicon octicon-link"></span></a><span>Linux Crontab</span></h4><p><a href="https://blog.gtwang.org/linux/linux-crontab-cron-job-tutorial-and-examples/" target="_blank" rel="noopener"><span>查看與編輯 crontab</span></a><br>
+<span>在個人的 crontab 設定中, 基本上每一行設定就代表一個要定期執行的程式, 其格式如下：</span></p><div class="alert alert-success">
+<p><span>MIN HOUR DOM MON DOW CMD</span></p>
+</div><p><span>一行設定包含六個部分，各部分的意義如下：</span></p><table>
+<thead>
+<tr>
+<th><span>欄位</span></th>
+<th><span>說明</span></th>
+<th><span>可設定的值</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>MIN</span></td>
+<td><span>分鐘</span></td>
+<td><span>0 到 59</span></td>
+</tr>
+<tr>
+<td><span>HOUR</span></td>
+<td><span>小時</span></td>
+<td><span>0 到 23</span></td>
+</tr>
+<tr>
+<td><span>DOM</span></td>
+<td><span>日</span></td>
+<td><span>1 到 31</span></td>
+</tr>
+<tr>
+<td><span>MON</span></td>
+<td><span>月份</span></td>
+<td><span>1 到 12，此欄位亦可用英文簡稱取代，例如一月也可以寫 Jan</span></td>
+</tr>
+<tr>
+<td><span>DOW</span></td>
+<td><span>星期幾</span></td>
+<td><span>0（週日）到 6（週六），7 也代表週日。此欄位亦可用英文簡稱取代，例如週日也可以寫 Sun</span></td>
+</tr>
+<tr>
+<td><span>CMD</span></td>
+<td><span>要定期執行的指令</span></td>
+<td><span>任何可執行的程式或指令稿（包含參數），例如 /path/to/cmd </span><span class="smartypants">–</span><span>your </span><span class="smartypants">–</span><span>parameter</span></td>
+</tr>
+</tbody>
+</table><p><span>除了一般的數字之外，crontab 亦可使用一些特殊字元，每個特殊字元都有不同的意義與適用情況：</span></p><table>
+<thead>
+<tr>
+<th><span>特殊字元</span></th>
+<th><span>代表意義</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>星號 *</span></td>
+<td><span>代表接受任意時刻，例如若在月份那一欄填入星號，則代表任一月份皆可</span></td>
+</tr>
+<tr>
+<td><span>逗號 ,</span></td>
+<td><span>分隔多個不同時間點。例如若要指定 3:00、6:00 與 9:00 三個時間點執行指令，就可以在第二欄填入 3,6,9</span></td>
+</tr>
+<tr>
+<td><span>減號 -</span></td>
+<td><span>代表一段時間區間，例如若在第二欄填入 8-12 就代表從 8 點到 12 點的意思，也就是等同於 8,9,10,11,12</span></td>
+</tr>
+<tr>
+<td><span>斜線加數字 /n</span></td>
+<td><span>n 代表數字，這樣寫的意思就是「每隔 n 的單位」的意思，例如若在第一欄填入 */5 就代表每間隔五分鐘執行一次的意思，也可以寫成 0-59/5</span></td>
+</tr>
+</tbody>
+</table><p><img src="https://hackmd.io/_uploads/rkdk0zLi6.png" alt="image" loading="lazy"></p><h3 id="2-CronJob---2" data-id="2-CronJob---2"><a class="anchor hidden-xs" href="#2-CronJob---2" title="2-CronJob---2"><span class="octicon octicon-link"></span></a><span>2. CronJob - 2</span></h3><h4 id="題目1" data-id="題目"><a class="anchor hidden-xs" href="#題目1" title="題目1"><span class="octicon octicon-link"></span></a><span>題目:</span></h4><p><img src="https://imgur.com/AoPV632.png" alt="Imgur" loading="lazy"></p><h4 id="答案" data-id="答案"><a class="anchor hidden-xs" href="#答案" title="答案"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          activeDeadlineSeconds: 10
+          containers:
+          - name: hello
+            image: busybox:stable
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date
+          restartPolicy: OnFailure
+</code></pre><p><span>檢查看到有兩個 cronjob 被創建</span></p><pre><code>k get cronjobs
+k describe cronjobs hello
+</code></pre><p><img src="https://imgur.com/DE4Kovq.png" alt="Imgur" loading="lazy"></p><h3 id="3-Dockerfile" data-id="3-Dockerfile"><a class="anchor hidden-xs" href="#3-Dockerfile" title="3-Dockerfile"><span class="octicon octicon-link"></span></a><span>3. Dockerfile</span></h3><h4 id="題目2" data-id="題目"><a class="anchor hidden-xs" href="#題目2" title="題目2"><span class="octicon octicon-link"></span></a><span>題目:</span></h4><p><img src="https://hackmd.io/_uploads/BJejeULsp.png" alt="image" loading="lazy"></p><h4 id="答案1" data-id="答案"><a class="anchor hidden-xs" href="#答案1" title="答案1"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>docker build -t centos:8.2 .
+docker save centos:8.2 &gt; /ckad/DF/centos-8.2.tar
+</code></pre><p><img src="https://imgur.com/jsczKnA.png" alt="Imgur" loading="lazy"></p><h3 id="4-CPU---1" data-id="4-CPU---1"><a class="anchor hidden-xs" href="#4-CPU---1" title="4-CPU---1"><span class="octicon octicon-link"></span></a><span>4. CPU - 1</span></h3><h4 id="題目3" data-id="題目"><a class="anchor hidden-xs" href="#題目3" title="題目3"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/UGd8vbr.png" alt="Imgur" loading="lazy"></p><h4 id="答案2" data-id="答案"><a class="anchor hidden-xs" href="#答案2" title="答案2"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-resources
+  namespace: pod-resources
+spec:
+  containers:
+  - name: app
+    image: nginx:1.16
+    resources:
+      requests:
+        memory: "50Mi"
+        cpu: "40m"
+</code></pre><p><img src="https://imgur.com/jzPsBg9.png" alt="Imgur" loading="lazy"></p><p><span>檢查</span></p><pre><code>k get pod -n pod-resources nginx-resources -o yaml
+</code></pre><p><img src="https://imgur.com/paxeblV.png" alt="Imgur" loading="lazy"></p><h3 id="5-CPU---2" data-id="5-CPU---2"><a class="anchor hidden-xs" href="#5-CPU---2" title="5-CPU---2"><span class="octicon octicon-link"></span></a><span>5. CPU - 2</span></h3><h4 id="題目4" data-id="題目"><a class="anchor hidden-xs" href="#題目4" title="題目4"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/iSDUPBL.png" alt="Imgur" loading="lazy"></p><h4 id="答案3" data-id="答案"><a class="anchor hidden-xs" href="#答案3" title="答案3"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>k get deploy,pod -n haddock
+k describe ns haddock
+k -n haddock get limitrange
+k -n haddock describe limitrange
+</code></pre><p><img src="https://imgur.com/jPVdvGN.png" alt="Imgur" loading="lazy"></p><p><span>可以看到現在 namespace 底下的資源, max 為 40Mi, 題目要求 limit 改為 max 的一半, 所以是 20Mi</span><br>
+<span>先刪除現有的 deploy 跟 pod, 確認 no resource found in haddock namespace.</span></p><pre><code>k delete -f nosql.yaml
+</code></pre><p><img src="https://imgur.com/CaiyhFu.png" alt="Imgur" loading="lazy"></p><pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nosql
+  namespace: haddock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nosql
+  template:
+    metadata:
+      labels:
+        app: nosql
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        resources:
+          requests:
+            memory: "15Mi"
+          limits:
+            memory: "20Mi"
+</code></pre><p><span>修改 nosql.yaml 檔案內容後, 重新 apply 可以看到成功啟動 deploy, pod</span></p><p><img src="https://imgur.com/I1ALxc1.png" alt="Imgur" loading="lazy"></p><h3 id="6-Update-K8S-Application" data-id="6-Update-K8S-Application"><a class="anchor hidden-xs" href="#6-Update-K8S-Application" title="6-Update-K8S-Application"><span class="octicon octicon-link"></span></a><span>6 Update K8S Application</span></h3><h4 id="題目5" data-id="題目"><a class="anchor hidden-xs" href="#題目5" title="題目5"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/4zZpOpQ.png" alt="Imgur" loading="lazy"></p><p><span>官網最舊已經沒有 v1.24, 下面練習直接用 v1.29 取代</span></p><h4 id="答案4" data-id="答案"><a class="anchor hidden-xs" href="#答案4" title="答案4"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>切到官網 deployment 文件, 選擇版本 v1.29 後跟 www.yaml 一行一行對</span></p><p><img src="https://imgur.com/Ge9ugiz.png" alt="Imgur" loading="lazy"></p><pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: www-deployment
+  namespace: garfish
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - mountPath: /var/log/nginx
+            name: logs
+        env:
+          - name: NGINX_ENTRYPOINT_OUIET_LOGS
+            value: "1"
+      volumes:
+        - name: logs
+          emptyDir: {}
+</code></pre><p><span>重新 apply 後就可以看到 namespace garfish 底下有 deploy 跟 pod</span></p><p><img src="https://imgur.com/hrGDX0H.png" alt="Imgur" loading="lazy"></p><h4 id="重點" data-id="重點"><a class="anchor hidden-xs" href="#重點" title="重點"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><span>改這裡</span></p><p><img src="https://imgur.com/QC2pTl2.png" alt="Imgur" loading="lazy"></p><h3 id="7-Canary-金絲雀部屬" data-id="7-Canary-金絲雀部屬"><a class="anchor hidden-xs" href="#7-Canary-金絲雀部屬" title="7-Canary-金絲雀部屬"><span class="octicon octicon-link"></span></a><span>7. Canary 金絲雀部屬</span></h3><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#canary-deployment" target="_blank" rel="noopener"><span>Canary</span></a><span> 是一種 deployment 策略</span></p><ul>
+<li><span>藍綠部署是準備兩套系統，在兩套系統之間進行切換</span></li>
+<li><span>金絲雀策略是只有一套系統，逐漸替換這套系統</span></li>
+</ul><h4 id="題目6" data-id="題目"><a class="anchor hidden-xs" href="#題目6" title="題目6"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/Lqxjooa.png" alt="Imgur" loading="lazy"></p><h4 id="答案5" data-id="答案"><a class="anchor hidden-xs" href="#答案5" title="答案5"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先備份以免改壞掉</span></p><pre><code>cp current-chipmunk-deployment.yaml current-chipmunk-deployment.yaml.bak # 備份 current chipmunk
+cp current-chipmunk-deployment.yaml canary-chipmunk-deployment.yaml.bak # 新增 canary chipmunk
+</code></pre><p><span>新增一個新的 yaml: canary-chipmunk-deployment.yaml</span></p><pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: canary-chipmunk-deployment
+ namespace: goshawk
+spec:
+ replicas: 4
+ selector:
+   matchLabels:
+     app: canary-chipmunk-deployment
+     run: dep-svc
+ template:
+   metadata:
+     labels:
+       app: canary-chipmunk-deployment
+       run: dep-svc
+   spec:
+     containers:
+     - name: nginx
+       image: nginx:1.14.2
+</code></pre><p><span>apply 後可以看到結果是</span></p><p><img src="https://imgur.com/nTiRWvL.png" alt="Imgur" loading="lazy"></p><h4 id="重點1" data-id="重點"><a class="anchor hidden-xs" href="#重點1" title="重點1"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><span>題目說總共 10 個 pod</span></p><ol>
+<li><span>60% 流量給當前版本的 Pod, 就是把 current-chipmunk-deployment 擴大到 6 個</span></li>
+<li><span>40% 流量給 canary 版本的 pof, 就是把 canary-chipmunk-deployment 擴大到 4個 pod</span></li>
+</ol><ul>
+<li>
+<p><span>current-chipmunk-deployment</span><br>
+<img src="https://imgur.com/HEjnpD3.png" alt="Imgur" loading="lazy"></p>
+</li>
+<li>
+<p><span>canary-chipmunk-deployment</span><br>
+<img src="https://imgur.com/tbQgydo.png" alt="Imgur" loading="lazy"></p>
+</li>
+</ul><h3 id="8-Security-Context" data-id="8-Security-Context"><a class="anchor hidden-xs" href="#8-Security-Context" title="8-Security-Context"><span class="octicon octicon-link"></span></a><span>8. Security Context</span></h3><h4 id="題目7" data-id="題目"><a class="anchor hidden-xs" href="#題目7" title="題目7"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/EHdDdKt.png" alt="Imgur" loading="lazy"></p><p><span>官方文件: </span><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod" target="_blank" rel="noopener"><span>Configure a Security Context for a Pod or Container</span></a></p><h4 id="答案6" data-id="答案"><a class="anchor hidden-xs" href="#答案6" title="答案6"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先把目前的 deployment 倒出來到 yaml file 再去做修改</span></p><pre><code>k get deploy -n quetzal  broker-deployment -o yaml &gt; 8.yaml
+</code></pre><p><span>加入這段</span></p><pre><code>spec:
+  securityContext:
+    runAsUser: 30000
+    allowPrivilegeEscalation: false
+</code></pre><p><span>刪除後重新 apply 修改的 yaml</span></p><pre><code>k delete -f 8.yaml
+k apply -f 8.yaml
+</code></pre><h4 id="重點2" data-id="重點"><a class="anchor hidden-xs" href="#重點2" title="重點2"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><img src="https://imgur.com/kK8O3dW.png" alt="Imgur" loading="lazy"></p><h3 id="9-Deployment-and-environment-variable" data-id="9-Deployment-and-environment-variable"><a class="anchor hidden-xs" href="#9-Deployment-and-environment-variable" title="9-Deployment-and-environment-variable"><span class="octicon octicon-link"></span></a><span>9. Deployment and environment variable</span></h3><h4 id="題目8" data-id="題目"><a class="anchor hidden-xs" href="#題目8" title="題目8"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/QAHBlgE.png" alt="Imgur" loading="lazy"></p><h4 id="答案7" data-id="答案"><a class="anchor hidden-xs" href="#答案7" title="答案7"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>查看官方文件: </span><a href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#define-an-environment-variable-for-a-container" target="_blank" rel="noopener"><span>Define an environment variable for a container</span></a></p><pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: ckad00014
+  labels:
+    app: nginx
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        ports:
+        - containerPort: 80
+        env:
+        - name: NGINX_PORT
+          value: "8000"
+</code></pre><p><span>可以看到結果如下, 並察看環境變數有沒有成功設定到</span></p><pre><code>k exec -it -n ckad00014 api-fb8bdd8c8-2sg7n -- env | grep NGINX
+</code></pre><p><img src="https://imgur.com/n3kY5e7.png" alt="Imgur" loading="lazy"></p><h3 id="10-RBAC" data-id="10-RBAC"><a class="anchor hidden-xs" href="#10-RBAC" title="10-RBAC"><span class="octicon octicon-link"></span></a><span>10. RBAC</span></h3><p><span>RBAC (Role-Base Access Control，基於角色的訪問控制)</span></p><pre><code>kubectl create serviceaccount gorilla-sa -n gorilla # 建立 sa 指令
+</code></pre><h4 id="題目9" data-id="題目"><a class="anchor hidden-xs" href="#題目9" title="題目9"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/bmoKsb0.png" alt="Imgur" loading="lazy"></p><p><span>查看官方文件: </span><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/" target="_blank" rel="noopener"><span>Using RBAC Authorization</span></a></p><h4 id="答案8" data-id="答案"><a class="anchor hidden-xs" href="#答案8" title="答案8"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>檢查現有的 service account, 發現有 gorilla-sa 存在</span></p><pre><code>k get sa -n gorilla
+</code></pre><p><img src="https://imgur.com/cMm5NOt.png" alt="Imgur" loading="lazy"></p><p><span>檢查 rule, 尋找有 get 或 list 權限的 role</span></p><pre><code>k describe role -n gorilla
+</code></pre><p><span>給 honeybee deployment 一個角色權限 gorilla-sa</span></p><pre><code>k set -n gorilla sa deploy honeybee-deployment gorilla-sa
+</code></pre><h4 id="重點3" data-id="重點"><a class="anchor hidden-xs" href="#重點3" title="重點3"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><img src="https://imgur.com/Yo3ez5s.png" alt="Imgur" loading="lazy"></p><h3 id="11-ConfigMap" data-id="11-ConfigMap"><a class="anchor hidden-xs" href="#11-ConfigMap" title="11-ConfigMap"><span class="octicon octicon-link"></span></a><span>11. ConfigMap</span></h3><p><span>11 跟 12 題差異不大, 一個來源是 configmap, 一個來源是 secret</span></p><h4 id="題目10" data-id="題目"><a class="anchor hidden-xs" href="#題目10" title="題目10"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/yXjxLf6.png" alt="Imgur" loading="lazy"></p><p><span>查看官方文件: </span><a href="https://kubernetes.io/docs/concepts/configuration/configmap/#configmaps-and-pods" target="_blank" rel="noopener"><span>ConfigMaps and Pods </span></a></p><h4 id="答案9" data-id="答案"><a class="anchor hidden-xs" href="#答案9" title="答案9"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先用指令創建一個 configmap</span></p><pre><code>k create configmap some-config --from-literal=key3=value4
+k apply -f 11.yaml
+</code></pre><ul>
+<li><span>11.yaml</span></li>
+</ul><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-configmap
+spec:
+  containers:
+  - name: demo
+    image: nginx:1.14.2
+    volumeMounts:
+    - name: config
+      mountPath: "/some/path"
+  volumes:
+  - name: config
+    configMap:
+      name: some-config
+</code></pre><p><span>檢查 pods 裡面有吃到 configmap 的 key, value</span></p><pre><code>k exec -it nginx-configmap -- cat /some/path/key3
+or
+k exec -it nginx-configmap -- ls /some/path/
+</code></pre><p><img src="https://imgur.com/oTN4Y0R.png" alt="Imgur" loading="lazy"></p><h3 id="12-Secret" data-id="12-Secret"><a class="anchor hidden-xs" href="#12-Secret" title="12-Secret"><span class="octicon octicon-link"></span></a><span>12. Secret</span></h3><h4 id="題目11" data-id="題目"><a class="anchor hidden-xs" href="#題目11" title="題目11"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/1zKxD6R.png" alt="Imgur" loading="lazy"></p><p><span>查看官方文件: </span><a href="https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data" target="_blank" rel="noopener"><span>Define container environment variables using Secret data</span></a></p><h4 id="答案10" data-id="答案"><a class="anchor hidden-xs" href="#答案10" title="答案10"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>首先建立一個 secret</span></p><pre><code>k create secret generic another-secret --from-literal=key1=value2
+</code></pre><p><span>用上面官方文件去修改 yaml 後 kubectl apply -f 12.yaml</span></p><ul>
+<li><span>12.yaml</span></li>
+</ul><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-secret
+spec:
+  containers:
+  - name: envars-test-container
+    image: nginx:1.16
+    env:
+    - name: COOL_VARIABLE
+      valueFrom:
+        secretKeyRef:
+          name: another-secret
+          key: key1
+</code></pre><p><span>檢查 pods 裡面有吃到 configmap 的 key, value</span></p><pre><code>k exec -it nginx-secret -- env | grep COOL
+</code></pre><p><img src="https://imgur.com/PMO3dBA.png" alt="Imgur" loading="lazy"></p><h3 id="13-Pod-livenessProbe---1" data-id="13-Pod-livenessProbe---1"><a class="anchor hidden-xs" href="#13-Pod-livenessProbe---1" title="13-Pod-livenessProbe---1"><span class="octicon octicon-link"></span></a><span>13. Pod livenessProbe - 1</span></h3><p><span>這題會比較耗時間, 考試的時候會有 5個 pod 要檢查, pod 刪掉了會需要重建</span></p><h4 id="題目12" data-id="題目"><a class="anchor hidden-xs" href="#題目12" title="題目12"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://hackmd.io/_uploads/rkch_xAop.png" alt="image" loading="lazy"></p><h4 id="答案11" data-id="答案"><a class="anchor hidden-xs" href="#答案11" title="答案11"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先找出需要修復的故障 pod, 看到 probe-ns 狀態為 CrashLoopBackOff</span></p><pre><code>k get pod -A 
+</code></pre><p><img src="https://imgur.com/RQ4bFGB.png" alt="Imgur" loading="lazy"></p><p><span>describe 故障的 pod 去查看問題, 也可以導出 yaml 查看跟修改</span></p><pre><code>k describe -n probe-ns pod probe-demo
+k get -n probe-ns pod probe-demo -o yaml &gt; 13.yaml
+</code></pre><p><img src="https://imgur.com/CjdzgLo.png" alt="Imgur" loading="lazy"></p><p><span>題目三個要求:</span></p><ol>
+<li><span>把錯誤 log 寫到文件 /ckad/CKAD00011/broken.txt</span></li>
+<li><span>紀錄錯誤 event 並且輸出格式為 wide, 寫到文件 /ckad/CKAD00011/error.txt</span></li>
+<li><span>修復故障 pod</span></li>
+</ol><pre><code>echo probe-ns/probe-demo &gt; /ckad/CKAD00011/broken.txt
+k get events -n probe-ns -o wide | grep probe-demo &gt; /ckad/CKAD00011/error.txt
+
+
+vim 13.yaml
+k delete -f 13.yaml
+k apply -f 13.yaml
+k describe pod -n probe-ns probe-demo | tail # 檢查
+</code></pre><p><img src="https://imgur.com/jVq4nBG.png" alt="Imgur" loading="lazy"></p><h3 id="14-Pod-livenessProbe---2" data-id="14-Pod-livenessProbe---2"><a class="anchor hidden-xs" href="#14-Pod-livenessProbe---2" title="14-Pod-livenessProbe---2"><span class="octicon octicon-link"></span></a><span>14. Pod livenessProbe - 2</span></h3><p><span>上一題是 debug, 這題是要自己寫 probe</span></p><h4 id="題目13" data-id="題目"><a class="anchor hidden-xs" href="#題目13" title="題目13"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://hackmd.io/_uploads/SJvPJWCsp.png" alt="image" loading="lazy"></p><p><span>查看官方文件: </span><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request" target="_blank" rel="noopener"><span>Define a liveness HTTP request</span></a></p><h4 id="答案12" data-id="答案"><a class="anchor hidden-xs" href="#答案12" title="答案12"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>修改現有的 deployment: probe-http</span></p><pre><code>k edit deployment probe-http
+k get pod # 檢查
+</code></pre><p><span>再裡面加入題目要求的 readinessProbe 資訊</span></p><pre><code>readinessProbe:
+  httpGet:
+    path: /healthz/return200
+    port: 80
+  initialDelaySeconds: 15
+  periodSeconds: 20
+</code></pre><h4 id="重點4" data-id="重點"><a class="anchor hidden-xs" href="#重點4" title="重點4"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><span>考試時是在 namespace: staging</span></p><p><img src="https://imgur.com/E1rJ1w7.png" alt="Imgur" loading="lazy"></p><h3 id="15-Upgrade-and-Rollback" data-id="15-Upgrade-and-Rollback"><a class="anchor hidden-xs" href="#15-Upgrade-and-Rollback" title="15-Upgrade-and-Rollback"><span class="octicon octicon-link"></span></a><span>15. Upgrade and Rollback</span></h3><h4 id="題目14" data-id="題目"><a class="anchor hidden-xs" href="#題目14" title="題目14"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/t18a3Ss.png" alt="Imgur" loading="lazy"></p><p><span>三個要求</span></p><ol>
+<li><span>更新 ckad00015 namespace 的 webapp deployment, 把 maxSurge 設定為 10%, 把 maxUnavailable 設定為4</span></li>
+<li><span>更新 deployment webapp 讓 container image 使用版本 1.13.7</span></li>
+<li><span>把 deployment webapp rollback 回上一個版本</span></li>
+</ol><div class="alert alert-success">
+<p><span>maxSurge 跟 maxUnavailable 可以是數字也可以是百分比, 根據題目要求去寫</span></p>
+</div><h4 id="答案13" data-id="答案"><a class="anchor hidden-xs" href="#答案13" title="答案13"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>k get -n ckad00015 deploy,pod
+k edit -n ckad00015 deploy webapp #修改 maxSurge, maxUnavailable 跟 container image
+k get deploy -n ckad00015 webapp -o yaml #查看剛剛修改的內容有沒有生效
+
+k rollout history deploy webapp -n ckad00015 #查看rollout 的歷史紀錄
+k rollout undo deploy webapp -n ckad00015
+</code></pre><p><img src="https://imgur.com/fnUcgZZ.png" alt="Imgur" loading="lazy"></p><h3 id="16-Deployment-with-ServiceAccount" data-id="16-Deployment-with-ServiceAccount"><a class="anchor hidden-xs" href="#16-Deployment-with-ServiceAccount" title="16-Deployment-with-ServiceAccount"><span class="octicon octicon-link"></span></a><span>16. Deployment with ServiceAccount</span></h3><h5 id="ServiceAccount" data-id="ServiceAccount"><a class="anchor hidden-xs" href="#ServiceAccount" title="ServiceAccount"><span class="octicon octicon-link"></span></a><span>ServiceAccount</span></h5><p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server" target="_blank" rel="noopener"><span>Use the default service account to access the API server</span></a><br>
+<span>當 Pod 聯繫 API 伺服器時，Pod 會以特定的 ServiceAccount 身份進行身份驗證（例如, default）</span><br>
+<span>每個 Kubernetes 命名空間中至少包含一個 ServiceAccount.</span></p><p><span>每個 Kubernetes 命名空間都至少包含一個 ServiceAccount：該命名空間的 default ServiceAccount, 名為 default.</span><br>
+<span>如果在創建 Pod 時未指定 ServiceAccount, Kubernetes 將自動分配該命名空間中名為 default 的 ServiceAccount.</span></p><pre><code># fetch the details for a Pod you have created
+kubectl get pods/&lt;podname&gt; -o yaml
+</code></pre><h5 id="Opt-out-of-API-credential-automounting" data-id="Opt-out-of-API-credential-automounting"><a class="anchor hidden-xs" href="#Opt-out-of-API-credential-automounting" title="Opt-out-of-API-credential-automounting"><span class="octicon octicon-link"></span></a><span>Opt out of API credential automounting</span></h5><p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#opt-out-of-api-credential-automounting" target="_blank" rel="noopener"><span>取消 API credentials 自動掛載的選項</span></a><br>
+<span>如果您不希望 kubelet 自動掛載服務帳戶的 API credentials, 則可以選擇退出 default 行為.</span><br>
+<span>您可以通過在服務帳戶上設置 </span><code>automountServiceAccountToken: false</code><span> 來選擇退出對服務帳戶的 API credentials 的自動掛載.</span></p><pre><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: build-robot
+automountServiceAccountToken: false
+...
+</code></pre><p><span>也可以選擇不给特定 Pod 自動掛載 API credential</span><br>
+<span>如果 ServiceAccount 和 Pod 的 .spec 都設定了 automountServiceAccountToken, 則 Pod 上 spec 的設定優先於服務帳號的設定</span></p><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  serviceAccountName: build-robot
+  automountServiceAccountToken: false
+  ...
+</code></pre><h4 id="題目15" data-id="題目"><a class="anchor hidden-xs" href="#題目15" title="題目15"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/K4txDMB.png" alt="Imgur" loading="lazy"></p><ul>
+<li><span>/cks/sa/pod1.yaml</span></li>
+</ul><pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  namespace: qa
+spec:
+  serviceAccountName: backend-sa
+  containers:
+  - name: backend
+    image: nginx:1.14.2
+    imagePullPolicy: IfNotPresent
+</code></pre><p><span>這題有三個要求:</span></p><ol>
+<li><span>在 namespace qa 中建立一個 backend-sa 的 ServiceAccount, 保證這個 ServiceAccount 不會自動掛載 API credentials</span></li>
+<li><span>使用 /cks/sa/pod1.yaml 的內容去建立一個 pod</span></li>
+<li><span>清理 namespace qa 中沒有用到的 ServiceAccount</span></li>
+</ol><h4 id="答案14" data-id="答案"><a class="anchor hidden-xs" href="#答案14" title="答案14"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先去建立一個 backend-sa 的 ServiceAccount</span></p><ul>
+<li><span>sa.yaml</span></li>
+</ul><pre><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend-sa
+  namespace: qa
+automountServiceAccountToken: false
+</code></pre><p><img src="https://imgur.com/0X5JFF9.png" alt="Imgur" loading="lazy"></p><p><span>可以看到成功建立 service account</span></p><pre><code>k apply -f sa.yaml
+k get -n qa sa backend-sa -o yaml
+</code></pre><p><img src="https://imgur.com/Vod3P0G.png" alt="Imgur" loading="lazy"></p><p><span>建立 pod 使用剛剛建立的 service account</span></p><pre><code>vim /cks/sa/pod1.yaml
+k apply -f /cks/sa/pod1.yaml
+k get pod -n qa 
+
+k get sa -n qa  # 查看已經在用的 service account
+k delete serviceaccounts -n qa backend-sa # 刪除 service account 範例
+</code></pre><p><img src="https://imgur.com/sI7sN0a.png" alt="Imgur" loading="lazy"></p><h3 id="17-Update-Deployment-and-expose-Service" data-id="17-Update-Deployment-and-expose-Service"><a class="anchor hidden-xs" href="#17-Update-Deployment-and-expose-Service" title="17-Update-Deployment-and-expose-Service"><span class="octicon octicon-link"></span></a><span>17. Update Deployment and expose Service</span></h3><h4 id="題目16" data-id="題目"><a class="anchor hidden-xs" href="#題目16" title="題目16"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/4adPOBB.png" alt="Imgur" loading="lazy"></p><p><span>題目要求兩點</span></p><ol>
+<li><span>更新 ckad00017 namespace 底下的 deployment</span>
+<ul>
+<li><span>讓這個 deployment 運行 5 個 replica pod</span></li>
+<li><span>將 tire:dmz 標籤到 pod</span></li>
+</ul>
+</li>
+<li><span>在 ckad00017 namespace 中建立一個叫做 rover 的 NodeService, 並在 TCP port81 上 expose deployment</span></li>
+</ol><h4 id="答案15" data-id="答案"><a class="anchor hidden-xs" href="#答案15" title="答案15"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>紅字背景的字 是需要新增上去的</span></p><p><img src="https://imgur.com/aVnBKaU.png" alt="Imgur" loading="lazy"></p><pre><code>k get deployments.apps -n ckad00017 ckad00017-deployment -o yaml &gt; 18.yaml
+vim 18.yaml
+k delete -f 18.yaml
+k apply -f 18.yaml
+k get deployments,pod -n ckad00017 --show-labels
+</code></pre><p><img src="https://imgur.com/MDJ9OEY.png" alt="Imgur" loading="lazy"></p><p><span>第二個要求 expose deployment tcp port 81</span></p><pre><code>k expose deploy ckad00017-deployment -n ckad00017 --port=80 --target-port=81 --name='rover' --type='NodePort'
+k get svc -n ckad00017
+curl 10.109.4.35:81
+</code></pre><p><img src="https://imgur.com/nkCUNfW.png" alt="Imgur" loading="lazy"></p><h3 id="18-NetworkPolicy" data-id="18-NetworkPolicy"><a class="anchor hidden-xs" href="#18-NetworkPolicy" title="18-NetworkPolicy"><span class="octicon octicon-link"></span></a><span>18. NetworkPolicy</span></h3><p><span>如果您想要在 TCP、UDP 和 SCTP 協議的 IP address 或 port 級別控制流量流向, 那麼可能會考慮為 cluster 中的特定 application 使用 Kubernetes NetworkPolicy</span></p><h4 id="題目17" data-id="題目"><a class="anchor hidden-xs" href="#題目17" title="題目17"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><span>Networkpolicy 不需要建, 只需要去修改符合題目需求</span></p><p><img src="https://imgur.com/jyLEwQP.png" alt="Imgur" loading="lazy"></p><h4 id="答案16" data-id="答案"><a class="anchor hidden-xs" href="#答案16" title="答案16"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先檢查所有的 networkpolicy 和 pod label</span></p><pre><code>k get pod,networkpolicies -n ckad00018
+k get pod -n ckad00018 --show-labels
+</code></pre><p><span>目前看到有 4種 networkpolicy, 但是 default-deny 跟 all-access 不能使用</span></p><p><img src="https://imgur.com/AM1Jbax.png" alt="Imgur" loading="lazy"></p><p><span>可以看到 front 跟 db 都各有一個 networkpolicy, ckad00018-newpod 沒有 networkpolicy</span><br>
+<span>所以去找 front 跟 db networkpolicy 的 label 並設定給 ckad00018-newpod</span></p><p><img src="https://imgur.com/WrJSILd.png" alt="Imgur" loading="lazy"></p><p><span>給 ckad00018-newpod 加上正確的 label</span></p><pre><code>k label pod -n ckad00018 ckad00018-newpod front-access=true
+k label pod -n ckad00018 ckad00018-newpod db-access=true
+
+# 檢查 label
+k get pod -n ckad00018 --show-labels
+</code></pre><h3 id="19-Ingress---1" data-id="19-Ingress---1"><a class="anchor hidden-xs" href="#19-Ingress---1" title="19-Ingress---1"><span class="octicon octicon-link"></span></a><span>19. Ingress - 1</span></h3><h4 id="題目18" data-id="題目"><a class="anchor hidden-xs" href="#題目18" title="題目18"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><span>注意不要改 deployment, 要改 service 跟 ingress</span></p><p><img src="https://imgur.com/zyIKozs.png" alt="Imgur" loading="lazy"></p><h4 id="答案17" data-id="答案"><a class="anchor hidden-xs" href="#答案17" title="答案17"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>k get deployments,svc,ingress -n ingress-ckad 
+
+vim /ckad/CKAD202206/ingress.yaml
+</code></pre><p><img src="https://imgur.com/p2ab1Q3.png" alt="Imgur" loading="lazy"><br>
+<img src="https://imgur.com/MnUSlwE.png" alt="Imgur" loading="lazy"></p><p><span>修改後重新 apply, 可以看到網路通了</span></p><pre><code>k apply -f /ckad/CKAD202206/ingress.yaml
+</code></pre><p><img src="https://imgur.com/k2SoDEV.png" alt="Imgur" loading="lazy"></p><h3 id="20-Ingress---2" data-id="20-Ingress---2"><a class="anchor hidden-xs" href="#20-Ingress---2" title="20-Ingress---2"><span class="octicon octicon-link"></span></a><span>20. Ingress - 2</span></h3><p><span>注意不要改 deployment, 要改 service 跟 ingress</span></p><h4 id="題目19" data-id="題目"><a class="anchor hidden-xs" href="#題目19" title="題目19"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/JrgNdmo.png" alt="Imgur" loading="lazy"></p><h4 id="答案18" data-id="答案"><a class="anchor hidden-xs" href="#答案18" title="答案18"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>k get deploy,ingress,svc -n ingress-kk
+k describe -n ingress-kk ingress.networking.k8s.io/ingress-kk-ingress
+</code></pre><p><span>由下面錯誤訊息可以看出來, 少了一個 service "nginxsvc-kk", 所以需要 create service</span><br>
+<img src="https://imgur.com/oCTmQBQ.png" alt="Imgur" loading="lazy"></p><ul>
+<li><span>20.yaml</span></li>
+</ul><pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: nginxsvc-kk
+  namespace: ingress-kk
+spec:
+  selector:
+    name: nginx-lab
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+</code></pre><p><img src="https://imgur.com/erdaaQG.png" alt="Imgur" loading="lazy"></p><p><span>把這個 service apply 後可以看到網路通了</span></p><p><img src="https://imgur.com/vgSkVrA.png" alt="Imgur" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#CKAD" title="CKAD">CKAD</a><ul class="nav">
+<li><a href="#Pre-check" title="Pre-check">Pre-check</a><ul class="nav">
+<li><a href="#kubectl-自動補全" title="kubectl 自動補全">kubectl 自動補全</a></li>
+</ul>
+</li>
+<li><a href="#題目" title="題目">題目</a><ul class="nav">
+<li><a href="#1-CronJob---1" title="1. CronJob - 1">1. CronJob - 1</a></li>
+<li><a href="#2-CronJob---2" title="2. CronJob - 2">2. CronJob - 2</a></li>
+<li><a href="#3-Dockerfile" title="3. Dockerfile">3. Dockerfile</a></li>
+<li><a href="#4-CPU---1" title="4. CPU - 1">4. CPU - 1</a></li>
+<li><a href="#5-CPU---2" title="5. CPU - 2">5. CPU - 2</a></li>
+<li><a href="#6-Update-K8S-Application" title="6 Update K8S Application">6 Update K8S Application</a></li>
+<li><a href="#7-Canary-金絲雀部屬" title="7. Canary 金絲雀部屬">7. Canary 金絲雀部屬</a></li>
+<li><a href="#8-Security-Context" title="8. Security Context">8. Security Context</a></li>
+<li><a href="#9-Deployment-and-environment-variable" title="9. Deployment and environment variable">9. Deployment and environment variable</a></li>
+<li><a href="#10-RBAC" title="10. RBAC">10. RBAC</a></li>
+<li><a href="#11-ConfigMap" title="11. ConfigMap">11. ConfigMap</a></li>
+<li><a href="#12-Secret" title="12. Secret">12. Secret</a></li>
+<li><a href="#13-Pod-livenessProbe---1" title="13. Pod livenessProbe - 1">13. Pod livenessProbe - 1</a></li>
+<li><a href="#14-Pod-livenessProbe---2" title="14. Pod livenessProbe - 2">14. Pod livenessProbe - 2</a></li>
+<li><a href="#15-Upgrade-and-Rollback" title="15. Upgrade and Rollback">15. Upgrade and Rollback</a></li>
+<li><a href="#16-Deployment-with-ServiceAccount" title="16. Deployment with ServiceAccount">16. Deployment with ServiceAccount</a></li>
+<li><a href="#17-Update-Deployment-and-expose-Service" title="17. Update Deployment and expose Service">17. Update Deployment and expose Service</a></li>
+<li><a href="#18-NetworkPolicy" title="18. NetworkPolicy">18. NetworkPolicy</a></li>
+<li><a href="#19-Ingress---1" title="19. Ingress - 1">19. Ingress - 1</a></li>
+<li><a href="#20-Ingress---2" title="20. Ingress - 2">20. Ingress - 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#CKAD" title="CKAD">CKAD</a><ul class="nav">
+<li><a href="#Pre-check" title="Pre-check">Pre-check</a><ul class="nav">
+<li><a href="#kubectl-自動補全" title="kubectl 自動補全">kubectl 自動補全</a></li>
+</ul>
+</li>
+<li><a href="#題目" title="題目">題目</a><ul class="nav">
+<li><a href="#1-CronJob---1" title="1. CronJob - 1">1. CronJob - 1</a></li>
+<li><a href="#2-CronJob---2" title="2. CronJob - 2">2. CronJob - 2</a></li>
+<li><a href="#3-Dockerfile" title="3. Dockerfile">3. Dockerfile</a></li>
+<li><a href="#4-CPU---1" title="4. CPU - 1">4. CPU - 1</a></li>
+<li><a href="#5-CPU---2" title="5. CPU - 2">5. CPU - 2</a></li>
+<li><a href="#6-Update-K8S-Application" title="6 Update K8S Application">6 Update K8S Application</a></li>
+<li><a href="#7-Canary-金絲雀部屬" title="7. Canary 金絲雀部屬">7. Canary 金絲雀部屬</a></li>
+<li><a href="#8-Security-Context" title="8. Security Context">8. Security Context</a></li>
+<li><a href="#9-Deployment-and-environment-variable" title="9. Deployment and environment variable">9. Deployment and environment variable</a></li>
+<li><a href="#10-RBAC" title="10. RBAC">10. RBAC</a></li>
+<li><a href="#11-ConfigMap" title="11. ConfigMap">11. ConfigMap</a></li>
+<li><a href="#12-Secret" title="12. Secret">12. Secret</a></li>
+<li><a href="#13-Pod-livenessProbe---1" title="13. Pod livenessProbe - 1">13. Pod livenessProbe - 1</a></li>
+<li><a href="#14-Pod-livenessProbe---2" title="14. Pod livenessProbe - 2">14. Pod livenessProbe - 2</a></li>
+<li><a href="#15-Upgrade-and-Rollback" title="15. Upgrade and Rollback">15. Upgrade and Rollback</a></li>
+<li><a href="#16-Deployment-with-ServiceAccount" title="16. Deployment with ServiceAccount">16. Deployment with ServiceAccount</a></li>
+<li><a href="#17-Update-Deployment-and-expose-Service" title="17. Update Deployment and expose Service">17. Update Deployment and expose Service</a></li>
+<li><a href="#18-NetworkPolicy" title="18. NetworkPolicy">18. NetworkPolicy</a></li>
+<li><a href="#19-Ingress---1" title="19. Ingress - 1">19. Ingress - 1</a></li>
+<li><a href="#20-Ingress---2" title="20. Ingress - 2">20. Ingress - 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
