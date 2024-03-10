@@ -149,7 +149,7 @@ k get job,cronjob
 </tr>
 </tbody>
 </table><p><img src="https://hackmd.io/_uploads/rkdk0zLi6.png" alt="image" loading="lazy"></p><h3 id="2-CronJob---2" data-id="2-CronJob---2"><a class="anchor hidden-xs" href="#2-CronJob---2" title="2-CronJob---2"><span class="octicon octicon-link"></span></a><span>2. CronJob - 2</span></h3><h4 id="題目1" data-id="題目"><a class="anchor hidden-xs" href="#題目1" title="題目1"><span class="octicon octicon-link"></span></a><span>題目:</span></h4><p><img src="https://imgur.com/AoPV632.png" alt="Imgur" loading="lazy"></p><h4 id="答案" data-id="答案"><a class="anchor hidden-xs" href="#答案" title="答案"><span class="octicon octicon-link"></span></a><span>答案</span></h4><pre><code>vim /ckad/CKAD00016/periodic.yaml
-</code></pre><pre data-original-title="" title=""><code>apiVersion: batch/v1
+</code></pre><pre><code>apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: hello
@@ -270,8 +270,9 @@ spec:
         - name: logs
           emptyDir: {}
 </code></pre><p><span>重新 apply 後就可以看到 namespace garfish 底下有 deploy 跟 pod</span></p><p><img src="https://imgur.com/hrGDX0H.png" alt="Imgur" loading="lazy"></p><h4 id="重點" data-id="重點"><a class="anchor hidden-xs" href="#重點" title="重點"><span class="octicon octicon-link"></span></a><span>重點</span></h4><p><span>改兩個地方</span></p><ol>
-<li><span>apiVersion</span></li>
-<li><span>selector</span></li>
+<li><ins><span>apiVersion</span></ins></li>
+<li><ins><span>selector</span></ins><br>
+<span>spec 下增加或修改 selector label, 這個 label 要和下面的 template 裡面的 label 一致</span></li>
 </ol><p><img src="https://imgur.com/QC2pTl2.png" alt="Imgur" loading="lazy"></p><h3 id="7-Canary-金絲雀部屬" data-id="7-Canary-金絲雀部屬"><a class="anchor hidden-xs" href="#7-Canary-金絲雀部屬" title="7-Canary-金絲雀部屬"><span class="octicon octicon-link"></span></a><span>7. Canary 金絲雀部屬</span></h3><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#canary-deployment" target="_blank" rel="noopener"><span>Canary</span></a><span> 是一種 deployment 策略</span></p><ul>
 <li><span>藍綠部署是準備兩套系統，在兩套系統之間進行切換</span></li>
 <li><span>金絲雀策略是只有一套系統，逐漸替換這套系統</span></li>
@@ -333,7 +334,7 @@ spec:
 </li>
 </ul><h3 id="8-Security-Context" data-id="8-Security-Context"><a class="anchor hidden-xs" href="#8-Security-Context" title="8-Security-Context"><span class="octicon octicon-link"></span></a><span>8. Security Context</span></h3><h4 id="題目7" data-id="題目"><a class="anchor hidden-xs" href="#題目7" title="題目7"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/EHdDdKt.png" alt="Imgur" loading="lazy"></p><ul>
 <li><span>broker-deployment.yaml</span></li>
-</ul><pre data-original-title="" title=""><code>apiVersion: apps/v1
+</ul><pre><code>apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: broker-deployment
@@ -777,7 +778,7 @@ k label pod -n ckad00018 ckad00018-newpod db-access=true
 <span>targetport 是 pod（container）的 port</span></p>
 </div><ul>
 <li><span>有錯的檔案 /ckad/CKAD202206/ingress.yaml</span></li>
-</ul><pre data-original-title="" title=""><code>apiVersion: apps/v1
+</ul><pre><code>apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-dm
@@ -847,11 +848,11 @@ k apply -f /ckad/CKAD202206/ingress.yaml
 curl 10.96.49.217/hello # 這是打 Ingress 的 IP + path 去測試
 </code></pre><p><img src="https://imgur.com/YxGoXqY.png" alt="Imgur" loading="lazy"></p><h3 id="20-Ingress---2" data-id="20-Ingress---2"><a class="anchor hidden-xs" href="#20-Ingress---2" title="20-Ingress---2"><span class="octicon octicon-link"></span></a><span>20. Ingress - 2</span></h3><p><span>注意不要改 deployment, 要改 service 跟 ingress</span></p><h4 id="題目19" data-id="題目"><a class="anchor hidden-xs" href="#題目19" title="題目19"><span class="octicon octicon-link"></span></a><span>題目</span></h4><p><img src="https://imgur.com/JrgNdmo.png" alt="Imgur" loading="lazy"></p><h4 id="答案18" data-id="答案"><a class="anchor hidden-xs" href="#答案18" title="答案18"><span class="octicon octicon-link"></span></a><span>答案</span></h4><p><span>先去檢查這題目的 ingress, deployment, service 這三個項目哪里有問題.</span></p><pre><code>k get deploy,ingress,svc -n ingress-kk
 k describe -n ingress-kk ingress.networking.k8s.io/ingress-kk-ingress
-</code></pre><p><span>curl 打看看 Ingress, 看到噴出 503 Error</span></p><pre data-original-title="" title=""><code>curl 10.96.49.217/hello
+</code></pre><p><span>curl 打看看 Ingress, 看到噴出 503 Error</span></p><pre><code>curl 10.96.49.217/hello
 </code></pre><p><img src="https://imgur.com/qgiXkLn.png" alt="Imgur" loading="lazy"></p><p><span>由下面錯誤訊息可以看出來, 少了一個 service "nginxsvc-kk", 所以需要 create service</span><br>
 <img src="https://imgur.com/oCTmQBQ.png" alt="Imgur" loading="lazy"></p><ul>
 <li><span>deployment info</span></li>
-</ul><pre data-original-title="" title=""><code>kubectl -n ingress-kk get deployments -o yaml
+</ul><pre><code>kubectl -n ingress-kk get deployments -o yaml
 </code></pre><p><img src="https://imgur.com/mWGF1Ul.png" alt="Imgur" loading="lazy"></p><p><span>準備要 create service</span></p><ol>
 <li><span>name 叫做 nginxsvc-kk</span></li>
 <li><span>namespace 是 ingress-kk</span></li>
@@ -879,76 +880,13 @@ spec:
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav">
-<li class=""><a href="#CKAD" title="CKAD">CKAD</a><ul class="nav">
-<li><a href="#Pre-check" title="Pre-check">Pre-check</a><ul class="nav">
-<li><a href="#kubectl-自動補全" title="kubectl 自動補全">kubectl 自動補全</a></li>
-</ul>
-</li>
-<li class=""><a href="#題目" title="題目">題目</a><ul class="nav">
-<li class=""><a href="#1-CronJob---1" title="1. CronJob - 1">1. CronJob - 1</a></li>
-<li class=""><a href="#2-CronJob---2" title="2. CronJob - 2">2. CronJob - 2</a></li>
-<li><a href="#3-Dockerfile" title="3. Dockerfile">3. Dockerfile</a></li>
-<li><a href="#4-CPU---1" title="4. CPU - 1">4. CPU - 1</a></li>
-<li><a href="#5-CPU---2" title="5. CPU - 2">5. CPU - 2</a></li>
-<li><a href="#6-Update-K8S-Application" title="6 Update K8S Application">6 Update K8S Application</a></li>
-<li><a href="#7-Canary-金絲雀部屬" title="7. Canary 金絲雀部屬">7. Canary 金絲雀部屬</a></li>
-<li><a href="#8-Security-Context" title="8. Security Context">8. Security Context</a></li>
-<li><a href="#9-Deployment-and-environment-variable" title="9. Deployment and environment variable">9. Deployment and environment variable</a></li>
-<li><a href="#10-RBAC" title="10. RBAC">10. RBAC</a></li>
-<li><a href="#11-ConfigMap" title="11. ConfigMap">11. ConfigMap</a></li>
-<li><a href="#12-Secret" title="12. Secret">12. Secret</a></li>
-<li><a href="#13-Pod-livenessProbe---1" title="13. Pod livenessProbe - 1">13. Pod livenessProbe - 1</a></li>
-<li><a href="#14-Pod-livenessProbe---2" title="14. Pod livenessProbe - 2">14. Pod livenessProbe - 2</a></li>
-<li><a href="#15-Upgrade-and-Rollback" title="15. Upgrade and Rollback">15. Upgrade and Rollback</a></li>
-<li><a href="#16-Deployment-with-ServiceAccount" title="16. Deployment with ServiceAccount">16. Deployment with ServiceAccount</a></li>
-<li><a href="#17-Update-Deployment-and-expose-Service" title="17. Update Deployment and expose Service">17. Update Deployment and expose Service</a></li>
-<li><a href="#18-NetworkPolicy" title="18. NetworkPolicy">18. NetworkPolicy</a></li>
-<li><a href="#19-Ingress---1" title="19. Ingress - 1">19. Ingress - 1</a></li>
-<li><a href="#20-Ingress---2" title="20. Ingress - 2">20. Ingress - 2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+                
+                
             </ul>
         </div>
     </div>
-    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
-        <div class="toc"><ul class="nav">
-<li class=""><a href="#CKAD" title="CKAD">CKAD</a><ul class="nav">
-<li><a href="#Pre-check" title="Pre-check">Pre-check</a><ul class="nav">
-<li><a href="#kubectl-自動補全" title="kubectl 自動補全">kubectl 自動補全</a></li>
-</ul>
-</li>
-<li class=""><a href="#題目" title="題目">題目</a><ul class="nav">
-<li class=""><a href="#1-CronJob---1" title="1. CronJob - 1">1. CronJob - 1</a></li>
-<li class=""><a href="#2-CronJob---2" title="2. CronJob - 2">2. CronJob - 2</a></li>
-<li><a href="#3-Dockerfile" title="3. Dockerfile">3. Dockerfile</a></li>
-<li><a href="#4-CPU---1" title="4. CPU - 1">4. CPU - 1</a></li>
-<li><a href="#5-CPU---2" title="5. CPU - 2">5. CPU - 2</a></li>
-<li><a href="#6-Update-K8S-Application" title="6 Update K8S Application">6 Update K8S Application</a></li>
-<li><a href="#7-Canary-金絲雀部屬" title="7. Canary 金絲雀部屬">7. Canary 金絲雀部屬</a></li>
-<li><a href="#8-Security-Context" title="8. Security Context">8. Security Context</a></li>
-<li><a href="#9-Deployment-and-environment-variable" title="9. Deployment and environment variable">9. Deployment and environment variable</a></li>
-<li><a href="#10-RBAC" title="10. RBAC">10. RBAC</a></li>
-<li><a href="#11-ConfigMap" title="11. ConfigMap">11. ConfigMap</a></li>
-<li><a href="#12-Secret" title="12. Secret">12. Secret</a></li>
-<li><a href="#13-Pod-livenessProbe---1" title="13. Pod livenessProbe - 1">13. Pod livenessProbe - 1</a></li>
-<li><a href="#14-Pod-livenessProbe---2" title="14. Pod livenessProbe - 2">14. Pod livenessProbe - 2</a></li>
-<li><a href="#15-Upgrade-and-Rollback" title="15. Upgrade and Rollback">15. Upgrade and Rollback</a></li>
-<li><a href="#16-Deployment-with-ServiceAccount" title="16. Deployment with ServiceAccount">16. Deployment with ServiceAccount</a></li>
-<li><a href="#17-Update-Deployment-and-expose-Service" title="17. Update Deployment and expose Service">17. Update Deployment and expose Service</a></li>
-<li><a href="#18-NetworkPolicy" title="18. NetworkPolicy">18. NetworkPolicy</a></li>
-<li><a href="#19-Ingress---1" title="19. Ingress - 1">19. Ingress - 1</a></li>
-<li><a href="#20-Ingress---2" title="20. Ingress - 2">20. Ingress - 2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
