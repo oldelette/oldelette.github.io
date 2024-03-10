@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Airflow - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{border-radius:3px;font-size:85%;line-height:1.45;overflow:auto}.markdown-body:not(.next-editor) pre{background-color:#f7f7f7;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert{display:flex;flex-direction:column;gap:16px}.markdown-body .alert>*{margin:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Airflow" data-id="Airflow"><a class="anchor hidden-xs" href="#Airflow" title="Airflow"><span class="octicon octicon-link"></span></a><span>Airflow</span></h1><p><span>Airflow 原先由 Airbnb 開發, 現為Apache頂級專案, 系統主要的程式語言是 python, 具有很棒的GUI, 遵循著”configuration as code”原則, 就連 workflow 及 task 都是用 python 撰寫的</span></p><p><span>用一張圖片來解釋 Airflow 的架構 </span><a href="https://3lexw.medium.com/apache-airflow-2-1-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8-2-%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%9F%BA%E7%A4%8E%E8%A8%AD%E5%AE%9A-5622f7cff10d" target="_blank" rel="noopener"><span>link</span></a><br>
+<img src="https://imgur.com/6578jk1.png" alt="Imgur" loading="lazy"></p><p><strong><span>Airflow 元件</span></strong></p><p><span>Airflow 的程式其實有三個主要元件：</span></p><ul>
+<li><span>WebServer：Airflow 的用家可以使用的用戶介面（UI)，用 Flask 平台製作，並以 gunicorn 作為伺服器平台。</span></li>
+<li><span>Scheduler：安排定期工作，並把工作交給 Executor 工作</span></li>
+<li><span>Executor：執行工作</span></li>
+</ul><p><strong><span>數據庫</span></strong><br>
+<span>這三個元件都需要和數據庫（DB）進行溝通，數據庫主要儲存：</span></p><ul>
+<li><span>工作清單</span></li>
+<li><span>工作執行狀態和結果</span></li>
+<li><span>工作返回的資訊 (XCom）</span></li>
+<li><span>和其他服務的連結資訊（Connection）</span></li>
+<li><span>Airflow 用 Variable</span></li>
+<li><span>Airflow 的用戶資料，授權</span></li>
+</ul><h2 id="Airflow-Web-UI" data-id="Airflow-Web-UI"><a class="anchor hidden-xs" href="#Airflow-Web-UI" title="Airflow-Web-UI"><span class="octicon octicon-link"></span></a><span>Airflow Web UI</span></h2><p><span>在 Airflow Web UI 首頁, 會顯示所有的工作流程的狀況, 全名稱作有向無環圖（DAG）</span><br>
+<span>「有向」代表它會由上游開始執行每個工作, 「無環」代表上游工作做完會到下游, 但下游做完不會回上游.</span><br>
+<span>簡言之, 我們可以把 DAG 想成專案流程圖, 描述不同任務間上下游的關係和啟動順序.</span></p><p><span>以下的燈號就代表了每個工作的運行狀態</span></p><ul>
+<li><span>綠燈：正常執行</span></li>
+<li><span>淺綠：正在執行</span></li>
+<li><span>紅燈：曾有錯誤</span></li>
+</ul><p><img src="https://imgur.com/zHCrAEk.png" alt="Imgur" loading="lazy"></p><p><span>Scheduler 排程以後, 還需要有個機制決定如何分配工作, 而那個機制就是 Executor</span><br>
+<span>它會把工作交給 Worker 運行, 不同 Executor 也有不同的優缺點</span></p><ul>
+<li>
+<p><span>Local Executor：在單一機器平行運行多個工作，原則上機器規格開得夠大的話初期使用應該就很足夠了</span></p>
+</li>
+<li>
+<p><span>Celery Executor：把工作分散到各個不同機器的 Celery Worker, 需要有 message broker 作為溝通的管道, 因為是分散式的所以適合做水平擴充</span><br>
+<img src="https://imgur.com/YOFmugX.png" alt="Imgur" loading="lazy"></p>
+</li>
+<li>
+<p><span>Kubernetes Executor：版本 v1.10 之後才有的，透過 Kubernetes API 為每個工作開啟一個 Pod，工作完成後就會砍掉，可以跟據每個工作分配不同的 CPU、memory、設定等，達到資源利用最大化</span><br>
+<img src="https://imgur.com/Id2vzHI.png" alt="Imgur" loading="lazy"></p>
+</li>
+</ul><h3 id="Operators" data-id="Operators"><a class="anchor hidden-xs" href="#Operators" title="Operators"><span class="octicon octicon-link"></span></a><span>Operators</span></h3><p><span>DAG 定義的是整個工作流程如何運作, 而 Operators 則定義了工作流程裏每個工作的工作內容, 比如說比較常用的有：</span></p><ul>
+<li><span>BashOperator: 執行 bash 指令</span></li>
+<li><span>PythonOperator: 執行 Python function</span></li>
+<li><span>GoogleCloudStorageToBigQueryOperator: 從 Google Cloud Storage 匯入資料到 Big Query</span></li>
+<li><span>BigQueryOperator: 執行 Big Query 的 SQL 指令</span></li>
+</ul><h3 id="XComs" data-id="XComs"><a class="anchor hidden-xs" href="#XComs" title="XComs"><span class="octicon octicon-link"></span></a><span>XComs</span></h3><p><span>XCom 是 Cross-communication 的縮寫, 在 Airflow 每個工作都是獨立的實體, 所產生的任何資料會隨著工作完成消失.</span><br>
+<span>如果想取得其他工作的資料可以透過 XCom 傳遞, 但需注意 XCom 的大小是有限制的, 僅適合用來傳遞 ID、檔名等可辨識的唯一值, 交給其他 Operator 把完整資料捉出來</span></p><h2 id="Execute" data-id="Execute"><a class="anchor hidden-xs" href="#Execute" title="Execute"><span class="octicon octicon-link"></span></a><span>Execute</span></h2><p><span>下面的範例, 建立一個名為 mc_dag 的任務, 並且指派 tags 屬性, 方便我們在 UI 上進行查詢</span></p><p><img src="https://imgur.com/9V1hQEW.png" alt="Imgur" loading="lazy"></p><p><span>要將此程式碼與 docker-compose 啟動的 Airflow server串接, 把 code 放在 Airflow 的 dags 目錄中 (與 docker-compose 配置中定義的AIRFLOW_PROJ_DIR 變數相對應)</span><br>
+<span>預設情況下我們的 docker-compose 配置中已經定義了 AIRFLOW_PROJ_DIR 變數, 並且已經將dags目錄掛載到了/opt/airflow/dags</span></p><pre><code class="wrap python hljs"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+<span class="hljs-keyword">from</span> airflow <span class="hljs-keyword">import</span> DAG
+<span class="hljs-keyword">from</span> airflow.operators.bash <span class="hljs-keyword">import</span> BashOperator
+<span class="hljs-keyword">from</span> airflow.operators.empty <span class="hljs-keyword">import</span> EmptyOperator
+
+start_task = EmptyOperator(task_id=<span class="hljs-string">"start_task"</span>)
+end_task = EmptyOperator(task_id=<span class="hljs-string">"end_task"</span>)
+first_task = BashOperator(
+    task_id=<span class="hljs-string">"first_task"</span>, bash_command=<span class="hljs-string">f"echo execute time: <span class="hljs-subst">{datetime.now()}</span>"</span>
+)
+
+
+dag = DAG(dag_id=<span class="hljs-string">"mc_dag"</span>, tags=[<span class="hljs-string">'user'</span>], start_date=datetime.today())
+<span class="hljs-keyword">with</span> dag:
+    start_task = EmptyOperator(task_id=<span class="hljs-string">"start_task"</span>)
+    end_task = EmptyOperator(task_id=<span class="hljs-string">"end_task"</span>)
+    first_task = BashOperator(task_id=<span class="hljs-string">"first_task"</span>,
+                              bash_command=<span class="hljs-string">f"echo execute time: <span class="hljs-subst">{datetime.now()}</span>"</span>)
+</code></pre><h3 id="執行-Dag" data-id="執行-Dag"><a class="anchor hidden-xs" href="#執行-Dag" title="執行-Dag"><span class="octicon octicon-link"></span></a><span>執行 Dag</span></h3><ol>
+<li><span>透過 UI 將 Dag 設定為 unpause 狀態</span></li>
+<li><span>點選右方三角形的執行符號, 選擇 Trigger DAG 選項</span></li>
+<li><span>之後就可以在 Runs 欄位看到該 Dag 的運行狀態, 從左至右分別為 queued、success、running 以及 failed, 而上面的數字代表著數量</span></li>
+</ol><p><img src="https://imgur.com/XC5mOIa.png" alt="Imgur" loading="lazy"></p><h3 id="使用-decorator-建立-Dag" data-id="使用-decorator-建立-Dag"><a class="anchor hidden-xs" href="#使用-decorator-建立-Dag" title="使用-decorator-建立-Dag"><span class="octicon octicon-link"></span></a><span>使用 decorator 建立 Dag</span></h3><p><span>在 airflow 2.x 版後, 提供了利用 decorator 的方式來建立 Dag, 下方為簡易範例</span><br>
+<span>特別注意：</span><br>
+<span>使用此方法建立 Dag 後, 需要於外部將該 Dag 的函式丟給一個變數, airflow 才可以抓到該 Dag</span></p><p><img src="https://imgur.com/h4WzUMC.png" alt="Imgur" loading="lazy"></p><pre><code class="wrap python hljs"><span class="hljs-keyword">from</span> airflow.decorators <span class="hljs-keyword">import</span> dag
+<span class="hljs-keyword">from</span> airflow.operators.empty <span class="hljs-keyword">import</span> EmptyOperator
+<span class="hljs-keyword">from</span> airflow.operators.bash_operator <span class="hljs-keyword">import</span> BashOperator
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+
+<span class="hljs-meta">@dag(<span class="hljs-params">tags=[<span class="hljs-string">'user'</span>], start_date=datetime.today(<span class="hljs-params"></span>)</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mcl_dag</span>():
+    start_task = EmptyOperator(task_id=<span class="hljs-string">"start_task"</span>)
+    end_task = EmptyOperator(task_id=<span class="hljs-string">"end_task"</span>)
+    first_task = BashOperator(task_id=<span class="hljs-string">"first_task"</span>,
+                              bash_command=<span class="hljs-string">f"echo execute time: <span class="hljs-subst">{datetime.now()}</span>"</span>)
+
+    start_task &gt;&gt; first_task &gt;&gt; end_task
+
+
+my_dag = mcl_dag()
+</code></pre><h3 id="Airflow-Connect-to-Database" data-id="Airflow-Connect-to-Database"><a class="anchor hidden-xs" href="#Airflow-Connect-to-Database" title="Airflow-Connect-to-Database"><span class="octicon octicon-link"></span></a><span>Airflow Connect to Database</span></h3><p><span>Airflow 連接到 Database 的三種方法 - </span><a href="https://ithelp.ithome.com.tw/articles/10332967" target="_blank" rel="noopener"><span>link</span></a></p><p><strong><span>設定</span></strong></p><ul>
+<li><span>Connection Id(要在airflow中使用的id): localhost-db (可以自己設定)</span></li>
+<li><span>HOST(連接的主機): host.docker.internal</span></li>
+<li><span>Connection Type(連接的資料庫類型): Postgres</span></li>
+<li><span>Schema(連接的db名稱): postgres</span></li>
+<li><span>Login 和 Password 都是 airflow</span></li>
+</ul><p><span>出現 Test 按不下去的狀況:</span></p><p><img src="https://imgur.com/aQftLv7.png" alt="Imgur" loading="lazy"></p><h2 id="Install" data-id="Install"><a class="anchor hidden-xs" href="#Install" title="Install"><span class="octicon octicon-link"></span></a><span>Install</span></h2><p><span>參考官網安裝 - </span><a href="https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#running-airflow-in-docker" target="_blank" rel="noopener"><span>Running Airflow in Docker</span></a></p><pre><code>curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.2/docker-compose.yaml'
+mkdir -p ./dags ./logs ./plugins ./config
+echo -e "AIRFLOW_UID=$(id -u)" &gt; .env
+
+docker compose up airflow-init
+docker compose up
+</code></pre><p><span>成功安裝</span><br>
+<img src="https://imgur.com/XG2lP63.png" alt="Imgur" loading="lazy"></p><h3 id="Docker-compose" data-id="Docker-compose"><a class="anchor hidden-xs" href="#Docker-compose" title="Docker-compose"><span class="octicon octicon-link"></span></a><span>Docker-compose</span></h3><p><span>use version 3.7</span></p><pre><code class="wrap dockerfile hljs">version: <span class="hljs-string">"3.7"</span>
+
+x-airflow-common:
+  &amp;airflow-common
+  <span class="hljs-comment"># In order to add custom dependencies or upgrade provider packages you can use your extended image.</span>
+  <span class="hljs-comment"># Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml</span>
+  <span class="hljs-comment"># and uncomment the "build" line below, Then run `docker-compose build` to build the images.</span>
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:<span class="hljs-number">2.8</span>.<span class="hljs-number">2</span>}
+  <span class="hljs-comment"># build: .</span>
+  environment:
+    &amp;airflow-common-<span class="hljs-keyword">env</span>
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:<span class="hljs-number">6379</span>/<span class="hljs-number">0</span>
+    AIRFLOW__CORE__FERNET_KEY: <span class="hljs-string">''</span>
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: <span class="hljs-string">'true'</span>
+    AIRFLOW__CORE__LOAD_EXAMPLES: <span class="hljs-string">'true'</span>
+    AIRFLOW__API__AUTH_BACKENDS: <span class="hljs-string">'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'</span>
+    <span class="hljs-comment"># yamllint disable rule:line-length</span>
+    <span class="hljs-comment"># Use simple http server on scheduler for health checks</span>
+    <span class="hljs-comment"># See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server</span>
+    <span class="hljs-comment"># yamllint enable rule:line-length</span>
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: <span class="hljs-string">'true'</span>
+    <span class="hljs-comment"># WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks</span>
+    <span class="hljs-comment"># for other purpose (development, test and especially production usage) build/extend Airflow image.</span>
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+  volumes:
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+  <span class="hljs-keyword">user</span>: <span class="hljs-string">"${AIRFLOW_UID:-50000}:0"</span>
+  depends_on:
+    <span class="hljs-comment"># &amp;airflow-common-depends-on</span>
+    - redis
+      <span class="hljs-comment"># condition: service_healthy</span>
+    - postgres
+      <span class="hljs-comment"># condition: service_healthy</span>
+
+services:
+  postgres:
+    image: postgres:<span class="hljs-number">13</span>
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-<span class="hljs-keyword">volume</span><span class="language-bash">:/var/lib/postgresql/data</span>
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD"</span>, <span class="hljs-string">"pg_isready"</span>, <span class="hljs-string">"-U"</span>, <span class="hljs-string">"airflow"</span>]
+      interval: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">5</span>s
+    restart: always
+
+  redis:
+    image: redis:latest
+    <span class="hljs-keyword">expose</span>:
+      - <span class="hljs-number">6379</span>
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD"</span>, <span class="hljs-string">"redis-cli"</span>, <span class="hljs-string">"ping"</span>]
+      interval: <span class="hljs-number">10</span>s
+      timeout: <span class="hljs-number">30</span>s
+      retries: <span class="hljs-number">50</span>
+      start_period: <span class="hljs-number">30</span>s
+    restart: always
+
+  airflow-webserver:
+    &lt;&lt;: *airflow-common
+    command: webserver
+    ports:
+      - <span class="hljs-string">"8080:8080"</span>
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD"</span>, <span class="hljs-string">"curl"</span>, <span class="hljs-string">"--fail"</span>, <span class="hljs-string">"http://localhost:8080/health"</span>]
+      interval: <span class="hljs-number">30</span>s
+      timeout: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">30</span>s
+    restart: always
+    depends_on:
+      <span class="hljs-comment"># &lt;&lt;: *airflow-common-depends-on</span>
+      - airflow-init
+        <span class="hljs-comment"># condition: service_completed_successfully</span>
+
+  airflow-scheduler:
+    &lt;&lt;: *airflow-common
+    command: scheduler
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD"</span>, <span class="hljs-string">"curl"</span>, <span class="hljs-string">"--fail"</span>, <span class="hljs-string">"http://localhost:8974/health"</span>]
+      interval: <span class="hljs-number">30</span>s
+      timeout: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">30</span>s
+    restart: always
+    depends_on:
+      <span class="hljs-comment"># &lt;&lt;: *airflow-common-depends-on</span>
+      - airflow-init
+        <span class="hljs-comment"># condition: service_completed_successfully</span>
+
+  airflow-worker:
+    &lt;&lt;: *airflow-common
+    command: celery worker
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      <span class="hljs-comment"># yamllint disable rule:line-length</span>
+      test:
+        - <span class="hljs-string">"CMD-SHELL"</span>
+        - <span class="hljs-string">'celery --app airflow.providers.celery.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}" || celery --app airflow.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}"'</span>
+      interval: <span class="hljs-number">30</span>s
+      timeout: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">30</span>s
+    environment:
+      &lt;&lt;: *airflow-common-<span class="hljs-keyword">env</span>
+      <span class="hljs-comment"># Required to handle warm shutdown of the celery workers properly</span>
+      <span class="hljs-comment"># See https://airflow.apache.org/docs/docker-stack/entrypoint.html#signal-propagation</span>
+      DUMB_INIT_SETSID: <span class="hljs-string">"0"</span>
+    restart: always
+    depends_on:
+      <span class="hljs-comment"># &lt;&lt;: *airflow-common-depends-on</span>
+      - airflow-init
+        <span class="hljs-comment"># condition: service_completed_successfully</span>
+
+  airflow-triggerer:
+    &lt;&lt;: *airflow-common
+    command: triggerer
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD-SHELL"</span>, <span class="hljs-string">'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"'</span>]
+      interval: <span class="hljs-number">30</span>s
+      timeout: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">30</span>s
+    restart: always
+    depends_on:
+      <span class="hljs-comment"># &lt;&lt;: *airflow-common-depends-on</span>
+      - airflow-init
+        <span class="hljs-comment"># condition: service_completed_successfully</span>
+
+  airflow-init:
+    &lt;&lt;: *airflow-common
+    <span class="hljs-keyword">entrypoint</span><span class="language-bash">: /bin/bash</span>
+    <span class="hljs-comment"># yamllint disable rule:line-length</span>
+    command:
+      - -c
+      - |
+        if [[ -z <span class="hljs-string">"${AIRFLOW_UID}"</span> ]]; then
+          echo
+          echo -e <span class="hljs-string">"\033[1;33mWARNING!!!: AIRFLOW_UID not set!\e[0m"</span>
+          echo <span class="hljs-string">"If you are on Linux, you SHOULD follow the instructions below to set "</span>
+          echo <span class="hljs-string">"AIRFLOW_UID environment variable, otherwise files will be owned by root."</span>
+          echo <span class="hljs-string">"For other operating systems you can get rid of the warning with manually created .env file:"</span>
+          echo <span class="hljs-string">"    See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user"</span>
+          echo
+        fi
+        one_meg=<span class="hljs-number">1048576</span>
+        mem_available=$$(($$(getconf _PHYS_PAGES) * $$(getconf PAGE_SIZE) / one_meg))
+        cpus_available=$$(grep -cE <span class="hljs-string">'cpu[0-9]+'</span> /proc/stat)
+        disk_available=$$(df / | tail -<span class="hljs-number">1</span> | awk <span class="hljs-string">'{print $$4}'</span>)
+        warning_resources=<span class="hljs-string">"false"</span>
+        if (( mem_available &lt; <span class="hljs-number">4000</span> )) ; then
+          echo
+          echo -e <span class="hljs-string">"\033[1;33mWARNING!!!: Not enough memory available for Docker.\e[0m"</span>
+          echo <span class="hljs-string">"At least 4GB of memory required. You have $$(numfmt --to iec $$((mem_available * one_meg)))"</span>
+          echo
+          warning_resources=<span class="hljs-string">"true"</span>
+        fi
+        if (( cpus_available &lt; <span class="hljs-number">2</span> )); then
+          echo
+          echo -e <span class="hljs-string">"\033[1;33mWARNING!!!: Not enough CPUS available for Docker.\e[0m"</span>
+          echo <span class="hljs-string">"At least 2 CPUs recommended. You have $${cpus_available}"</span>
+          echo
+          warning_resources=<span class="hljs-string">"true"</span>
+        fi
+        if (( disk_available &lt; one_meg * <span class="hljs-number">10</span> )); then
+          echo
+          echo -e <span class="hljs-string">"\033[1;33mWARNING!!!: Not enough Disk space available for Docker.\e[0m"</span>
+          echo <span class="hljs-string">"At least 10 GBs recommended. You have $$(numfmt --to iec $$((disk_available * 1024 )))"</span>
+          echo
+          warning_resources=<span class="hljs-string">"true"</span>
+        fi
+        if [[ $${warning_resources} == <span class="hljs-string">"true"</span> ]]; then
+          echo
+          echo -e <span class="hljs-string">"\033[1;33mWARNING!!!: You have not enough resources to run Airflow (see above)!\e[0m"</span>
+          echo <span class="hljs-string">"Please follow the instructions to increase amount of resources available:"</span>
+          echo <span class="hljs-string">"   https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#before-you-begin"</span>
+          echo
+        fi
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R <span class="hljs-string">"${AIRFLOW_UID}:0"</span> /sources/{logs,dags,plugins}
+        exec /<span class="hljs-keyword">entrypoint</span><span class="language-bash"> airflow version</span>
+    <span class="hljs-comment"># yamllint enable rule:line-length</span>
+    environment:
+      &lt;&lt;: *airflow-common-<span class="hljs-keyword">env</span>
+      _AIRFLOW_DB_MIGRATE: <span class="hljs-string">'true'</span>
+      _AIRFLOW_WWW_USER_CREATE: <span class="hljs-string">'true'</span>
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: <span class="hljs-string">''</span>
+    <span class="hljs-keyword">user</span>: <span class="hljs-string">"0:0"</span>
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}:/sources
+
+  airflow-cli:
+    &lt;&lt;: *airflow-common
+    <span class="hljs-comment"># profiles:</span>
+    <span class="hljs-comment">#   - debug</span>
+    environment:
+      &lt;&lt;: *airflow-common-<span class="hljs-keyword">env</span>
+      CONNECTION_CHECK_MAX_COUNT: <span class="hljs-string">"0"</span>
+    <span class="hljs-comment"># Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252</span>
+    command:
+      - bash
+      - -c
+      - airflow
+
+  <span class="hljs-comment"># You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up</span>
+  <span class="hljs-comment"># or by explicitly targeted on the command line e.g. docker-compose up flower.</span>
+  <span class="hljs-comment"># See: https://docs.docker.com/compose/profiles/</span>
+  flower:
+    &lt;&lt;: *airflow-common
+    command: celery flower
+    <span class="hljs-comment"># profiles:</span>
+    <span class="hljs-comment">#   - flower</span>
+    ports:
+      - <span class="hljs-string">"5555:5555"</span>
+    <span class="hljs-keyword">healthcheck</span><span class="language-bash">:</span>
+      test: [<span class="hljs-string">"CMD"</span>, <span class="hljs-string">"curl"</span>, <span class="hljs-string">"--fail"</span>, <span class="hljs-string">"http://localhost:5555/"</span>]
+      interval: <span class="hljs-number">30</span>s
+      timeout: <span class="hljs-number">10</span>s
+      retries: <span class="hljs-number">5</span>
+      start_period: <span class="hljs-number">30</span>s
+    restart: always
+    depends_on:
+      <span class="hljs-comment"># &lt;&lt;: *airflow-common-depends-on</span>
+      - airflow-init
+        <span class="hljs-comment"># condition: service_completed_successfully</span>
+
+volumes:
+  postgres-db-<span class="hljs-keyword">volume</span><span class="language-bash">:</span>
+</code></pre><h3 id="pip" data-id="pip"><a class="anchor hidden-xs" href="#pip" title="pip"><span class="octicon octicon-link"></span></a><span>pip</span></h3><p><a href="https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html#installation-from-pypi" target="_blank" rel="noopener"><span>Installation from PyPI</span></a></p><pre><code>pip install "apache-airflow[celery]==2.8.2" 
+--constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.8.2/constraints-3.8.txt"
+</code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Airflow" title="Airflow">Airflow</a><ul class="nav">
+<li><a href="#Airflow-Web-UI" title="Airflow Web UI">Airflow Web UI</a><ul class="nav">
+<li><a href="#Operators" title="Operators">Operators</a></li>
+<li><a href="#XComs" title="XComs">XComs</a></li>
+</ul>
+</li>
+<li class=""><a href="#Execute" title="Execute">Execute</a><ul class="nav">
+<li><a href="#執行-Dag" title="執行 Dag">執行 Dag</a></li>
+<li class=""><a href="#使用-decorator-建立-Dag" title="使用 decorator 建立 Dag">使用 decorator 建立 Dag</a></li>
+<li><a href="#Airflow-Connect-to-Database" title="Airflow Connect to Database">Airflow Connect to Database</a></li>
+</ul>
+</li>
+<li><a href="#Install" title="Install">Install</a><ul class="nav">
+<li><a href="#Docker-compose" title="Docker-compose">Docker-compose</a></li>
+<li><a href="#pip" title="pip">pip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Airflow" title="Airflow">Airflow</a><ul class="nav">
+<li><a href="#Airflow-Web-UI" title="Airflow Web UI">Airflow Web UI</a><ul class="nav">
+<li><a href="#Operators" title="Operators">Operators</a></li>
+<li><a href="#XComs" title="XComs">XComs</a></li>
+</ul>
+</li>
+<li class=""><a href="#Execute" title="Execute">Execute</a><ul class="nav">
+<li><a href="#執行-Dag" title="執行 Dag">執行 Dag</a></li>
+<li class=""><a href="#使用-decorator-建立-Dag" title="使用 decorator 建立 Dag">使用 decorator 建立 Dag</a></li>
+<li><a href="#Airflow-Connect-to-Database" title="Airflow Connect to Database">Airflow Connect to Database</a></li>
+</ul>
+</li>
+<li><a href="#Install" title="Install">Install</a><ul class="nav">
+<li><a href="#Docker-compose" title="Docker-compose">Docker-compose</a></li>
+<li><a href="#pip" title="pip">pip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
