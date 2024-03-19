@@ -1,7 +1,7 @@
 import os
 import shutil
 from git import Repo
-
+from deepdiff import DeepDiff
 
 class GitHandler:
     def __init__(self, repo_url, destination_path, gitlab_access_token):
@@ -105,6 +105,99 @@ class GitHandler:
             print(f"Folder '{folder_path}' does not exist.")
 
 
+    # def parse_diff_output(self, diff_output):
+    #     """
+    #     Parse the output of git diff command.
+    #     :param diff_output: Output of git diff command.
+    #     :return: Parsed diff output.
+    #     """
+    #     parsed_diff = []
+    #     current_change = None
+    #     current_chunk = None
+    #
+    #     # Split diff output into lines
+    #     lines = diff_output.splitlines()
+    #
+    #     for line in lines:
+    #         # Check for diff headers
+    #         if line.startswith("diff --git"):
+    #             # Start of a new file diff
+    #             if current_change is not None:
+    #                 parsed_diff.append(current_change)
+    #             current_change = {"file": line.split(" ")[-1]}
+    #             current_change["chunks"] = []
+    #         elif line.startswith("@@"):
+    #             # Start of a new chunk
+    #             current_chunk = {"header": line, "changes": []}  # Initialize with "changes" key
+    #             current_change["chunks"].append(current_chunk)
+    #         elif line.startswith("+"):
+    #             # Addition line
+    #             if current_chunk is not None:  # Ensure current_chunk is initialized
+    #                 current_chunk["changes"].append({"type": "addition", "line": line})
+    #         elif line.startswith("-"):
+    #             # Deletion line
+    #             if current_chunk is not None:  # Ensure current_chunk is initialized
+    #                 current_chunk["changes"].append({"type": "deletion", "line": line})
+    #         elif line.startswith(" "):
+    #             # Context line
+    #             if current_chunk is not None:  # Ensure current_chunk is initialized
+    #                 current_chunk["changes"].append({"type": "context", "line": line})
+    #
+    #     # Append the last change
+    #     if current_change is not None:
+    #         parsed_diff.append(current_change)
+    #
+    #     return parsed_diff
+
+
+    def parse_diff_output(self, diff_output):
+        """
+        Parse the output of git diff command.
+        :param diff_output: Output of git diff command.
+        :return: Parsed diff output.
+        """
+        parsed_diff = []
+        current_change = None
+        current_chunk = None
+        
+        lines = diff_output.splitlines()
+        for line in lines:
+            if line.startswith("diff --git"):
+                if current_change is not None:
+                    parsed_diff.append(current_change)
+                current_change = {"file": line.split(" ")[-1], "chunks": []}
+            elif line.startswith("@@") and current_change is not None:
+                current_chunk = {"header": line, "changes": []}
+                current_change["chunks"].append(current_chunk)
+            elif line.startswith(("+", "-", " ")) and current_chunk is not None:
+                current_chunk["changes"].append({"type": "addition" if line.startswith("+") else "deletion" if line.startswith("-") else "context", "line": line})
+        
+        if current_change is not None:
+            parsed_diff.append(current_change)
+        
+        return parsed_diff
+
+
+
+
+    def git_diff_to_file(self, branch1, branch2):
+        """
+        Perform a git diff between two branches and write the output to a file.
+        :param branch1: First branch to compare.
+        :param branch2: Second branch to compare.
+        """
+        repo = Repo(self.destination_path)
+        diff_output = repo.git.diff(branch1, branch2)
+        print(f"{diff_output=}")
+        print("**"*20)
+        print("**"*20)
+
+        parsed_diff = self.parse_diff_output(diff_output)
+        for item in parsed_diff:
+            print(f"{item=}")
+
+
+
 # Example usage
 if __name__ == "__main__":
     repo_url = "https://gitlab.com/ssp19960710/0902.git"
@@ -120,7 +213,7 @@ if __name__ == "__main__":
     git_handler.clone_or_pull_repository()
 
     # Add a new file
-    git_handler.add_file("src/new_file.txt", "This is a new file.")
+    # git_handler.add_file("src/new_file.txt", "This is a new file.")
 
     # Make changes to the cloned repository (not shown here)
 
@@ -130,3 +223,5 @@ if __name__ == "__main__":
     # Delete a file
     # git_handler.delete_file("src/new_file.txt")
     # git_handler.delete_folder("src")
+    diff_index = git_handler.git_diff_to_file("main", "remotes/origin/test")
+    # diff_index = git_handler.git_diff_to_file("remotes/origin/test", "main")
