@@ -14,6 +14,7 @@ class FileInfo(BaseModel):
         file_path (str): The path of the file.
         content (str): The content of the file.
     """
+
     file_path: str
     content: str
 
@@ -181,10 +182,7 @@ class GitlabManager:
                 existing_content = self.get_file(file_path, branch)
 
                 if self._check_content_match(existing_content, content):
-                    print(
-                        f"Skipping commit for file '{file_path}' as content"
-                        " matches."
-                    )
+                    print(f"Skipping commit for file {file_path}")
                     continue
 
                 actions.append({
