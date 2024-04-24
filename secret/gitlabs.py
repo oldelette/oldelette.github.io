@@ -277,3 +277,36 @@ class GitlabManager:
         except GitlabError as e:
             print(f"Error deleting folder on GitLab: {e}")
             return False
+        
+
+
+    def new_get_all_files_path_in_folder(
+        self, folder_path: str = "", branch: str = "main"
+    ) -> List[str]:
+        """
+        Retrieves all file paths in a folder from a GitLab repository.
+
+        Args:
+            folder_path (str, optional): The path of the folder relative to the root.
+                If empty, the root folder is used. Defaults to "".
+            branch (str, optional): The branch name to retrieve files from.
+                Defaults to "main".
+
+        Returns:
+            List[str]: A list of file paths or an empty list if an error occurs.
+
+        Raises:
+            GitlabError: If an error occurs while accessing the repository.
+        """
+        self._validate_branch(branch)
+
+        if not folder_path:
+            folder_path = "/"  # Use root directory if folder_path is empty
+
+        try:
+            files = self.project.repository_tree(
+                path=folder_path, ref_name=branch, recursive=True, all=True
+            )
+            return [file["path"] for file in files if file["type"] == "blob"]
+        except GitlabError as e:
+            raise GitlabError(f"Error retrieving files in folder: {e}")
